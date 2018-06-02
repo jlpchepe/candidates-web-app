@@ -6,7 +6,22 @@
         xmlns:local="clr-namespace:ReclutaCV"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <StackPanel>
+        <TextBlock>Años de Experiencia</TextBlock>
+        <TextBox Text="{Binding Candidato.AñosDeExperiencia}"></TextBox>
+        <TextBlock>Fecha de Nacimiento</TextBlock>
+        <DatePicker SelectedDate="{Binding Candidato.FechaDeNacimiento}"></DatePicker>
         
-    </Grid>
+        
+        <TextBlock>Nombre</TextBlock>
+        <TextBox Text="{Binding Candidato.Nombre}"></TextBox>
+        <TextBlock>Apellido Paterno</TextBlock>
+        <TextBox Text="{Binding Candidato.ApellidoPaterno}"></TextBox>
+        <TextBlock>Apellido Materno</TextBlock>
+        <TextBox Text="{Binding Candidato.ApellidoMaterno}"></TextBox>
+        <TextBlock>Sueldo Actual</TextBlock>
+        <TextBox Text="{Binding Candidato.SueldoActual}"></TextBox>
+        <TextBlock>Sueldo Esperado</TextBlock>
+        <TextBox Text="{Binding Candidato.SueldoEsperado}"></TextBox>
+    </StackPanel>
 </Window>
