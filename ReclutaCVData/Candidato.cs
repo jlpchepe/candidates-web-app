@@ -8,7 +8,15 @@ namespace ReclutaCVData
 {
     class Candidato
     {
-        prop
+        public int AñosDeExperiencia { get; set; }
+        public string Nombre { get; set; }
+        public DateTime FechaDeNacimiento { get; set; }
+        public string ApellidoPaterno { get; set; }
+        public string ApellidoMaterno { get; set; }
+        public string CiudadResidencia { get; set; }
+        public decimal SueldoActual { get; set; }
+        public decimal SueldoEsperado { get; set; }
+
 
 
     }
