@@ -24,5 +24,10 @@ namespace ReclutaCV
         {
             InitializeComponent();
         }
+
+        private void ColumnDefinition_IsKeyboardFocusWithinChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+
+        }
     }
 }
