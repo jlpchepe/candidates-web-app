@@ -23,5 +23,7 @@
         <TextBox Text="{Binding Candidato.SueldoActual}"></TextBox>
         <TextBlock>Sueldo Esperado</TextBlock>
         <TextBox Text="{Binding Candidato.SueldoEsperado}"></TextBox>
+
+        <Button Click="Button_Click">Guardar</Button>
     </StackPanel>
 </Window>
