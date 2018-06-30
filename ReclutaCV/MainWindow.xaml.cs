@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ReclutaCVData.Entidades;
+using ReclutaCVLogic.Repositorio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,25 @@ namespace ReclutaCV
         public MainWindow()
         {
             InitializeComponent();
+
+            this.Candidato = new Candidato();
+
+            this.DataContext = this;
+
+        }
+
+        public void GuardarCandidato()
+        {
+            var candidatoRepositorio = new CandidatoRepositorio();
+
+            candidatoRepositorio.Guardar(this.Candidato);
+        }
+
+        public Candidato Candidato { get; set; }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.GuardarCandidato();
         }
 
         private void ColumnDefinition_IsKeyboardFocusWithinChanged(object sender, DependencyPropertyChangedEventArgs e)
