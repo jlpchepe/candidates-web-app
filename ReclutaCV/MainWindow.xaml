@@ -7,23 +7,21 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <StackPanel>
-        <TextBlock>Años de Experiencia</TextBlock>
+        <TextBlock>Años de experiencia</TextBlock>
         <TextBox Text="{Binding Candidato.AñosDeExperiencia}"></TextBox>
-        <TextBlock>Fecha de Nacimiento</TextBlock>
+        <TextBlock>Fecha de nacimiento</TextBlock>
         <DatePicker SelectedDate="{Binding Candidato.FechaDeNacimiento}"></DatePicker>
-        
-        
         <TextBlock>Nombre</TextBlock>
         <TextBox Text="{Binding Candidato.Nombre}"></TextBox>
-        <TextBlock>Apellido Paterno</TextBlock>
+        <TextBlock>Apellido paterno</TextBlock>
         <TextBox Text="{Binding Candidato.ApellidoPaterno}"></TextBox>
-        <TextBlock>Apellido Materno</TextBlock>
+        <TextBlock>Apellido materno</TextBlock>
         <TextBox Text="{Binding Candidato.ApellidoMaterno}"></TextBox>
-        <TextBlock>Sueldo Actual</TextBlock>
+        <TextBlock>Sueldo actual</TextBlock>
         <TextBox Text="{Binding Candidato.SueldoActual}"></TextBox>
-        <TextBlock>Sueldo Esperado</TextBlock>
+        <TextBlock>Sueldo esperado</TextBlock>
         <TextBox Text="{Binding Candidato.SueldoEsperado}"></TextBox>
 
-        <Button Click="Button_Click">Guardar</Button>
+        <Button Click="GuardarCandidato">Guardar</Button>
     </StackPanel>
 </Window>
