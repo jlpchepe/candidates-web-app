@@ -13,9 +13,42 @@ namespace ReclutaCVData.Entidades
         Titulado,
         Pasante,
         Estudiante,
-        Trunca,
-    
+        Trunca
     }
+
+        public enum NivelCandidato
+    {
+        Principiante,
+        Junior,
+        Intermedio,
+        Senior
+      
+    }
+
+        public enum RolCandidato
+    {
+        IngenieroDeSoftware,
+        Analista,
+        AdministradorDeProyecto,
+        EspecialistaDeNegocio,
+        Tester,
+        DataEngineer,
+     
+    }
+        public enum EstatusCandidato
+    {
+        CitadoParaExamen,
+        InteresesAltos,
+        Foraneo,
+        EnEspera,
+        OtraVacante,
+        AnalizandoAlCandidato,
+        NoLeIntereso,
+        VacanteDetenida
+
+
+    }
+        
 
     /// <summary>
     /// Un candidato a algun puesto
@@ -50,6 +83,20 @@ namespace ReclutaCVData.Entidades
         public string Correo { get; set; }
 
         public EstatusAcademico EstatusAcademico { get; set; } = EstatusAcademico.Estudiante;
+        public NivelCandidato Nivel { get; set; } = NivelCandidato.Intermedio;
+        public string Bolsa { get; set; }
+        public DateTime FechaDeContacto { get; set; }
+        public string QuienLoContacto { get; set; }
+        public RolCandidato Rol { get; set; }
+        public DateTime FechaDeExamen { get; set; }
+        public DateTime HoraDeExamen { get; set; }
+        public decimal CalificacionDelExamen { get; set; }
+        public DateTime FechaDeEntrevista { get; set; }
+        public decimal PropuestaEconomicaMonto { get; set; }
+        public DateTime FechaDeIngresoALaEmpresa { get; set; }
+        public EstatusCandidato Estatus { get; set; }
+        public string Comentarios { get; set; }
+
 
 
     }

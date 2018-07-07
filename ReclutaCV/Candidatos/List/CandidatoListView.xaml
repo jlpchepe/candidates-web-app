@@ -1,0 +1,29 @@
+﻿<Window x:Class="ReclutaCV.Candidatos.List.CandidatoListView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ReclutaCV.Candidatos.List"
+        mc:Ignorable="d"
+        Title="CandidatoListView" Height="450" Width="800">
+    <Grid>
+        <DataGrid ItemsSource="{Binding Items}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Nivel del candidato" Binding="{Binding Nivel}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Bolsa" Binding="{Binding Bolsa}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Fecha de contacto" Binding="{Binding FechaDeContacto}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Contacto" Binding="{Binding QuienLoContacto}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Candidato" Binding="{Binding Nombre}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Rol" Binding="{Binding Rol}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Examen" Binding="{Binding FechaDeExamen}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Hora" Binding="{Binding HoraDeExamen}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Calificación" Binding="{Binding CalificacionDelExamen}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Entrevista" Binding="{Binding FechaDeEntrevista}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Propuesta Económica" Binding="{Binding PropuestaEconomicaMonto}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Fecha de Ingreso" Binding="{Binding FechaDeIngresoALaEmpresa}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Estatus" Binding="{Binding Estatus}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Comentarios" Binding="{Binding Comentarios}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>

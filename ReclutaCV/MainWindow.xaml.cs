@@ -1,4 +1,5 @@
-﻿using ReclutaCVData.Entidades;
+﻿using ReclutaCV.Candidatos.List;
+using ReclutaCVData.Entidades;
 using ReclutaCVLogic.Repositorio;
 using System;
 using System.Collections.Generic;
@@ -24,7 +25,21 @@ namespace ReclutaCV
     {
         public MainWindow()
         {
-            InitializeComponent();
+            var candidatoList = new CandidatoListView();
+            candidatoList.InitializeComponent();
+
+            var candidatoListContext = new CandidatoListViewModel();
+            candidatoListContext.Items = new List<Candidato>()
+            {
+                new Candidato() { Nombre ="Dani", Estatus = EstatusCandidato.OtraVacante },
+                new Candidato() { Nombre ="Juan", Estatus = EstatusCandidato.AnalizandoAlCandidato },
+                new Candidato() { Nombre ="Pablo", Estatus = EstatusCandidato.CitadoParaExamen },
+            };
+
+            candidatoList.DataContext = candidatoListContext;
+            candidatoList.Show();
+
+            //InitializeComponent();
 
             this.Candidato = new Candidato();
 
@@ -41,7 +56,7 @@ namespace ReclutaCV
 
         public Candidato Candidato { get; set; }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Guardar(object sender, RoutedEventArgs e)
         {
             this.GuardarCandidato();
         }
