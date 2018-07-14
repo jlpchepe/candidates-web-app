@@ -61,6 +61,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Candidatos\Edit\CandidatoEditView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Candidatos\List\CandidatoListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -73,6 +77,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Candidatos\Edit\CandidatoEditView.xaml.cs">
+      <DependentUpon>CandidatoEditView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Candidatos\Edit\CandidatoEditViewModel.cs" />
     <Compile Include="Candidatos\List\CandidatoListView.xaml.cs">
       <DependentUpon>CandidatoListView.xaml</DependentUpon>
     </Compile>

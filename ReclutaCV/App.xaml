@@ -4,6 +4,16 @@
              xmlns:local="clr-namespace:ReclutaCV"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <Style TargetType="DataGrid">
+            <Setter Property="CanUserAddRows" Value="False"></Setter>
+            <Setter Property="CanUserDeleteRows" Value="False"></Setter>
+            <Setter Property="AutoGenerateColumns" Value="False"></Setter>
+            <Setter Property="IsReadOnly" Value="True"></Setter>
+            <Setter Property="AlternatingRowBackground" Value="PaleTurquoise"></Setter>
+        </Style>
+
+        <Style TargetType="DataGridColumnHeader">
+            <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+        </Style>
     </Application.Resources>
 </Application>
