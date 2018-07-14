@@ -25,37 +25,11 @@ namespace ReclutaCV
     {
         public MainWindow()
         {
-            var candidatoList = new CandidatoListView();
-            candidatoList.InitializeComponent();
+            var candidatoListView = new CandidatoListView();
 
-            this.CandidatoList = new CandidatoListViewModel();
-
-            candidatoList.DataContext = this.CandidatoList;
-            candidatoList.Show();
-
-            this.ReiniciarCandidato();
-
-            this.DataContext = this;
-
-        }
-
-        public Candidato Candidato { get; set; }
-        public CandidatoListViewModel CandidatoList { get; }
-
-        void ReiniciarCandidato()
-        {
-            this.Candidato = new Candidato();
-        }
-
-        private void GuardarCandidato(object sender, RoutedEventArgs e)
-        {
-            var candidatoRepositorio = new CandidatoRepositorio();
-
-            candidatoRepositorio.Guardar(this.Candidato);
-
-            this.CandidatoList.RefrescarCandidatos();
-
-            this.ReiniciarCandidato();
+            candidatoListView.InitializeComponent();
+            candidatoListView.DataContext = new CandidatoListViewModel();
+            candidatoListView.Show();
         }
     }
 }
