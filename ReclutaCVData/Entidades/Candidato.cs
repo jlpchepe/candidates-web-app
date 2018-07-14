@@ -66,6 +66,7 @@ namespace ReclutaCVData.Entidades
         public DateTime FechaDeNacimiento { get; set; } = DateTime.Now;
         public string ApellidoPaterno { get; set; }
         public string ApellidoMaterno { get; set; }
+
         public string CiudadResidencia { get; set; }
         public decimal SueldoActual { get; set; }
         public decimal SueldoEsperado { get; set; }
