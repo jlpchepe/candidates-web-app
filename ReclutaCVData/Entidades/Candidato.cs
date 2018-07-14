@@ -62,9 +62,8 @@ namespace ReclutaCVData.Entidades
         public int Id { get; set; }
 
         public int AñosDeExperiencia { get; set; }
-        public DateTime FechaDeNacimiento { get; set; }
-
         public string Nombre { get; set; }
+        public DateTime FechaDeNacimiento { get; set; } = DateTime.Now;
         public string ApellidoPaterno { get; set; }
         public string ApellidoMaterno { get; set; }
 
@@ -87,19 +86,16 @@ namespace ReclutaCVData.Entidades
         public EstatusAcademico EstatusAcademico { get; set; } = EstatusAcademico.Estudiante;
         public NivelCandidato Nivel { get; set; } = NivelCandidato.Intermedio;
         public string Bolsa { get; set; }
-        public DateTime FechaDeContacto { get; set; }
+        public DateTime FechaDeContacto { get; set; } = DateTime.Now;
         public string QuienLoContacto { get; set; }
         public RolCandidato Rol { get; set; }
-        public DateTime FechaDeExamen { get; set; }
-        public DateTime HoraDeExamen { get; set; }
+        public DateTime FechaDeExamen { get; set; } = DateTime.Now;
+        public DateTime HoraDeExamen { get; set; } = DateTime.Now;
         public decimal CalificacionDelExamen { get; set; }
-        public DateTime FechaDeEntrevista { get; set; }
+        public DateTime FechaDeEntrevista { get; set; } = DateTime.Now;
         public decimal PropuestaEconomicaMonto { get; set; }
-        public DateTime FechaDeIngresoALaEmpresa { get; set; }
+        public DateTime FechaDeIngresoALaEmpresa { get; set; } = DateTime.Now;
         public EstatusCandidato Estatus { get; set; }
         public string Comentarios { get; set; }
-
-
-
     }
 }

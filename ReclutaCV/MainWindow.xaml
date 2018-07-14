@@ -5,21 +5,90 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ReclutaCV"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        SizeToContent="Height"
+        Title="MainWindow" Width="800">
+
     <StackPanel>
-        <TextBlock>Años de Experiencia</TextBlock>
-        <TextBlock Text="{Binding Candidato.AñosDeExperiencia}"></TextBlock>
-        <TextBlock>Nombre</TextBlock>
-        <TextBlock Text="{Binding Candidato.Nombre}"></TextBlock>
-        <TextBlock>Apellido Paterno</TextBlock>
-        <TextBlock Text="{Binding Candidato.ApellidoPaterno}"></TextBlock>
-        <TextBlock>Apellido Materno</TextBlock>
-        <TextBlock Text="{Binding Candidato.ApellidoMaterno}"></TextBlock>
-        <TextBlock>Fecha de Nacimiento</TextBlock>
-        <DatePicker SelectedDate="{Binding Candidato.FechaDeNacimiento}"></DatePicker>
-        <TextBlock>Sueldo Actual</TextBlock>
-        <TextBlock Text="{Binding Candidato.SueldoActual}"></TextBlock>
-        <TextBlock>Sueldo Esperado</TextBlock>
-        <TextBlock Text="{Binding Candidato.SueldoEsperado}"></TextBlock>
+        <UniformGrid Rows="1" Columns="2">
+            <UniformGrid.Resources>
+                <Style TargetType="StackPanel">
+                    <Style.Setters>
+                        <Setter Property="Margin" Value="10"></Setter>
+                    </Style.Setters>
+                </Style>
+            </UniformGrid.Resources>
+            <StackPanel>
+                <TextBlock>Años de experiencia</TextBlock>
+                <TextBox Text="{Binding Candidato.AñosDeExperiencia}"></TextBox>
+                <TextBlock>Fecha de nacimiento</TextBlock>
+                <DatePicker SelectedDate="{Binding Candidato.FechaDeNacimiento}"></DatePicker>
+                <TextBlock>Nombre</TextBlock>
+                <TextBox Text="{Binding Candidato.Nombre}"></TextBox>
+                <TextBlock>Apellido paterno</TextBlock>
+                <TextBox Text="{Binding Candidato.ApellidoPaterno}"></TextBox>
+                <TextBlock>Apellido materno</TextBlock>
+                <TextBox Text="{Binding Candidato.ApellidoMaterno}"></TextBox>
+                <TextBlock>Sueldo actual</TextBlock>
+                <TextBox Text="{Binding Candidato.SueldoActual}"></TextBox>
+                <TextBlock>Sueldo esperado</TextBlock>
+                <TextBox Text="{Binding Candidato.SueldoEsperado}"></TextBox>
+
+                <TextBlock>Carrera</TextBlock>
+                <TextBox Text="{Binding Candidato.Carrera}"></TextBox>
+                <TextBlock>Universidad</TextBlock>
+                <TextBox Text="{Binding Candidato.Universidad}"></TextBox>
+
+                <GroupBox Header="Nivel de Ingles">
+                    <StackPanel>
+                        <TextBlock>Hablado</TextBlock>
+                        <TextBox Text="{Binding Candidato.NivelDeInglesHablado}"></TextBox>
+                        <TextBlock>Escrito</TextBlock>
+                        <TextBox Text="{Binding Candidato.NivelDeInglesEscrito}"></TextBox>
+                        <TextBlock>Lectura</TextBlock>
+                        <TextBox Text="{Binding Candidato.NivelDeInglesLectura}"></TextBox>
+                    </StackPanel>
+                </GroupBox>
+                <TextBlock>Cursos</TextBlock>
+                <TextBox Text="{Binding Candidato.Cursos}"></TextBox>
+                <TextBlock>Certificaciones</TextBlock>
+                <TextBox Text="{Binding Candidato.Certificaciones}"></TextBox>
+                <TextBlock>Teléfono</TextBlock>
+                <TextBox Text="{Binding Candidato.Telefono}"></TextBox>
+            </StackPanel>
+            <StackPanel>
+                <TextBlock>Correo</TextBlock>
+                <TextBox Text="{Binding Candidato.Correo}"></TextBox>
+                <TextBlock>Estatus académico</TextBlock>
+                <TextBox Text="{Binding Candidato.EstatusAcademico}"></TextBox>
+                <TextBlock>Nivel del candidato</TextBlock>
+                <TextBox Text="{Binding Candidato.NivelCandidato}"></TextBox>
+                <TextBlock>Bolsa</TextBlock>
+                <TextBox Text="{Binding Candidato.Bolsa}"></TextBox>
+                <TextBlock>Fecha de contacto</TextBlock>
+                <DatePicker SelectedDate="{Binding Candidato.FechaDeContacto}"></DatePicker>
+                <TextBlock>Quien lo contacto</TextBlock>
+                <TextBox Text="{Binding Candidato.QuienLoContacto}"></TextBox>
+                <TextBlock>Rol del candidato</TextBlock>
+                <TextBox Text="{Binding Candidato.RolCandidato}"></TextBox>
+                <TextBlock>Fecha de examen</TextBlock>
+                <DatePicker SelectedDate="{Binding Candidato.FechaDeExamen}"></DatePicker>
+                <TextBlock>Hora de examen</TextBlock>
+                <DatePicker SelectedDate="{Binding Candidato.HoraDeExamen}"></DatePicker>
+                <TextBlock>Calificación del examen</TextBlock>
+                <TextBox Text="{Binding Candidato.CalificacionDelExamen}"></TextBox>
+                <TextBlock>Fecha de entrevista</TextBlock>
+                <DatePicker SelectedDate="{Binding Candidato.FechaDeEntrevista}"></DatePicker>
+                <TextBlock>Propuesta económica</TextBlock>
+                <TextBox Text="{Binding Candidato.PropuestaEconomicaMonto}"></TextBox>
+                <TextBlock>Fecha de ingreso</TextBlock>
+                <DatePicker SelectedDate="{Binding Candidato.FechaDeIngresoALaEmpresa}"></DatePicker>
+                <TextBlock>Estatus del candidato</TextBlock>
+                <TextBox Text="{Binding Candidato.EstatusCandidato}"></TextBox>
+                <TextBlock>Comentarios</TextBlock>
+                <TextBox Text="{Binding Candidato.Comentarios}"></TextBox>
+            </StackPanel>
+        </UniformGrid>
+       <Button Click="GuardarCandidato">Guardar</Button>
+
     </StackPanel>
 </Window>

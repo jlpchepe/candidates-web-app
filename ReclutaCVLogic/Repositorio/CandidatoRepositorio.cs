@@ -26,8 +26,6 @@ namespace ReclutaCVLogic.Repositorio
             db.SaveChanges();
 
             return 0;
-
-
         }
     }
 }

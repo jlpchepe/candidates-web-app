@@ -59,6 +59,10 @@
     <Compile Include="Migrations\201806210306416_ModAgregarCamposNuevosACandidatos.Designer.cs">
       <DependentUpon>201806210306416_ModAgregarCamposNuevosACandidatos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807070231300_ModAgregarAtributosNuevosACandidatos.cs" />
+    <Compile Include="Migrations\201807070231300_ModAgregarAtributosNuevosACandidatos.Designer.cs">
+      <DependentUpon>201807070231300_ModAgregarAtributosNuevosACandidatos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Proyecto.cs" />
@@ -73,6 +77,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806210306416_ModAgregarCamposNuevosACandidatos.resx">
       <DependentUpon>201806210306416_ModAgregarCamposNuevosACandidatos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807070231300_ModAgregarAtributosNuevosACandidatos.resx">
+      <DependentUpon>201807070231300_ModAgregarAtributosNuevosACandidatos.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
