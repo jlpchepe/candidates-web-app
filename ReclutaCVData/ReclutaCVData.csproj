@@ -82,5 +82,8 @@
       <DependentUpon>201807070231300_ModAgregarAtributosNuevosACandidatos.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Utils\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
