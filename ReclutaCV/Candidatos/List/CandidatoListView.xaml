@@ -8,6 +8,13 @@
         WindowState="Maximized"
         Title="Candidatos" Height="450" Width="800">
     <Grid>
+        <StackPanel>
+            <Button Content="Editar"></Button>
+            <Button Content="Crear"></Button>
+            <Button Content="Borrar"></Button>
+            
+
+        </StackPanel>
         <DataGrid ItemsSource="{Binding Items}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Nivel del candidato" Binding="{Binding Nivel}"></DataGridTextColumn>

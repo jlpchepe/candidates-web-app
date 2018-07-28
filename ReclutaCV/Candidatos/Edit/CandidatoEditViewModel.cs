@@ -1,6 +1,8 @@
 ﻿using ReclutaCV.Candidatos.List;
+using ReclutaCVData;
 using ReclutaCVData.Entidades;
 using ReclutaCVLogic.Repositorio;
+using ReclutaCVLogic.Servicios;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +21,10 @@ namespace ReclutaCV.Candidatos.Edit
         public CandidatoEditViewModel()
         {
             this.ReiniciarCandidato();
+            this.CandidatoService = new CandidatoService(new Db());
+
+
+
         }
 
         public Candidato Candidato { get; set; }
@@ -30,6 +36,8 @@ namespace ReclutaCV.Candidatos.Edit
         }
 
         public ICommand GuardarCandidato => null;
+
+        public CandidatoService CandidatoService { get; }
 
         //private void GuardarCandidato(object sender, RoutedEventArgs e)
         //{
