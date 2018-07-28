@@ -1,11 +1,11 @@
-﻿using System;
+﻿using ReclutaCVData;
+using ReclutaCVData.Entidades;
+using ReclutaCVLogic.Servicios;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ReclutaCVData;
-using ReclutaCVData.Entidades;
-using ReclutaCVLogic.Servicios;
 
 namespace ReclutaCV.Candidatos.List
 {
@@ -13,8 +13,8 @@ namespace ReclutaCV.Candidatos.List
     {
         public CandidatoListViewModel()
         {
-            this.RefrescarCandidatos();
             this.CandidatoService = new CandidatoService(new Db());
+            this.RefrescarCandidatos();
 
 
         }
