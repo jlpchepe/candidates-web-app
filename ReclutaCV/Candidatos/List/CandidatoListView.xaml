@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ReclutaCV.Candidatos.List"
         mc:Ignorable="d"
         WindowState="Maximized"
-        Title="CandidatoListView" Height="450" Width="800">
+        Title="Candidatos" Height="450" Width="800">
     <Grid>
         <DataGrid ItemsSource="{Binding Items}">
             <DataGrid.Columns>

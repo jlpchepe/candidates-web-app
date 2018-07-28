@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 
 namespace ReclutaCV.Candidatos.Edit
 {
@@ -17,26 +18,28 @@ namespace ReclutaCV.Candidatos.Edit
     {
         public CandidatoEditViewModel()
         {
-            
+            this.ReiniciarCandidato();
         }
 
         public Candidato Candidato { get; set; }
         public CandidatoListViewModel CandidatoList { get; }
 
-        void ReiniciarCandidato()
+        private void ReiniciarCandidato()
         {
             this.Candidato = new Candidato();
         }
 
-        private void GuardarCandidato(object sender, RoutedEventArgs e)
-        {
-            var candidatoRepositorio = new CandidatoRepositorio();
+        public ICommand GuardarCandidato => null;
 
-            candidatoRepositorio.Guardar(this.Candidato);
+        //private void GuardarCandidato(object sender, RoutedEventArgs e)
+        //{
+        //    var candidatoRepositorio = new CandidatoRepositorio();
 
-            this.CandidatoList.RefrescarCandidatos();
+        //    candidatoRepositorio.Guardar(this.Candidato);
 
-            this.ReiniciarCandidato();
-        }
+        //    this.CandidatoList.RefrescarCandidatos();
+
+        //    this.ReiniciarCandidato();
+        //}
     }
 }
