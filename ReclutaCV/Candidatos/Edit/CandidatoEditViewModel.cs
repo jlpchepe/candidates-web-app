@@ -29,17 +29,17 @@ namespace ReclutaCV.Candidatos.Edit
             this.Candidato = new Candidato();
         }
 
-        public ICommand GuardarCandidato => new RelayCommand();
+        public ICommand GuardarCandidato => null;
 
-        private void GuardarCandidato(object sender, RoutedEventArgs e)
-        {
-            var candidatoRepositorio = new CandidatoRepositorio();
+        //private void GuardarCandidato(object sender, RoutedEventArgs e)
+        //{
+        //    var candidatoRepositorio = new CandidatoRepositorio();
 
-            candidatoRepositorio.Guardar(this.Candidato);
+        //    candidatoRepositorio.Guardar(this.Candidato);
 
-            this.CandidatoList.RefrescarCandidatos();
+        //    this.CandidatoList.RefrescarCandidatos();
 
-            this.ReiniciarCandidato();
-        }
+        //    this.ReiniciarCandidato();
+        //}
     }
 }
