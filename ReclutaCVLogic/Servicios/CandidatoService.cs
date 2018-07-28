@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ReclutaCVLogic.Servicios
 {
-    class CandidatoService
+    public class CandidatoService
     {
         public Db db { get; }
 
