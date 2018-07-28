@@ -1,6 +1,7 @@
 ﻿using ReclutaCVData.Entidades;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,8 +32,30 @@ namespace ReclutaCVData.Repositorios
         public Candidato FindById(int id) {
             return this.db.Candidato.Find(id);
         }
-        public void Update() { }
-        public void Insert() { }
-        public void Delete() { }
-    }
+        public void Update(
+            Candidato nuevaInformacionCandidato    
+        ) {
+            this.db.Candidato.AddOrUpdate(nuevaInformacionCandidato);
+            this.db.SaveChanges();
+
+         
+
+        }
+
+        public void Insert(
+            Candidato candidatoAInsertar
+
+            ) {
+            this.db.Candidato.Add(candidatoAInsertar);
+            this.db.SaveChanges();
+
+        }
+        public void Delete(int id) {
+            this.db.Candidato.Remove(this.FindById(id));
+            this.db.SaveChanges();
+     
+
+        }
+    }   
+
 }
