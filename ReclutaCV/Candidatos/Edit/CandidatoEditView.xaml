@@ -101,7 +101,11 @@
                 <TextBox Text="{Binding Candidato.Comentarios}"></TextBox>
             </StackPanel>
         </UniformGrid>
-        <Button Command="{Binding GuardarCandidato}">Guardar</Button>
+        <UniformGrid Columns="2">
+            <Button Command="{Binding GuardarCandidato}">Guardar</Button>
+            <Button Command="{Binding Cerrar}">Cerrar</Button>
+
+        </UniformGrid>
 
     </StackPanel>
 </Window>

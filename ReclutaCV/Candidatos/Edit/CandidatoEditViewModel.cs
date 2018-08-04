@@ -1,4 +1,5 @@
 ﻿using ReclutaCV.Candidatos.List;
+using ReclutaCV.Utils.Commands;
 using ReclutaCVData;
 using ReclutaCVData.Entidades;
 using ReclutaCVLogic.Repositorio;
@@ -23,10 +24,11 @@ namespace ReclutaCV.Candidatos.Edit
             this.ReiniciarCandidato();
             this.CandidatoService = new CandidatoService(new Db());
 
-
-
+            this.Ventana = new CandidatoEditView();
+            this.Ventana.DataContext = this;
         }
 
+        private readonly CandidatoEditView Ventana;
         public Candidato Candidato { get; set; }
         public CandidatoListViewModel CandidatoList { get; }
 
@@ -61,32 +63,30 @@ namespace ReclutaCV.Candidatos.Edit
                    
         }
 
-        public void CargarNuevo()
+        public void CargarNuevoYAbrirVentana()
         {
             this.Editando = false;
             this.Candidato = new Candidato();
+            this.Ventana.Show();
+
 
         }
-        public void CargarExistente(int id)
+        public void CargarExistenteYAbrirVentana(int id)
         {
             this.Editando = true;
             this.Candidato= this.CandidatoService.FindById(id);
+            this.Ventana.Show();
 
         }
 
-        public ICommand GuardarCandidato => null;
+        public ICommand GuardarCandidato => new SimpleCommand(this.Guardar);
+        private void CerrarVentana()
+        {
+            this.Ventana.Close();
+        }
+
+        public ICommand Cerrar => new SimpleCommand(this.CerrarVentana);
 
         public CandidatoService CandidatoService { get; }
-
-        //private void GuardarCandidato(object sender, RoutedEventArgs e)
-        //{
-        //    var candidatoRepositorio = new CandidatoRepositorio();
-
-        //    candidatoRepositorio.Guardar(this.Candidato);
-
-        //    this.CandidatoList.RefrescarCandidatos();
-
-        //    this.ReiniciarCandidato();
-        //}
     }
 }
