@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ReclutaCVData;
+using ReclutaCVLogic.Servicios;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,7 +23,7 @@ namespace ReclutaCV.Candidatos.List
     {
         public CandidatoListView()
         {
-            this.DataContext = new CandidatoListViewModel();
+            this.DataContext = new CandidatoListViewModel(new CandidatoService(new Db()));
 
             InitializeComponent();
         }

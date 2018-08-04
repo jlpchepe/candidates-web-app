@@ -52,14 +52,17 @@
     <Compile Include="Servicios\CandidatoService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ReclutaCVData\ReclutaCVData.csproj">
-      <Project>{89FD178D-A2A9-4327-B574-6621E77B2201}</Project>
-      <Name>ReclutaCVData</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Utils\Command\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ReclutaCVData\ReclutaCVData.csproj">
+      <Project>{89fd178d-a2a9-4327-b574-6621e77b2201}</Project>
+      <Name>ReclutaCVData</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

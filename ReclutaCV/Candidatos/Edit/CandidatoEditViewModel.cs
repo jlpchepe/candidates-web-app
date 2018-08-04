@@ -74,20 +74,6 @@ namespace ReclutaCV.Candidatos.Edit
 
         }
 
-
-
-
-
-        
-
-
-
-
-
-
-
-
-
         public ICommand GuardarCandidato => null;
 
         public CandidatoService CandidatoService { get; }
