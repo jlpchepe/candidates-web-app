@@ -35,6 +35,59 @@ namespace ReclutaCV.Candidatos.Edit
             this.Candidato = new Candidato();
         }
 
+
+        public void Insert()
+        {
+            this.CandidatoService.Insert(this.Candidato);
+        }
+        public void Update() 
+        {
+            this.CandidatoService.Update(this.Candidato);
+
+        }
+       
+        private bool Editando { get; set; }
+        private void Guardar ()
+        {
+            if (this.Editando)
+            {
+                this.Update();
+                
+            }else
+            {
+                Insert();
+                
+            }
+                   
+        }
+
+        public void CargarNuevo()
+        {
+            this.Editando = false;
+            this.Candidato = new Candidato();
+
+        }
+        public void CargarExistente(int id)
+        {
+            this.Editando = true;
+            this.Candidato= this.CandidatoService.FindById(id);
+
+        }
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+
         public ICommand GuardarCandidato => null;
 
         public CandidatoService CandidatoService { get; }

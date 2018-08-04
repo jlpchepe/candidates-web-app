@@ -11,9 +11,9 @@ namespace ReclutaCV.Candidatos.List
 {
     public class CandidatoListViewModel
     {
-        public CandidatoListViewModel()
+        public CandidatoListViewModel(CandidatoService candidatoService)
         {
-            this.CandidatoService = new CandidatoService(new Db());
+            this.CandidatoService = candidatoService;
             this.RefrescarCandidatos();
 
 
