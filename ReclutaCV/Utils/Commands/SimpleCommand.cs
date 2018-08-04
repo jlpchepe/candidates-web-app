@@ -22,6 +22,7 @@ namespace ReclutaCV.Utils.Commands
             this.puedeEjecutar = puedeEjecutar;
             this.accionAEjecutar = accionAEjecutar;
 
+
         }
         private readonly Action accionAEjecutar;
         private readonly Func<bool> puedeEjecutar;

@@ -8,11 +8,15 @@
         WindowState="Maximized"
         Title="Candidatos" Height="450" Width="800">
     <Grid>
-        <StackPanel>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <UniformGrid Columns="2">
             <Button Content="Crear" Command="{Binding Agregar}"></Button>
             <Button Content="Editar" Command="{Binding Editar}"></Button>
-        </StackPanel>
-        <DataGrid ItemsSource="{Binding Items}" SelectedItem="{Binding Seleccionado}">
+        </UniformGrid>
+        <DataGrid Grid.Row="1" ItemsSource="{Binding Items}" SelectedItem="{Binding Seleccionado}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Nivel del candidato" Binding="{Binding Nivel}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Bolsa" Binding="{Binding Bolsa}"></DataGridTextColumn>

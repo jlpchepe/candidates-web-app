@@ -19,16 +19,13 @@ namespace ReclutaCV.Candidatos.Edit
     /// </summary>
     public class CandidatoEditViewModel
     {
-        public CandidatoEditViewModel()
+        public CandidatoEditViewModel(CandidatoService candidatoService)
         {
             this.ReiniciarCandidato();
-            this.CandidatoService = new CandidatoService(new Db());
-
-            this.Ventana = new CandidatoEditView();
-            this.Ventana.DataContext = this;
+            this.CandidatoService = candidatoService;
         }
 
-        private readonly CandidatoEditView Ventana;
+        private CandidatoEditView Ventana;
         public Candidato Candidato { get; set; }
         public CandidatoListViewModel CandidatoList { get; }
 
@@ -67,7 +64,7 @@ namespace ReclutaCV.Candidatos.Edit
         {
             this.Editando = false;
             this.Candidato = new Candidato();
-            this.Ventana.Show();
+            this.AbrirVentana();
 
 
         }
@@ -75,8 +72,15 @@ namespace ReclutaCV.Candidatos.Edit
         {
             this.Editando = true;
             this.Candidato= this.CandidatoService.FindById(id);
-            this.Ventana.Show();
+            this.AbrirVentana();
+        }
 
+        private void AbrirVentana()
+        {
+            this.Ventana = new CandidatoEditView();
+            this.Ventana.DataContext = this;
+            this.Ventana.InitializeComponent();
+            this.Ventana.Show();
         }
 
         public ICommand GuardarCandidato => new SimpleCommand(this.Guardar);

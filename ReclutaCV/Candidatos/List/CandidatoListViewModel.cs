@@ -34,7 +34,12 @@ namespace ReclutaCV.Candidatos.List
 
 
         public ICommand Agregar => new SimpleCommand(this.candidatoEditViewModel.CargarNuevoYAbrirVentana);
-        public ICommand Editar => new SimpleCommand(() => this.candidatoEditViewModel.CargarExistenteYAbrirVentana(this.Seleccionado.Id), () => this.Seleccionado != null);
+        public ICommand Editar => 
+            new SimpleCommand(
+                () => this.candidatoEditViewModel.CargarExistenteYAbrirVentana(this.Seleccionado.Id), 
+                () => {
+                    return this.Seleccionado != null;
+            });
 
 
 
