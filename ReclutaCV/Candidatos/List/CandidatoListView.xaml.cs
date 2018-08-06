@@ -28,7 +28,7 @@ namespace ReclutaCV.Candidatos.List
 
             this.DataContext = new CandidatoListViewModel(
                 candidatoService,
-                new CandidatoEditViewModel(candidatoService)
+                () => new CandidatoEditViewModel(candidatoService)
             );
 
             InitializeComponent();

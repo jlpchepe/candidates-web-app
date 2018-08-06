@@ -7,8 +7,15 @@ using System.Windows.Input;
 
 namespace ReclutaCV.Utils.Commands
 {
+    /// <summary>
+    /// Un comando simple que tiene una acción a ejecutar y una condición para ejecutarse
+    /// </summary>
     public class SimpleCommand : ICommand
     {
+        /// <summary>
+        /// Constructor para un comando que siempre puede ejecutarse
+        /// </summary>
+        /// <param name="accionAEjecutar"></param>
         public SimpleCommand(
             Action accionAEjecutar
         ) : this(accionAEjecutar, () => true)
@@ -27,8 +34,6 @@ namespace ReclutaCV.Utils.Commands
         private readonly Action accionAEjecutar;
         private readonly Func<bool> puedeEjecutar;
 
-        public event EventHandler CanExecuteChanged;
-
         public bool CanExecute(object parameter)
         {
             return this.puedeEjecutar();
@@ -37,6 +42,12 @@ namespace ReclutaCV.Utils.Commands
         public void Execute(object parameter)
         {
             this.accionAEjecutar();
+        }
+
+        public event EventHandler CanExecuteChanged
+        {
+            add { CommandManager.RequerySuggested += value; }
+            remove { CommandManager.RequerySuggested -= value; }
         }
     }
 }

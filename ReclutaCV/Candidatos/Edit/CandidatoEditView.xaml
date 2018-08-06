@@ -52,6 +52,14 @@
                 <TextBlock>Estatus académico</TextBlock>
                 <TextBox Text="{Binding Candidato.EstatusAcademico}"></TextBox>
 
+                <TextBlock>Cursos</TextBlock>
+                <TextBox Text="{Binding Candidato.Cursos}"></TextBox>
+                <TextBlock>Certificaciones</TextBlock>
+                <TextBox Text="{Binding Candidato.Certificaciones}"></TextBox>
+                <TextBlock>Años de experiencia</TextBlock>
+                <TextBox Text="{Binding Candidato.AñosDeExperiencia}"></TextBox>
+            </StackPanel>
+            <StackPanel>
                 <GroupBox Header="Nivel de inglés">
                     <StackPanel>
                         <TextBlock>Hablado</TextBlock>
@@ -62,19 +70,6 @@
                         <TextBox Text="{Binding Candidato.NivelDeInglesLectura}"></TextBox>
                     </StackPanel>
                 </GroupBox>
-                <TextBlock>Cursos</TextBlock>
-                <TextBox Text="{Binding Candidato.Cursos}"></TextBox>
-                <TextBlock>Certificaciones</TextBlock>
-                <TextBox Text="{Binding Candidato.Certificaciones}"></TextBox>
-                <TextBlock>Años de experiencia</TextBlock>
-                <TextBox Text="{Binding Candidato.AñosDeExperiencia}"></TextBox>
-
-
-
-            </StackPanel>
-            <StackPanel>
-
-
 
                 <TextBlock>Sueldo actual</TextBlock>
                 <TextBox Text="{Binding Candidato.SueldoActual}"></TextBox>

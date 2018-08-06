@@ -19,45 +19,47 @@ namespace ReclutaCV.Candidatos.Edit
     /// </summary>
     public class CandidatoEditViewModel
     {
-        public CandidatoEditViewModel(CandidatoService candidatoService)
+        public CandidatoEditViewModel(
+            CandidatoService candidatoService
+        )
         {
-            this.ReiniciarCandidato();
-            this.CandidatoService = candidatoService;
+            this.candidatoService = candidatoService;
         }
 
+        private readonly CandidatoService candidatoService;
         private CandidatoEditView Ventana;
         public Candidato Candidato { get; set; }
-        public CandidatoListViewModel CandidatoList { get; }
+
+        public ICommand GuardarCandidato => new SimpleCommand(this.Guardar);
+        public ICommand Cerrar => new SimpleCommand(this.CerrarVentana);
 
         private void ReiniciarCandidato()
         {
             this.Candidato = new Candidato();
         }
 
-
         public void Insert()
         {
-            this.CandidatoService.Insert(this.Candidato);
+            this.candidatoService.Insert(this.Candidato);
         }
-        public void Update() 
+        public void Update()
         {
-            this.CandidatoService.Update(this.Candidato);
+            this.candidatoService.Update(this.Candidato);
 
         }
-       
+
         private bool Editando { get; set; }
-        private void Guardar ()
+        private void Guardar()
         {
             if (this.Editando)
             {
                 this.Update();
-                
-            }else
+
+            }
+            else
             {
                 Insert();
-                
             }
-                   
         }
 
         public void CargarNuevoYAbrirVentana()
@@ -71,7 +73,7 @@ namespace ReclutaCV.Candidatos.Edit
         public void CargarExistenteYAbrirVentana(int id)
         {
             this.Editando = true;
-            this.Candidato= this.CandidatoService.FindById(id);
+            this.Candidato = this.candidatoService.FindById(id);
             this.AbrirVentana();
         }
 
@@ -83,14 +85,9 @@ namespace ReclutaCV.Candidatos.Edit
             this.Ventana.Show();
         }
 
-        public ICommand GuardarCandidato => new SimpleCommand(this.Guardar);
         private void CerrarVentana()
         {
             this.Ventana.Close();
         }
-
-        public ICommand Cerrar => new SimpleCommand(this.CerrarVentana);
-
-        public CandidatoService CandidatoService { get; }
     }
 }

@@ -14,40 +14,34 @@ namespace ReclutaCV.Candidatos.List
 {
     public class CandidatoListViewModel
     {
-
         public CandidatoListViewModel(
             CandidatoService candidatoService,
-            CandidatoEditViewModel candidatoEditViewModel
+            Func<CandidatoEditViewModel> candidatoEditViewModelFactory
         )
         {
-            this.CandidatoService = candidatoService;
-            this.candidatoEditViewModel = candidatoEditViewModel;
+            this.candidatoService = candidatoService;
+            this.candidatoEditViewModelFactory = candidatoEditViewModelFactory;
             this.RefrescarCandidatos();
-
-
         }
     
-        private readonly CandidatoEditViewModel candidatoEditViewModel;
         public List<Candidato> Items { get; internal set; }
-        public CandidatoService CandidatoService { get; }
         public Candidato Seleccionado { get; set; }
+        private bool TieneSeleccionado => this.Seleccionado != null;
 
+        private readonly Func<CandidatoEditViewModel> candidatoEditViewModelFactory;
+        private readonly CandidatoService candidatoService;
 
-        public ICommand Agregar => new SimpleCommand(this.candidatoEditViewModel.CargarNuevoYAbrirVentana);
-        public ICommand Editar => 
-            new SimpleCommand(
-                () => this.candidatoEditViewModel.CargarExistenteYAbrirVentana(this.Seleccionado.Id), 
-                () => {
-                    return this.Seleccionado != null;
-            });
-
-
-
+        public ICommand Agregar => new SimpleCommand(this.candidatoEditViewModelFactory().CargarNuevoYAbrirVentana);
+        public ICommand Editar => new SimpleCommand(() => this.candidatoEditViewModelFactory().CargarExistenteYAbrirVentana(this.Seleccionado.Id), () => TieneSeleccionado);
+        public ICommand Borrar => new SimpleCommand(() => {
+            this.candidatoService.Delete(this.Seleccionado.Id);
+            this.RefrescarCandidatos();
+        }, () => TieneSeleccionado);
 
         public void RefrescarCandidatos()
         {
             //Cargamos los candidatos desde la base de datos
-            this.Items = this.CandidatoService.FindAll();
+            this.Items = this.candidatoService.FindAll();
         }
     }
 }
