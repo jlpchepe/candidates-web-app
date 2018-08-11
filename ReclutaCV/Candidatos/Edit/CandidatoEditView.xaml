@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ReclutaCV.Candidatos.Edit"
+        xmlns:controls="clr-namespace:ReclutaCV.Controls"
         mc:Ignorable="d"
         SizeToContent="Height"
         Title="Candidato">
@@ -19,9 +20,9 @@
             </UniformGrid.Resources>
             <StackPanel>
                 <TextBlock>Rol del candidato</TextBlock>
-                <TextBox Text="{Binding Candidato.RolCandidato}"></TextBox>
+                <controls:EnumComboBox SelectedValue="{Binding Candidato.Rol}"/>
                 <TextBlock>Nivel del candidato</TextBlock>
-                <TextBox Text="{Binding Candidato.NivelCandidato}"></TextBox>
+                <controls:EnumComboBox SelectedValue="{Binding Candidato.Nivel}"/>
                 <TextBlock>Fecha de contacto</TextBlock>
                 <DatePicker SelectedDate="{Binding Candidato.FechaDeContacto}"></DatePicker>
                 <TextBlock>Quien lo contacto</TextBlock>
@@ -43,14 +44,12 @@
 
                 <TextBlock>Correo</TextBlock>
                 <TextBox Text="{Binding Candidato.Correo}"></TextBox>
-
-
                 <TextBlock>Carrera</TextBlock>
                 <TextBox Text="{Binding Candidato.Carrera}"></TextBox>
                 <TextBlock>Universidad</TextBlock>
                 <TextBox Text="{Binding Candidato.Universidad}"></TextBox>
                 <TextBlock>Estatus académico</TextBlock>
-                <TextBox Text="{Binding Candidato.EstatusAcademico}"></TextBox>
+                <TextBox Text="{Binding Candidato.Estatus }"></TextBox>
 
                 <TextBlock>Cursos</TextBlock>
                 <TextBox Text="{Binding Candidato.Cursos}"></TextBox>
