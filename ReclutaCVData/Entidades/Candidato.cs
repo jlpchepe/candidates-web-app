@@ -16,16 +16,16 @@ namespace ReclutaCVData.Entidades
         Trunca
     }
 
-        public enum NivelCandidato
+    public enum NivelCandidato
     {
         Principiante,
         Junior,
         Intermedio,
         Senior
-      
+
     }
 
-        public enum RolCandidato
+    public enum RolCandidato
     {
         IngenieroDeSoftware,
         Analista,
@@ -33,9 +33,9 @@ namespace ReclutaCVData.Entidades
         EspecialistaDeNegocio,
         Tester,
         DataEngineer,
-     
+
     }
-        public enum EstatusCandidato
+    public enum EstatusCandidato
     {
         CitadoParaExamen,
         InteresesAltos,
@@ -48,13 +48,17 @@ namespace ReclutaCVData.Entidades
 
 
     }
-        
 
     /// <summary>
     /// Un candidato a algun puesto
     /// </summary>
     public class Candidato
     {
+        public Candidato()
+        {
+            
+        }
+
         /// <summary>
         /// 
         /// </summary>

@@ -9,9 +9,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using PropertyChanged;
 
 namespace ReclutaCV.Candidatos.List
 {
+    [AddINotifyPropertyChangedInterface]
     public class CandidatoListViewModel
     {
         public CandidatoListViewModel(
@@ -24,7 +26,7 @@ namespace ReclutaCV.Candidatos.List
             this.RefrescarCandidatos();
         }
     
-        public List<Candidato> Items { get; internal set; }
+        public List<Candidato> Items { get; private set; }
         public Candidato Seleccionado { get; set; }
         private bool TieneSeleccionado => this.Seleccionado != null;
 
