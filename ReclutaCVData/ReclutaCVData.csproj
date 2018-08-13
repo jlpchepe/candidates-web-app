@@ -66,8 +66,7 @@
   <ItemGroup>
     <Compile Include="DbConfig.cs" />
     <Compile Include="Entidades\Candidato.cs" />
-    <Compile Include="Class1.cs" />
-    <Compile Include="Curso.cs" />
+    <Compile Include="Entidades\Curso.cs" />
     <Compile Include="Db.cs" />
     <Compile Include="Migrations\201808110337453_ModTablaCandidato.cs" />
     <Compile Include="Migrations\201808110337453_ModTablaCandidato.Designer.cs">
