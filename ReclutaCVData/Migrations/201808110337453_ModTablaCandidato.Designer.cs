@@ -7,13 +7,13 @@ namespace ReclutaCVData.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class ModAgregarTablaCandidato : IMigrationMetadata
+    public sealed partial class ModTablaCandidato : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ModAgregarTablaCandidato));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ModTablaCandidato));
         
         string IMigrationMetadata.Id
         {
-            get { return "201806210241370_ModAgregarTablaCandidato"; }
+            get { return "201808110337453_ModTablaCandidato"; }
         }
         
         string IMigrationMetadata.Source

@@ -49,6 +49,23 @@ namespace ReclutaCVData.Entidades
 
     }
 
+    public enum BolsaTrabajo
+    {
+        ReferenciaInterna,
+        ReferenciaExterna,
+        OccMundial,
+        Facebook,
+        BolsaUniversitaria,
+        Linkedin,
+        Twitter,
+        Google,
+        EmpleosTi,
+        CompuTrabajo,
+        Jobs,
+        OtraBolsa
+    }
+
+
     /// <summary>
     /// Un candidato a algun puesto
     /// </summary>
@@ -89,7 +106,7 @@ namespace ReclutaCVData.Entidades
 
         public EstatusAcademico EstatusAcademico { get; set; } = EstatusAcademico.Estudiante;
         public NivelCandidato Nivel { get; set; } = NivelCandidato.Intermedio;
-        public string Bolsa { get; set; }
+        public BolsaTrabajo Bolsa { get; set; }
         public DateTime FechaDeContacto { get; set; } = DateTime.Now;
         public string QuienLoContacto { get; set; }
         public RolCandidato Rol { get; set; }

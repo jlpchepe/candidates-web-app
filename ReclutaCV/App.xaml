@@ -2,8 +2,11 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:ReclutaCV"
+             xmlns:controls="clr-namespace:ReclutaCV.Controls"
              StartupUri="Candidatos/List/CandidatoListView.xaml">
     <Application.Resources>
+        <Style TargetType="{x:Type controls:EnumComboBox}" BasedOn="{StaticResource {x:Type ComboBox}}"></Style>
+
         <Style TargetType="DataGrid">
             <Setter Property="CanUserAddRows" Value="False"></Setter>
             <Setter Property="CanUserDeleteRows" Value="False"></Setter>
