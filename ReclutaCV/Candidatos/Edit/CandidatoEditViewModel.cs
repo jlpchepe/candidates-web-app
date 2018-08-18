@@ -2,7 +2,6 @@
 using ReclutaCV.Utils.Commands;
 using ReclutaCVData;
 using ReclutaCVData.Entidades;
-using ReclutaCVLogic.Repositorio;
 using ReclutaCVLogic.Servicios;
 using System;
 using System.Collections.Generic;

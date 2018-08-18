@@ -7,7 +7,8 @@ namespace ReclutaCVData.Migrations
     {
         public override void Up()
         {
-            AlterColumn("public.Candidato", "Bolsa", c => c.Int(nullable: false));
+            DropColumn("public.Candidato", "Bolsa");
+            AddColumn("public.Candidato", "Bolsa", c => c.Int(nullable: false));
         }
         
         public override void Down()
