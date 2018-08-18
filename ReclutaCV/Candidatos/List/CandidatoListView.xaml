@@ -12,11 +12,13 @@
             <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal">
-            <Button Content="Crear" Command="{Binding Agregar}"></Button>
-            <Button Content="Editar" Command="{Binding Editar}"></Button>
-            <Button Content="Borrar" Command="{Binding Borrar}"></Button>
-        </StackPanel>
+        <Border Style="{StaticResource CrudButtonsBorder}">
+            <StackPanel>
+                <Button Content="Crear" Command="{Binding Agregar}"></Button>
+                <Button Content="Editar" Command="{Binding Editar}"></Button>
+                <Button Content="Borrar" Command="{Binding Borrar}"></Button>
+            </StackPanel>
+        </Border>
         <DataGrid Grid.Row="1" ItemsSource="{Binding Items}" SelectedItem="{Binding Seleccionado}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Nivel del candidato" Binding="{Binding Nivel}"></DataGridTextColumn>
