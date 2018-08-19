@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:ReclutaCV"
              xmlns:system="clr-namespace:System;assembly=mscorlib"
              xmlns:controls="clr-namespace:ReclutaCV.Controls"
-             StartupUri="Candidatos/List/CandidatoListView.xaml">
+             StartupUri="Ventanas/MenuPrincipal/MenuPrincipalView.xaml">
     <Application.Resources>
         <system:Double x:Key="DefaultMarginValue">8</system:Double>
         <Thickness x:Key="DefaultMargin" Bottom="{StaticResource DefaultMarginValue}" Left="{StaticResource DefaultMarginValue}" Right="{StaticResource DefaultMarginValue}" Top="{StaticResource DefaultMarginValue}"></Thickness>
@@ -25,6 +25,15 @@
             </Style.Setters>
         </Style>
         <Style TargetType="StackPanel" x:Key="DataInputStackPanel" BasedOn="{StaticResource DefaultStackpanelStyle}"></Style>
+
+        <Style TargetType="TextBlock" x:Key="TitleTextBlock">
+            <Style.Setters>
+                <Setter Property="FontSize" Value="20"></Setter>
+                <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+                <Setter Property="FontWeight" Value="Bold"></Setter>
+                <Setter Property="Margin" Value="{StaticResource DefaultMargin}"></Setter>
+            </Style.Setters>
+        </Style>
 
         <Style TargetType="DataGridColumnHeader">
             <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
@@ -51,10 +60,14 @@
             </Style.Setters>
         </Style>
 
-        <Style TargetType="Border" x:Key="ButtonsBorder">
+        <Style TargetType="Border" x:Key="DefaultBorderStyle">
             <Style.Setters>
                 <Setter Property="Background" Value="{StaticResource SecondaryColor}"></Setter>
             </Style.Setters>
+        </Style>
+        <Style TargetType="Border" BasedOn="{StaticResource DefaultBorderStyle}"></Style>
+
+        <Style TargetType="Border" x:Key="ButtonsBorder" BasedOn="{StaticResource DefaultBorderStyle}">
             <Style.Resources>
                 <Style TargetType="Button" BasedOn="{StaticResource ButtonDefaultStyle}">
                     <Style.Setters>

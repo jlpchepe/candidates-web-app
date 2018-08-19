@@ -43,6 +43,16 @@ namespace ReclutaCV.Candidatos.List
             return ventanaEdicion;
         }
 
+        public void MostrarVentana()
+        {
+            var ventana = new CandidatoListView
+            {
+                DataContext = this
+            };
+            ventana.InitializeComponent();
+            ventana.Show();
+        }
+
         public ICommand Agregar => new SimpleCommand(this.ObtenerVentanaEdicion().CargarNuevoYAbrirVentana);
         public ICommand Editar => new SimpleCommand(() => this.ObtenerVentanaEdicion().CargarExistenteYAbrirVentana(this.Seleccionado.Id), () => TieneSeleccionado);
         public ICommand Borrar => new SimpleCommand(() => {

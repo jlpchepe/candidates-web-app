@@ -109,11 +109,15 @@
     <Compile Include="Utils\Commands\SimpleCommand.cs" />
     <Compile Include="Utils\Eventos\ActionEventHandler.cs" />
     <Compile Include="Utils\Helpers\EnumHelper.cs" />
-    <Page Include="Ventanas\Candidatos\Edit\CandidatoEditView.xaml">
+    <Compile Include="Ventanas\MenuPrincipal\MenuPrincipalView.xaml.cs">
+      <DependentUpon>MenuPrincipalView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\MenuPrincipal\MenuPrincipalViewModel.cs" />
+    <Page Include="Ventanas\Catalogos\Candidatos\Edit\CandidatoEditView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Ventanas\Candidatos\List\CandidatoListView.xaml">
+    <Page Include="Ventanas\Catalogos\Candidatos\List\CandidatoListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -121,14 +125,18 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Ventanas\Candidatos\Edit\CandidatoEditView.xaml.cs">
+    <Compile Include="Ventanas\Catalogos\Candidatos\Edit\CandidatoEditView.xaml.cs">
       <DependentUpon>CandidatoEditView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Ventanas\Candidatos\Edit\CandidatoEditViewModel.cs" />
-    <Compile Include="Ventanas\Candidatos\List\CandidatoListView.xaml.cs">
+    <Compile Include="Ventanas\Catalogos\Candidatos\Edit\CandidatoEditViewModel.cs" />
+    <Compile Include="Ventanas\Catalogos\Candidatos\List\CandidatoListView.xaml.cs">
       <DependentUpon>CandidatoListView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Ventanas\Candidatos\List\CandidatoListViewModel.cs" />
+    <Compile Include="Ventanas\Catalogos\Candidatos\List\CandidatoListViewModel.cs" />
+    <Page Include="Ventanas\MenuPrincipal\MenuPrincipalView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

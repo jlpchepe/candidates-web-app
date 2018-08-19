@@ -24,14 +24,6 @@ namespace ReclutaCV.Candidatos.List
     {
         public CandidatoListView()
         {
-            var candidatoService = new CandidatoService(() => new Db());
-
-            this.DataContext = new CandidatoListViewModel(
-                candidatoService,
-                () => new CandidatoEditViewModel(candidatoService)
-            );
-
-            InitializeComponent();
         }
     }
 }
