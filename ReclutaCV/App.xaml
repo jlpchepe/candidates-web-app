@@ -6,6 +6,9 @@
              xmlns:controls="clr-namespace:ReclutaCV.Controls"
              StartupUri="Candidatos/List/CandidatoListView.xaml">
     <Application.Resources>
+        <system:Double x:Key="DefaultMarginValue">8</system:Double>
+        <Thickness x:Key="DefaultMargin" Bottom="{StaticResource DefaultMarginValue}" Left="{StaticResource DefaultMarginValue}" Right="{StaticResource DefaultMarginValue}" Top="{StaticResource DefaultMarginValue}"></Thickness>
+
         <Style TargetType="{x:Type controls:EnumComboBox}" BasedOn="{StaticResource {x:Type ComboBox}}"></Style>
 
         <Style TargetType="DataGrid">
@@ -16,14 +19,19 @@
             <Setter Property="AlternatingRowBackground" Value="PaleTurquoise"></Setter>
         </Style>
 
+        <Style TargetType="StackPanel" x:Key="DefaultStackpanelStyle">
+            <Style.Setters>
+                <Setter Property="Margin" Value="{StaticResource DefaultMargin}"></Setter>
+            </Style.Setters>
+        </Style>
+        <Style TargetType="StackPanel" x:Key="DataInputStackPanel" BasedOn="{StaticResource DefaultStackpanelStyle}"></Style>
+
         <Style TargetType="DataGridColumnHeader">
             <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
         </Style>
 
         <SolidColorBrush x:Key="SecondaryColor">CadetBlue</SolidColorBrush>
 
-        <system:Double x:Key="DefaultMarginValue">8</system:Double>
-        <Thickness x:Key="DefaultMargin" Bottom="{StaticResource DefaultMarginValue}" Left="{StaticResource DefaultMarginValue}" Right="{StaticResource DefaultMarginValue}" Top="{StaticResource DefaultMarginValue}"></Thickness>
 
         <system:Double x:Key="DefaultButtonPaddingHorizontal">7</system:Double>
         <system:Double x:Key="DefaultButtonPaddingVertical">3</system:Double>
@@ -35,21 +43,36 @@
             </Style.Setters>
         </Style>
         <Style TargetType="Button" BasedOn="{StaticResource ButtonDefaultStyle}"></Style>
-        
-        <Style TargetType="Border" x:Key="CrudButtonsBorder">
+
+        <Style TargetType="StackPanel" x:Key="ButtonsStackpanel" BasedOn="{StaticResource DefaultStackpanelStyle}">
+            <Style.Setters>
+                <Setter Property="Margin" Value="{StaticResource DefaultMargin}"></Setter>
+                <Setter Property="Orientation" Value="Horizontal"></Setter>
+            </Style.Setters>
+        </Style>
+
+        <Style TargetType="Border" x:Key="ButtonsBorder">
             <Style.Setters>
                 <Setter Property="Background" Value="{StaticResource SecondaryColor}"></Setter>
             </Style.Setters>
             <Style.Resources>
-                <Style TargetType="StackPanel">
-                    <Style.Setters>
-                        <Setter Property="Margin" Value="{StaticResource DefaultMargin}"></Setter>
-                        <Setter Property="Orientation" Value="Horizontal"></Setter>
-                    </Style.Setters>
-                </Style>
                 <Style TargetType="Button" BasedOn="{StaticResource ButtonDefaultStyle}">
                     <Style.Setters>
                         <Setter Property="Margin" Value="0,0,5,0"></Setter>
+                    </Style.Setters>
+                </Style>
+                <Style TargetType="StackPanel" BasedOn="{StaticResource ButtonsStackpanel}"></Style>
+            </Style.Resources>
+        </Style>
+
+        <Style TargetType="Border" x:Key="ListButtonsBorder" BasedOn="{StaticResource ButtonsBorder}">
+        </Style>
+
+        <Style TargetType="Border" x:Key="EditButtonsBorder" BasedOn="{StaticResource ButtonsBorder}">
+            <Style.Resources>
+                <Style TargetType="StackPanel" BasedOn="{StaticResource ButtonsStackpanel}">
+                    <Style.Setters>
+                        <Setter Property="HorizontalAlignment" Value="Right"></Setter>
                     </Style.Setters>
                 </Style>
             </Style.Resources>

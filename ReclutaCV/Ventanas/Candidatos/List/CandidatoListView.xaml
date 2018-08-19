@@ -12,7 +12,7 @@
             <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <Border Style="{StaticResource CrudButtonsBorder}">
+        <Border Style="{StaticResource ListButtonsBorder}">
             <StackPanel>
                 <Button Content="Crear" Command="{Binding Agregar}"></Button>
                 <Button Content="Editar" Command="{Binding Editar}"></Button>

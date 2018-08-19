@@ -11,10 +11,10 @@ namespace ReclutaCVLogic.Servicios
 {
     public class CandidatoService
     {
-        public Db db { get; }
+        public Func<Db> db { get; }
 
         public CandidatoService(
-            Db db
+            Func<Db> db
         )
         {
             this.db = db;
@@ -25,7 +25,12 @@ namespace ReclutaCVLogic.Servicios
         /// </summary>
         public List<Candidato> FindAll()
         {
-            return this.db.Candidato.ToList();
+            return this.db().Candidato.ToList();
+        }
+
+        private Candidato FindByIdAttached(Db c, int id)
+        {
+            return c.Candidato.Find(id);
         }
 
         /// <summary>
@@ -33,31 +38,40 @@ namespace ReclutaCVLogic.Servicios
         /// </summary>
         public Candidato FindById(int id)
         {
-            return this.db.Candidato.Find(id);
+            using (var c = this.db())
+            {
+                return this.FindByIdAttached(c, id);
+            }
         }
+
         public void Update(
             Candidato nuevaInformacionCandidato
         )
         {
-            this.db.Candidato.AddOrUpdate(nuevaInformacionCandidato);
-            this.db.SaveChanges();
-
-
-
+            using (var c = this.db())
+            {
+                c.Candidato.AddOrUpdate(nuevaInformacionCandidato);
+                c.SaveChanges();
+            }
         }
 
         public void Insert(Candidato candidatoAInsertar)
         {
-            this.db.Candidato.Add(candidatoAInsertar);
-            this.db.SaveChanges();
+            using (var c = this.db())
+            {
+                c.Candidato.Add(candidatoAInsertar);
+                c.SaveChanges();
+            }
 
         }
         public void Delete(int id)
         {
-            this.db.Candidato.Remove(this.FindById(id));
-            this.db.SaveChanges();
-
-
+            using (var c = this.db())
+            {
+                var candidato = this.FindByIdAttached(c, id);
+                c.Candidato.Remove(candidato);
+                c.SaveChanges();
+            }
         }
     }
 }

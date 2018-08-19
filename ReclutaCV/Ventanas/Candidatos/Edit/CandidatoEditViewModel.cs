@@ -1,5 +1,6 @@
 ﻿using ReclutaCV.Candidatos.List;
 using ReclutaCV.Utils.Commands;
+using ReclutaCV.Utils.Eventos;
 using ReclutaCVData;
 using ReclutaCVData.Entidades;
 using ReclutaCVLogic.Servicios;
@@ -25,8 +26,12 @@ namespace ReclutaCV.Candidatos.Edit
             this.candidatoService = candidatoService;
         }
 
+        public event ActionEventHandler OnClosed;
+        public event ActionEventHandler OnSavedEntity;
+
         private readonly CandidatoService candidatoService;
         private CandidatoEditView Ventana;
+
         public Candidato Candidato { get; set; }
 
         public ICommand GuardarCandidato => new SimpleCommand(this.Guardar);
@@ -59,6 +64,8 @@ namespace ReclutaCV.Candidatos.Edit
             {
                 Insert();
             }
+
+            this.OnSavedEntity?.Invoke();
         }
 
         public void CargarNuevoYAbrirVentana()
@@ -81,12 +88,15 @@ namespace ReclutaCV.Candidatos.Edit
             this.Ventana = new CandidatoEditView();
             this.Ventana.DataContext = this;
             this.Ventana.InitializeComponent();
+            this.Ventana.Closed += (o, s) => this.CerrarVentana();
             this.Ventana.Show();
         }
 
         private void CerrarVentana()
         {
             this.Ventana.Close();
+
+            this.OnClosed?.Invoke();
         }
     }
 }
