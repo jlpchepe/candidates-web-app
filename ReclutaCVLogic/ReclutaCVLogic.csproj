@@ -65,7 +65,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reportes\ReporteDeSeguimientoACandidatos\CandidatoPorFuente.cs" />
+    <Compile Include="Reportes\ReporteDeSeguimientoACandidatos\EtapasCandidato.cs" />
+    <Compile Include="Reportes\ReporteDeSeguimientoACandidatos\MotivosDeDesinteresEnIniciarElProceso.cs" />
+    <Compile Include="Reportes\ReporteDeSeguimientoACandidatos\MotivosDeRechazoDePropuestaEconomica.cs" />
     <Compile Include="Reportes\ReporteDeSeguimientoACandidatos\ReporteDeSeguimientoACandidatos.cs" />
+    <Compile Include="Reportes\ReporteDeSeguimientoACandidatos\VacantesActivas.cs" />
     <Compile Include="Servicios\CandidatoService.cs" />
     <Compile Include="Utils\Helpers\TaskHelper.cs" />
   </ItemGroup>
@@ -74,6 +79,12 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\ReclutaCVLogic.Reportes.ReporteDeSeguimientoACandidatos.CandidatoPorFuente.datasource" />
+    <None Include="Properties\DataSources\ReclutaCVLogic.Reportes.ReporteDeSeguimientoACandidatos.EtapasCandidato.datasource" />
+    <None Include="Properties\DataSources\ReclutaCVLogic.Reportes.ReporteDeSeguimientoACandidatos.MotivoDeDesinteresEnIniciarElProceso.datasource" />
+    <None Include="Properties\DataSources\ReclutaCVLogic.Reportes.ReporteDeSeguimientoACandidatos.MotivoDeRechazoDePropuestaEconomica.datasource" />
+    <None Include="Properties\DataSources\ReclutaCVLogic.Reportes.ReporteDeSeguimientoACandidatos.ReporteDeSeguimientoACandidatos.datasource" />
+    <None Include="Properties\DataSources\ReclutaCVLogic.Reportes.ReporteDeSeguimientoACandidatos.VacantesActivas.datasource" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Utils\Command\" />

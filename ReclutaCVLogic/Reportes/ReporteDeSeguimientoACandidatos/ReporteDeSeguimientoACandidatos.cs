@@ -18,5 +18,11 @@ namespace ReclutaCVLogic.Reportes.ReporteDeSeguimientoACandidatos
         public int Contratados { get; set; }
         public int Descartados { get; set; }
         public int NoLeIntereso { get; set; }
+        public int PendientesDeExamen { get; set; }
+        public int PendientesDeEntrevistar { get; set; }
+        public int PendientesPorAnalizar { get; set; }
+        public int Rechazados { get; set; }
+        public int NoAceptoLaOferta { get; set; }
+        public List<EtapasCandidato> Candidatos { get; set; }
     }   
 }
