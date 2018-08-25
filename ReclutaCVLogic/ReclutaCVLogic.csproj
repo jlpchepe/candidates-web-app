@@ -72,6 +72,7 @@
     <Compile Include="Reportes\ReporteDeSeguimientoACandidatos\ReporteDeSeguimientoACandidatos.cs" />
     <Compile Include="Reportes\ReporteDeSeguimientoACandidatos\VacantesActivas.cs" />
     <Compile Include="Servicios\CandidatoService.cs" />
+    <Compile Include="Utils\Extensions\EnumExtensions.cs" />
     <Compile Include="Utils\Helpers\TaskHelper.cs" />
   </ItemGroup>
   <ItemGroup>

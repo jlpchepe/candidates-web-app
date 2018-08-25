@@ -4,7 +4,9 @@
              xmlns:local="clr-namespace:ReclutaCV"
              xmlns:system="clr-namespace:System;assembly=mscorlib"
              xmlns:controls="clr-namespace:ReclutaCV.Controls"
-             StartupUri="Ventanas/MenuPrincipal/MenuPrincipalView.xaml">
+             StartupUri="Ventanas/MenuPrincipal/MenuPrincipalView.xaml"
+             xmlns:converters="clr-namespace:ReclutaCV.Utils.Converters"
+             >
     <Application.Resources>
         <system:Double x:Key="DefaultMarginValue">8</system:Double>
         <Thickness x:Key="DefaultMargin" Bottom="{StaticResource DefaultMarginValue}" Left="{StaticResource DefaultMarginValue}" Right="{StaticResource DefaultMarginValue}" Top="{StaticResource DefaultMarginValue}"></Thickness>
@@ -13,6 +15,7 @@
         <SolidColorBrush x:Key="SecondaryColor" >#2D8478</SolidColorBrush>
         <SolidColorBrush x:Key="ThirdColor">Beige</SolidColorBrush>
         <SolidColorBrush x:Key="FourthColor">#DFDCE3</SolidColorBrush>
+        <converters:EnumDescriptionConverter x:Key="EnumDescriptionConverter"></converters:EnumDescriptionConverter>
 
         <Style TargetType="{x:Type controls:EnumComboBox}" BasedOn="{StaticResource {x:Type ComboBox}}"></Style>
 

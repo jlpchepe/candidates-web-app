@@ -16,11 +16,14 @@ namespace ReclutaCV.Base.Window
 
         public void AbrirVentana()
         {
-            this.Ventana = new TView
+            if(this.Ventana == null)
             {
-                DataContext = this
-            };
-            
+                this.Ventana = new TView
+                {
+                    DataContext = this
+                };
+            }
+
             this.Ventana.Show();
         }
 

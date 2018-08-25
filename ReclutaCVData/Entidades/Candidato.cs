@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
@@ -27,11 +28,17 @@ namespace ReclutaCVData.Entidades
 
     public enum RolCandidato
     {
+        [Description("Ingeniero de software")]
         IngenieroDeSoftware,
+        [Description("Analista")]
         Analista,
+        [Description("Administrador de proyecto")]
         AdministradorDeProyecto,
+        [Description("Especialista de negocio")]
         EspecialistaDeNegocio,
+        [Description("Tester")]
         Tester,
+        [Description("Data engineer")]
         DataEngineer,
 
     }

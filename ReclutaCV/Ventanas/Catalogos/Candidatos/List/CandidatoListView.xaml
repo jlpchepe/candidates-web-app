@@ -28,7 +28,7 @@
                 <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Apellido paterno" Binding="{Binding ApellidoPaterno}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Apellido materno" Binding="{Binding ApellidoMaterno}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Rol" Binding="{Binding Rol}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Rol" Binding="{Binding Rol, Converter={StaticResource EnumDescriptionConverter}}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Examen" Binding="{Binding FechaDeExamen}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Hora" Binding="{Binding HoraDeExamen}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Calificación" Binding="{Binding CalificacionDelExamen}"></DataGridTextColumn>

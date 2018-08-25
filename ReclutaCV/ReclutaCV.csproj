@@ -116,6 +116,7 @@
     <Compile Include="Interfaces\ISimpleWindow.cs" />
     <Compile Include="Utils\Commands\AsyncCommand.cs" />
     <Compile Include="Utils\Commands\SimpleCommand.cs" />
+    <Compile Include="Utils\Converters\EnumDescriptionConverter.cs" />
     <Compile Include="Utils\Eventos\ActionEventHandler.cs" />
     <Compile Include="Utils\Helpers\EnumHelper.cs" />
     <Compile Include="Ventanas\MenuPrincipal\MenuPrincipalView.xaml.cs">
