@@ -25,6 +25,5 @@ namespace ReclutaCV.Ventanas.MenuPrincipal
 
             candidatoList.MostrarVentana();
         });
-
     }
 }

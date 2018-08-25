@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ReclutaCV.Interfaces
 {
-    internal interface ISimpleWindow
+    public interface ISimpleWindow
     {
         /// <summary>
         /// Cierra la ventana, en caso de que la pantalla esté cerrada no hace nada
@@ -23,5 +23,6 @@ namespace ReclutaCV.Interfaces
         /// </summary>
         void Show();
 
+        object DataContext { set; }
     }
 }

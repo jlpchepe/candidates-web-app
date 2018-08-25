@@ -108,7 +108,9 @@
     <Compile Include="Base\Edit\BaseEditViewModel.cs" />
     <Compile Include="Base\List\BaseListViewModel.cs" />
     <Compile Include="Controls\EnumComboBox.cs" />
+    <Compile Include="Interfaces\ISaveEntity.cs" />
     <Compile Include="Interfaces\ISimpleWindow.cs" />
+    <Compile Include="Utils\Commands\AsyncCommand.cs" />
     <Compile Include="Utils\Commands\SimpleCommand.cs" />
     <Compile Include="Utils\Eventos\ActionEventHandler.cs" />
     <Compile Include="Utils\Helpers\EnumHelper.cs" />

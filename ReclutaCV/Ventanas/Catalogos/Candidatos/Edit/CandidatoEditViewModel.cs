@@ -1,4 +1,5 @@
 ﻿using ReclutaCV.Candidatos.List;
+using ReclutaCV.Interfaces;
 using ReclutaCV.Utils.Commands;
 using ReclutaCV.Utils.Eventos;
 using ReclutaCVData;
@@ -17,7 +18,7 @@ namespace ReclutaCV.Candidatos.Edit
     /// <summary>
     /// Ventana para edición de candidatos
     /// </summary>
-    public class CandidatoEditViewModel
+    public class CandidatoEditViewModel : ISaveEntity
     {
         public CandidatoEditViewModel(
             CandidatoService candidatoService

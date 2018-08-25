@@ -25,6 +25,8 @@ namespace ReclutaCV.Candidatos.List
     {
         public CandidatoListView()
         {
+            this.InitializeComponent();
+
         }
     }
 }

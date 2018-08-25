@@ -23,7 +23,7 @@ namespace ReclutaCVLogic.Servicios
         /// <summary>
         /// Obtiene todos los candidatos existentes
         /// </summary>
-        public List<Candidato> FindAll()
+        public IReadOnlyCollection<Candidato> FindAll()
         {
             return this.db().Candidato.ToList();
         }

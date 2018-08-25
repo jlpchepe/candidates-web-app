@@ -1,54 +1,70 @@
-﻿using ReclutaCV.Interfaces;
+﻿using PropertyChanged;
+using ReclutaCV.Candidatos.Edit;
+using ReclutaCV.Candidatos.List;
+using ReclutaCV.Interfaces;
+using ReclutaCV.Utils.Commands;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Input;
 
 namespace ReclutaCV.Base.List
 {
-    internal class BaseListViewModel<TItem, TView, >
-        where TView: ISimpleWindow, new()
+    [ImplementPropertyChanged]
+    public abstract class BaseListViewModel<TItem, TView, TEditViewModel>
+        where TView : ISimpleWindow, new()
         where TItem : class
+        where TEditViewModel : ISaveEntity
     {
-        public()
+        public BaseListViewModel()
+        {
+        }
 
-        public List<TItem> Items { get; private set; }
+        public IReadOnlyCollection<TItem> Items { get; private set; }
         public TItem Seleccionado { get; set; }
         private bool TieneSeleccionado => this.Seleccionado != null;
-
-        private readonly Func<CandidatoEditViewModel> candidatoEditViewModelFactory;
-
-        private CandidatoEditViewModel ObtenerVentanaEdicion()
-        {
-            var ventanaEdicion = this.candidatoEditViewModelFactory();
-
-            ventanaEdicion.OnSavedEntity += () => this.RefrescarCandidatos();
-
-            return ventanaEdicion;
-        }
+        
+        protected abstract Task<IReadOnlyCollection<TItem>> ObtenerItems();
+        protected abstract Task OnAgregar();
+        protected abstract Task OnBorrar(TItem item);
+        protected abstract Task OnEditar(TItem item);
 
         public void MostrarVentana()
         {
-            var ventana = new CandidatoListView
+            var ventana = new TView
             {
                 DataContext = this
             };
-            ventana.InitializeComponent();
             ventana.Show();
         }
 
-        public ICommand Agregar => new SimpleCommand(this.ObtenerVentanaEdicion().CargarNuevoYAbrirVentana);
-        public ICommand Editar => new SimpleCommand(() => this.ObtenerVentanaEdicion().CargarExistenteYAbrirVentana(this.Seleccionado.Id), () => TieneSeleccionado);
-        public ICommand Borrar => new SimpleCommand(() => {
-            this.candidatoService.Delete(this.Seleccionado.Id);
-            this.RefrescarCandidatos();
-        }, () => TieneSeleccionado);
+        public ICommand Agregar => new AsyncCommand(
+            () => this.OnAgregar()
+        );
+        public ICommand Editar => new AsyncCommand(
+            () => this.OnEditar(this.Seleccionado),
+            () => TieneSeleccionado
+        );
+        public ICommand Borrar => new AsyncCommand(
+            async () => {
+                await this.OnBorrar(this.Seleccionado);
+                await this.RefrescarItems();
+            },
+            () => TieneSeleccionado
+        );
 
-        public void RefrescarCandidatos()
+        public async Task RefrescarItems()
         {
             //Cargamos los candidatos desde la base de datos
-            this.Items = this.candidatoService.FindAll();
+            this.Items = await this.ObtenerItems();
+        }
+
+        protected async void RefrescarItemsSync()
+        {
+            await this.RefrescarItems();
         }
     }
 }
