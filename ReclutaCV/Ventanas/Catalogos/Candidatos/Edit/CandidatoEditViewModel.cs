@@ -52,7 +52,8 @@ namespace ReclutaCV.Candidatos.Edit
 
         }
 
-        private bool Editando { get; set; }
+        protected bool Editando { get; private set; }
+
         private void Guardar()
         {
             if (this.Editando)
@@ -85,9 +86,11 @@ namespace ReclutaCV.Candidatos.Edit
 
         private void AbrirVentana()
         {
-            this.Ventana = new CandidatoEditView();
-            this.Ventana.DataContext = this;
-            this.Ventana.InitializeComponent();
+            this.Ventana = new CandidatoEditView
+            {
+                DataContext = this
+            };
+
             this.Ventana.Closed += (o, s) => this.CerrarVentana();
             this.Ventana.Show();
         }
@@ -95,7 +98,6 @@ namespace ReclutaCV.Candidatos.Edit
         private void CerrarVentana()
         {
             this.Ventana.Close();
-
             this.OnClosed?.Invoke();
         }
     }

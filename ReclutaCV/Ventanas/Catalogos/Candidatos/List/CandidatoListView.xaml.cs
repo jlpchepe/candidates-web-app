@@ -1,4 +1,5 @@
 ﻿using ReclutaCV.Candidatos.Edit;
+using ReclutaCV.Interfaces;
 using ReclutaCVData;
 using ReclutaCVLogic.Servicios;
 using System;
@@ -20,7 +21,7 @@ namespace ReclutaCV.Candidatos.List
     /// <summary>
     /// Lógica de interacción para CandidatoListView.xaml
     /// </summary>
-    public partial class CandidatoListView : Window
+    public partial class CandidatoListView : Window, ISimpleWindow
     {
         public CandidatoListView()
         {

@@ -69,11 +69,12 @@
     <Compile Include="Servicios\CandidatoService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Reportes\" />
     <Folder Include="Utils\Command\" />
   </ItemGroup>
   <ItemGroup>

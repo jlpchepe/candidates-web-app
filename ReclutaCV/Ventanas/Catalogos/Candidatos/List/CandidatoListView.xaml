@@ -19,7 +19,7 @@
                 <Button Content="Borrar" Command="{Binding Borrar}"></Button>
             </StackPanel>
         </Border>
-        <DataGrid Grid.Row="1" ItemsSource="{Binding Items}" SelectedItem="{Binding Seleccionado}">
+        <DataGrid Grid.Row="1" ItemsSource="{Binding Items}" SelectedItem="{Binding Seleccionado}" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Nivel del candidato" Binding="{Binding Nivel}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Bolsa" Binding="{Binding Bolsa}"></DataGridTextColumn>

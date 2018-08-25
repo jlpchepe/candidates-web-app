@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ReclutaCV.Ventanas.MenuPrincipal"
         mc:Ignorable="d"
-        Title="MenuPrincipalView" SizeToContent="Height"
-        Width="800"
+        Title="Menú principal" SizeToContent="Height"
+        Width="450"
     >
-    <StackPanel>
+    <StackPanel Background="{StaticResource ThirdColor}">
         <Border>
             <TextBlock Style="{StaticResource TitleTextBlock}">Menú</TextBlock>
         </Border>
-        <StackPanel >
+        <StackPanel Style="{StaticResource DefaultStackpanelStyle}" Background="Aquamarine">
             <Button Command="{Binding VerListadoCandidatos}">Candidatos</Button>
         </StackPanel>
     </StackPanel>

@@ -1,40 +1,26 @@
-﻿using PropertyChanged;
-using ReclutaCV.Candidatos.Edit;
-using ReclutaCV.Utils.Commands;
-using ReclutaCVData;
-using ReclutaCVData.Entidades;
-using ReclutaCVLogic.Servicios;
+﻿using ReclutaCV.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Input;
 
-namespace ReclutaCV.Candidatos.List
+namespace ReclutaCV.Base.List
 {
-    [ImplementPropertyChanged]
-    public class CandidatoListViewModel
+    internal class BaseListViewModel<TItem, TView, >
+        where TView: ISimpleWindow, new()
+        where TItem : class
     {
-        public CandidatoListViewModel(
-            CandidatoService candidatoService,
-            Func<CandidatoEditViewModel> candidatoEditViewModelFactory
-        )
-        {
-            this.candidatoService = candidatoService;
-            this.candidatoEditViewModelFactory = candidatoEditViewModelFactory;
-            this.RefrescarCandidatos();
-        }
+        public()
 
-        public List<Candidato> Items { get; private set; }
-        public Candidato Seleccionado { get; set; }
-        private readonly CandidatoService candidatoService;
+        public List<TItem> Items { get; private set; }
+        public TItem Seleccionado { get; set; }
         private bool TieneSeleccionado => this.Seleccionado != null;
 
         private readonly Func<CandidatoEditViewModel> candidatoEditViewModelFactory;
 
-        private CandidatoEditViewModel ObtenerVentanaEdicion() {
+        private CandidatoEditViewModel ObtenerVentanaEdicion()
+        {
             var ventanaEdicion = this.candidatoEditViewModelFactory();
 
             ventanaEdicion.OnSavedEntity += () => this.RefrescarCandidatos();

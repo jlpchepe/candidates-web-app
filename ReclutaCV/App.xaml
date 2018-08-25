@@ -8,6 +8,11 @@
     <Application.Resources>
         <system:Double x:Key="DefaultMarginValue">8</system:Double>
         <Thickness x:Key="DefaultMargin" Bottom="{StaticResource DefaultMarginValue}" Left="{StaticResource DefaultMarginValue}" Right="{StaticResource DefaultMarginValue}" Top="{StaticResource DefaultMarginValue}"></Thickness>
+        <Thickness x:Key="DefaultPadding" Bottom="{StaticResource DefaultMarginValue}" Left="{StaticResource DefaultMarginValue}" Right="{StaticResource DefaultMarginValue}" Top="{StaticResource DefaultMarginValue}"></Thickness>
+        <SolidColorBrush x:Key="PrimaryColor">#5DB43D</SolidColorBrush>
+        <SolidColorBrush x:Key="SecondaryColor" >#2D8478</SolidColorBrush>
+        <SolidColorBrush x:Key="ThirdColor">Beige</SolidColorBrush>
+        <SolidColorBrush x:Key="FourthColor">#DFDCE3</SolidColorBrush>
 
         <Style TargetType="{x:Type controls:EnumComboBox}" BasedOn="{StaticResource {x:Type ComboBox}}"></Style>
 
@@ -16,7 +21,10 @@
             <Setter Property="CanUserDeleteRows" Value="False"></Setter>
             <Setter Property="AutoGenerateColumns" Value="False"></Setter>
             <Setter Property="IsReadOnly" Value="True"></Setter>
-            <Setter Property="AlternatingRowBackground" Value="PaleTurquoise"></Setter>
+            <Setter Property="AlternatingRowBackground" Value="{StaticResource ThirdColor}"></Setter>
+            <Setter Property="RowBackground" Value="AliceBlue"></Setter>
+            <Setter Property="HorizontalGridLinesBrush" Value="{StaticResource FourthColor}"></Setter>
+            <Setter Property="VerticalGridLinesBrush" Value="{StaticResource FourthColor}"></Setter>
         </Style>
 
         <Style TargetType="StackPanel" x:Key="DefaultStackpanelStyle">
@@ -29,18 +37,16 @@
         <Style TargetType="TextBlock" x:Key="TitleTextBlock">
             <Style.Setters>
                 <Setter Property="FontSize" Value="20"></Setter>
-                <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+                <Setter Property="Background" Value="{StaticResource SecondaryColor}"></Setter>
+                <Setter Property="TextAlignment" Value="Center"></Setter>
                 <Setter Property="FontWeight" Value="Bold"></Setter>
-                <Setter Property="Margin" Value="{StaticResource DefaultMargin}"></Setter>
+                <Setter Property="Padding" Value="{StaticResource DefaultPadding}"></Setter>
             </Style.Setters>
         </Style>
 
         <Style TargetType="DataGridColumnHeader">
             <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
         </Style>
-
-        <SolidColorBrush x:Key="SecondaryColor">CadetBlue</SolidColorBrush>
-
 
         <system:Double x:Key="DefaultButtonPaddingHorizontal">7</system:Double>
         <system:Double x:Key="DefaultButtonPaddingVertical">3</system:Double>
@@ -65,7 +71,6 @@
                 <Setter Property="Background" Value="{StaticResource SecondaryColor}"></Setter>
             </Style.Setters>
         </Style>
-        <Style TargetType="Border" BasedOn="{StaticResource DefaultBorderStyle}"></Style>
 
         <Style TargetType="Border" x:Key="ButtonsBorder" BasedOn="{StaticResource DefaultBorderStyle}">
             <Style.Resources>
