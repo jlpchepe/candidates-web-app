@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace ReclutaCV.Interfaces
 {
-    public interface ISimpleWindow : IClosable, IShowable, IHaveDataContext
-    { 
+    public interface IHaveDataContext
+    {
+        object DataContext { set; }
     }
 }

@@ -107,8 +107,12 @@
     </ApplicationDefinition>
     <Compile Include="Base\Edit\BaseEditViewModel.cs" />
     <Compile Include="Base\List\BaseListViewModel.cs" />
+    <Compile Include="Base\Window\WindowViewModel.cs" />
     <Compile Include="Controls\EnumComboBox.cs" />
+    <Compile Include="Interfaces\IClosable.cs" />
+    <Compile Include="Interfaces\IHaveDataContext.cs" />
     <Compile Include="Interfaces\ISaveEntity.cs" />
+    <Compile Include="Interfaces\IShowable.cs" />
     <Compile Include="Interfaces\ISimpleWindow.cs" />
     <Compile Include="Utils\Commands\AsyncCommand.cs" />
     <Compile Include="Utils\Commands\SimpleCommand.cs" />

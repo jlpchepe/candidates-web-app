@@ -31,13 +31,11 @@ namespace ReclutaCV.Candidatos.List
         }
 
         private readonly CandidatoService candidatoService;
-        private bool TieneSeleccionado => this.Seleccionado != null;
 
         private readonly Func<CandidatoEditViewModel> candidatoEditViewModelFactory;
 
         private CandidatoEditViewModel ObtenerVentanaEdicion() {
             var ventanaEdicion = this.candidatoEditViewModelFactory();
-
             ventanaEdicion.OnSavedEntity += () => this.RefrescarItemsSync();
 
             return ventanaEdicion;
@@ -48,16 +46,14 @@ namespace ReclutaCV.Candidatos.List
             return Task.FromResult(this.candidatoService.FindAll());
         }
 
-        protected override Task OnAgregar()
+        protected override async Task OnAgregar()
         {
-            this.ObtenerVentanaEdicion().CargarNuevoYAbrirVentana();
-            return TaskHelper.CreateEmptyTask();
+            await this.ObtenerVentanaEdicion().CargarNuevoYAbrirVentana();
         }
 
-        protected override Task OnEditar(Candidato item)
+        protected override async Task OnEditar(Candidato item)
         {
-            this.ObtenerVentanaEdicion().CargarExistenteYAbrirVentana(item.Id);
-            return TaskHelper.CreateEmptyTask();
+            await this.ObtenerVentanaEdicion().CargarExistenteYAbrirVentana(item.Id);
         }
 
         protected override Task OnBorrar(Candidato item)

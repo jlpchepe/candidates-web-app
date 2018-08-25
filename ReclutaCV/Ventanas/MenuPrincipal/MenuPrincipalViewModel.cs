@@ -23,7 +23,7 @@ namespace ReclutaCV.Ventanas.MenuPrincipal
                 () => new CandidatoEditViewModel(candidatoService)
             );
 
-            candidatoList.MostrarVentana();
+            candidatoList.AbrirVentana();
         });
     }
 }

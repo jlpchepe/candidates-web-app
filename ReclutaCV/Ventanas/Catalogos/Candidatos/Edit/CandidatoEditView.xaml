@@ -22,62 +22,62 @@
                     </UniformGrid.Resources>
                     <StackPanel>
                         <TextBlock>Estatus del candidato</TextBlock>
-                        <controls:EnumComboBox Text="{Binding Candidato.EstatusCandidato}"></controls:EnumComboBox>
+                        <controls:EnumComboBox Text="{Binding Model.EstatusCandidato}"></controls:EnumComboBox>
                         <TextBlock>Nombre</TextBlock>
-                        <TextBox Text="{Binding Candidato.Nombre}"></TextBox>
+                        <TextBox Text="{Binding Model.Nombre}"></TextBox>
                         <TextBlock>Apellido paterno</TextBlock>
-                        <TextBox Text="{Binding Candidato.ApellidoPaterno}"></TextBox>
+                        <TextBox Text="{Binding Model.ApellidoPaterno}"></TextBox>
                         <TextBlock>Apellido materno</TextBlock>
-                        <TextBox Text="{Binding Candidato.ApellidoMaterno}"></TextBox>
+                        <TextBox Text="{Binding Model.ApellidoMaterno}"></TextBox>
                         <TextBlock>Fecha de nacimiento</TextBlock>
-                        <DatePicker SelectedDate="{Binding Candidato.FechaDeNacimiento}"></DatePicker>
+                        <DatePicker SelectedDate="{Binding Model.FechaDeNacimiento}"></DatePicker>
                         <TextBlock>Fecha de contacto</TextBlock>
-                        <DatePicker SelectedDate="{Binding Candidato.FechaDeContacto}"></DatePicker>
+                        <DatePicker SelectedDate="{Binding Model.FechaDeContacto}"></DatePicker>
                         <TextBlock>Quien lo contactó</TextBlock>
-                        <TextBox Text="{Binding Candidato.QuienLoContacto}"></TextBox>
+                        <TextBox Text="{Binding Model.QuienLoContacto}"></TextBox>
                         <TextBlock>Bolsa</TextBlock>
-                        <TextBox Text="{Binding Candidato.Bolsa}"></TextBox>
+                        <TextBox Text="{Binding Model.Bolsa}"></TextBox>
                     </StackPanel>
                     <StackPanel>
                         <TextBlock>Teléfono</TextBlock>
-                        <TextBox Text="{Binding Candidato.Telefono}"></TextBox>
+                        <TextBox Text="{Binding Model.Telefono}"></TextBox>
                         <TextBlock>Correo</TextBlock>
-                        <TextBox Text="{Binding Candidato.Correo}"></TextBox>
+                        <TextBox Text="{Binding Model.Correo}"></TextBox>
                         <TextBlock>Rol del candidato</TextBlock>
-                        <controls:EnumComboBox SelectedValue="{Binding Candidato.Rol}"/>
+                        <controls:EnumComboBox SelectedValue="{Binding Model.Rol}"/>
                         <TextBlock>Nivel del candidato</TextBlock>
-                        <controls:EnumComboBox SelectedValue="{Binding Candidato.Nivel}"/>
+                        <controls:EnumComboBox SelectedValue="{Binding Model.Nivel}"/>
                         <TextBlock>Años de experiencia</TextBlock>
-                        <TextBox Text="{Binding Candidato.AñosDeExperiencia}"></TextBox>
+                        <TextBox Text="{Binding Model.AñosDeExperiencia}"></TextBox>
                         <TextBlock>Sueldo actual</TextBlock>
-                        <TextBox Text="{Binding Candidato.SueldoActual}"></TextBox>
+                        <TextBox Text="{Binding Model.SueldoActual}"></TextBox>
                         <TextBlock>Sueldo esperado</TextBlock>
-                        <TextBox Text="{Binding Candidato.SueldoEsperado}"></TextBox>
+                        <TextBox Text="{Binding Model.SueldoEsperado}"></TextBox>
                         <TextBlock>Comentarios</TextBlock>
-                        <TextBox Text="{Binding Candidato.Comentarios}"></TextBox>
+                        <TextBox Text="{Binding Model.Comentarios}"></TextBox>
                     </StackPanel>
                 </UniformGrid>
             </TabItem>
             <TabItem Header="Educación">
                 <StackPanel Style="{StaticResource DataInputStackPanel}">
                     <TextBlock>Carrera</TextBlock>
-                    <TextBox Text="{Binding Candidato.Carrera}"></TextBox>
+                    <TextBox Text="{Binding Model.Carrera}"></TextBox>
                     <TextBlock>Universidad</TextBlock>
-                    <TextBox Text="{Binding Candidato.Universidad}"></TextBox>
+                    <TextBox Text="{Binding Model.Universidad}"></TextBox>
                     <TextBlock>Estatus académico</TextBlock>
-                    <controls:EnumComboBox Text="{Binding Candidato.EstatusAcademico }"></controls:EnumComboBox>
+                    <controls:EnumComboBox Text="{Binding Model.EstatusAcademico }"></controls:EnumComboBox>
                     <TextBlock>Cursos</TextBlock>
-                    <TextBox Text="{Binding Candidato.Cursos}"></TextBox>
+                    <TextBox Text="{Binding Model.Cursos}"></TextBox>
                     <TextBlock>Certificaciones</TextBlock>
-                    <TextBox Text="{Binding Candidato.Certificaciones}"></TextBox>
+                    <TextBox Text="{Binding Model.Certificaciones}"></TextBox>
                     <GroupBox Header="Nivel de inglés">
                         <StackPanel>
                             <TextBlock>Hablado</TextBlock>
-                            <TextBox Text="{Binding Candidato.NivelDeInglesHablado}"></TextBox>
+                            <TextBox Text="{Binding Model.NivelDeInglesHablado}"></TextBox>
                             <TextBlock>Escrito</TextBlock>
-                            <TextBox Text="{Binding Candidato.NivelDeInglesEscrito}"></TextBox>
+                            <TextBox Text="{Binding Model.NivelDeInglesEscrito}"></TextBox>
                             <TextBlock>Lectura</TextBlock>
-                            <TextBox Text="{Binding Candidato.NivelDeInglesLectura}"></TextBox>
+                            <TextBox Text="{Binding Model.NivelDeInglesLectura}"></TextBox>
                         </StackPanel>
                     </GroupBox>
                 </StackPanel>
@@ -85,24 +85,24 @@
             <TabItem Header="Proceso">
                 <StackPanel  Style="{StaticResource DataInputStackPanel}">
                     <TextBlock>Fecha de examen</TextBlock>
-                    <DatePicker SelectedDate="{Binding Candidato.FechaDeExamen}"></DatePicker>
+                    <DatePicker SelectedDate="{Binding Model.FechaDeExamen}"></DatePicker>
                     <TextBlock>Hora de examen</TextBlock>
-                    <DatePicker SelectedDate="{Binding Candidato.HoraDeExamen}"></DatePicker>
+                    <DatePicker SelectedDate="{Binding Model.HoraDeExamen}"></DatePicker>
                     <TextBlock>Calificación del examen</TextBlock>
-                    <TextBox Text="{Binding Candidato.CalificacionDelExamen}"></TextBox>
+                    <TextBox Text="{Binding Model.CalificacionDelExamen}"></TextBox>
                     <TextBlock>Fecha de entrevista</TextBlock>
-                    <DatePicker SelectedDate="{Binding Candidato.FechaDeEntrevista}"></DatePicker>
+                    <DatePicker SelectedDate="{Binding Model.FechaDeEntrevista}"></DatePicker>
                     <TextBlock>Propuesta económica</TextBlock>
-                    <TextBox Text="{Binding Candidato.PropuestaEconomicaMonto}"></TextBox>
+                    <TextBox Text="{Binding Model.PropuestaEconomicaMonto}"></TextBox>
                     <TextBlock>Fecha de ingreso</TextBlock>
-                    <DatePicker SelectedDate="{Binding Candidato.FechaDeIngresoALaEmpresa}"></DatePicker>
+                    <DatePicker SelectedDate="{Binding Model.FechaDeIngresoALaEmpresa}"></DatePicker>
                 </StackPanel>
             </TabItem>
         </TabControl>
         <Border Style="{StaticResource EditButtonsBorder}">
             <StackPanel>
-                <Button Command="{Binding GuardarCandidato}">Guardar</Button>
-                <Button Command="{Binding Cerrar}">Cerrar</Button>
+                <Button Command="{Binding GuardarCommand}">Guardar</Button>
+                <Button Command="{Binding CerrarVentanaCommand}">Cerrar</Button>
             </StackPanel>
         </Border>
     </StackPanel>

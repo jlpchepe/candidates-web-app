@@ -1,4 +1,5 @@
 ﻿using PropertyChanged;
+using ReclutaCV.Base.Window;
 using ReclutaCV.Candidatos.Edit;
 using ReclutaCV.Candidatos.List;
 using ReclutaCV.Interfaces;
@@ -14,7 +15,7 @@ using System.Windows.Input;
 namespace ReclutaCV.Base.List
 {
     [ImplementPropertyChanged]
-    public abstract class BaseListViewModel<TItem, TView, TEditViewModel>
+    public abstract class BaseListViewModel<TItem, TView, TEditViewModel> : WindowViewModel<TView>
         where TView : ISimpleWindow, new()
         where TItem : class
         where TEditViewModel : ISaveEntity
@@ -31,15 +32,6 @@ namespace ReclutaCV.Base.List
         protected abstract Task OnAgregar();
         protected abstract Task OnBorrar(TItem item);
         protected abstract Task OnEditar(TItem item);
-
-        public void MostrarVentana()
-        {
-            var ventana = new TView
-            {
-                DataContext = this
-            };
-            ventana.Show();
-        }
 
         public ICommand Agregar => new AsyncCommand(
             () => this.OnAgregar()
