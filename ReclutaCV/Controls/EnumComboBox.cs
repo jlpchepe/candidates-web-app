@@ -1,5 +1,6 @@
 ﻿using ReactiveUI;
-using ReclutaCV.Utils.Helpers;
+using ReclutaCVLogic.Utils.Extensions;
+using ReclutaCVLogic.Utils.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,14 +33,9 @@ namespace ReclutaCV.Controls
 
         private void FillItems(Type enumType)
         {
-            List<KeyValuePair<object, string>> values =
-                EnumHelper.EnumToList(enumType)
-                .Select(idx => new KeyValuePair<object, string>(idx.Item1, idx.Item2))
-                .ToList();
-
-            this.ItemsSource = 
-                values
-                .Select(o => o.Key.ToString())
+            List<KeyValuePair<Enum, string>> values =
+                EnumHelper.ObtenerListadoDeValoresDeTipoEnum(enumType)
+                .Select(x => new KeyValuePair<Enum, string>(x, x.GetDescription()))
                 .ToList();
 
             UpdateLayout();

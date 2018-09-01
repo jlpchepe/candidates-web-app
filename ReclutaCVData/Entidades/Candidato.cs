@@ -44,13 +44,21 @@ namespace ReclutaCVData.Entidades
     }
     public enum EstatusCandidato
     {
+        [Description("Citado para examen")]
         CitadoParaExamen,
+        [Description("Intereses altos")]
         InteresesAltos,
+        [Description("Foráneo")]
         Foraneo,
+        [Description("En espera")]
         EnEspera,
+        [Description("Otra vacante")]
         OtraVacante,
+        [Description("Analizando al candidato")]
         AnalizandoAlCandidato,
+        [Description("No le interesó")]
         NoLeIntereso,
+        [Description("Vacante detenida")]
         VacanteDetenida
 
 

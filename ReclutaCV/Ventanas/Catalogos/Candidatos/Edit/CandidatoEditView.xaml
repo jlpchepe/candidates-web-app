@@ -22,7 +22,7 @@
                     </UniformGrid.Resources>
                     <StackPanel>
                         <TextBlock>Estatus del candidato</TextBlock>
-                        <controls:EnumComboBox Text="{Binding Model.EstatusCandidato}"></controls:EnumComboBox>
+                        <controls:EnumComboBox SelectedValue="{Binding Model.Estatus}"></controls:EnumComboBox>
                         <TextBlock>Nombre</TextBlock>
                         <TextBox Text="{Binding Model.Nombre}"></TextBox>
                         <TextBlock>Apellido paterno</TextBlock>
@@ -65,7 +65,7 @@
                     <TextBlock>Universidad</TextBlock>
                     <TextBox Text="{Binding Model.Universidad}"></TextBox>
                     <TextBlock>Estatus académico</TextBlock>
-                    <controls:EnumComboBox Text="{Binding Model.EstatusAcademico }"></controls:EnumComboBox>
+                    <controls:EnumComboBox SelectedValue="{Binding Model.EstatusAcademico }"></controls:EnumComboBox>
                     <TextBlock>Cursos</TextBlock>
                     <TextBox Text="{Binding Model.Cursos}"></TextBox>
                     <TextBlock>Certificaciones</TextBlock>
