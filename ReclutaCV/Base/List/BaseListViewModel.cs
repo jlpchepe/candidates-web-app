@@ -20,10 +20,6 @@ namespace ReclutaCV.Base.List
         where TItem : class
         where TEditViewModel : ISaveEntity
     {
-        public BaseListViewModel()
-        {
-        }
-
         public IReadOnlyCollection<TItem> Items { get; private set; }
         public TItem Seleccionado { get; set; }
         private bool TieneSeleccionado => this.Seleccionado != null;
