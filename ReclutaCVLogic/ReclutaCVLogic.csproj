@@ -70,6 +70,7 @@
     <Compile Include="Reportes\ReporteDeSeguimientoACandidatos\MotivosDeDesinteresEnIniciarElProceso.cs" />
     <Compile Include="Reportes\ReporteDeSeguimientoACandidatos\MotivosDeRechazoDePropuestaEconomica.cs" />
     <Compile Include="Reportes\ReporteDeSeguimientoACandidatos\ReporteDeSeguimientoACandidatos.cs" />
+    <Compile Include="Reportes\ReporteDeSeguimientoACandidatos\ReporteDeSeguimientoACandidatoService.cs" />
     <Compile Include="Reportes\ReporteDeSeguimientoACandidatos\VacantesActivas.cs" />
     <Compile Include="Servicios\CandidatoService.cs" />
     <Compile Include="Utils\Extensions\EnumExtensions.cs" />

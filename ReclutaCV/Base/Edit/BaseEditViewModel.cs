@@ -32,7 +32,7 @@ namespace ReclutaCV.Base.Edit
         {
             if (this.Editando)
             {
-                this.Update();
+                Update();
             }
             else
             {
