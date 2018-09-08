@@ -122,6 +122,9 @@
       <DependentUpon>MenuPrincipalView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Ventanas\MenuPrincipal\MenuPrincipalViewModel.cs" />
+    <Compile Include="Ventanas\Operativas\EtapasCandidato\EtapasCandidatoView.xaml.cs">
+      <DependentUpon>EtapasCandidatoView.xaml</DependentUpon>
+    </Compile>
     <Page Include="Ventanas\Catalogos\Candidatos\Edit\CandidatoEditView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -143,6 +146,10 @@
     </Compile>
     <Compile Include="Ventanas\Catalogos\Candidatos\List\CandidatoListViewModel.cs" />
     <Page Include="Ventanas\MenuPrincipal\MenuPrincipalView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas\Operativas\EtapasCandidato\EtapasCandidatoView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
