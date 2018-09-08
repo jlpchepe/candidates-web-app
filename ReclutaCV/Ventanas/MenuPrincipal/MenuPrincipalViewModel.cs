@@ -5,6 +5,7 @@ using ReclutaCVData;
 using ReclutaCVLogic.Servicios;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,9 +15,23 @@ namespace ReclutaCV.Ventanas.MenuPrincipal
 {
     public class MenuPrincipalViewModel
     {
+        public MenuPrincipalViewModel()
+        {
+            this.db = () => new Db();
+
+            this.InitializeFirstDbContextFireForget();
+        }
+
+        private async void InitializeFirstDbContextFireForget()
+        {
+            var a = await this.db().Candidato.FirstOrDefaultAsync();
+        }
+
+        private readonly Func<Db> db;
+
         public ICommand VerListadoCandidatos => new SimpleCommand(() =>
         {
-            var candidatoService = new CandidatoService(() => new Db());
+            var candidatoService = new CandidatoService(this.db);
 
             var candidatoList = new CandidatoListViewModel(
                 candidatoService,

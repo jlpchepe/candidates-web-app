@@ -65,9 +65,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DbConfig.cs" />
+    <Compile Include="Entidades\AnalisisCandidato.cs" />
     <Compile Include="Entidades\Candidato.cs" />
+    <Compile Include="Entidades\EvaluacionCurriculumCandidato.cs" />
     <Compile Include="Entidades\Curso.cs" />
     <Compile Include="Db.cs" />
+    <Compile Include="Entidades\EntrevistaCandidato.cs" />
+    <Compile Include="Entidades\ExamenCandidato.cs" />
+    <Compile Include="Entidades\PrimeraLlamadaCandidato.cs" />
+    <Compile Include="Entidades\LlamadaPropuestaEconomicaCandidato.cs" />
     <Compile Include="Migrations\201808110337453_ModTablaCandidato.cs" />
     <Compile Include="Migrations\201808110337453_ModTablaCandidato.Designer.cs">
       <DependentUpon>201808110337453_ModTablaCandidato.cs</DependentUpon>
@@ -75,6 +81,10 @@
     <Compile Include="Migrations\201808110422214_ModBolsaCandidato.cs" />
     <Compile Include="Migrations\201808110422214_ModBolsaCandidato.Designer.cs">
       <DependentUpon>201808110422214_ModBolsaCandidato.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809080403548_ModEtapasCandidato.cs" />
+    <Compile Include="Migrations\201809080403548_ModEtapasCandidato.Designer.cs">
+      <DependentUpon>201809080403548_ModEtapasCandidato.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -93,6 +103,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808110422214_ModBolsaCandidato.resx">
       <DependentUpon>201808110422214_ModBolsaCandidato.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809080403548_ModEtapasCandidato.resx">
+      <DependentUpon>201809080403548_ModEtapasCandidato.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
