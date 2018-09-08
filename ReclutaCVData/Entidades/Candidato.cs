@@ -44,6 +44,7 @@ namespace ReclutaCVData.Entidades
     }
     public enum EstatusCandidato
     {
+        [Description("Citado para examen")]
         CitadoParaExamen,
         InteresesAltos,
         Foraneo,

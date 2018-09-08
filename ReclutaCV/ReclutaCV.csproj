@@ -119,6 +119,14 @@
     <Compile Include="Utils\Converters\EnumDescriptionConverter.cs" />
     <Compile Include="Utils\Eventos\ActionEventHandler.cs" />
     <Compile Include="Utils\Helpers\EnumHelper.cs" />
+    <Compile Include="Ventanas\Catalogos\SolicitudesVacante\Edit\SolicitudVacanteEditView.xaml.cs">
+      <DependentUpon>SolicitudVacanteEditView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Catalogos\SolicitudesVacante\Edit\SolicitudVacanteEditViewModel.cs" />
+    <Compile Include="Ventanas\Catalogos\SolicitudesVacante\List\SolicitudVacanteListView.xaml.cs">
+      <DependentUpon>SolicitudVacanteListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Catalogos\SolicitudesVacante\List\SolicitudVacanteListViewModel.cs" />
     <Compile Include="Ventanas\MenuPrincipal\MenuPrincipalView.xaml.cs">
       <DependentUpon>MenuPrincipalView.xaml</DependentUpon>
     </Compile>
@@ -143,6 +151,14 @@
       <DependentUpon>CandidatoListView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Ventanas\Catalogos\Candidatos\List\CandidatoListViewModel.cs" />
+    <Page Include="Ventanas\Catalogos\SolicitudesVacante\Edit\SolicitudVacanteEditView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas\Catalogos\SolicitudesVacante\List\SolicitudVacanteListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Ventanas\MenuPrincipal\MenuPrincipalView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
