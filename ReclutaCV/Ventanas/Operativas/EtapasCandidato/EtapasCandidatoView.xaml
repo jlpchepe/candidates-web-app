@@ -1,0 +1,54 @@
+﻿<Window x:Class="ReclutaCV.Ventanas.Operativas.EtapasCandidato.EtapasCandidatoView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ReclutaCV.Ventanas.Operativas.EtapasCandidato"
+        xmlns:controls="clr-namespace:ReclutaCV.Controls"
+        mc:Ignorable="d"
+        Title="EtapasCandidatoView" Height="450" Width="800">
+    <TabControl>
+        <TabItem Header="Evaluación de CV">
+            <StackPanel>
+                <TextBlock>Fecha de evaluación</TextBlock>
+                <DatePicker SelectedDate="{Binding Model.FechaEvaluacion}"></DatePicker>
+                <TextBlock>Observaciones</TextBlock>
+                <TextBox Text="{Binding Model.Observaciones}"></TextBox>
+            </StackPanel>
+        </TabItem>
+        <TabItem Header="Pre-entrevista">
+            <StackPanel>
+                <TextBlock>Fecha</TextBlock>
+                <DatePicker SelectedDate="{Binding Model.Fecha}"></DatePicker>
+                <TextBlock>Observaciones</TextBlock>
+                <TextBox Text="{Binding Model.Observaciones}"></TextBox>
+            </StackPanel>
+        </TabItem>
+        <TabItem Header="Exámenes">
+            <StackPanel>
+                <TextBlock>Tipo de examen</TextBlock>
+                <controls:EnumComboBox SelectedValue="{Binding Model.Tipo}"></controls:EnumComboBox>
+                <TextBlock>Fecha</TextBlock>
+                <DatePicker SelectedDate="{Binding Model.Fecha}"></DatePicker>
+                <TextBlock>Calificación</TextBlock>
+                <TextBox Text="{Binding Model.Calificacion}"></TextBox>
+                <TextBlock>Observaciones</TextBlock>
+                <TextBox Text="{Binding Model.Observaciones}"></TextBox>
+            </StackPanel>
+        </TabItem>
+        <TabItem Header="Entrevista">
+            <StackPanel>
+                <TextBlock>Fecha</TextBlock>
+                <TextBox Text="{Binding Model.Fecha}"></TextBox>
+                <TextBlock>Observaciones</TextBlock>
+                <TextBox Text="{Binding Model.Observaciones}"></TextBox>
+            </StackPanel>
+        </TabItem>
+        <TabItem Header="Análisis">
+
+        </TabItem>
+        <TabItem Header="Propuesta económica">
+
+        </TabItem>
+    </TabControl>
+</Window>
