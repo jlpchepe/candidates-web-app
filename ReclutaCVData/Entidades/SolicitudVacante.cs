@@ -10,7 +10,7 @@ namespace ReclutaCVData.Entidades
     {
         public int CantidadDeVacantes { get; set; }
         public RolCandidato RolVacante { get; set; }
-        public DateTime FechaDeSolicitud { get; set }
+        public DateTime FechaDeSolicitud { get; set; }
 
 
       

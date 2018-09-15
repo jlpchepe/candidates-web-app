@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ReclutaCV.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,7 +18,7 @@ namespace ReclutaCV.Ventanas.Catalogos.SolicitudesVacante.Edit
     /// <summary>
     /// Interaction logic for SolicitudVacanteEditView.xaml
     /// </summary>
-    public partial class SolicitudVacanteEditView : Window
+    public partial class SolicitudVacanteEditView : Window, ISimpleWindow
     {
         public SolicitudVacanteEditView()
         {
