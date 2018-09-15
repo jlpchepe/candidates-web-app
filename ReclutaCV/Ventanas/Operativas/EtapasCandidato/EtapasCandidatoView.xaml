@@ -11,30 +11,28 @@
         <TabItem Header="Evaluación de CV">
             <StackPanel>
                 <TextBlock>Fecha de evaluación</TextBlock>
-                <DatePicker SelectedDate="{Binding Model.FechaEvaluacion}"></DatePicker>
+                <DatePicker SelectedDate="{Binding EvaluacionCurriculum.FechaEvaluacion}"></DatePicker>
                 <TextBlock>Observaciones</TextBlock>
-                <TextBox Text="{Binding Model.Observaciones}"></TextBox>
+                <TextBox Text="{Binding EvaluacionCurriculum.Observaciones}"></TextBox>
             </StackPanel>
         </TabItem>
         <TabItem Header="Pre-entrevista">
             <StackPanel>
                 <TextBlock>Fecha</TextBlock>
-                <DatePicker SelectedDate="{Binding Model.Fecha}"></DatePicker>
+                <DatePicker SelectedDate="{Binding PrimeraLlamada.Fecha}"></DatePicker>
                 <TextBlock>Observaciones</TextBlock>
                 <TextBox Text="{Binding Model.Observaciones}"></TextBox>
             </StackPanel>
         </TabItem>
         <TabItem Header="Exámenes">
-            <StackPanel>
-                <TextBlock>Tipo de examen</TextBlock>
-                <controls:EnumComboBox SelectedValue="{Binding Model.Tipo}"></controls:EnumComboBox>
-                <TextBlock>Fecha</TextBlock>
-                <DatePicker SelectedDate="{Binding Model.Fecha}"></DatePicker>
-                <TextBlock>Calificación</TextBlock>
-                <TextBox Text="{Binding Model.Calificacion}"></TextBox>
-                <TextBlock>Observaciones</TextBlock>
-                <TextBox Text="{Binding Model.Observaciones}"></TextBox>
-            </StackPanel>
+            <DataGrid Grid.Row="1" ItemsSource="{Binding Items}" SelectedItem="{Binding Seleccionado}" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Tipo de examen" Binding="{Binding Tipo, Converter={StaticResource EnumDescriptionConverter}}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Fecha" Binding="{Binding Fecha}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Calificación" Binding="{Binding Calificacion}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Observaciones" Binding="{Binding Observaciones}"></DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
         </TabItem>
         <TabItem Header="Entrevista">
             <StackPanel>

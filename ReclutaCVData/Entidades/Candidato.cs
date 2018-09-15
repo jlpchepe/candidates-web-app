@@ -85,14 +85,6 @@ namespace ReclutaCVData.Entidades
     /// </summary>
     public class Candidato
     {
-        public Candidato()
-        {
-            
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
         [Key]
         public int Id { get; set; }
 

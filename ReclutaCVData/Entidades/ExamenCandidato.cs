@@ -31,10 +31,10 @@ namespace ReclutaCVData.Entidades
         [Key]
         public int Id { get; set; }
 
-        [ForeignKey(nameof(PrimeraLlamadaCandidato))]
+        [ForeignKey(nameof(Candidato))]
         [Index("IX_Tipo_Candidato", 1, IsUnique = true)]
-        public int PrimeraLlamadaCandidatoId { get; set; }
-        public PrimeraLlamadaCandidato PrimeraLlamadaCandidato { get; set; }
+        public int CandidatoId { get; set; }
+        public Candidato Candidato { get; set; }
 
         [Index("IX_Tipo_Candidato", 0, IsUnique = true)]
         public TipoExamenCandidato Tipo { get; set; }

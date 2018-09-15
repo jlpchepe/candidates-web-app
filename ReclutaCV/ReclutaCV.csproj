@@ -133,6 +133,7 @@
     <Compile Include="Ventanas\Operativas\EtapasCandidato\EtapasCandidatoView.xaml.cs">
       <DependentUpon>EtapasCandidatoView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Ventanas\Operativas\EtapasCandidato\EtapasCandidatoViewModel.cs" />
     <Page Include="Ventanas\Catalogos\Candidatos\Edit\CandidatoEditView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
