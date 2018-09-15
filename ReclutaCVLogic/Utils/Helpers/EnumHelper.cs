@@ -4,16 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ReclutaCV.Utils.Helpers
+namespace ReclutaCVLogic.Utils.Helpers
 {
     public static class EnumHelper
     {
-        public static List<Tuple<object, string, int>> EnumToList(Type t)
+        public static List<Enum> ObtenerListadoDeValoresDeTipoEnum(Type t)
         {
             return Enum
                 .GetValues(t)
-                .Cast<object>()
-                .Select(x => Tuple.Create(x, x.ToString(), (int)x))
+                .Cast<Enum>()
                 .ToList();
         }
     }

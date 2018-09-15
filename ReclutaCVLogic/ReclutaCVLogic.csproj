@@ -75,6 +75,9 @@
     <Compile Include="Servicios\CandidatoService.cs" />
     <Compile Include="Servicios\SolicitudVacantesService.cs" />
     <Compile Include="Utils\Extensions\EnumExtensions.cs" />
+    <Compile Include="Utils\Helpers\AttributeHelper.cs" />
+    <Compile Include="Utils\Helpers\EnumHelper.cs" />
+    <Compile Include="Utils\Helpers\StringHelper.cs" />
     <Compile Include="Utils\Helpers\TaskHelper.cs" />
   </ItemGroup>
   <ItemGroup>

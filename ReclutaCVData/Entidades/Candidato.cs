@@ -30,14 +30,13 @@ namespace ReclutaCVData.Entidades
     {
         [Description("Ingeniero de software")]
         IngenieroDeSoftware,
-        [Description("Analista")]
         Analista,
         [Description("Administrador de proyecto")]
         AdministradorDeProyecto,
         [Description("Especialista de negocio")]
         EspecialistaDeNegocio,
-        [Description("Tester")]
-        Tester,
+        [Description("Ingeniero de pruebas")]
+        IngenieroDePruebas,
         [Description("Data engineer")]
         DataEngineer,
 
@@ -46,12 +45,19 @@ namespace ReclutaCVData.Entidades
     {
         [Description("Citado para examen")]
         CitadoParaExamen,
+        [Description("Intereses altos")]
         InteresesAltos,
+        [Description("Foráneo")]
         Foraneo,
+        [Description("En espera")]
         EnEspera,
+        [Description("Otra vacante")]
         OtraVacante,
+        [Description("Analizando al candidato")]
         AnalizandoAlCandidato,
+        [Description("No le interesó")]
         NoLeIntereso,
+        [Description("Vacante detenida")]
         VacanteDetenida
 
 
