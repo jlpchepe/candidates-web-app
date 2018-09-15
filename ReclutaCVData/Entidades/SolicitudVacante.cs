@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -56,8 +57,12 @@ namespace ReclutaCVData.Entidades
 
     public class SolicitudVacante
     {
+        [Key]
+        public int Id { get; set; }
         public string NombreDelSolicitante { get; set; }
         public AreaDelSolicitante AreaDelSolicitante { get; set; }
+
+        public int CantidadDeVacantes { get; set; }
         public DateTime FechaDeSolicitud { get; set; }
         public RolCandidato PuestoSolicitado { get; set; }
         public int CantidadDePersonal { get; set; }
