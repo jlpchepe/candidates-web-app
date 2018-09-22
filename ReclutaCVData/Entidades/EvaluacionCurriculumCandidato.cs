@@ -10,6 +10,17 @@ namespace ReclutaCVData.Entidades
 {
     public class EvaluacionCurriculumCandidato
     {
+        public EvaluacionCurriculumCandidato(
+            int candidatoId,  
+            DateTime fechaEvaluacion, 
+            string observaciones
+        )
+        {
+            CandidatoId = candidatoId;
+            FechaEvaluacion = fechaEvaluacion;
+            Observaciones = observaciones;
+        }
+
         /// <summary>
         /// Candidato al cual se le evaluo el CV
         /// </summary>

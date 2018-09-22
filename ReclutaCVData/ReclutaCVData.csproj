@@ -91,6 +91,10 @@
     <Compile Include="Migrations\201809150306588_ModSolicitudVacante.Designer.cs">
       <DependentUpon>201809150306588_ModSolicitudVacante.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809150358069_ModCambioExamenCandidatoMapeo.cs" />
+    <Compile Include="Migrations\201809150358069_ModCambioExamenCandidatoMapeo.Designer.cs">
+      <DependentUpon>201809150358069_ModCambioExamenCandidatoMapeo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Proyecto.cs" />
@@ -114,6 +118,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809150306588_ModSolicitudVacante.resx">
       <DependentUpon>201809150306588_ModSolicitudVacante.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809150358069_ModCambioExamenCandidatoMapeo.resx">
+      <DependentUpon>201809150358069_ModCambioExamenCandidatoMapeo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
