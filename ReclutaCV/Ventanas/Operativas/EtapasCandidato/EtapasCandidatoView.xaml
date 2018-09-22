@@ -21,7 +21,7 @@
                 <TextBlock>Fecha</TextBlock>
                 <DatePicker SelectedDate="{Binding PrimeraLlamada.Fecha}"></DatePicker>
                 <TextBlock>Observaciones</TextBlock>
-                <TextBox Text="{Binding Model.Observaciones}"></TextBox>
+                <TextBox Text="{Binding PrimeraLlamada.Observaciones}"></TextBox>
             </StackPanel>
         </TabItem>
         <TabItem Header="Exámenes">

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ReclutaCV.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,7 +18,7 @@ namespace ReclutaCV.Ventanas.Operativas.EtapasCandidato
     /// <summary>
     /// Lógica de interacción para EtapasCandidatoView.xaml
     /// </summary>
-    public partial class EtapasCandidatoView : Window
+    public partial class EtapasCandidatoView : Window, ISimpleWindow
     {
         public EtapasCandidatoView()
         {

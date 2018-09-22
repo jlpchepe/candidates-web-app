@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ReclutaCV.Ventanas.Catalogos.SolicitudesVacante.List
 {
-    public class SolicitudVacanteListViewModel: BaseListViewModel<SolicitudVacante, SolicitudVacanteListView, SolicitudVacanteEditViewModel>
+    public class SolicitudVacanteListViewModel : BaseListViewModel<SolicitudVacante, SolicitudVacanteListView, SolicitudVacanteEditViewModel>
     {
         public SolicitudVacanteListViewModel(
             SolicitudVacantesService SolicitudVacanteService,
