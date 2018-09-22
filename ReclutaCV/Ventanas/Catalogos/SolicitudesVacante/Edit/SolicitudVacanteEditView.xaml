@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:ReclutaCV.Controls"
         xmlns:local="clr-namespace:ReclutaCV.Ventanas.Catalogos.SolicitudesVacante.Edit"
         mc:Ignorable="d"
         Title="SolicitudVacanteEditView" SizeToContent="Height" Width="800">
@@ -11,48 +12,56 @@
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="0">
+        <StackPanel Grid.Column="0" Style="{StaticResource DataInputStackPanel}">
             <TextBlock>Nombre del solicitante</TextBlock>
             <TextBox Text="{Binding Model.NombreDelSolicitante}" ></TextBox>
-            <TextBlock>Área del solicitante</TextBlock>
-            <TextBox Text="{Binding Model.AreaDelSolicitud}" ></TextBox>
+            
             <TextBlock>Fecha de solicitud</TextBlock>
             <DatePicker SelectedDate="{Binding Model.FechaDeSolicitud}"></DatePicker>
             <TextBlock>Puesto solicitado</TextBlock>
-            <DatePicker SelectedDate="{Binding Model.RolCandidato}"></DatePicker>
-            <TextBlock>Cantidad de personal</TextBlock>
-            <DatePicker SelectedDate="{Binding Model.CantidadDePersonal}"></DatePicker>
+            <controls:EnumComboBox SelectedValue="{Binding Model.RolCandidato}"></controls:EnumComboBox>
+            
             <TextBlock>Nivel idioma inglés</TextBlock>
-            <DatePicker SelectedDate="{Binding Model.NivelIdiomaIngles}"></DatePicker>
-            <TextBlock>Estado civil</TextBlock>
-            <DatePicker SelectedDate="{Binding Model.EstadoCivil}"></DatePicker>
+            <controls:EnumComboBox SelectedValue="{Binding Model.NivelIdiomaIngles}"></controls:EnumComboBox>
+            
             <TextBlock>Rango de edad</TextBlock>
-            <DatePicker SelectedDate="{Binding Model.EdadRango}"></DatePicker>
-            <TextBlock>Sexo</TextBlock>
-            <DatePicker SelectedDate="{Binding Model.SexoDelCandidato}"></DatePicker>
+            <TextBox Text="{Binding Model.EdadRango}"></TextBox>
+            
             <TextBlock>Proyecto</TextBlock>
-            <DatePicker SelectedDate="{Binding Model.Proyecto}"></DatePicker>
-            <TextBlock>Fecha de ingreso</TextBlock>
-            <DatePicker SelectedDate="{Binding Model.FechaEstimadaDeIngreso}"></DatePicker>
-            <TextBlock>Experiencia laboral</TextBlock>
-            <DatePicker SelectedDate="{Binding Model.ExperienciaLaboral}"></DatePicker>
+            <TextBox Text="{Binding Model.Proyecto}"></TextBox>
+            
+            
             <TextBlock>Competencias o habilidades</TextBlock>
-            <DatePicker SelectedDate="{Binding Model.CompetenciasOHabilidades}"></DatePicker>
-            <TextBlock>Certificaciones necesarias</TextBlock>
-            <DatePicker SelectedDate="{Binding Model.CertificacionesNecesarias}"></DatePicker>
+            <TextBox Text="{Binding Model.CompetenciasOHabilidades}"></TextBox>
+            
             <TextBlock>Instrumento de evaluación</TextBlock>
-            <DatePicker SelectedDate="{Binding Model.AplicacionDeInstrumentoDeEvaluacion}"></DatePicker>
-            <TextBlock>Sueldo</TextBlock>
-            <DatePicker SelectedDate="{Binding Model.Sueldo}"></DatePicker>
+            <controls:EnumComboBox SelectedValue="{Binding Model.InstrumentoDeEvaluacion}"></controls:EnumComboBox>
+            
             <TextBlock>Observaciones</TextBlock>
-            <DatePicker SelectedDate="{Binding Model.Observaciones}"></DatePicker>
+            <TextBox Text="{Binding Model.Observaciones}"></TextBox>
 
 
         </StackPanel> 
         
+        
        
-        <StackPanel Grid.Column="1">
-            
+        <StackPanel Grid.Column="1" Style="{StaticResource DataInputStackPanel}">
+            <TextBlock>Área del solicitante</TextBlock>
+            <controls:EnumComboBox SelectedValue="{Binding Model.AreaDelSolicitante}"></controls:EnumComboBox>
+            <TextBlock>Fecha de ingreso</TextBlock>
+            <DatePicker SelectedDate="{Binding Model.FechaEstimadaDeIngreso}"></DatePicker>
+            <TextBlock>Cantidad de personal</TextBlock>
+            <TextBox Text="{Binding Model.CantidadDePersonal}"></TextBox>
+            <TextBlock>Estado civil</TextBlock>
+            <controls:EnumComboBox SelectedValue="{Binding Model.EstadoCivil}"></controls:EnumComboBox>
+            <TextBlock>Sexo</TextBlock>
+            <controls:EnumComboBox SelectedValue="{Binding Model.Sexo}"></controls:EnumComboBox>
+            <TextBlock>Experiencia laboral</TextBlock>
+            <TextBox Text="{Binding Model.ExperienciaLaboral}"></TextBox>
+            <TextBlock>Certificaciones necesarias</TextBlock>
+            <TextBox Text="{Binding Model.CertificacionesNecesarias}"></TextBox>
+            <TextBlock>Sueldo</TextBlock>
+            <TextBox Text="{Binding Model.Sueldo}"></TextBox>
         </StackPanel>
     </Grid>
 </Window>
