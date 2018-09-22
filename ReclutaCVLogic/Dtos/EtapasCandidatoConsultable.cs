@@ -16,6 +16,8 @@ namespace ReclutaCVLogic.Dtos
 
         }
 
+        public int CandidatoId { get; }
+
         /// <summary>
         /// Información sobre la evaluación de un candidato, o null si el candidato aun no ha sido evaluado
         /// </summary>
