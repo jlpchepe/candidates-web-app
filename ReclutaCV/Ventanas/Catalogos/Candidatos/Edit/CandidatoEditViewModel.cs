@@ -1,21 +1,9 @@
 ﻿using PropertyChanged;
 using ReclutaCV.Base.Edit;
-using ReclutaCV.Base.Window;
-using ReclutaCV.Candidatos.List;
-using ReclutaCV.Interfaces;
-using ReclutaCV.Utils.Commands;
-using ReclutaCV.Utils.Eventos;
-using ReclutaCVData;
 using ReclutaCVData.Entidades;
 using ReclutaCVLogic.Servicios;
 using ReclutaCVLogic.Utils.Helpers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Input;
 
 namespace ReclutaCV.Candidatos.Edit
 {
