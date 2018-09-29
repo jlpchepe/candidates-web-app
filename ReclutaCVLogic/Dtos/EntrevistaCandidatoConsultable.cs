@@ -12,15 +12,15 @@ namespace ReclutaCVLogic.Dtos
     public class EntrevistaCandidatoConsultable
     {
         public EntrevistaCandidatoConsultable(
-            string observaciones, 
-            DateTime fecha
+            DateTime fecha,
+            string observaciones
         )
         {
             Observaciones = observaciones;
             Fecha = fecha;
         }
         
-        public string Observaciones { get; set; }
         public DateTime Fecha { get; set; }
+        public string Observaciones { get; set; }
     }
 }

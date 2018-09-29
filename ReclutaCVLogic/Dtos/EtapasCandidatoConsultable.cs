@@ -11,9 +11,25 @@ namespace ReclutaCVLogic.Dtos
     /// </summary>
     public class EtapasCandidatoConsultable
     {
-        public EtapasCandidatoConsultable()
-        {
+        public EtapasCandidatoConsultable() { }
 
+        public EtapasCandidatoConsultable(
+            int candidatoId, 
+            EvaluacionCurriculumCandidatoConsultable evaluacionCurriculum, 
+            PrimeraLlamadaCandidatoConsultable primeraLlamada, 
+            IReadOnlyCollection<ExamenCandidatoConsultable> examenes, 
+            EntrevistaCandidatoConsultable entrevista, 
+            AnalisisCandidatoConsultable analisis, 
+            LlamadaPropuestaEconomicaCandidatoConsultable llamadaPropuestaEconomica
+        )
+        {
+            CandidatoId = candidatoId;
+            EvaluacionCurriculum = evaluacionCurriculum;
+            PrimeraLlamada = primeraLlamada;
+            Examenes = examenes;
+            Entrevista = entrevista;
+            Analisis = analisis;
+            LlamadaPropuestaEconomica = llamadaPropuestaEconomica;
         }
 
         public int CandidatoId { get; }

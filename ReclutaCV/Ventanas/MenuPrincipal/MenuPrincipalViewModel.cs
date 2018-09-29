@@ -26,7 +26,14 @@ namespace ReclutaCV.Ventanas.MenuPrincipal
 
         private async void InitializeFirstDbContextFireForget()
         {
-            var a = await this.db().Candidato.FirstOrDefaultAsync();
+            try
+            {
+                var a = await this.db().Candidato.FirstOrDefaultAsync();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         private readonly Func<Db> db;

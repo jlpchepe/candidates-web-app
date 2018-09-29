@@ -47,11 +47,42 @@ namespace ReclutaCVLogic.Servicios
         /// Obtiene un DTO con toda la información actual acerca del seguimiento del candidato
         /// </summary>
         /// <returns></returns>
-        public async Task<EtapasCandidatoConsultable> ObtenerInformacionEtapasCandidato(
-            int candidatoId
-        )
+        public Task<EtapasCandidatoConsultable> ObtenerInformacionEtapasCandidato(int candidatoId)
         {
-            return null;
+            return Task.FromResult(
+                new EtapasCandidatoConsultable(
+                    candidatoId,
+                    new EvaluacionCurriculumCandidatoConsultable(
+                        DateTime.Now,
+                        null
+                    ),
+                    new PrimeraLlamadaCandidatoConsultable(
+                        DateTime.Now,
+                        null
+                    ),
+                    new List<ExamenCandidatoConsultable>
+                    {
+                        new ExamenCandidatoConsultable(1, TipoExamenCandidato.AdministradorDeProyectos, DateTime.Now, 100, "Ninguna"),
+                        new ExamenCandidatoConsultable(2, TipoExamenCandidato.Analista, DateTime.Now, 60, "Ninguna"),
+                    },
+                    new EntrevistaCandidatoConsultable(
+                        DateTime.Now,
+                        null
+                    ),
+                    new AnalisisCandidatoConsultable(
+                        DateTime.Now,
+                        null,
+                        null,
+                        false
+                    ),
+                    new LlamadaPropuestaEconomicaCandidatoConsultable(
+                        DateTime.Now,
+                        null,
+                        false,
+                        10000
+                    )
+                )
+             );
         }
     }
 }
