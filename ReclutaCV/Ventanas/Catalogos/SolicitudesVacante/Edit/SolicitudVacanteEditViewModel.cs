@@ -1,5 +1,6 @@
 ﻿using ReclutaCV.Base.Edit;
 using ReclutaCVData.Entidades;
+using ReclutaCVLogic.Servicios;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,11 +11,21 @@ namespace ReclutaCV.Ventanas.Catalogos.SolicitudesVacante.Edit
 {
     public class SolicitudVacanteEditViewModel : BaseEditViewModel<SolicitudVacante, SolicitudVacanteEditView, int>
     {
+        private readonly SolicitudVacantesService solicitudVacantesService;
+
         protected override Task<SolicitudVacante> CargarExistente(int id)
         {
             throw new NotImplementedException();
         }
+        public SolicitudVacanteEditViewModel(
+            SolicitudVacantesService solicitudVacantesService
+       
+            )
+        {
+            this.solicitudVacantesService= solicitudVacantesService
+                
 
+        }
         protected override Task<SolicitudVacante> CargarNuevo()
         {
             throw new NotImplementedException();
@@ -22,12 +33,12 @@ namespace ReclutaCV.Ventanas.Catalogos.SolicitudesVacante.Edit
 
         protected override Task Insert()
         {
-            throw new NotImplementedException();
+            this.solicitudVacantesService.Insert(this.Model);
         }
 
         protected override Task Update()
         {
-            throw new NotImplementedException();
+            
         }
     }
 }
