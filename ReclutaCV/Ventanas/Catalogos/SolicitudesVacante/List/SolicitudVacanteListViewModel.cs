@@ -2,6 +2,7 @@
 using ReclutaCV.Ventanas.Catalogos.SolicitudesVacante.Edit;
 using ReclutaCVData.Entidades;
 using ReclutaCVLogic.Servicios;
+using ReclutaCVLogic.Utils.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,32 +13,39 @@ namespace ReclutaCV.Ventanas.Catalogos.SolicitudesVacante.List
 {
     public class SolicitudVacanteListViewModel : BaseListViewModel<SolicitudVacante, SolicitudVacanteListView, SolicitudVacanteEditViewModel>
     {
+        private readonly SolicitudVacantesService solicitudVacanteService;
+        private readonly Func<SolicitudVacanteEditViewModel> solicitudVacanteEditViewModelFactory;
+
         public SolicitudVacanteListViewModel(
             SolicitudVacantesService SolicitudVacanteService,
             Func<SolicitudVacanteEditViewModel> SolicitudVacanteEditViewModelFactory
             )
         {
-
+            solicitudVacanteService = SolicitudVacanteService;
+            solicitudVacanteEditViewModelFactory = SolicitudVacanteEditViewModelFactory;
         }
 
         protected override Task<IReadOnlyCollection<SolicitudVacante>> ObtenerItems()
         {
-            throw new NotImplementedException();
+            return this.solicitudVacanteService.FindAll();
         }
 
-        protected override Task OnAgregar()
+        protected override async Task OnAgregar()
         {
-            throw new NotImplementedException();
+            await this.solicitudVacanteEditViewModelFactory().CargarNuevoYAbrirVentana();
         }
 
         protected override Task OnBorrar(SolicitudVacante item)
         {
-            throw new NotImplementedException();
-        }
+            this.solicitudVacanteService.Delete(item.Id);
+            return TaskHelper.CreateEmptyTask();
 
-        protected override Task OnEditar(SolicitudVacante item)
+                }
+
+        protected override async Task OnEditar(SolicitudVacante item)
         {
-            throw new NotImplementedException();
+            await this.solicitudVacanteEditViewModelFactory().CargarExistenteYAbrirVentana(item.Id);
+
         }
     }
 }
