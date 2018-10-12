@@ -15,30 +15,28 @@ namespace ReclutaCV.Ventanas.Catalogos.SolicitudesVacante.Edit
 
         protected override Task<SolicitudVacante> CargarExistente(int id)
         {
-            throw new NotImplementedException();
+            return null;
         }
         public SolicitudVacanteEditViewModel(
             SolicitudVacantesService solicitudVacantesService
-       
-            )
+        )
         {
-            this.solicitudVacantesService= solicitudVacantesService
-                
-
+            this.solicitudVacantesService = solicitudVacantesService;
         }
+
         protected override Task<SolicitudVacante> CargarNuevo()
         {
-            throw new NotImplementedException();
+            return Task.FromResult(new SolicitudVacante());
         }
 
-        protected override Task Insert()
+        protected override async Task Insert()
         {
-            this.solicitudVacantesService.Insert(this.Model);
+            await this.solicitudVacantesService.Insert(this.Model);
         }
 
-        protected override Task Update()
+        protected override async Task Update()
         {
-            
+            await this.solicitudVacantesService.Update(this.Model);
         }
     }
 }

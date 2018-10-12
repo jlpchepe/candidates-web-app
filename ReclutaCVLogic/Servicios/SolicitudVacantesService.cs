@@ -2,6 +2,7 @@
 using ReclutaCVData.Entidades;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
@@ -11,8 +12,6 @@ namespace ReclutaCVLogic.Servicios
 {
     public class SolicitudVacantesService
     {
-        public Func<Db> db { get; }
-
         public SolicitudVacantesService(
             Func<Db> db
         )
@@ -20,31 +19,36 @@ namespace ReclutaCVLogic.Servicios
             this.db = db;
         }
 
+        private Func<Db> db { get; }
+
         /// <summary>
         /// Obtiene todos las solicitudes existentes
         /// </summary>
-        public IReadOnlyCollection<SolicitudVacante> FindAll()
+        public async Task<IReadOnlyCollection<SolicitudVacante>> FindAll()
         {
-            return this.db().SolicitudVacante.ToList();
+            using (var c = this.db())
+            {
+                return await c.SolicitudVacante.ToListAsync();
+            }
         }
 
-        public void Insert(SolicitudVacante SolicitudVacanteAInsertar)
+        public async Task Insert(SolicitudVacante SolicitudVacanteAInsertar)
         {
             using (var c = this.db())
             {
                 c.SolicitudVacante.Add(SolicitudVacanteAInsertar);
-                c.SaveChanges();
+                await c.SaveChangesAsync();
             }
         }
 
-        public void Update(
+        public async Task Update(
             SolicitudVacante SolicitudVacante
         )
         {
             using (var c = this.db())
             {
                 c.SolicitudVacante.AddOrUpdate(SolicitudVacante);
-                c.SaveChanges();
+                await c.SaveChangesAsync();
             }
         }
     }
