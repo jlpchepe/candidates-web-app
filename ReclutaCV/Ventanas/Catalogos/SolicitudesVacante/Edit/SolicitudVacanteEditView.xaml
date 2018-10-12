@@ -7,6 +7,7 @@
         xmlns:local="clr-namespace:ReclutaCV.Ventanas.Catalogos.SolicitudesVacante.Edit"
         mc:Ignorable="d"
         Title="SolicitudVacanteEditView" SizeToContent="Height" Width="800">
+    <StackPanel> 
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
@@ -64,4 +65,11 @@
             <TextBox Text="{Binding Model.Sueldo}"></TextBox>
         </StackPanel>
     </Grid>
+    <Border Style="{StaticResource EditButtonsBorder}">
+        <StackPanel>
+            <Button Command="{Binding GuardarCommand}">Guardar</Button>
+            <Button Command="{Binding CerrarVentanaCommand}">Cerrar</Button>
+        </StackPanel>
+    </Border>
+    </StackPanel>
 </Window>

@@ -1,6 +1,8 @@
 ﻿using ReclutaCV.Candidatos.Edit;
 using ReclutaCV.Candidatos.List;
 using ReclutaCV.Utils.Commands;
+using ReclutaCV.Ventanas.Catalogos.SolicitudesVacante.Edit;
+using ReclutaCV.Ventanas.Catalogos.SolicitudesVacante.List;
 using ReclutaCVData;
 using ReclutaCVLogic.Servicios;
 using System;
@@ -47,5 +49,17 @@ namespace ReclutaCV.Ventanas.MenuPrincipal
 
             candidatoList.AbrirVentana();
         });
+        public ICommand VerListadoDeSolicitudDeVacantes => new SimpleCommand(() =>
+        {
+            var service = new SolicitudVacantesService(db);
+
+            var SolicitudVacanteList = new SolicitudVacanteListViewModel(
+                service,
+                () => new SolicitudVacanteEditViewModel(service)
+            );
+
+            SolicitudVacanteList.AbrirVentana();
+        });
+
     }
 }
