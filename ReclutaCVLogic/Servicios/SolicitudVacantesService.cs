@@ -50,25 +50,26 @@ namespace ReclutaCVLogic.Servicios
                 c.SolicitudVacante.AddOrUpdate(SolicitudVacante);
                 await c.SaveChangesAsync();
             }
-            
+
         }
 
-        public SolicitudVacante FindById(int id)
+        public Task<SolicitudVacante> FindById(int id)
         {
             using (var c = this.db())
             {
-                return c.SolicitudVacante.Find(id);
+                return c.SolicitudVacante.FindAsync(id);
 
             }
         }
 
-        public void Delete(int id)
+        public async Task Delete(int id)
         {
             using (var c = this.db())
             {
                 c.SolicitudVacante.Remove(c.SolicitudVacante.Find(id));
-                c.SaveChanges();
+                await c.SaveChangesAsync();
             }
         }
+    }
 }
 

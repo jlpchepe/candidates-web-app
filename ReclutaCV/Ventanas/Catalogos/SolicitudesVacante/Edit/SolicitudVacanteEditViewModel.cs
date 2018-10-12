@@ -12,6 +12,7 @@ namespace ReclutaCV.Ventanas.Catalogos.SolicitudesVacante.Edit
 {
     public class SolicitudVacanteEditViewModel : BaseEditViewModel<SolicitudVacante, SolicitudVacanteEditView, int>
     {
+        private readonly SolicitudVacantesService solicitudVacantesService;
 
         public SolicitudVacanteEditViewModel(
             SolicitudVacantesService solicitudVacantesService
@@ -27,17 +28,15 @@ namespace ReclutaCV.Ventanas.Catalogos.SolicitudesVacante.Edit
 
         protected override async Task Update()
         {
-            this.solicitudVacantesService.Update(this.Model);
-            return TaskHelper.CreateEmptyTask();
+            await this.solicitudVacantesService.Update(this.Model);
         }
         protected override Task<SolicitudVacante> CargarExistente(int id)
         {
-            return Task.FromResult(this.solicitudVacantesService.FindById(id));
+            return this.solicitudVacantesService.FindById(id);
         }
         protected override Task<SolicitudVacante> CargarNuevo()
         {
             return Task.FromResult(new SolicitudVacante());
-            await this.solicitudVacantesService.Update(this.Model);
         }
     }
 }

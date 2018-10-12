@@ -35,12 +35,10 @@ namespace ReclutaCV.Ventanas.Catalogos.SolicitudesVacante.List
             await this.solicitudVacanteEditViewModelFactory().CargarNuevoYAbrirVentana();
         }
 
-        protected override Task OnBorrar(SolicitudVacante item)
+        protected override async Task OnBorrar(SolicitudVacante item)
         {
-            this.solicitudVacanteService.Delete(item.Id);
-            return TaskHelper.CreateEmptyTask();
-
-                }
+            await this.solicitudVacanteService.Delete(item.Id);
+        }
 
         protected override async Task OnEditar(SolicitudVacante item)
         {
