@@ -11,6 +11,7 @@ namespace ReclutaCVLogic.Dtos
     /// </summary>
     public class PrimeraLlamadaCandidatoConsultable
     {
+        public PrimeraLlamadaCandidatoConsultable() { }
         public PrimeraLlamadaCandidatoConsultable(
             DateTime fecha, 
             string observaciones

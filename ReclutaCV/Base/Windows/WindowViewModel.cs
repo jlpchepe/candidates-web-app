@@ -1,16 +1,11 @@
-﻿using ReclutaCV.Interfaces;
-using ReclutaCV.Utils.Commands;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ReclutaCV.Utils.Commands;
+using System.Windows;
 using System.Windows.Input;
 
-namespace ReclutaCV.Base.Window
+namespace ReclutaCV.Base.Windows
 {
     public class WindowViewModel<TView>
-        where TView: ISimpleWindow, new()
+        where TView: Window, new()
     {
         private TView Ventana { get; set; }
 

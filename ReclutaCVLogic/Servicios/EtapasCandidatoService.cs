@@ -3,6 +3,7 @@ using ReclutaCVData.Entidades;
 using ReclutaCVLogic.Dtos;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,7 +22,7 @@ namespace ReclutaCVLogic.Servicios
         {
             this.db = db;
         }
-        readonly Func<Db> db;
+        private readonly Func<Db> db;
 
         public async Task RegistrarEvaluacionCurriculumCandidato(
             int candidatoId,
@@ -43,46 +44,98 @@ namespace ReclutaCVLogic.Servicios
             }
         }
 
+        public async Task ObtenerInformacionEtapasCandidato(
+            int candidatoId,
+            EvaluacionCurriculumCandidatoConsultable evaluacionCurriculumCandidato,
+            PrimeraLlamadaCandidatoConsultable primeraLlamadaCandidato,
+            IReadOnlyCollection<ExamenCandidatoConsultable> examenes,
+            EntrevistaCandidatoConsultable entrevista,
+            AnalisisCandidatoConsultable analisisCandidato,
+            LlamadaPropuestaEconomicaCandidatoConsultable llamadaPropuestaEconomica
+        )
+        {
+
+        }
+
+
         /// <summary>
         /// Obtiene un DTO con toda la información actual acerca del seguimiento del candidato
         /// </summary>
         /// <returns></returns>
-        public Task<EtapasCandidatoConsultable> ObtenerInformacionEtapasCandidato(int candidatoId)
+        public async Task<EtapasCandidatoConsultable> ObtenerInformacionEtapasCandidato(int candidatoId)
         {
-            return Task.FromResult(
-                new EtapasCandidatoConsultable(
+            using (var c = this.db())
+            {
+                return new EtapasCandidatoConsultable(
                     candidatoId,
-                    new EvaluacionCurriculumCandidatoConsultable(
-                        DateTime.Now,
-                        null
-                    ),
-                    new PrimeraLlamadaCandidatoConsultable(
-                        DateTime.Now,
-                        null
-                    ),
-                    new List<ExamenCandidatoConsultable>
-                    {
-                        new ExamenCandidatoConsultable(1, TipoExamenCandidato.AdministradorDeProyectos, DateTime.Now, 100, "Ninguna"),
-                        new ExamenCandidatoConsultable(2, TipoExamenCandidato.Analista, DateTime.Now, 60, "Ninguna"),
-                    },
-                    new EntrevistaCandidatoConsultable(
-                        DateTime.Now,
-                        null
-                    ),
-                    new AnalisisCandidatoConsultable(
-                        DateTime.Now,
-                        null,
-                        null,
-                        false
-                    ),
-                    new LlamadaPropuestaEconomicaCandidatoConsultable(
-                        DateTime.Now,
-                        null,
-                        false,
-                        10000
-                    )
-                )
-             );
+                    await c.EvaluacionCurriculumCandidato
+                        .Where(x => x.CandidatoId == candidatoId)
+                        .Select(x => 
+                            new EvaluacionCurriculumCandidatoConsultable()
+                            {
+                                FechaEvaluacion = x.FechaEvaluacion,
+                                Observaciones = x.Observaciones
+                            }
+                        ).FirstOrDefaultAsync(),
+                    await c.PrimeraLlamadaCandidato
+                        .Where(x => x.CandidatoId == candidatoId)
+                        .Select(x => 
+                            new PrimeraLlamadaCandidatoConsultable()
+                            {
+                                Fecha = x.Fecha,
+                                Observaciones = x.Observaciones
+                            }
+                        )
+                        .FirstOrDefaultAsync(),
+                    await c.ExamenCandidato
+                        .Where(x => x.CandidatoId == candidatoId)
+                        .Select(x =>
+                            new ExamenCandidatoConsultable()
+                            {
+                                Id = x.Id,
+                                Calificacion = x.Calificacion,
+                                Fecha = x.Fecha,
+                                Observaciones = x.Observaciones,
+                                Tipo = x.Tipo
+                            }
+                        )
+                        .ToListAsync(),
+                    await c.EntrevistaCandidato
+                        .Where(x => x.CandidatoId == candidatoId)
+                        .Select(x =>
+                            new EntrevistaCandidatoConsultable()
+                            {
+                                Fecha = x.Fecha,
+                                Observaciones = x.Observaciones
+                            }
+                        )
+                        .FirstOrDefaultAsync(),
+                    await c.AnalisisCandidato
+                        .Where(x => x.CandidatoId == candidatoId)
+                        .Select(x =>
+                            new AnalisisCandidatoConsultable()
+                            {
+                                Aceptado = x.Aceptado,
+                                Fecha = x.Fecha,
+                                ObservacionesRecursosHumanos = x.ObservacionesRecursosHumanos,
+                                ObservacionesTecnicas = x.ObservacionesTecnicas
+                            }
+                        )
+                        .FirstOrDefaultAsync(),
+                    await c.LlamadaPropuestaEconomicaCandidato
+                        .Where(x => x.CandidatoId == candidatoId)
+                        .Select(x =>
+                            new LlamadaPropuestaEconomicaCandidatoConsultable()
+                            {
+                                CandidatoAcepto = x.CandidatoAcepto,
+                                Fecha = x.Fecha,
+                                Observaciones = x.Observaciones,
+                                SueldoOfrecido = x.SueldoOfrecido
+                            }
+                        )
+                        .FirstOrDefaultAsync()
+                );
+            }
         }
     }
 }

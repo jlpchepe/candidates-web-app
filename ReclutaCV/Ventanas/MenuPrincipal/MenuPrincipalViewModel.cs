@@ -3,6 +3,7 @@ using ReclutaCV.Candidatos.List;
 using ReclutaCV.Utils.Commands;
 using ReclutaCV.Ventanas.Catalogos.SolicitudesVacante.Edit;
 using ReclutaCV.Ventanas.Catalogos.SolicitudesVacante.List;
+using ReclutaCV.Ventanas.Operativas.EtapasCandidato;
 using ReclutaCVData;
 using ReclutaCVLogic.Servicios;
 using System;
@@ -36,30 +37,45 @@ namespace ReclutaCV.Ventanas.MenuPrincipal
             }
         }
 
+        private Func<EtapasCandidatoViewModel> ObtenerEtapasCandidatoViewModelFactory()
+        {
+            var service = new EtapasCandidatoService(db);
+
+            EtapasCandidatoViewModel windowFactory() => 
+                new EtapasCandidatoViewModel(
+                    service
+                );
+
+            return windowFactory;
+        }
+
         private readonly Func<Db> db;
 
         public ICommand VerListadoCandidatos => new SimpleCommand(() =>
         {
             var candidatoService = new CandidatoService(this.db);
 
-            var candidatoList = new CandidatoListViewModel(
+            var window = new CandidatoListViewModel(
                 candidatoService,
-                () => new CandidatoEditViewModel(candidatoService)
+                () => new CandidatoEditViewModel(candidatoService),
+                ObtenerEtapasCandidatoViewModelFactory()
             );
 
-            candidatoList.AbrirVentana();
+            window.AbrirVentana();
         });
         public ICommand VerListadoDeSolicitudDeVacantes => new SimpleCommand(() =>
         {
             var service = new SolicitudVacantesService(db);
 
-            var SolicitudVacanteList = new SolicitudVacanteListViewModel(
+            var window = new SolicitudVacanteListViewModel(
                 service,
                 () => new SolicitudVacanteEditViewModel(service)
             );
 
-            SolicitudVacanteList.AbrirVentana();
+            window.AbrirVentana();
         });
+
+        
 
     }
 }

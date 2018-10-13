@@ -1,5 +1,5 @@
 ﻿using ReclutaCV.Base.Edit;
-using ReclutaCV.Base.Window;
+using ReclutaCV.Base.Windows;
 using ReclutaCVLogic.Dtos;
 using ReclutaCVLogic.Servicios;
 using System;

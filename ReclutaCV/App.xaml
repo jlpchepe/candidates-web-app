@@ -16,6 +16,7 @@
         <SolidColorBrush x:Key="ThirdColor">Beige</SolidColorBrush>
         <SolidColorBrush x:Key="FourthColor">#DFDCE3</SolidColorBrush>
         <converters:EnumDescriptionConverter x:Key="EnumDescriptionConverter"></converters:EnumDescriptionConverter>
+        <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"></converters:BooleanToVisibilityConverter>
         
         <Style TargetType="{x:Type controls:EnumComboBox}" BasedOn="{StaticResource {x:Type ComboBox}}"></Style>
 

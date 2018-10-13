@@ -11,6 +11,7 @@ namespace ReclutaCVLogic.Dtos
     /// </summary>
     public class LlamadaPropuestaEconomicaCandidatoConsultable
     {
+        public LlamadaPropuestaEconomicaCandidatoConsultable() { }
         public LlamadaPropuestaEconomicaCandidatoConsultable(
             DateTime fecha, 
             string observaciones, 
@@ -26,7 +27,7 @@ namespace ReclutaCVLogic.Dtos
 
         public DateTime Fecha { get; set; }
         public string Observaciones { get; set; }
-        public bool CandidatoAcepto { get; set; }
+        public bool? CandidatoAcepto { get; set; }
         public decimal? SueldoOfrecido { get; set; }
     }
 }

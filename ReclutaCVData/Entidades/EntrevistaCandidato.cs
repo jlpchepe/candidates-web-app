@@ -12,9 +12,9 @@ namespace ReclutaCVData.Entidades
     public class EntrevistaCandidato
     {
         [Key]
-        [ForeignKey(nameof(PrimeraLlamadaCandidato))]
-        public int PrimeraLlamadaCandidatoId { get; set; }
-        public PrimeraLlamadaCandidato PrimeraLlamadaCandidato { get; set; }
+        [ForeignKey(nameof(Candidato))]
+        public int CandidatoId { get; set; }
+        public Candidato Candidato { get; set; }
 
         public DateTime Fecha { get; set; }
 

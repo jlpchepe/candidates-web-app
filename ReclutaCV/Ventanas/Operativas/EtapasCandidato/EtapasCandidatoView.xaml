@@ -7,8 +7,12 @@
         xmlns:controls="clr-namespace:ReclutaCV.Controls"
         mc:Ignorable="d"
         Title="EtapasCandidatoView" Height="450" Width="800">
+    <Window.Resources>
+        <Style TargetType="StackPanel" BasedOn="{StaticResource DataInputStackPanel}">
+        </Style>
+    </Window.Resources>
     <TabControl>
-        <TabItem Header="Evaluación de CV">
+        <TabItem Header="Evaluación de CV" Visibility="{Binding TieneEvaluacionCurriculum, Converter={StaticResource BooleanToVisibilityConverter}}">
             <StackPanel>
                 <TextBlock>Fecha de evaluación</TextBlock>
                 <DatePicker SelectedDate="{Binding EvaluacionCurriculum.FechaEvaluacion}"></DatePicker>
@@ -16,7 +20,7 @@
                 <TextBox Text="{Binding EvaluacionCurriculum.Observaciones}"></TextBox>
             </StackPanel>
         </TabItem>
-        <TabItem Header="Pre-entrevista">
+        <TabItem Header="Pre-entrevista" Visibility="{Binding TienePrimeraLlamada, Converter={StaticResource BooleanToVisibilityConverter}}">
             <StackPanel>
                 <TextBlock>Fecha</TextBlock>
                 <DatePicker SelectedDate="{Binding PrimeraLlamada.Fecha}"></DatePicker>
@@ -24,8 +28,8 @@
                 <TextBox Text="{Binding PrimeraLlamada.Observaciones}"></TextBox>
             </StackPanel>
         </TabItem>
-        <TabItem Header="Exámenes">
-            <DataGrid Grid.Row="1" ItemsSource="{Binding Items}" SelectedItem="{Binding Seleccionado}" >
+        <TabItem Header="Exámenes" Visibility="{Binding TieneExamenes, Converter={StaticResource BooleanToVisibilityConverter}}">
+            <DataGrid Grid.Row="1" ItemsSource="{Binding Examenes}" SelectedItem="{Binding Seleccionado}" >
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Tipo de examen" Binding="{Binding Tipo, Converter={StaticResource EnumDescriptionConverter}}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Fecha" Binding="{Binding Fecha}"></DataGridTextColumn>
@@ -34,7 +38,7 @@
                 </DataGrid.Columns>
             </DataGrid>
         </TabItem>
-        <TabItem Header="Entrevista">
+        <TabItem Header="Entrevista" Visibility="{Binding TieneEntrevista, Converter={StaticResource BooleanToVisibilityConverter}}">
             <StackPanel>
                 <TextBlock>Fecha</TextBlock>
                 <TextBox Text="{Binding Model.Fecha}"></TextBox>
@@ -42,11 +46,24 @@
                 <TextBox Text="{Binding Model.Observaciones}"></TextBox>
             </StackPanel>
         </TabItem>
-        <TabItem Header="Análisis">
-
+        <TabItem Header="Análisis" Visibility="{Binding TieneAnalisis, Converter={StaticResource BooleanToVisibilityConverter}}">
+            <StackPanel>
+                <TextBlock>Fecha de evaluación</TextBlock>
+                <DatePicker SelectedDate="{Binding Analisis.FechaEvaluacion}"></DatePicker>
+                <TextBlock>Observaciones</TextBlock>
+                <TextBox Text="{Binding Analisis.Observaciones}"></TextBox>
+            </StackPanel>
         </TabItem>
-        <TabItem Header="Propuesta económica">
-
+        <TabItem Header="Propuesta económica" Visibility="{Binding TieneLlamadaPropuestaEconomica, Converter={StaticResource BooleanToVisibilityConverter}}">
+            <StackPanel>
+                <TextBlock>Fecha de evaluación</TextBlock>
+                <DatePicker SelectedDate="{Binding LlamadaPropuestaEconomica.FechaEvaluacion}"></DatePicker>
+                <TextBlock>Observaciones</TextBlock>
+                <TextBox Text="{Binding LlamadaPropuestaEconomica.Observaciones}"></TextBox>
+                <CheckBox IsChecked="{Binding LlamadaPropuestaEconomica.CandidatoAcepto}" IsThreeState="True">Aceptó</CheckBox>
+                <TextBlock>Sueldo ofrecido</TextBlock>
+                <TextBox Text="{Binding LlamadaPropuestaEconomica.SueldoOfrecidos}"></TextBox>
+            </StackPanel>
         </TabItem>
     </TabControl>
 </Window>

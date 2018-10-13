@@ -11,6 +11,7 @@ namespace ReclutaCVLogic.Dtos
     /// </summary>
     public class AnalisisCandidatoConsultable
     {
+        public AnalisisCandidatoConsultable() { }
         public AnalisisCandidatoConsultable( 
             DateTime fecha, 
             string observacionesRecursosHumanos, 

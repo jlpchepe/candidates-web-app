@@ -2,6 +2,7 @@
 using ReclutaCV.Base.List;
 using ReclutaCV.Candidatos.Edit;
 using ReclutaCV.Utils.Commands;
+using ReclutaCV.Ventanas.Operativas.EtapasCandidato;
 using ReclutaCVData;
 using ReclutaCVData.Entidades;
 using ReclutaCVLogic.Servicios;
@@ -21,11 +22,13 @@ namespace ReclutaCV.Candidatos.List
     {
         public CandidatoListViewModel(
             CandidatoService candidatoService,
-            Func<CandidatoEditViewModel> candidatoEditViewModelFactory
+            Func<CandidatoEditViewModel> candidatoEditViewModelFactory,
+            Func<EtapasCandidatoViewModel> etapasCandidatoViewModelFactory
         )
         {
             this.candidatoService = candidatoService;
             this.candidatoEditViewModelFactory = candidatoEditViewModelFactory;
+            this.etapasCandidatoViewModelFactory = etapasCandidatoViewModelFactory;
 
             this.RefrescarItemsSync();
         }
@@ -33,6 +36,7 @@ namespace ReclutaCV.Candidatos.List
         private readonly CandidatoService candidatoService;
 
         private readonly Func<CandidatoEditViewModel> candidatoEditViewModelFactory;
+        private readonly Func<EtapasCandidatoViewModel> etapasCandidatoViewModelFactory;
 
         private CandidatoEditViewModel ObtenerVentanaEdicion() {
             var ventanaEdicion = this.candidatoEditViewModelFactory();
@@ -40,6 +44,17 @@ namespace ReclutaCV.Candidatos.List
 
             return ventanaEdicion;
         }
+
+        public ICommand AbrirEtapasCandidatoSeleccionado => new AsyncCommand(
+            async () =>
+            {
+                var etapasCandidato = this.etapasCandidatoViewModelFactory();
+                await etapasCandidato.CargarExistenteYAbrirVentana(this.Seleccionado.Id);
+                etapasCandidato.AbrirVentana();
+            },
+            () => this.TieneSeleccionado
+        );
+
 
         protected override Task<IReadOnlyCollection<Candidato>> ObtenerItems()
         {

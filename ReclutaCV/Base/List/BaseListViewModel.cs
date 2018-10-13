@@ -1,5 +1,5 @@
 ﻿using PropertyChanged;
-using ReclutaCV.Base.Window;
+using ReclutaCV.Base.Windows;
 using ReclutaCV.Candidatos.Edit;
 using ReclutaCV.Candidatos.List;
 using ReclutaCV.Interfaces;
@@ -16,13 +16,13 @@ namespace ReclutaCV.Base.List
 {
     [ImplementPropertyChanged]
     public abstract class BaseListViewModel<TItem, TView, TEditViewModel> : WindowViewModel<TView>
-        where TView : ISimpleWindow, new()
+        where TView : Window, new()
         where TItem : class
         where TEditViewModel : ISaveEntity
     {
         public IReadOnlyCollection<TItem> Items { get; private set; }
         public TItem Seleccionado { get; set; }
-        private bool TieneSeleccionado => this.Seleccionado != null;
+        protected bool TieneSeleccionado => this.Seleccionado != null;
         
         protected abstract Task<IReadOnlyCollection<TItem>> ObtenerItems();
         protected abstract Task OnAgregar();

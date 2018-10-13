@@ -1,5 +1,5 @@
 ﻿using PropertyChanged;
-using ReclutaCV.Base.Window;
+using ReclutaCV.Base.Windows;
 using ReclutaCV.Interfaces;
 using ReclutaCV.Utils.Commands;
 using ReclutaCV.Utils.Eventos;
@@ -8,13 +8,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace ReclutaCV.Base.Edit
 {
     [ImplementPropertyChanged]
     public abstract class BaseEditViewModel<TModel, TView, TId> : WindowViewModel<TView>, ISaveEntity
-        where TView: ISimpleWindow, new()
+        where TView: Window, new()
     {
         public event ActionEventHandler OnSavedEntity;
 

@@ -17,6 +17,7 @@
                 <Button Content="Crear" Command="{Binding Agregar}"></Button>
                 <Button Content="Editar" Command="{Binding Editar}"></Button>
                 <Button Content="Borrar" Command="{Binding Borrar}"></Button>
+                <Button Content="Ver etapas" Command="{Binding AbrirEtapasCandidatoSeleccionado}"></Button>
             </StackPanel>
         </Border>
         <DataGrid Grid.Row="1" ItemsSource="{Binding Items}" SelectedItem="{Binding Seleccionado}" >

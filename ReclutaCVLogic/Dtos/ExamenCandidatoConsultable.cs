@@ -12,6 +12,7 @@ namespace ReclutaCVLogic.Dtos
     /// </summary>
     public class ExamenCandidatoConsultable
     {
+        public ExamenCandidatoConsultable() { }
         public ExamenCandidatoConsultable(
             int id,
             TipoExamenCandidato tipo, 
