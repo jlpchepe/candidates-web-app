@@ -18,5 +18,6 @@ namespace ReclutaCVData.Entidades
         public DateTime Fecha { get; set; }
 
         public string Observaciones { get; set; }
+        public bool ContinuoConElProceso { get; set; }
     }
 }

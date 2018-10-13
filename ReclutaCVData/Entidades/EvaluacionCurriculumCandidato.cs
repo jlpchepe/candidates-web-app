@@ -31,6 +31,7 @@ namespace ReclutaCVData.Entidades
         
         public DateTime FechaEvaluacion { get; set; }
 
+        public bool CumplioConPerfil { get; set; }
         public string Observaciones { get; set; }
     }
 }

@@ -21,16 +21,24 @@
         </Border>
         <DataGrid Grid.Row="1" ItemsSource="{Binding Items}" SelectedItem="{Binding Seleccionado}" >
             <DataGrid.Columns>
-            
-                <DataGridTextColumn Header="Cantidad de Vacantes" Binding="{Binding CantidadDeVacantes}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Rol Vacante" Binding="{Binding RolVacante}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Solicitante" Binding="{Binding NombreDelSolicitante}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Área" Binding="{Binding AreaDelSolicitante}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Fecha de solicitud" Binding="{Binding FechaDeSolicitud}"></DataGridTextColumn>
-                
-                
-                
-                
-                
-                
+                <DataGridTextColumn Header="Vacante" Binding="{Binding RolVacante}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Cantidad de vacantes" Binding="{Binding CantidadDeVacantes}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Cantidad de personal" Binding="{Binding CantidadDePersonal}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Inglès" Binding="{Binding NivelIdiomaIngles}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Estado civil" Binding="{Binding EstadoCivil}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Edad" Binding="{Binding EdadRango}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Sexo" Binding="{Binding SexoDelCandidato}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Proyecto" Binding="{Binding Proyecto}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Fecha de ingreso" Binding="{Binding FechaEstimadaDeIngreso}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Experiencia" Binding="{Binding ExperienciaLaboral}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Competencias o habilidades" Binding="{Binding CompetenciasOHabilidades}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Certificaciones" Binding="{Binding CertificacionesNecesarias}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Evaluacion" Binding="{Binding AplicacionDeInstrumentoDeEvaluacion}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Sueldo" Binding="{Binding Sueldo}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Observaciones" Binding="{Binding Observaciones}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

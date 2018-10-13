@@ -6,8 +6,47 @@ using System.Threading.Tasks;
 
 namespace ReclutaCVLogic.Reportes.ReporteDeSeguimientoACandidatos
 {
-    class ReporteDeSeguimientoACandidatos
+    public class ReporteDeSeguimientoACandidatos
     {
+        public ReporteDeSeguimientoACandidatos(
+            int curriculumsRecibidos, 
+            int cumplioConElPerfil, 
+            int continuoConElProceso, 
+            int realizaronExamen, 
+            int entrevistados, 
+            int analizados, 
+            int aceptados, 
+            int contratados, 
+            int descartados, 
+            int noLeIntereso, 
+            int pendientesDeExamen, 
+            int pendientesDeEntrevistar, 
+            int pendientesPorAnalizar, 
+            int rechazados, 
+            int noAceptoLaOferta, 
+            int aceptoLaOferta,
+            List<EtapasCandidato> candidatos
+        )
+        {
+            CurriculumsRecibidos = curriculumsRecibidos;
+            CumplioConElPerfil = cumplioConElPerfil;
+            ContinuoConElProceso = continuoConElProceso;
+            RealizaronExamen = realizaronExamen;
+            Entrevistados = entrevistados;
+            Analizados = analizados;
+            Aceptados = aceptados;
+            Contratados = contratados;
+            Descartados = descartados;
+            NoLeIntereso = noLeIntereso;
+            PendientesDeExamen = pendientesDeExamen;
+            PendientesDeEntrevistar = pendientesDeEntrevistar;
+            PendientesPorAnalizar = pendientesPorAnalizar;
+            Rechazados = rechazados;
+            NoAceptoLaOferta = noAceptoLaOferta;
+            AceptoLaOferta = aceptoLaOferta;
+            Candidatos = candidatos;
+        }
+
         public int CurriculumsRecibidos { get; set; }
         public int CumplioConElPerfil { get; set; }
         public int ContinuoConElProceso { get; set; }
@@ -23,6 +62,7 @@ namespace ReclutaCVLogic.Reportes.ReporteDeSeguimientoACandidatos
         public int PendientesPorAnalizar { get; set; }
         public int Rechazados { get; set; }
         public int NoAceptoLaOferta { get; set; }
+        public int AceptoLaOferta { get; }
         public List<EtapasCandidato> Candidatos { get; set; }
     }   
 }

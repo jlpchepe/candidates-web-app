@@ -67,6 +67,7 @@
     <Compile Include="DbConfig.cs" />
     <Compile Include="Entidades\AnalisisCandidato.cs" />
     <Compile Include="Entidades\Candidato.cs" />
+    <Compile Include="Entidades\ContratacionCandidato.cs" />
     <Compile Include="Entidades\EvaluacionCurriculumCandidato.cs" />
     <Compile Include="Entidades\Curso.cs" />
     <Compile Include="Db.cs" />
