@@ -48,7 +48,7 @@ namespace ReclutaCVLogic.Servicios
                 c.SaveChanges();
 
             }
-            
+
         }
 
         public SolicitudVacante FindById(int id)
@@ -68,5 +68,6 @@ namespace ReclutaCVLogic.Servicios
                 c.SaveChanges();
             }
         }
+    }
 }
 

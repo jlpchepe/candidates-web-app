@@ -29,6 +29,7 @@ namespace ReclutaCVData
         public DbSet<ExamenCandidato> ExamenCandidato { get; set; }
         public DbSet<LlamadaPropuestaEconomicaCandidato> LlamadaPropuestaEconomicaCandidato { get; set; }
         public DbSet<PrimeraLlamadaCandidato> PrimeraLlamadaCandidato { get; set; }
+        public DbSet<ContratacionCandidato> ContratacionCandidato { get; set; }
         public DbSet<SolicitudVacante> SolicitudVacante { get; set; }
 
         public static void InitMigrations()

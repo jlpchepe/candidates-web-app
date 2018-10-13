@@ -23,6 +23,8 @@ namespace ReclutaCV.Ventanas.Catalogos.SolicitudesVacante.List
         {
             solicitudVacanteService = SolicitudVacanteService;
             solicitudVacanteEditViewModelFactory = SolicitudVacanteEditViewModelFactory;
+
+            this.RefrescarItemsSync();
         }
 
         protected override Task<IReadOnlyCollection<SolicitudVacante>> ObtenerItems()

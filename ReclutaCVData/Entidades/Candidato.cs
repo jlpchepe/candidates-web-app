@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -124,5 +125,22 @@ namespace ReclutaCVData.Entidades
         public DateTime FechaDeIngresoALaEmpresa { get; set; } = DateTime.Now;
         public EstatusCandidato Estatus { get; set; }
         public string Comentarios { get; set; }
+        public bool Rechazado { get; set; }
+
+        [InverseProperty(nameof(ReclutaCVData.Entidades.PrimeraLlamadaCandidato.Candidato))]
+        public PrimeraLlamadaCandidato PrimeraLlamada { get; set; }
+
+        [InverseProperty(nameof(ReclutaCVData.Entidades.ExamenCandidato.Candidato))]
+        public List<ExamenCandidato> Examenes{ get; set; }
+
+        [InverseProperty(nameof(ReclutaCVData.Entidades.EntrevistaCandidato.Candidato))]
+        public EntrevistaCandidato Entrevista { get; set; }
+
+        [InverseProperty(nameof(ReclutaCVData.Entidades.AnalisisCandidato.Candidato))]
+        public AnalisisCandidato Analisis { get; set; }
+
+        [InverseProperty(nameof(ReclutaCVData.Entidades.LlamadaPropuestaEconomicaCandidato.Candidato))]
+        public LlamadaPropuestaEconomicaCandidato LlamadaPropuestaEconomica { get; set; } 
+
     }
 }
