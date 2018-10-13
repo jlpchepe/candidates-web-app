@@ -96,9 +96,9 @@
     <Compile Include="Migrations\201809150358069_ModCambioExamenCandidatoMapeo.Designer.cs">
       <DependentUpon>201809150358069_ModCambioExamenCandidatoMapeo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201809290435294_ModSolicitudVacante1.cs" />
-    <Compile Include="Migrations\201809290435294_ModSolicitudVacante1.Designer.cs">
-      <DependentUpon>201809290435294_ModSolicitudVacante1.cs</DependentUpon>
+    <Compile Include="Migrations\201810122051554_ModSolicitudVacanteCambios.cs" />
+    <Compile Include="Migrations\201810122051554_ModSolicitudVacanteCambios.Designer.cs">
+      <DependentUpon>201810122051554_ModSolicitudVacanteCambios.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -127,8 +127,8 @@
     <EmbeddedResource Include="Migrations\201809150358069_ModCambioExamenCandidatoMapeo.resx">
       <DependentUpon>201809150358069_ModCambioExamenCandidatoMapeo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201809290435294_ModSolicitudVacante1.resx">
-      <DependentUpon>201809290435294_ModSolicitudVacante1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201810122051554_ModSolicitudVacanteCambios.resx">
+      <DependentUpon>201810122051554_ModSolicitudVacanteCambios.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

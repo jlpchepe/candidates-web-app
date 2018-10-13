@@ -12,8 +12,6 @@ namespace ReclutaCVLogic.Servicios
 {
     public class SolicitudVacantesService
     {
-        public Func<Db> db { get; }
-
         public SolicitudVacantesService(
             Func<Db> db
         )
@@ -21,51 +19,55 @@ namespace ReclutaCVLogic.Servicios
             this.db = db;
         }
 
+        private Func<Db> db { get; }
+
         /// <summary>
         /// Obtiene todos las solicitudes existentes
         /// </summary>
         public async Task<IReadOnlyCollection<SolicitudVacante>> FindAll()
         {
-            return await this.db().SolicitudVacante.ToListAsync();
+            using (var c = this.db())
+            {
+                return await c.SolicitudVacante.ToListAsync();
+            }
         }
 
-        public void Insert(SolicitudVacante SolicitudVacanteAInsertar)
+        public async Task Insert(SolicitudVacante SolicitudVacanteAInsertar)
         {
             using (var c = this.db())
             {
                 c.SolicitudVacante.Add(SolicitudVacanteAInsertar);
-                c.SaveChanges();
+                await c.SaveChangesAsync();
             }
         }
 
-        public void Update(
+        public async Task Update(
             SolicitudVacante SolicitudVacante
         )
         {
             using (var c = this.db())
             {
                 c.SolicitudVacante.AddOrUpdate(SolicitudVacante);
-                c.SaveChanges();
-
+                await c.SaveChangesAsync();
             }
 
         }
 
-        public SolicitudVacante FindById(int id)
+        public Task<SolicitudVacante> FindById(int id)
         {
             using (var c = this.db())
             {
-                return c.SolicitudVacante.Find(id);
+                return c.SolicitudVacante.FindAsync(id);
 
             }
         }
 
-        public void Delete(int id)
+        public async Task Delete(int id)
         {
             using (var c = this.db())
             {
                 c.SolicitudVacante.Remove(c.SolicitudVacante.Find(id));
-                c.SaveChanges();
+                await c.SaveChangesAsync();
             }
         }
     }
