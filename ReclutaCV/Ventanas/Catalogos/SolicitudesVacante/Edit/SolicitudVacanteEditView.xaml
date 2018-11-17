@@ -20,12 +20,13 @@
             <TextBlock>Fecha de solicitud</TextBlock>
             <DatePicker SelectedDate="{Binding Model.FechaDeSolicitud}"></DatePicker>
             <TextBlock>Puesto solicitado</TextBlock>
-            <controls:EnumComboBox SelectedValue="{Binding Model.RolCandidato}"></controls:EnumComboBox>
+            <controls:EnumComboBox SelectedValue="{Binding Model.PuestoSolicitado}"></controls:EnumComboBox>
+          
             
             <TextBlock>Nivel idioma inglés</TextBlock>
-            <controls:EnumComboBox SelectedValue="{Binding Model.NivelIdiomaIngles}"></controls:EnumComboBox>
-            
-            <TextBlock>Rango de edad</TextBlock>
+            <TextBox Text="{Binding Model.NivelIdiomaIngles}" ></TextBox>
+
+                <TextBlock>Rango de edad</TextBlock>
             <TextBox Text="{Binding Model.EdadRango}"></TextBox>
             
             <TextBlock>Proyecto</TextBlock>
@@ -56,7 +57,7 @@
             <TextBlock>Estado civil</TextBlock>
             <controls:EnumComboBox SelectedValue="{Binding Model.EstadoCivil}"></controls:EnumComboBox>
             <TextBlock>Sexo</TextBlock>
-            <controls:EnumComboBox SelectedValue="{Binding Model.Sexo}"></controls:EnumComboBox>
+            <controls:EnumComboBox SelectedValue="{Binding Model.SexoDelCandidato}"></controls:EnumComboBox>
             <TextBlock>Experiencia laboral</TextBlock>
             <TextBox Text="{Binding Model.ExperienciaLaboral}"></TextBox>
             <TextBlock>Certificaciones necesarias</TextBlock>

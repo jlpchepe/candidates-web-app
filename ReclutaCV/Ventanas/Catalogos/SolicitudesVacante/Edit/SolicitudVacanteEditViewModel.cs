@@ -36,7 +36,19 @@ namespace ReclutaCV.Ventanas.Catalogos.SolicitudesVacante.Edit
         }
         protected override Task<SolicitudVacante> CargarNuevo()
         {
-            return Task.FromResult(new SolicitudVacante());
+            var SolicitudVacante = new SolicitudVacante();
+
+            SolicitudVacante.FechaDeSolicitud = DateTime.Now;
+
+            SolicitudVacante.FechaEstimadaDeIngreso = DateTime.Now;
+
+            SolicitudVacante.SexoDelCandidato = Sexo.Indistinto;
+
+          
+
+         
+            return Task.FromResult(SolicitudVacante);
+
         }
     }
 }

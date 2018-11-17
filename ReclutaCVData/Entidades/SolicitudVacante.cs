@@ -22,16 +22,6 @@ namespace ReclutaCVData.Entidades
         Juridico
     }
 
-    public enum NivelIdiomaIngles
-    {
-        [Description("Básico")]
-        Basico,
-        Intermedio,
-        Avanzado,
-        Otro
-
-    }
-
     public enum EstadoCivil
     {
         Casado,
@@ -66,10 +56,10 @@ namespace ReclutaCVData.Entidades
         public DateTime FechaDeSolicitud { get; set; }
         public RolCandidato PuestoSolicitado { get; set; }
         public int CantidadDePersonal { get; set; }
-        public NivelIdiomaIngles NivelIdiomaIngles { get; set; }
+        public decimal NivelIdiomaIngles { get; set; }
         public EstadoCivil EstadoCivil { get; set; } 
-        public int EdadRango { get; set; }
-        public Sexo? SexoDelCandidato { get; set; }
+        public string EdadRango { get; set; }
+        public Sexo SexoDelCandidato { get; set; }
         public string Proyecto { get; set; }
         public DateTime FechaEstimadaDeIngreso { get; set; }
         public string ExperienciaLaboral { get; set; }

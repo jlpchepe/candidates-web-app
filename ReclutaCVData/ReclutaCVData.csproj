@@ -104,6 +104,18 @@
     <Compile Include="Migrations\201811170219031_ModCambiosLlavesPrimarias.Designer.cs">
       <DependentUpon>201811170219031_ModCambiosLlavesPrimarias.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811170427115_ModCambioTipoNivelIngles.cs" />
+    <Compile Include="Migrations\201811170427115_ModCambioTipoNivelIngles.Designer.cs">
+      <DependentUpon>201811170427115_ModCambioTipoNivelIngles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811170439056_ModCambioEdadRango.cs" />
+    <Compile Include="Migrations\201811170439056_ModCambioEdadRango.Designer.cs">
+      <DependentUpon>201811170439056_ModCambioEdadRango.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811170451377_ModCambioSexoSolicitudVacante.cs" />
+    <Compile Include="Migrations\201811170451377_ModCambioSexoSolicitudVacante.Designer.cs">
+      <DependentUpon>201811170451377_ModCambioSexoSolicitudVacante.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Proyecto.cs" />
@@ -136,6 +148,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811170219031_ModCambiosLlavesPrimarias.resx">
       <DependentUpon>201811170219031_ModCambiosLlavesPrimarias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811170427115_ModCambioTipoNivelIngles.resx">
+      <DependentUpon>201811170427115_ModCambioTipoNivelIngles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811170439056_ModCambioEdadRango.resx">
+      <DependentUpon>201811170439056_ModCambioEdadRango.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811170451377_ModCambioSexoSolicitudVacante.resx">
+      <DependentUpon>201811170451377_ModCambioSexoSolicitudVacante.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
