@@ -100,6 +100,10 @@
     <Compile Include="Migrations\201810122051554_ModSolicitudVacanteCambios.Designer.cs">
       <DependentUpon>201810122051554_ModSolicitudVacanteCambios.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811170219031_ModCambiosLlavesPrimarias.cs" />
+    <Compile Include="Migrations\201811170219031_ModCambiosLlavesPrimarias.Designer.cs">
+      <DependentUpon>201811170219031_ModCambiosLlavesPrimarias.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Proyecto.cs" />
@@ -129,6 +133,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810122051554_ModSolicitudVacanteCambios.resx">
       <DependentUpon>201810122051554_ModSolicitudVacanteCambios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811170219031_ModCambiosLlavesPrimarias.resx">
+      <DependentUpon>201811170219031_ModCambiosLlavesPrimarias.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
