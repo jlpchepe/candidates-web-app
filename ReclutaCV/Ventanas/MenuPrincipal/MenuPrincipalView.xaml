@@ -10,7 +10,7 @@
     >
     <StackPanel Background="{StaticResource ThirdColor}">
         <Border>
-            <TextBlock Style="{StaticResource TitleTextBlock}">Menú</TextBlock>
+            <TextBlock Style="{StaticResource TitleTextBlock}">Gestión de candidatos</TextBlock>
         </Border>
         <StackPanel Style="{StaticResource DefaultStackpanelStyle}" Background="Aquamarine">
             <Button Command="{Binding VerListadoCandidatos}">Candidatos</Button>

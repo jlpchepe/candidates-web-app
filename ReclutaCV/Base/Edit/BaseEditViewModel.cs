@@ -20,7 +20,7 @@ namespace ReclutaCV.Base.Edit
         public event ActionEventHandler OnSavedEntity;
 
         public TModel Model { get; private set; }
-        public ICommand GuardarCommand => new SimpleCommand(this.Guardar);
+        public ICommand GuardarCommand => new AsyncCommand(this.Guardar);
         
         protected abstract Task Insert();
         protected abstract Task Update();
@@ -29,15 +29,15 @@ namespace ReclutaCV.Base.Edit
 
         protected bool Editando { get; private set; }
 
-        protected void Guardar()
+        protected async Task Guardar()
         {
             if (this.Editando)
             {
-                Update();
+                await Update();
             }
             else
             {
-                Insert();
+                await Insert();
             }
 
             this.OnSavedEntity?.Invoke();

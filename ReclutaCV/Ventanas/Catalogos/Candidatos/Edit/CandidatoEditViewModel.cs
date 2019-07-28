@@ -7,6 +7,18 @@ using System.Threading.Tasks;
 
 namespace ReclutaCV.Candidatos.Edit
 {
+    public enum VeredictoFinalEstatus
+    {
+        Aceptado, 
+        Rechazado
+    }
+
+    public enum PropuestaEconomicaEstatus
+    {
+        Aceptada,
+        Rechazada
+    }
+
     /// <summary>
     /// Ventana para edición de candidatos
     /// </summary>
@@ -21,6 +33,10 @@ namespace ReclutaCV.Candidatos.Edit
         }
 
         private readonly CandidatoService candidatoService;
+
+        //TODO: quitar esto
+        public VeredictoFinalEstatus VeredictoFinalEstatus { get; set; }
+        public PropuestaEconomicaEstatus PropuestaEconomicaEstatus { get; set; }
 
         protected override Task Insert()
         {

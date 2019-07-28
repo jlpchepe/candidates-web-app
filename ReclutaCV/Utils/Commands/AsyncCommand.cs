@@ -30,15 +30,24 @@ namespace ReclutaCV.Utils.Commands
         }
         private readonly Func<Task> accionAEjecutar;
         private readonly Func<bool> puedeEjecutar;
+        private bool TaskIsBeingExecuted { get; set; } = false;
 
         public bool CanExecute(object parameter)
         {
-            return this.puedeEjecutar();
+            return !TaskIsBeingExecuted && this.puedeEjecutar();
         }
 
         public async void Execute(object parameter)
         {
-            await this.accionAEjecutar();
+            TaskIsBeingExecuted = true;
+            try
+            {
+                await this.accionAEjecutar();
+            }
+            finally
+            {
+                TaskIsBeingExecuted = false;
+            }
         }
 
         public event EventHandler CanExecuteChanged
