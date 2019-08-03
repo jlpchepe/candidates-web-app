@@ -120,6 +120,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Base\Behaviours\ItemActivationBehaviour.cs" />
     <Compile Include="Base\Edit\BaseEditViewModel.cs" />
     <Compile Include="Base\List\BaseListViewModel.cs" />
     <Compile Include="Base\Windows\WindowViewModel.cs" />

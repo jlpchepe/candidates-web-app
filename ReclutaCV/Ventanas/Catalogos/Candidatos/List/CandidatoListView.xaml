@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ReclutaCV.Candidatos.List"
+        xmlns:base2="clr-namespace:ReclutaCV.Base.Behaviours"
         mc:Ignorable="d"
         WindowState="Maximized"
         Title="Candidatos" Height="450" Width="800">
@@ -20,7 +21,8 @@
                 <Button Content="Ver etapas" Command="{Binding AbrirEtapasCandidatoSeleccionado}"></Button>
             </StackPanel>
         </Border>
-        <DataGrid Grid.Row="1" ItemsSource="{Binding Items}" SelectedItem="{Binding Seleccionado}" >
+        <DataGrid Grid.Row="1" ItemsSource="{Binding Items}" SelectedItem="{Binding Seleccionado}" 
+                  base2:ItemActivationBehaviour.Command="{Binding Editar}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Bolsa" Binding="{Binding Bolsa, Converter={StaticResource EnumDescriptionConverter}}"></DataGridTextColumn>

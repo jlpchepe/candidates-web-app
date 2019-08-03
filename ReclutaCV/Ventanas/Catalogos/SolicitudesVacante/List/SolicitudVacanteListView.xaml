@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:base2="clr-namespace:ReclutaCV.Base.Behaviours"
         xmlns:local="clr-namespace:ReclutaCV.Ventanas.Catalogos.SolicitudesVacante.List"
         mc:Ignorable="d"
         Title="SolicitudVacanteListView" Height="450" Width="800">
@@ -19,7 +20,8 @@
                 <Button Content="Borrar" Command="{Binding Borrar}"></Button>
             </StackPanel>
         </Border>
-        <DataGrid Grid.Row="1" ItemsSource="{Binding Items}" SelectedItem="{Binding Seleccionado}" >
+        <DataGrid Grid.Row="1" ItemsSource="{Binding Items}" SelectedItem="{Binding Seleccionado}" 
+                  base2:ItemActivationBehaviour.Command="{Binding Editar}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Solicitante" Binding="{Binding NombreDelSolicitante}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Área" Binding="{Binding AreaDelSolicitante}"></DataGridTextColumn>

@@ -69,10 +69,9 @@ namespace ReclutaCV.Candidatos.List
             await this.ObtenerVentanaEdicion().CargarExistenteYAbrirVentana(item.Id);
         }
 
-        protected override Task OnBorrar(Candidato item)
+        protected override async Task OnBorrar(Candidato item)
         {
-            this.candidatoService.Delete(item.Id);
-            return TaskHelper.CompletedTask();
+            await this.candidatoService.Delete(item.Id);
         }
     }
 }

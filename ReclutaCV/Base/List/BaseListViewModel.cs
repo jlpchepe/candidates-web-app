@@ -33,7 +33,12 @@ namespace ReclutaCV.Base.List
             () => this.OnAgregar()
         );
         public ICommand Editar => new AsyncCommand(
-            () => this.OnEditar(this.Seleccionado),
+            async () => {
+                if(this.Seleccionado != null)
+                {
+                    await this.OnEditar(this.Seleccionado);
+                }
+            },
             () => TieneSeleccionado
         );
         public ICommand Borrar => new AsyncCommand(
