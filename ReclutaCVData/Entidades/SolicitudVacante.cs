@@ -61,33 +61,31 @@ namespace ReclutaCVData.Entidades
     {
         [Key]
         public int Id { get; set; }
-
-
         public int FolioCapitalHumano { get; set; }
-        public DateTime FechaDeSolicitud { get; set; }
-        public MotivoSolicitud Motivo { get; set; }
+        public DateTime FechaDeSolicitud { get; set; } = DateTime.Now;
+        public MotivoSolicitud Motivo { get; set; } = MotivoSolicitud.Proyecto;
         public string EspecifiqueMotivo { get; set; }
         public string NombreDelSolicitante { get; set; }
         public string PuestoDelSolicitante { get; set; }
-        public AreaDelSolicitante AreaDelSolicitante { get; set; }
+        public AreaDelSolicitante AreaDelSolicitante { get; set; } = AreaDelSolicitante.ProduccionOperacion;
         public string EspecifiqueAreaDelSolicitante { get; set; }
-        public int Sueldo { get; set; }
-        public TipoDeContrato TipoDeContrato { get; set; }
-        public string EspecifiqueTipoDeContrato { get; set; } 
-        public EstatusSolicitud Estatus { get; set; }
-        public RolCandidato PuestoSolicitado { get; set; }
+        public int? Sueldo { get; set; }
+        public TipoDeContrato TipoDeContrato { get; set; } = TipoDeContrato.TiempoIndefinido;
+        public string EspecifiqueTipoDeContrato { get; set; }
+        public EstatusSolicitud Estatus { get; set; } = EstatusSolicitud.NoAutorizada;
+        public RolCandidato PuestoSolicitado { get; set; } = RolCandidato.IngenieroDeSoftware;
+        public string EspecifiquePuestoSolicitado { get; set; }
+        public NivelCandidato PuestoSolicitadoNivel { get; set; } = NivelCandidato.NoEspecificado;
         public string NombreDelJefeInmediato { get; set; }
         public string Proyecto { get; set; }
-        public decimal NivelIdiomaIngles { get; set; }
+        public decimal? NivelIdiomaIngles { get; set; }
         public string EdadRango { get; set; }
         public string EstadoCivil { get; set; }
-        public DateTime FechaEstimadaDeIngreso { get; set; }
+        public DateTime? FechaEstimadaDeIngreso { get; set; }
         public string ExperienciaLaboral { get;  set; }
         public string CompetenciasOHabilidades { get; set; }
         public string CertificacionesNecesarias { get; set; }
         public string TipoDeEvaluacion { get; set; }
-        
         public string Observaciones { get; set; }
-
     }
 }

@@ -41,14 +41,8 @@ namespace ReclutaCV.Ventanas.Catalogos.SolicitudesVacante.Edit
             SolicitudVacante.FechaDeSolicitud = DateTime.Now;
 
             SolicitudVacante.FechaEstimadaDeIngreso = DateTime.Now;
-
-            SolicitudVacante.SexoDelCandidato = Sexo.Indistinto;
-
-          
-
          
             return Task.FromResult(SolicitudVacante);
-
         }
     }
 }

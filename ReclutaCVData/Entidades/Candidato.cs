@@ -8,6 +8,8 @@ namespace ReclutaCVData.Entidades
 {
     public enum EstatusAcademico
     {
+        [Description("No especificado")]
+        NoEspecificado,
         Egresado,
         Titulado,
         Pasante,
@@ -15,19 +17,13 @@ namespace ReclutaCVData.Entidades
         Trunca
     }
 
-    public enum NivelCandidato
-    {
-        Principiante,
-        Junior,
-        Intermedio,
-        Senior
-
-    }
-
     public enum RolCandidato
     {
         [Description("Ingeniero de software")]
         IngenieroDeSoftware,
+        [Description("Ingeniero de software en soporte y mantenimiento")]
+        IngenieroDeSoftwareEnSoporteYMantenimiento,
+        [Description("Analista")]
         Analista,
         [Description("Administrador de proyecto")]
         AdministradorDeProyecto,
@@ -37,12 +33,26 @@ namespace ReclutaCVData.Entidades
         IngenieroDePruebas,
         [Description("Data engineer")]
         DataEngineer,
+        [Description("Arquitecto de software")]
+        ArquitectoSoftware,
         [Description("Otro")]
         Otro
     }
 
+    public enum NivelCandidato
+    {
+        [Description("No especificado")]
+        NoEspecificado,
+        Principiante,
+        Junior,
+        Intermedio,
+        Senior,
+    }
+
     public enum EstatusCandidato
     {
+        [Description("No especificado")]
+        NoEspecificado,
         [Description("Citado para examen")]
         CitadoParaExamen,
         [Description("Intereses altos")]
@@ -59,23 +69,31 @@ namespace ReclutaCVData.Entidades
         NoLeIntereso,
         [Description("Vacante detenida")]
         VacanteDetenida
-
-
     }
 
     public enum BolsaTrabajo
     {
+        [Description("No especificada")]
+        NoEspecificada,
+        [Description("Referencia interna")]
         ReferenciaInterna,
+        [Description("Referencia externa")]
         ReferenciaExterna,
+        [Description("OCCMundial")]
         OccMundial,
         Facebook,
+        [Description("Bolsa universitaria")]
         BolsaUniversitaria,
+        [Description("LinkedIn")]
         Linkedin,
         Twitter,
         Google,
+        [Description("Empleos TI")]
         EmpleosTi,
+        [Description("CompuTrabajo")]
         CompuTrabajo,
         Jobs,
+        [Description("Otra bolsa")]
         OtraBolsa
     }
 
@@ -88,6 +106,7 @@ namespace ReclutaCVData.Entidades
 
     public enum PropuestaEconomicaEstatus
     {
+        SinPropuesta,
         Aceptada,
         Rechazada
     }
@@ -104,7 +123,7 @@ namespace ReclutaCVData.Entidades
         public string Nombre { get; set; }
         public string Correo { get; set; }
         public string Telefono { get; set; }
-        public DateTime? FechaDeNacimiento { get; set; } = DateTime.Now;
+        public DateTime? FechaDeNacimiento { get; set; }
         public string EstadoCivil { get; set; }
         public string LugarNacimiento { get; set; }
         public string GeneralesComentarios { get; set; }
@@ -118,8 +137,8 @@ namespace ReclutaCVData.Entidades
 
         // Educación
         public string Carrera { get; set; }
-        public string Universidad { get; set; }
-        public EstatusAcademico? EstatusAcademico { get; set; }
+        public string Institucion { get; set; }
+        public EstatusAcademico EstatusAcademico { get; set; } = EstatusAcademico.NoEspecificado;
         public string Cursos { get; set; }
         public string Certificaciones { get; set; }
         public string CompetenciasOHabilidades { get; set; }
@@ -142,12 +161,12 @@ namespace ReclutaCVData.Entidades
         public DateTime? FechaPreentrevistaTelefonica { get; set; }
         public DateTime? FechaRecepcionSolicitudRegistro { get; set; }
         public string QuienLoContacto { get; set; }
-        public BolsaTrabajo? Bolsa { get; set; }
+        public BolsaTrabajo Bolsa { get; set; } = BolsaTrabajo.NoEspecificada;
         public string BolsaOtra { get; set; }
-        public RolCandidato? Rol { get; set; }
+        public RolCandidato Rol { get; set; } = RolCandidato.IngenieroDeSoftware;
         public string RolOtro { get; set; }
         public decimal? ExpectativaEconomica { get; set; }
-        public EstatusCandidato? Estatus { get; set; }
+        public EstatusCandidato Estatus { get; set; } = EstatusCandidato.NoEspecificado;
         public string ReclutamientoComentarios { get; set; }
 
         // Examen psicometrico
@@ -234,13 +253,13 @@ namespace ReclutaCVData.Entidades
         public string EntrevistaInglesComentarios { get; set; }
         public DateTime? EntrevistaGerenteAreaFecha { get; set; }
         public string EntrevistaGerenteAreaComentarios { get; set; }
-        public VeredictoFinalCandidato? VeredictoFinal { get; set; }
+        public VeredictoFinalCandidato VeredictoFinal { get; set; } = VeredictoFinalCandidato.EnEspera;
         public string VeredictoFinalNivelIdentificado { get; set; }
         public string VeredictoFinalComentarios { get; set; }
 
         // Propuesta económica
         public DateTime? PropuestaEconomicaFecha { get; set; }
-        public PropuestaEconomicaEstatus? PropuestaEconomicaEstatus { get; set; }
+        public PropuestaEconomicaEstatus PropuestaEconomicaEstatus { get; set; } = PropuestaEconomicaEstatus.SinPropuesta;
         public decimal? PropuestaEconomicaSueldo { get; set; }
         public string PropuestaEconomicaComentarios { get; set; }
 
