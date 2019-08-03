@@ -22,7 +22,24 @@
         </Border>
         <DataGrid Grid.Row="1" ItemsSource="{Binding Items}" SelectedItem="{Binding Seleccionado}" >
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Clave del puesto" Binding="{Binding PuestoClave}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Puesto" Binding="{Binding PuestoNombre}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Nombre del candidato (a)" Binding="{Binding Nombre }"></DataGridTextColumn>
+                <DataGridTextColumn Header="Correo" Binding="{Binding Correo}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Teléfono" Binding="{Binding Telefono }"></DataGridTextColumn>
+                <DataGridTextColumn Header="Carrera" Binding="{Binding Carrera }"></DataGridTextColumn>
+                <DataGridTextColumn Header="Institución" Binding="{Binding institucion }"></DataGridTextColumn>
+                <DataGridTextColumn Header="Estatus académico" Binding="{Binding EstatusAcademico, Converter={StaticResource EnumDescriptionConverter}}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Estatus del candidato" Binding="{Binding EstatusCandidato, Converter={StaticResource EnumDescriptionConverter}}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Fecha de actualización" Binding="{Binding FechaDeActualizacion }"></DataGridTextColumn>
+                <DataGridTextColumn Header="Proyecto" Binding="{Binding ProyectoNombre}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Folio de solicitud" Binding="{Binding SolicitudPersonalFolio}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Cursos" Binding="{Binding Cursos}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Certificaciones" Binding="{Binding Certificaciones}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Experiencia laboral" Binding="{Binding AñosDeExperiencia}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Recepción de CV" Binding="{Binding FechaRecepcionCurriculum}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Fecha de contacto" Binding="{Binding FechaDeContacto}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Fecha preentrevista" Binding="{Binding FechaPreentrevistaTelefonica}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Bolsa" Binding="{Binding Bolsa, Converter={StaticResource EnumDescriptionConverter}}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Fecha de contacto" Binding="{Binding FechaDeContacto}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Contacto" Binding="{Binding QuienLoContacto}"></DataGridTextColumn>

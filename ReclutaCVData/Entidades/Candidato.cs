@@ -8,11 +8,11 @@ namespace ReclutaCVData.Entidades
 {
     public enum EstatusAcademico
     {
-        Egresado,
         Titulado,
         Pasante,
         Estudiante,
-        Trunca
+        Trunca,
+        Técnico
     }
 
     public enum NivelCandidato
@@ -45,12 +45,12 @@ namespace ReclutaCVData.Entidades
     {
         [Description("Citado para examen")]
         CitadoParaExamen,
+        [Description("Citado para entrevista")]
+        CitadoParaEntrevista,
         [Description("Intereses altos")]
         InteresesAltos,
         [Description("Foráneo")]
         Foraneo,
-        [Description("En espera")]
-        EnEspera,
         [Description("Otra vacante")]
         OtraVacante,
         [Description("Analizando al candidato")]
@@ -58,7 +58,27 @@ namespace ReclutaCVData.Entidades
         [Description("No le interesó")]
         NoLeIntereso,
         [Description("Vacante detenida")]
-        VacanteDetenida
+        VacanteDetenida,
+        [Description("Candidato seleccionado")]
+        Seleccionado,
+        [Description("Candidato pre seleccionado")]
+        PreSeleccionado,
+        [Description("No cumple con el perfil (técnico)")]
+        NoCumpleConElPerfilTecnico,
+        [Description("No cumple con el perfil (habilidades)")]
+        NoCumpleConElPerfilHabilidades,
+        [Description("No cumple con el perfil")]
+        NoCumpleConElPerfil,
+        [Description("Por contactar")]
+        PorContactar,
+        [Description("Rechazado")]
+        Rechazado,
+        [Description("Rechazo oferta")]
+        RechazoOferta,
+
+
+
+
 
 
     }
@@ -118,7 +138,7 @@ namespace ReclutaCVData.Entidades
 
         // Educación
         public string Carrera { get; set; }
-        public string Universidad { get; set; }
+        public string Institucion { get; set; }
         public EstatusAcademico? EstatusAcademico { get; set; }
         public string Cursos { get; set; }
         public string Certificaciones { get; set; }
