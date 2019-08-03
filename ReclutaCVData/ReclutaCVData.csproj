@@ -124,6 +124,18 @@
     <Compile Include="Migrations\201908030720496_ModCandidatoFechaActualizacion.Designer.cs">
       <DependentUpon>201908030720496_ModCandidatoFechaActualizacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201908030740392_ModSolicitudVacanteCampoAgregados.cs" />
+    <Compile Include="Migrations\201908030740392_ModSolicitudVacanteCampoAgregados.Designer.cs">
+      <DependentUpon>201908030740392_ModSolicitudVacanteCampoAgregados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908030756529_ModCandidatoInstitucion.cs" />
+    <Compile Include="Migrations\201908030756529_ModCandidatoInstitucion.Designer.cs">
+      <DependentUpon>201908030756529_ModCandidatoInstitucion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908030824317_ModCandidatoYSolicitudRemovidosEnumNullables.cs" />
+    <Compile Include="Migrations\201908030824317_ModCandidatoYSolicitudRemovidosEnumNullables.Designer.cs">
+      <DependentUpon>201908030824317_ModCandidatoYSolicitudRemovidosEnumNullables.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Proyecto.cs" />
@@ -171,6 +183,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201908030720496_ModCandidatoFechaActualizacion.resx">
       <DependentUpon>201908030720496_ModCandidatoFechaActualizacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908030740392_ModSolicitudVacanteCampoAgregados.resx">
+      <DependentUpon>201908030740392_ModSolicitudVacanteCampoAgregados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908030756529_ModCandidatoInstitucion.resx">
+      <DependentUpon>201908030756529_ModCandidatoInstitucion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908030824317_ModCandidatoYSolicitudRemovidosEnumNullables.resx">
+      <DependentUpon>201908030824317_ModCandidatoYSolicitudRemovidosEnumNullables.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -66,7 +66,11 @@
             <GroupBox  Grid.Column="1" Header="Requerimientos del Puesto">
                 <StackPanel>
                     <TextBlock>Puesto solicitado</TextBlock>
-                    <TextBox Text="{Binding Model.PuestoSolicitado}" ></TextBox>
+                    <controls:EnumComboBox SelectedValue="{Binding Model.PuestoSolicitado}"></controls:EnumComboBox>
+                    <TextBlock>Especifique</TextBlock>
+                    <TextBox Text="{Binding Model.EspecifiquePuestoSolicitado}"></TextBox>
+                    <TextBlock>Nivel de puesto solicitud</TextBlock>
+                    <controls:EnumComboBox SelectedValue="{Binding Model.PuestoSolicitadoNivel}"></controls:EnumComboBox>
                     <TextBlock>Jefe inmediato</TextBlock>
                     <TextBox Text="{Binding Model.NombreDelJefeInmediato}" ></TextBox>
                     <TextBlock>Área, función y/o proyecto a asignar</TextBlock>

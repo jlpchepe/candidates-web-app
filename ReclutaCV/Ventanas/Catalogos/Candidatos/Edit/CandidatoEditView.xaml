@@ -19,6 +19,10 @@
             <Setter Property="Rows" Value="1"></Setter>
             <Setter Property="Columns" Value="2"></Setter>
         </Style>
+        <Style TargetType="wpfTool:DateTimePicker">
+            <Setter Property="Format" Value="Custom"></Setter>
+            <Setter Property="FormatString" Value="dd/MM/yyyy hh:mm tt"></Setter>
+        </Style>
     </Window.Resources>
     <StackPanel Margin="0">
         <TabControl>
@@ -64,7 +68,7 @@
                                 <TextBlock>Carrera</TextBlock>
                                 <TextBox Text="{Binding Model.Carrera}"></TextBox>
                                 <TextBlock>Institución</TextBlock>
-                                <TextBox Text="{Binding Model.Universidad}"></TextBox>
+                                <TextBox Text="{Binding Model.Institucion}"></TextBox>
                                 <TextBlock>Estatus académico</TextBlock>
                                 <controls:EnumComboBox SelectedValue="{Binding Model.EstatusAcademico}"></controls:EnumComboBox>
                                 <TextBlock>Cursos</TextBlock>
@@ -211,7 +215,7 @@
                                 </UniformGrid>
                                 <!--TODO: solo lectura-->
                                 <TextBlock>Calificación</TextBlock>
-                                <TextBox Text="{Binding ExamenProgramacionCalificacion}"></TextBox>
+                                <TextBox Text="{Binding ExamenProgramacionCalificacion, Mode=OneWay}"></TextBox>
                                 <TextBlock>Rango</TextBlock>
                                 <TextBox Text="{Binding Model.ExamenProgramacionRango}"></TextBox>
                             </StackPanel>
@@ -232,7 +236,7 @@
                                             <TextBox Text="{Binding Model.ExamenAnalistaTeoricoTotalReactivos}"></TextBox>
                                         </UniformGrid>
                                         <TextBlock>Calificación</TextBlock>
-                                        <TextBox Text="{Binding ExamenAnalistaTeoricoCalificacion}"></TextBox>
+                                        <TextBox Text="{Binding ExamenAnalistaTeoricoCalificacion, Mode=OneWay}"></TextBox>
                                         <TextBlock>Rango</TextBlock>
                                         <TextBox Text="{Binding Model.ExamenAnalistaTeoricoRango}"></TextBox>
                                     </StackPanel>
@@ -249,7 +253,7 @@
                                             <TextBox Text="{Binding Model.ExamenAnalistaPracticoTotalReactivos}"></TextBox>
                                         </UniformGrid>
                                         <TextBlock>Calificación</TextBlock>
-                                        <TextBox Text="{Binding ExamenAnalistaPracticoCalificacion}"></TextBox>
+                                        <TextBox Text="{Binding ExamenAnalistaPracticoCalificacion, Mode=OneWay}"></TextBox>
                                         <TextBlock>Rango</TextBlock>
                                         <TextBox Text="{Binding Model.ExamenAnalistaPracticoRango}"></TextBox>
                                     </StackPanel>
@@ -272,7 +276,7 @@
                                             <TextBox Text="{Binding Model.ExamenIngenieroPruebasTeoricoTotalReactivos}"></TextBox>
                                         </UniformGrid>
                                         <TextBlock>Calificación</TextBlock>
-                                        <TextBox Text="{Binding ExamenIngenieroPruebasTeoricoCalificacion}"></TextBox>
+                                        <TextBox Text="{Binding ExamenIngenieroPruebasTeoricoCalificacion, Mode=OneWay}"></TextBox>
                                         <TextBlock>Rango</TextBlock>
                                         <TextBox Text="{Binding Model.ExamenIngenieroPruebasTeoricoRango}"></TextBox>
                                     </StackPanel>
@@ -299,7 +303,7 @@
                                 </GroupBox>
                             </StackPanel>
                         </GroupBox>
-                        <StackPanel>
+                        <StackPanel Margin="0">
                             <GroupBox Header="Examen admin. de proyectos">
                                 <StackPanel>
                                     <TextBlock>Fecha</TextBlock>
@@ -314,7 +318,7 @@
                                         <TextBox Text="{Binding Model.ExamenAdministradorProyectoTotalReactivos}"></TextBox>
                                     </UniformGrid>
                                     <TextBlock>Calificación</TextBlock>
-                                    <TextBox Text="{Binding ExamenAdministradorProyectoCalificacion}"></TextBox>
+                                    <TextBox Text="{Binding ExamenAdministradorProyectoCalificacion, Mode=OneWay}"></TextBox>
                                     <TextBlock>Rango</TextBlock>
                                     <TextBox Text="{Binding Model.ExamenAdministradorProyectoRango}"></TextBox>
                                 </StackPanel>
@@ -329,7 +333,7 @@
                                         <TextBox Text="{Binding Model.ExamenPracticoSoporteBdTotalReactivos}"></TextBox>
                                     </UniformGrid>
                                     <TextBlock>Calificación</TextBlock>
-                                    <TextBox Text="{Binding ExamenPracticoSoporteBdCalificacion}"></TextBox>
+                                    <TextBox Text="{Binding ExamenPracticoSoporteBdCalificacion, Mode=OneWay}"></TextBox>
                                     <TextBlock>Rango</TextBlock>
                                     <TextBox Text="{Binding Model.ExamenPracticoSoporteBdRango}"></TextBox>
                                 </StackPanel>

@@ -2,6 +2,7 @@
 using ReclutaCVData.Entidades;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
@@ -11,22 +12,21 @@ namespace ReclutaCVLogic.Servicios
 {
     public class CandidatoService
     {
-        public Func<Db> db { get; }
-
         public CandidatoService(
             Func<Db> db
         )
         {
             this.db = db;
         }
+        private readonly Func<Db> db;
 
         /// <summary>
         /// Obtiene todos los candidatos existentes
         /// </summary>
-        public IReadOnlyCollection<Candidato> FindAll()
-        {
-            return this.db().Candidato.ToList();
-        }
+        public async Task<IReadOnlyCollection<Candidato>> FindAll() => 
+            await this.db().Candidato
+                .OrderByDescending(c => c.FechaDeContacto)
+                .ToListAsync();
 
         private Task<Candidato> FindByIdAttached(Db c, int id) => 
             c.Candidato.FindAsync(id);

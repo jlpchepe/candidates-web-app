@@ -63,6 +63,7 @@ namespace ReclutaCV.Ventanas.MenuPrincipal
 
             window.AbrirVentana();
         });
+
         public ICommand VerListadoDeSolicitudDeVacantes => new SimpleCommand(() =>
         {
             var service = new SolicitudVacantesService(db);
@@ -74,8 +75,5 @@ namespace ReclutaCV.Ventanas.MenuPrincipal
 
             window.AbrirVentana();
         });
-
-        
-
     }
 }

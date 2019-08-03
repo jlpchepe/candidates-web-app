@@ -56,10 +56,8 @@ namespace ReclutaCV.Candidatos.List
         );
 
 
-        protected override Task<IReadOnlyCollection<Candidato>> ObtenerItems()
-        {
-            return Task.FromResult(this.candidatoService.FindAll());
-        }
+        protected override Task<IReadOnlyCollection<Candidato>> ObtenerItems() => 
+            this.candidatoService.FindAll();
 
         protected override async Task OnAgregar()
         {
