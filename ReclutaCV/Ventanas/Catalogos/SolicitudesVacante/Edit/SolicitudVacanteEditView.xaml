@@ -32,12 +32,16 @@
                 <TextBox Text="{Binding Model.PuestoDelSolicitante}" ></TextBox>
                 <TextBlock>Área del solicitante</TextBlock>
                 <controls:EnumComboBox SelectedValue="{Binding Model.AreaDelSolicitante}"></controls:EnumComboBox>
+                <TextBlock>Especifique</TextBlock>
+                <TextBox Text="{Binding Model.EspecifiqueAreaDelSolicitante}" ></TextBox>
                 <GroupBox Header="Capital Humano">
                     <StackPanel>
                         <TextBlock>Sueldo</TextBlock>
                         <TextBox Text="{Binding Model.Sueldo}"></TextBox>
                         <TextBlock>Tipo de contrato</TextBlock>
                         <controls:EnumComboBox SelectedValue="{Binding Model.TipoDeContrato}"></controls:EnumComboBox>
+                        <TextBlock>Especifique</TextBlock>
+                        <TextBox Text="{Binding Model.EspecifiqueTipoDeContrato}" ></TextBox>
                         <TextBlock>Estatus</TextBlock>
                         <controls:EnumComboBox SelectedValue="{Binding Model.Estatus}"></controls:EnumComboBox>
                     </StackPanel>
@@ -55,8 +59,7 @@
                
                 
             
-                
-
+       
 
             </StackPanel>
 
@@ -73,7 +76,7 @@
                     <TextBlock>Edad (rango)</TextBlock>
                     <TextBox Text="{Binding Model.EdadRango}"></TextBox>
                     <TextBlock>Estado civil</TextBlock>
-                    <controls:EnumComboBox SelectedValue="{Binding Model.EstadoCivil}"></controls:EnumComboBox>
+                    <TextBox Text="{Binding Model.EstadoCivil}" ></TextBox>
                     <TextBlock>Fecha de ingreso</TextBlock>
                     <DatePicker SelectedDate="{Binding Model.FechaEstimadaDeIngreso}"></DatePicker>
                     <TextBlock>Experiencia laboral</TextBlock>
@@ -83,7 +86,7 @@
                     <TextBlock>Certificaciones necesarias</TextBlock>
                     <TextBox Text="{Binding Model.CertificacionesNecesarias}"></TextBox>
                     <TextBlock>Tipo de evaluación que se aplicará</TextBlock>
-                    <controls:EnumComboBox SelectedValue="{Binding Model.TipoDeEvaluacion}"></controls:EnumComboBox>
+                    <TextBox Text="{Binding Model.TipoDeEvaluacion}"></TextBox>
                     <TextBlock>Observaciones y Comentarios</TextBlock>
                     <TextBox Text="{Binding Model.Observaciones}"></TextBox>
                 </StackPanel>

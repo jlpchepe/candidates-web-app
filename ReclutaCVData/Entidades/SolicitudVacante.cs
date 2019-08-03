@@ -10,63 +10,83 @@ namespace ReclutaCVData.Entidades
 {
     public enum AreaDelSolicitante
     {
-        [Description("Comercial")]
+        [Description("Comercialización")]
         Comercial,
-        [Description("Administración y finanzas")]
-        AdministracionYFinanzas,
-        [Description("Producción")]
-        Produccion,
+        [Description("Administración y finanzas - Capital Humano")]
+        AdministracionYFinanzasCapitalHumano,
+        [Description("Administración y finanzas - Contable y Fiscal")]
+        AdministracionYFinanzasasContableYFiscal,
+        [Description("Producción - Operación")]
+        ProduccionOperacion,
+        [Description("Producción - Mesa de Servicios")]
+        ProduccionMesaDeServicios,
         [Description("Tecnologías y procesos")]
         TecnologiasYProcesos,
-        [Description("Jurídico")]
-        Juridico
+        [Description("Dirección General")]
+        DirecciónGeneral,
+        Otro
     }
 
-    public enum EstadoCivil
-    {
-        Casado,
-        Soltero
 
+    public enum MotivoSolicitud
+    {
+        PuestoNuevo,
+        Incapacidad,
+        Reemplazo,
+        Proyecto,
+        Practicante,
+        Otro
     }
-
-    public enum Sexo
-    {
-        Masculino,
-        Femenino,
-        Indistinto
-
-    }
-    public enum InstrumentoDeEvaluacion 
-    {
-        [Description("Programación")]
-        Programación,
-            [Description("Mesa de servicios")]
-        MesaDeServicios
         
+    public enum TipoDeContrato
+    {
+        [Description("Proyecto especifico")]
+        ProyectoEspecifico,
+        [Description("Periodo especifico")]
+        PeriodoEspecifico,
+        [Description("Tiempo indefinido")]
+        TiempoIndefinido,
+        Otro
     }
 
+    public enum EstatusSolicitud
+    {
+        Autorizada,
+        NoAutorizada,
+        Cancelada,
+        Detenida,
+
+    }
     public class SolicitudVacante
     {
         [Key]
         public int Id { get; set; }
-        public string NombreDelSolicitante { get; set; }
-        public AreaDelSolicitante AreaDelSolicitante { get; set; }
 
-        public int CantidadDeVacantes { get; set; }
+
+        public int FolioCapitalHumano { get; set; }
         public DateTime FechaDeSolicitud { get; set; }
+        public MotivoSolicitud Motivo { get; set; }
+        public string EspecifiqueMotivo { get; set; }
+        public string NombreDelSolicitante { get; set; }
+        public string PuestoDelSolicitante { get; set; }
+        public AreaDelSolicitante AreaDelSolicitante { get; set; }
+        public string EspecifiqueAreaDelSolicitante { get; set; }
+        public int Sueldo { get; set; }
+        public TipoDeContrato TipoDeContrato { get; set; }
+        public string EspecifiqueTipoDeContrato { get; set; } 
+        public EstatusSolicitud Estatus { get; set; }
         public RolCandidato PuestoSolicitado { get; set; }
-        public int CantidadDePersonal { get; set; }
-        public decimal NivelIdiomaIngles { get; set; }
-        public EstadoCivil EstadoCivil { get; set; } 
-        public string EdadRango { get; set; }
-        public Sexo SexoDelCandidato { get; set; }
+        public string NombreDelJefeInmediato { get; set; }
         public string Proyecto { get; set; }
+        public decimal NivelIdiomaIngles { get; set; }
+        public string EdadRango { get; set; }
+        public string EstadoCivil { get; set; }
         public DateTime FechaEstimadaDeIngreso { get; set; }
-        public string ExperienciaLaboral { get; set; }
+        public string ExperienciaLaboral { get;  set; }
         public string CompetenciasOHabilidades { get; set; }
         public string CertificacionesNecesarias { get; set; }
-        public InstrumentoDeEvaluacion AplicacionDeInstrumentoDeEvaluacion { get; set; }
-        public int Sueldo { get; set; }
+        public string TipoDeEvaluacion { get; set; }
+        
         public string Observaciones { get; set; }
 
     }
