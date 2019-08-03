@@ -74,7 +74,7 @@ namespace ReclutaCV.Candidatos.List
         protected override Task OnBorrar(Candidato item)
         {
             this.candidatoService.Delete(item.Id);
-            return TaskHelper.CreateEmptyTask();
+            return TaskHelper.CompletedTask();
         }
     }
 }

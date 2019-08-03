@@ -28,49 +28,50 @@ namespace ReclutaCVLogic.Servicios
             return this.db().Candidato.ToList();
         }
 
-        private Candidato FindByIdAttached(Db c, int id)
-        {
-            return c.Candidato.Find(id);
-        }
+        private Task<Candidato> FindByIdAttached(Db c, int id) => 
+            c.Candidato.FindAsync(id);
 
         /// <summary>
         /// Obtiene el candidato con el id especificado
         /// </summary>
-        public Candidato FindById(int id)
+        public async Task<Candidato> FindById(int id)
         {
             using (var c = this.db())
             {
-                return this.FindByIdAttached(c, id);
+                return await FindByIdAttached(c, id);
             }
         }
 
-        public void Update(
+        public async Task Update(
             Candidato nuevaInformacionCandidato
         )
         {
             using (var c = this.db())
             {
                 c.Candidato.AddOrUpdate(nuevaInformacionCandidato);
-                c.SaveChanges();
+                nuevaInformacionCandidato.FechaDeActualizacion = DateTime.Now;
+                await c.SaveChangesAsync();
             }
         }
 
-        public void Insert(Candidato candidatoAInsertar)
+        public async Task Insert(Candidato candidatoAInsertar)
         {
             using (var c = this.db())
             {
                 c.Candidato.Add(candidatoAInsertar);
-                c.SaveChanges();
+                candidatoAInsertar.FechaDeActualizacion = DateTime.Now;
+                await c.SaveChangesAsync();
             }
 
         }
-        public void Delete(int id)
+
+        public async Task Delete(int id)
         {
             using (var c = this.db())
             {
-                var candidato = this.FindByIdAttached(c, id);
+                var candidato = await this.FindByIdAttached(c, id);
                 c.Candidato.Remove(candidato);
-                c.SaveChanges();
+                await c.SaveChangesAsync();
             }
         }
     }

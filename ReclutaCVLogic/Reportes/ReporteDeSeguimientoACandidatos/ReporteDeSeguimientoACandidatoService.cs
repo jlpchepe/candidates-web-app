@@ -1,4 +1,5 @@
 ﻿using ReclutaCVData;
+using ReclutaCVData.Entidades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,7 +37,7 @@ namespace ReclutaCVLogic.Reportes.ReporteDeSeguimientoACandidatos
                     c.Candidato.Where(candidato => candidato.PrimeraLlamada.ContinuoConElProceso && candidato.Examenes.Count() == 0).Count(),
                     c.Candidato.Where(candidato => candidato.Examenes.Count() >0 && candidato.Entrevista == null).Count(),
                     c.Candidato.Where(candidato => candidato.Entrevista != null && candidato.Analisis == null).Count(),
-                    c.Candidato.Where(candidato => candidato.Rechazado).Count(),
+                    c.Candidato.Where(candidato => candidato.VeredictoFinal == VeredictoFinalCandidato.Rechazado).Count(),
                     c.Candidato.Where(candidato => candidato.LlamadaPropuestaEconomica.CandidatoAcepto == false).Count(),
                     c.Candidato.Where(candidato => candidato.LlamadaPropuestaEconomica.CandidatoAcepto == true).Count(),
                     null

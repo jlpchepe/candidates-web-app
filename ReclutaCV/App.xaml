@@ -8,7 +8,7 @@
              xmlns:converters="clr-namespace:ReclutaCV.Utils.Converters"
              >
     <Application.Resources>
-        <system:Double x:Key="DefaultMarginValue">8</system:Double>
+        <system:Double x:Key="DefaultMarginValue">5</system:Double>
         <Thickness x:Key="DefaultMargin" Bottom="{StaticResource DefaultMarginValue}" Left="{StaticResource DefaultMarginValue}" Right="{StaticResource DefaultMarginValue}" Top="{StaticResource DefaultMarginValue}"></Thickness>
         <Thickness x:Key="DefaultPadding" Bottom="{StaticResource DefaultMarginValue}" Left="{StaticResource DefaultMarginValue}" Right="{StaticResource DefaultMarginValue}" Top="{StaticResource DefaultMarginValue}"></Thickness>
         <SolidColorBrush x:Key="PrimaryColor">#5DB43D</SolidColorBrush>

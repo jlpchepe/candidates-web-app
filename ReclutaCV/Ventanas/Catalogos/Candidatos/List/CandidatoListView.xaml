@@ -22,22 +22,11 @@
         </Border>
         <DataGrid Grid.Row="1" ItemsSource="{Binding Items}" SelectedItem="{Binding Seleccionado}" >
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Nivel del candidato" Binding="{Binding Nivel, Converter={StaticResource EnumDescriptionConverter}}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Bolsa" Binding="{Binding Bolsa}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Bolsa" Binding="{Binding Bolsa, Converter={StaticResource EnumDescriptionConverter}}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Fecha de contacto" Binding="{Binding FechaDeContacto}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Contacto" Binding="{Binding QuienLoContacto}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Apellido paterno" Binding="{Binding ApellidoPaterno}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Apellido materno" Binding="{Binding ApellidoMaterno}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Rol" Binding="{Binding Rol, Converter={StaticResource EnumDescriptionConverter}}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Examen" Binding="{Binding FechaDeExamen}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Hora" Binding="{Binding HoraDeExamen}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Calificación" Binding="{Binding CalificacionDelExamen}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Entrevista" Binding="{Binding FechaDeEntrevista}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Propuesta económica" Binding="{Binding PropuestaEconomicaMonto}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Fecha de ingreso" Binding="{Binding FechaDeIngresoALaEmpresa}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Estatus" Binding="{Binding Estatus, Converter={StaticResource EnumDescriptionConverter}}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Comentarios" Binding="{Binding Comentarios}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

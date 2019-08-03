@@ -44,7 +44,7 @@ namespace ReclutaCVLogic.Servicios
             }
         }
 
-        public async Task ObtenerInformacionEtapasCandidato(
+        public Task ObtenerInformacionEtapasCandidato(
             int candidatoId,
             EvaluacionCurriculumCandidatoConsultable evaluacionCurriculumCandidato,
             PrimeraLlamadaCandidatoConsultable primeraLlamadaCandidato,
@@ -54,7 +54,8 @@ namespace ReclutaCVLogic.Servicios
             LlamadaPropuestaEconomicaCandidatoConsultable llamadaPropuestaEconomica
         )
         {
-
+            //TODO
+            return Task.FromResult(0);
         }
 
 

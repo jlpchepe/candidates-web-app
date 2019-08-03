@@ -5,21 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ReclutaCV.Candidatos.Edit"
         xmlns:controls="clr-namespace:ReclutaCV.Controls"
+        xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
         mc:Ignorable="d"
-        SizeToContent="Height"
+        SizeToContent="WidthAndHeight"
         Title="Candidato">
-
+    <Window.Resources>
+        <Style TargetType="StackPanel">
+            <Style.Setters>
+                <Setter Property="Margin" Value="{StaticResource DefaultMargin}"></Setter>
+            </Style.Setters>
+        </Style>
+        <Style TargetType="UniformGrid">
+            <Setter Property="Rows" Value="1"></Setter>
+            <Setter Property="Columns" Value="2"></Setter>
+        </Style>
+    </Window.Resources>
     <StackPanel Margin="0">
         <TabControl>
             <TabItem Header="Generales">
-                <UniformGrid Rows="1" Columns="2">
-                    <UniformGrid.Resources>
-                        <Style TargetType="StackPanel">
-                            <Style.Setters>
-                                <Setter Property="Margin" Value="{StaticResource DefaultMargin}"></Setter>
-                            </Style.Setters>
-                        </Style>
-                    </UniformGrid.Resources>
+                <UniformGrid Rows="1" Columns="3">
                     <StackPanel>
                         <GroupBox Header="Generales">
                             <StackPanel>
@@ -37,74 +41,8 @@
                                 <TextBox Text="{Binding Model.LugarNacimiento}"></TextBox>
                                 <TextBlock>Comentarios</TextBlock>
                                 <TextBox Text="{Binding Model.GeneralesComentarios}"></TextBox>
-                            </StackPanel>
-                        </GroupBox>
-                        <GroupBox Header="Proceso de reclutamiento">
-                            <StackPanel>
-                                <TextBlock>Folio de solicitud de personal</TextBlock>
-                                <TextBox Text="{Binding Model.FolioSolicitudPersonal}"></TextBox>
-                                <TextBlock>Clave del puesto</TextBlock>
-                                <TextBox Text="{Binding Model.ClaveDelPuesto}"></TextBox>
-                                <TextBlock>Puesto</TextBlock>
-                                <TextBox Text="{Binding Model.NombreDelPuesto}"></TextBox>
-                                <TextBlock>Proyecto </TextBlock>
-                                <TextBox Text="{Binding Model.NombreDelProyecto}"></TextBox>
-                                <TextBlock>Fecha de recepción de currículum</TextBlock>
-                                <DatePicker SelectedDate="{Binding Model.FechaDeRecepcionCurriculum}"></DatePicker>
-                                <TextBlock>Fecha de primer contacto</TextBlock>
-                                <DatePicker SelectedDate="{Binding Model.FechaDeContacto}"></DatePicker>
-                                <TextBlock>Fecha de preentrevista telefónica</TextBlock>
-                                <DatePicker SelectedDate="{Binding Model.FechaPreentrevistaTelefonica}"></DatePicker>
-                                <TextBlock>Fecha de recepción de solicitud de registro</TextBlock>
-                                <DatePicker SelectedDate="{Binding Model.FechaRecepcionSolicitudRegistro}"></DatePicker>
-                                <TextBlock>Quién lo contactó</TextBlock>
-                                <TextBox Text="{Binding Model.QuienLoContacto}"></TextBox>
-                                <TextBlock>Bolsa</TextBlock>
-                                <TextBox Text="{Binding Model.Bolsa}"></TextBox>
-                                <TextBlock>Rol del candidato</TextBlock>
-                                <TextBox Text="{Binding Model.Rol}"></TextBox>
-                                <TextBlock>Expectativa económica</TextBlock>
-                                <TextBox Text="{Binding Model.ExpectativaEconomica}"></TextBox>
-                                <TextBlock>Estatus del candidato</TextBlock>
-                                <controls:EnumComboBox SelectedValue="{Binding Model.Estatus}"></controls:EnumComboBox>
                                 <TextBlock>Fecha de actualización</TextBlock>
                                 <DatePicker SelectedDate="{Binding Model.FechaDeActualizacion}"></DatePicker>
-                                <TextBlock>Comentarios</TextBlock>
-                                <TextBox Text="{Binding Model.ReclutamientoComentarios}"></TextBox>
-                            </StackPanel>
-                        </GroupBox>
-                    </StackPanel>
-                    <StackPanel>
-                        <GroupBox Header="Educación">
-                            <StackPanel Style="{StaticResource DataInputStackPanel}">
-                                <TextBlock>Carrera</TextBlock>
-                                <TextBox Text="{Binding Model.Carrera}"></TextBox>
-                                <TextBlock>Institución</TextBlock>
-                                <TextBox Text="{Binding Model.Universidad}"></TextBox>
-                                <TextBlock>Estatus académico</TextBlock>
-                                <controls:EnumComboBox SelectedValue="{Binding Model.EstatusAcademico }"></controls:EnumComboBox>
-                                <TextBlock>Cursos</TextBlock>
-                                <TextBox Text="{Binding Model.Cursos}"></TextBox>
-                                <TextBlock>Certificaciones</TextBlock>
-                                <TextBox Text="{Binding Model.Certificaciones}"></TextBox>
-                                <TextBlock>Competencias o habilidades</TextBlock>
-                                <TextBox Text="{Binding Model.CompetenciasOHabilidades}"></TextBox>
-                                <TextBlock>Tecnologías que domina</TextBlock>
-                                <TextBox Text="{Binding Model.CompetenciasOHabilidades}"></TextBox>
-                                <TextBlock>Software que domina</TextBlock>
-                                <TextBox Text="{Binding Model.CompetenciasOHabilidades}"></TextBox>
-                            </StackPanel>
-                        </GroupBox>
-                        <GroupBox Header="Inglés">
-                            <StackPanel>
-                                <TextBlock>Hablado</TextBlock>
-                                <TextBox Text="{Binding Model.NivelDeInglesHablado}"></TextBox>
-                                <TextBlock>Escrito</TextBlock>
-                                <TextBox Text="{Binding Model.NivelDeInglesEscrito}"></TextBox>
-                                <TextBlock>Lectura</TextBlock>
-                                <TextBox Text="{Binding Model.NivelDeInglesLectura}"></TextBox>
-                                <TextBlock>Nivel</TextBlock>
-                                <TextBox Text="{Binding Model.NivelDeIngles}"></TextBox>
                             </StackPanel>
                         </GroupBox>
                         <GroupBox Header="Experiencia laboral">
@@ -120,178 +58,283 @@
                             </StackPanel>
                         </GroupBox>
                     </StackPanel>
+                    <StackPanel>
+                        <GroupBox Header="Educación">
+                            <StackPanel>
+                                <TextBlock>Carrera</TextBlock>
+                                <TextBox Text="{Binding Model.Carrera}"></TextBox>
+                                <TextBlock>Institución</TextBlock>
+                                <TextBox Text="{Binding Model.Universidad}"></TextBox>
+                                <TextBlock>Estatus académico</TextBlock>
+                                <controls:EnumComboBox SelectedValue="{Binding Model.EstatusAcademico}"></controls:EnumComboBox>
+                                <TextBlock>Cursos</TextBlock>
+                                <TextBox Text="{Binding Model.Cursos}"></TextBox>
+                                <TextBlock>Certificaciones</TextBlock>
+                                <TextBox Text="{Binding Model.Certificaciones}"></TextBox>
+                                <TextBlock>Competencias o habilidades</TextBlock>
+                                <TextBox Text="{Binding Model.CompetenciasOHabilidades}"></TextBox>
+                                <TextBlock>Tecnologías que domina</TextBlock>
+                                <TextBox Text="{Binding Model.TecnologiasQueDomina}"></TextBox>
+                                <TextBlock>Software que domina</TextBlock>
+                                <TextBox Text="{Binding Model.SoftwareQueDomina}"></TextBox>
+                            </StackPanel>
+                        </GroupBox>
+                        <GroupBox Header="Inglés">
+                            <StackPanel>
+                                <TextBlock>Nivel</TextBlock>
+                                <TextBox Text="{Binding Model.NivelDeIngles}"></TextBox>
+                                <TextBlock>Hablado</TextBlock>
+                                <TextBox Text="{Binding Model.NivelDeInglesHablado}"></TextBox>
+                                <TextBlock>Escrito</TextBlock>
+                                <TextBox Text="{Binding Model.NivelDeInglesEscrito}"></TextBox>
+                                <TextBlock>Lectura</TextBlock>
+                                <TextBox Text="{Binding Model.NivelDeInglesLectura}"></TextBox>
+                            </StackPanel>
+                        </GroupBox>
+                    </StackPanel>
+                    <GroupBox Header="Proceso de reclutamiento">
+                        <StackPanel>
+                            <TextBlock>Folio de solicitud de personal</TextBlock>
+                            <TextBox Text="{Binding Model.SolicitudPersonalFolio}"></TextBox>
+                            <TextBlock>Clave del puesto</TextBlock>
+                            <TextBox Text="{Binding Model.PuestoClave}"></TextBox>
+                            <TextBlock>Nombre del puesto</TextBlock>
+                            <TextBox Text="{Binding Model.PuestoNombre}"></TextBox>
+                            <TextBlock>Proyecto</TextBlock>
+                            <TextBox Text="{Binding Model.ProyectoNombre}"></TextBox>
+                            <TextBlock>Fecha de recepción de currículum</TextBlock>
+                            <DatePicker SelectedDate="{Binding Model.FechaDeRecepcionCurriculum}"></DatePicker>
+                            <TextBlock>Fecha de primer contacto</TextBlock>
+                            <DatePicker SelectedDate="{Binding Model.FechaDeContacto}"></DatePicker>
+                            <TextBlock>Fecha de preentrevista telefónica</TextBlock>
+                            <DatePicker SelectedDate="{Binding Model.FechaPreentrevistaTelefonica}"></DatePicker>
+                            <TextBlock>Fecha de recepción de solicitud de registro</TextBlock>
+                            <DatePicker SelectedDate="{Binding Model.FechaRecepcionSolicitudRegistro}"></DatePicker>
+                            <TextBlock>Quién lo contactó</TextBlock>
+                            <TextBox Text="{Binding Model.QuienLoContacto}"></TextBox>
+                            <TextBlock>Bolsa</TextBlock>
+                            <StackPanel Margin="0">
+                                <controls:EnumComboBox SelectedValue="{Binding Model.Bolsa}"></controls:EnumComboBox>
+                                <TextBox Text="{Binding Model.BolsaOtra}"></TextBox>
+                            </StackPanel>
+                            <TextBlock>Rol del candidato</TextBlock>
+                            <StackPanel Margin="0">
+                                <controls:EnumComboBox SelectedValue="{Binding Model.Rol}"></controls:EnumComboBox>
+                                <TextBox Text="{Binding Model.RolOtro}"></TextBox>
+                            </StackPanel>
+                            <TextBlock>Expectativa económica</TextBlock>
+                            <TextBox Text="{Binding Model.ExpectativaEconomica}"></TextBox>
+                            <TextBlock>Estatus del candidato</TextBlock>
+                            <controls:EnumComboBox SelectedValue="{Binding Model.Estatus}"></controls:EnumComboBox>
+                            <TextBlock>Comentarios</TextBlock>
+                            <TextBox Text="{Binding Model.ReclutamientoComentarios}"></TextBox>
+                        </StackPanel>
+                    </GroupBox>
                 </UniformGrid>
             </TabItem>
             <TabItem Header="Aplicación de exámenes">
                 <StackPanel>
                     <GroupBox Header="Examen psicométrico">
-                        <StackPanel  Style="{StaticResource DataInputStackPanel}">
-                            <TextBlock>Nombre del examen</TextBlock>
-                            <TextBox Text="{Binding Model.ExamenPsicometricoNombre}"></TextBox>
-                            <TextBlock>Resultados</TextBlock>
-                            <TextBox Text="{Binding Model.ExamenPsicometricoResultados}"></TextBox>
-                            <TextBlock>Observaciones</TextBlock>
-                            <TextBox Text="{Binding Model.ExamenPsicometricoObservaciones}"></TextBox>
-                        </StackPanel>
+                        <UniformGrid Rows="1" Columns="3">
+                            <UniformGrid.Resources>
+                                <Style TargetType="StackPanel">
+                                    <Setter Property="Margin" Value="5,0,5,0"></Setter>
+                                </Style>
+                            </UniformGrid.Resources>
+                            <StackPanel>
+                                <TextBlock>Nombre del examen</TextBlock>
+                                <TextBox Text="{Binding Model.ExamenPsicometricoNombre}"></TextBox>
+                            </StackPanel>
+                            <StackPanel>
+                                <TextBlock>Resultados</TextBlock>
+                                <TextBox Text="{Binding Model.ExamenPsicometricoResultados}"></TextBox>
+                            </StackPanel>
+                            <StackPanel>
+                                <TextBlock>Observaciones</TextBlock>
+                                <TextBox Text="{Binding Model.ExamenPsicometricoObservaciones}"></TextBox>
+                            </StackPanel>
+                        </UniformGrid>
                     </GroupBox>
-                    <UniformGrid Rows="1" Columns="5">
+                    <UniformGrid Rows="1" Columns="4">
                         <GroupBox Header="Examen de programación">
                             <StackPanel>
                                 <TextBlock>Fecha</TextBlock>
-                                <DatePicker SelectedDate="{Binding Model.FechaDeExamen}"></DatePicker>
-                                <TextBlock>Hora</TextBlock>
-                                <DatePicker SelectedDate="{Binding Model.HoraDeExamen}"></DatePicker>
+                                <wpfTool:DateTimePicker Value="{Binding Model.ExamenProgramacionFecha}"></wpfTool:DateTimePicker>
                                 <TextBlock>IP de computadora</TextBlock>
-                                <TextBox Text="{Binding Model.IpComputadoraExamenProgramacion}"></TextBox>
+                                <TextBox Text="{Binding Model.ExamenProgramacionIpComputadora}"></TextBox>
                                 <TextBlock>ID de examen</TextBlock>
-                                <TextBox Text="{Binding Model.IdExamenProgramacion}"></TextBox>
+                                <TextBox Text="{Binding Model.ExamenProgramacionId}"></TextBox>
                                 <TextBlock>UML</TextBlock>
-                                <TextBox Text="{Binding Model.CalificacionUml}"></TextBox>
+                                <UniformGrid>
+                                    <TextBox Text="{Binding Model.ExamenProgramacionUmlCalificacion}"></TextBox>
+                                    <TextBox Text="{Binding Model.ExamenProgramacionUmlTotalReactivos}"></TextBox>
+                                </UniformGrid>
                                 <TextBlock>ADOO</TextBlock>
-                                <TextBox Text="{Binding Model.CalificacionAdoo}"></TextBox>
+                                <UniformGrid>
+                                    <TextBox Text="{Binding Model.ExamenProgramacionAdooCalificacion}"></TextBox>
+                                    <TextBox Text="{Binding Model.ExamenProgramacionAdooTotalReactivos}"></TextBox>
+                                </UniformGrid>
                                 <TextBlock>POO</TextBlock>
-                                <TextBox Text="{Binding Model.CalificacionPoo}"></TextBox>
+                                <UniformGrid>
+                                    <TextBox Text="{Binding Model.ExamenProgramacionPooCalificacion}"></TextBox>
+                                    <TextBox Text="{Binding Model.ExamenProgramacionPooTotalReactivos}"></TextBox>
+                                </UniformGrid>
                                 <TextBlock>Lógica</TextBlock>
-                                <TextBox Text="{Binding Model.CalificacionLogica}"></TextBox>
+                                <UniformGrid>
+                                    <TextBox Text="{Binding Model.ExamenProgramacionLogicaCalificacion}"></TextBox>
+                                    <TextBox Text="{Binding Model.ExamenProgramacionLogicaTotalReactivos}"></TextBox>
+                                </UniformGrid>
                                 <TextBlock>Web</TextBlock>
-                                <TextBox Text="{Binding Model.CalificacionWeb}"></TextBox>
+                                <UniformGrid>
+                                    <TextBox Text="{Binding Model.ExamenProgramacionWebCalificacion}"></TextBox>
+                                    <TextBox Text="{Binding Model.ExamenProgramacionWebTotalReactivos}"></TextBox>
+                                </UniformGrid>
                                 <TextBlock>JavaScript</TextBlock>
-                                <TextBox Text="{Binding Model.CalificacionJavascript}"></TextBox>
+                                <UniformGrid>
+                                    <TextBox Text="{Binding Model.ExamenProgramacionJavascriptCalificacion}"></TextBox>
+                                    <TextBox Text="{Binding Model.ExamenProgramacionJavascriptTotalReactivos}"></TextBox>
+                                </UniformGrid>
                                 <TextBlock>SCRUM</TextBlock>
-                                <TextBox Text="{Binding Model.CalificacionScrum}"></TextBox>
+                                <UniformGrid>
+                                    <TextBox Text="{Binding Model.ExamenProgramacionScrumCalificacion}"></TextBox>
+                                    <TextBox Text="{Binding Model.ExamenProgramacionScrumTotalReactivos}"></TextBox>
+                                </UniformGrid>
                                 <TextBlock>Tecnología</TextBlock>
-                                <TextBox Text="{Binding Model.CalificacionUml}"></TextBox>
+                                <UniformGrid>
+                                    <TextBox Text="{Binding Model.ExamenProgramacionTecnologiaCalificacion}"></TextBox>
+                                    <TextBox Text="{Binding Model.ExamenProgramacionTecnologiaTotalReactivos}"></TextBox>
+                                </UniformGrid>
                                 <TextBlock>Aciertos</TextBlock>
-                                <TextBox Text="{Binding Model.AciertosExamenProgramacion}"></TextBox>
-                                <TextBlock>Total reactivos</TextBlock>
-                                <TextBox Text="{Binding Model.TotalReactivosExamenProgramacion}"></TextBox>
+                                <UniformGrid>
+                                    <TextBox Text="{Binding Model.ExamenProgramacionAciertos}"></TextBox>
+                                    <TextBox Text="{Binding Model.ExamenProgramacionTotalReactivos}"></TextBox>
+                                </UniformGrid>
                                 <!--TODO: solo lectura-->
                                 <TextBlock>Calificación</TextBlock>
-                                <TextBox Text="{Binding Model.CalificacionExamenProgramacion}"></TextBox>
+                                <TextBox Text="{Binding ExamenProgramacionCalificacion}"></TextBox>
                                 <TextBlock>Rango</TextBlock>
-                                <TextBox Text="{Binding Model.RangoExamenProgramacion}"></TextBox>
+                                <TextBox Text="{Binding Model.ExamenProgramacionRango}"></TextBox>
                             </StackPanel>
                         </GroupBox>
                         <GroupBox Header="Examen de analista">
                             <StackPanel>
                                 <TextBlock>Fecha</TextBlock>
-                                <DatePicker SelectedDate="{Binding Model.FechaDeExamenAnalista}"></DatePicker>
-                                <TextBlock>Hora</TextBlock>
-                                <DatePicker SelectedDate="{Binding Model.HoraDeExamenAnalista}"></DatePicker>
+                                <wpfTool:DateTimePicker Value="{Binding Model.ExamenAnalistaFecha}"></wpfTool:DateTimePicker>
                                 <TextBlock>IP de computadora</TextBlock>
-                                <TextBox Text="{Binding Model.IpComputadoraExamenAnalista}"></TextBox>
+                                <TextBox Text="{Binding Model.ExamenAnalistaIpComputadora}"></TextBox>
                                 <GroupBox Header="Teórico">
                                     <StackPanel>
                                         <TextBlock>ID de examen</TextBlock>
-                                        <TextBox Text="{Binding Model.IdExamenAnalistaTeorico}"></TextBox>
+                                        <TextBox Text="{Binding Model.ExamenAnalistaTeoricoId}"></TextBox>
                                         <TextBlock>Aciertos</TextBlock>
-                                        <TextBox Text="{Binding Model.AciertosExamenAnalistaTeorico}"></TextBox>
-                                        <TextBlock>Total de reactivos</TextBlock>
-                                        <TextBox Text="{Binding Model.TotalReactivosExamenAnalistaTeorico}"></TextBox>
+                                        <UniformGrid>
+                                            <TextBox Text="{Binding Model.ExamenAnalistaTeoricoAciertos}"></TextBox>
+                                            <TextBox Text="{Binding Model.ExamenAnalistaTeoricoTotalReactivos}"></TextBox>
+                                        </UniformGrid>
                                         <TextBlock>Calificación</TextBlock>
-                                        <TextBox Text="{Binding Model.CalificacionExamenAnalistaTeorico}"></TextBox>
+                                        <TextBox Text="{Binding ExamenAnalistaTeoricoCalificacion}"></TextBox>
                                         <TextBlock>Rango</TextBlock>
-                                        <TextBox Text="{Binding Model.RangoExamenAnalistaTeorico}"></TextBox>
+                                        <TextBox Text="{Binding Model.ExamenAnalistaTeoricoRango}"></TextBox>
                                     </StackPanel>
                                 </GroupBox>
                                 <GroupBox Header="Práctico">
                                     <StackPanel>
                                         <TextBlock>ID de examen</TextBlock>
-                                        <TextBox Text="{Binding Model.IdExamenAnalistaPractico}"></TextBox>
+                                        <TextBox Text="{Binding Model.ExamenAnalistaPracticoId}"></TextBox>
                                         <TextBlock>Número de caso</TextBlock>
-                                        <TextBox Text="{Binding Model.NumeroCasoExamenAnalistaPractico}"></TextBox>
+                                        <TextBox Text="{Binding Model.ExamenAnalistaPracticoNumeroCaso}"></TextBox>
                                         <TextBlock>Aciertos</TextBlock>
-                                        <TextBox Text="{Binding Model.AciertosExamenAnalistaPractico}"></TextBox>
-                                        <TextBlock>Total de reactivos</TextBlock>
-                                        <TextBox Text="{Binding Model.TotalReactivosExamenAnalistaPractico}"></TextBox>
+                                        <UniformGrid>
+                                            <TextBox Text="{Binding Model.ExamenAnalistaPracticoAciertos}"></TextBox>
+                                            <TextBox Text="{Binding Model.ExamenAnalistaPracticoTotalReactivos}"></TextBox>
+                                        </UniformGrid>
                                         <TextBlock>Calificación</TextBlock>
-                                        <TextBox Text="{Binding Model.CalificacionExamenAnalistaPractico}"></TextBox>
+                                        <TextBox Text="{Binding ExamenAnalistaPracticoCalificacion}"></TextBox>
                                         <TextBlock>Rango</TextBlock>
-                                        <TextBox Text="{Binding Model.RangoExamenAnalistaPractico}"></TextBox>
+                                        <TextBox Text="{Binding Model.ExamenAnalistaPracticoRango}"></TextBox>
                                     </StackPanel>
                                 </GroupBox>
-                            </StackPanel>
-                        </GroupBox>
-                        <GroupBox Header="Examen práctico de soporte - BD">
-                            <StackPanel>
-                                <TextBlock>Fecha</TextBlock>
-                                <DatePicker SelectedDate="{Binding Model.FechaDeExamenPracticoSoporteBd}"></DatePicker>
-                                <TextBlock>Hora</TextBlock>
-                                <DatePicker SelectedDate="{Binding Model.HoraDeExamenPracticoSoporteBd}"></DatePicker>
-                                <TextBlock>Aciertos</TextBlock>
-                                <TextBox Text="{Binding Model.AciertosExamenPracticoSoporteBd}"></TextBox>
-                                <TextBlock>Total de reactivos</TextBlock>
-                                <TextBox Text="{Binding Model.TotalReactivosExamenPracticoSoporteBd}"></TextBox>
-                                <TextBlock>Calificación</TextBlock>
-                                <TextBox Text="{Binding Model.CalificacionExamenPracticoSoporteBd}"></TextBox>
-                                <TextBlock>Rango</TextBlock>
-                                <TextBox Text="{Binding Model.RangoExamenPracticoSoporteBd}"></TextBox>
                             </StackPanel>
                         </GroupBox>
                         <GroupBox Header="Examen de ingeniero de pruebas">
                             <StackPanel>
                                 <TextBlock>Fecha</TextBlock>
-                                <DatePicker SelectedDate="{Binding Model.FechaDeExamenIngenieroPruebas}"></DatePicker>
-                                <TextBlock>Hora</TextBlock>
-                                <DatePicker SelectedDate="{Binding Model.HoraDeExamenIngenieroPruebas}"></DatePicker>
+                                <wpfTool:DateTimePicker Value="{Binding Model.ExamenIngenieroPruebasFecha}"></wpfTool:DateTimePicker>
                                 <TextBlock>IP de computadora</TextBlock>
-                                <TextBox Text="{Binding Model.IpComputadoraExamenIngenieroPruebas}"></TextBox>
+                                <TextBox Text="{Binding Model.ExamenIngenieroPruebasIpComputadora}"></TextBox>
                                 <GroupBox Header="Teórico">
                                     <StackPanel>
                                         <TextBlock>ID de examen</TextBlock>
-                                        <TextBox Text="{Binding Model.IdExamenIngenieroPruebasTeorico}"></TextBox>
+                                        <TextBox Text="{Binding Model.ExamenIngenieroPruebasTeoricoId}"></TextBox>
                                         <TextBlock>Aciertos</TextBlock>
-                                        <TextBox Text="{Binding Model.AciertosExamenIngenieroPruebasTeorico}"></TextBox>
-                                        <TextBlock>Total de reactivos</TextBlock>
-                                        <TextBox Text="{Binding Model.TotalReactivosExamenIngenieroPruebasTeorico}"></TextBox>
+                                        <UniformGrid>
+                                            <TextBox Text="{Binding Model.ExamenIngenieroPruebasTeoricoAciertos}"></TextBox>
+                                            <TextBox Text="{Binding Model.ExamenIngenieroPruebasTeoricoTotalReactivos}"></TextBox>
+                                        </UniformGrid>
                                         <TextBlock>Calificación</TextBlock>
-                                        <TextBox Text="{Binding Model.CalificacionExamenIngenieroPruebasTeorico}"></TextBox>
+                                        <TextBox Text="{Binding ExamenIngenieroPruebasTeoricoCalificacion}"></TextBox>
                                         <TextBlock>Rango</TextBlock>
-                                        <TextBox Text="{Binding Model.RangoExamenIngenieroPruebasTeorico}"></TextBox>
+                                        <TextBox Text="{Binding Model.ExamenIngenieroPruebasTeoricoRango}"></TextBox>
                                     </StackPanel>
                                 </GroupBox>
                                 <GroupBox Header="Práctico">
                                     <StackPanel>
                                         <TextBlock>ID de examen</TextBlock>
-                                        <TextBox Text="{Binding Model.IdExamenIngenieroPruebasPractico}"></TextBox>
+                                        <TextBox Text="{Binding Model.ExamenIngenieroPruebasPracticoId}"></TextBox>
                                         <TextBlock>Calificación</TextBlock>
-                                        <TextBox Text="{Binding Model.CalificacionExamenIngenieroPruebasPractico}"></TextBox>
+                                        <TextBox Text="{Binding Model.ExamenIngenieroPruebasPracticoCalificacion}"></TextBox>
                                         <TextBlock>Puntos</TextBlock>
-                                        <TextBox Text="{Binding Model.PuntosExamenIngenieroPruebasPractico}"></TextBox>
+                                        <TextBox Text="{Binding Model.ExamenIngenieroPruebasPracticoPuntos}"></TextBox>
                                         <TextBlock>Rango</TextBlock>
-                                        <TextBox Text="{Binding Model.RangoExamenIngenieroPruebasPractico}"></TextBox>
+                                        <TextBox Text="{Binding Model.ExamenIngenieroPruebasPracticoRango}"></TextBox>
                                     </StackPanel>
                                 </GroupBox>
                                 <GroupBox Header="SQL">
                                     <StackPanel>
                                         <TextBlock>Total de reactivos</TextBlock>
-                                        <TextBox Text="{Binding Model.TotalReactivosExamenIngenieroPruebasSql}"></TextBox>
+                                        <TextBox Text="{Binding Model.ExamenIngenieroPruebasSqlTotalReactivos}"></TextBox>
                                         <TextBlock>Calificación</TextBlock>
-                                        <TextBox Text="{Binding Model.CalificacionExamenIngenieroPruebasSql}"></TextBox>
+                                        <TextBox Text="{Binding Model.ExamenIngenieroPruebasSqlCalificacion}"></TextBox>
                                     </StackPanel>
                                 </GroupBox>
                             </StackPanel>
                         </GroupBox>
-                        <GroupBox Header="Examen de administrador de proyectos">
-                            <StackPanel>
-                                <TextBlock>Fecha</TextBlock>
-                                <DatePicker SelectedDate="{Binding Model.FechaDeExamenAdministradorProyecto}"></DatePicker>
-                                <TextBlock>Hora</TextBlock>
-                                <DatePicker SelectedDate="{Binding Model.HoraDeExamenAdministradorProyecto}"></DatePicker>
-                                <TextBlock>IP de computadora</TextBlock>
-                                <TextBox Text="{Binding Model.IpComputadoraExamenAdministradorProyecto}"></TextBox>
-                                <TextBlock>ID de examen</TextBlock>
-                                <TextBox Text="{Binding Model.IpComputadoraExamenAdministradorProyecto}"></TextBox>
-                                <TextBlock>Aciertos</TextBlock>
-                                <TextBox Text="{Binding Model.AciertosExamenAdministradorProyecto}"></TextBox>
-                                <TextBlock>Total de reactivos</TextBlock>
-                                <TextBox Text="{Binding Model.TotalReactivosExamenAdministradorProyecto}"></TextBox>
-                                <TextBlock>Calificación</TextBlock>
-                                <TextBox Text="{Binding Model.CalificacionExamenAdministradorProyecto}"></TextBox>
-                                <TextBlock>Rango</TextBlock>
-                                <TextBox Text="{Binding Model.RangoExamenAdministradorProyecto}"></TextBox>
-                            </StackPanel>
-                        </GroupBox>
+                        <StackPanel>
+                            <GroupBox Header="Examen admin. de proyectos">
+                                <StackPanel>
+                                    <TextBlock>Fecha</TextBlock>
+                                    <wpfTool:DateTimePicker Value="{Binding Model.ExamenAdministradorProyectoFecha}"></wpfTool:DateTimePicker>
+                                    <TextBlock>IP de computadora</TextBlock>
+                                    <TextBox Text="{Binding Model.ExamenAdministradorProyectoIpComputadora}"></TextBox>
+                                    <TextBlock>ID de examen</TextBlock>
+                                    <TextBox Text="{Binding Model.ExamenAdministradorProyectoId}"></TextBox>
+                                    <TextBlock>Aciertos</TextBlock>
+                                    <UniformGrid>
+                                        <TextBox Text="{Binding Model.ExamenAdministradorProyectoAciertos}"></TextBox>
+                                        <TextBox Text="{Binding Model.ExamenAdministradorProyectoTotalReactivos}"></TextBox>
+                                    </UniformGrid>
+                                    <TextBlock>Calificación</TextBlock>
+                                    <TextBox Text="{Binding ExamenAdministradorProyectoCalificacion}"></TextBox>
+                                    <TextBlock>Rango</TextBlock>
+                                    <TextBox Text="{Binding Model.ExamenAdministradorProyectoRango}"></TextBox>
+                                </StackPanel>
+                            </GroupBox>
+                            <GroupBox Header="Examen soporte - BD">
+                                <StackPanel>
+                                    <TextBlock>Fecha</TextBlock>
+                                    <wpfTool:DateTimePicker Value="{Binding Model.ExamenPracticoSoporteBdFecha}"></wpfTool:DateTimePicker>
+                                    <TextBlock>Aciertos</TextBlock>
+                                    <UniformGrid>
+                                        <TextBox Text="{Binding Model.ExamenPracticoSoporteBdAciertos}"></TextBox>
+                                        <TextBox Text="{Binding Model.ExamenPracticoSoporteBdTotalReactivos}"></TextBox>
+                                    </UniformGrid>
+                                    <TextBlock>Calificación</TextBlock>
+                                    <TextBox Text="{Binding ExamenPracticoSoporteBdCalificacion}"></TextBox>
+                                    <TextBlock>Rango</TextBlock>
+                                    <TextBox Text="{Binding Model.ExamenPracticoSoporteBdRango}"></TextBox>
+                                </StackPanel>
+                            </GroupBox>
+                        </StackPanel>
                     </UniformGrid>
                 </StackPanel>
             </TabItem>
@@ -300,49 +343,41 @@
                     <GroupBox Header="Capital humano">
                         <StackPanel>
                             <TextBlock>Fecha</TextBlock>
-                            <DatePicker SelectedDate="{Binding Model.FechaEntrevistaCapitalHumano}"></DatePicker>
-                            <TextBlock>Hora</TextBlock>
-                            <DatePicker SelectedDate="{Binding Model.HoraEntrevistaCapitalHumano}"></DatePicker>
+                            <wpfTool:DateTimePicker Value="{Binding Model.EntrevistaCapitalHumanoFecha}"></wpfTool:DateTimePicker>
                             <TextBlock>Comentarios</TextBlock>
-                            <TextBox Text="{Binding Model.ComentariosEntrevistaCapitalHumano}"></TextBox>
+                            <TextBox Text="{Binding Model.EntrevistaCapitalHumanoComentarios}"></TextBox>
                         </StackPanel>
                     </GroupBox>
                     <GroupBox Header="Coordinador y/o equipo técnico">
                         <StackPanel>
                             <TextBlock>Fecha</TextBlock>
-                            <DatePicker SelectedDate="{Binding Model.FechaEntrevistaCoordinadorYEquipoTecnico}"></DatePicker>
-                            <TextBlock>Hora</TextBlock>
-                            <DatePicker SelectedDate="{Binding Model.HoraEntrevistaCoordinadorYEquipoTecnico}"></DatePicker>
+                            <wpfTool:DateTimePicker Value="{Binding Model.EntrevistaCoordinadorYEquipoTecnicoFecha}"></wpfTool:DateTimePicker>
                             <TextBlock>Comentarios</TextBlock>
-                            <TextBox Text="{Binding Model.ComentariosEntrevistaCoordinadorYEquipoTecnico}"></TextBox>
+                            <TextBox Text="{Binding Model.EntrevistaCoordinadorYEquipoTecnicoComentarios}"></TextBox>
                         </StackPanel>
                     </GroupBox>
                     <GroupBox Header="Inglés">
                         <StackPanel>
                             <TextBlock>Fecha</TextBlock>
-                            <DatePicker SelectedDate="{Binding Model.FechaEntrevistaIngles}"></DatePicker>
-                            <TextBlock>Hora</TextBlock>
-                            <DatePicker SelectedDate="{Binding Model.HoraEntrevistaIngles}"></DatePicker>
+                            <wpfTool:DateTimePicker Value="{Binding Model.EntrevistaInglesFecha}"></wpfTool:DateTimePicker>
                             <TextBlock>Comentarios</TextBlock>
-                            <TextBox Text="{Binding Model.ComentariosEntrevistaIngles}"></TextBox>
+                            <TextBox Text="{Binding Model.EntrevistaInglesComentarios}"></TextBox>
                         </StackPanel>
                     </GroupBox>
                     <GroupBox Header="Gerente del área">
                         <StackPanel>
                             <TextBlock>Fecha</TextBlock>
-                            <DatePicker SelectedDate="{Binding Model.FechaEntrevistaGerenteArea}"></DatePicker>
-                            <TextBlock>Hora</TextBlock>
-                            <DatePicker SelectedDate="{Binding Model.HoraEntrevistaGerenteArea}"></DatePicker>
+                            <wpfTool:DateTimePicker Value="{Binding Model.EntrevistaGerenteAreaFecha}"></wpfTool:DateTimePicker>
                             <TextBlock>Comentarios</TextBlock>
-                            <TextBox Text="{Binding Model.ComentariosEntrevistaGerenteArea}"></TextBox>
+                            <TextBox Text="{Binding Model.EntrevistaGerenteAreaComentarios}"></TextBox>
                         </StackPanel>
                     </GroupBox>
                     <GroupBox Header="Veredicto final">
                         <StackPanel>
                             <TextBlock>Estatus</TextBlock>
-                            <controls:EnumComboBox SelectedValue="{Binding VeredictoFinalEstatus}"></controls:EnumComboBox>
+                            <controls:EnumComboBox SelectedValue="{Binding Model.VeredictoFinal}"></controls:EnumComboBox>
                             <TextBlock>Nivel identificado</TextBlock>
-                            <TextBox Text="{Binding Model.NivelIdentificado}"></TextBox>
+                            <TextBox Text="{Binding Model.VeredictoFinalNivelIdentificado}"></TextBox>
                             <TextBlock>Comentarios</TextBlock>
                             <TextBox Text="{Binding Model.VeredictoFinalComentarios}"></TextBox>
                         </StackPanel>
@@ -358,7 +393,7 @@
                             <TextBlock>Sueldo</TextBlock>
                             <TextBox Text="{Binding Model.PropuestaEconomicaSueldo}"></TextBox>
                             <TextBlock>Estatus</TextBlock>
-                            <controls:EnumComboBox SelectedValue="{Binding PropuestaEconomicaEstatus}"></controls:EnumComboBox>
+                            <controls:EnumComboBox SelectedValue="{Binding Model.PropuestaEconomicaEstatus}"></controls:EnumComboBox>
                             <TextBlock>Comentarios</TextBlock>
                             <TextBox Text="{Binding Model.PropuestaEconomicaComentarios}"></TextBox>
                         </StackPanel>
@@ -370,7 +405,7 @@
                             <TextBlock>Tipo de contrato</TextBlock>
                             <TextBox Text="{Binding Model.IngresoTipoContrato}"></TextBox>
                             <TextBlock>Vencimiento de contrato determinado</TextBlock>
-                            <DatePicker SelectedDate="{Binding Model.VencimientoContratoDeterminado}"></DatePicker>
+                            <DatePicker SelectedDate="{Binding Model.IngresoVencimientoContratoDeterminado}"></DatePicker>
                             <TextBlock>Observaciones</TextBlock>
                             <TextBox Text="{Binding Model.IngresoObservaciones}"></TextBox>
                         </StackPanel>

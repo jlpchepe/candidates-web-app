@@ -116,6 +116,14 @@
     <Compile Include="Migrations\201811170451377_ModCambioSexoSolicitudVacante.Designer.cs">
       <DependentUpon>201811170451377_ModCambioSexoSolicitudVacante.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201908030655343_ModCandidatoCamposCompletos.cs" />
+    <Compile Include="Migrations\201908030655343_ModCandidatoCamposCompletos.Designer.cs">
+      <DependentUpon>201908030655343_ModCandidatoCamposCompletos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908030720496_ModCandidatoFechaActualizacion.cs" />
+    <Compile Include="Migrations\201908030720496_ModCandidatoFechaActualizacion.Designer.cs">
+      <DependentUpon>201908030720496_ModCandidatoFechaActualizacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Proyecto.cs" />
@@ -157,6 +165,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811170451377_ModCambioSexoSolicitudVacante.resx">
       <DependentUpon>201811170451377_ModCambioSexoSolicitudVacante.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908030655343_ModCandidatoCamposCompletos.resx">
+      <DependentUpon>201908030655343_ModCandidatoCamposCompletos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908030720496_ModCandidatoFechaActualizacion.resx">
+      <DependentUpon>201908030720496_ModCandidatoFechaActualizacion.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

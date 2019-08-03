@@ -8,7 +8,7 @@ namespace ReclutaCVLogic.Utils.Helpers
 {
     public static class TaskHelper
     {
-        public static Task CreateEmptyTask()
+        public static Task CompletedTask()
         {
             return Task.FromResult(0);
         }
