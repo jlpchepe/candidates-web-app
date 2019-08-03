@@ -14,7 +14,8 @@ namespace ReclutaCVData.Entidades
         Titulado,
         Pasante,
         Estudiante,
-        Trunca
+        Trunca,
+        Técnico
     }
 
     public enum RolCandidato
@@ -55,12 +56,12 @@ namespace ReclutaCVData.Entidades
         NoEspecificado,
         [Description("Citado para examen")]
         CitadoParaExamen,
+        [Description("Citado para entrevista")]
+        CitadoParaEntrevista,
         [Description("Intereses altos")]
         InteresesAltos,
         [Description("Foráneo")]
         Foraneo,
-        [Description("En espera")]
-        EnEspera,
         [Description("Otra vacante")]
         OtraVacante,
         [Description("Analizando al candidato")]
@@ -68,7 +69,29 @@ namespace ReclutaCVData.Entidades
         [Description("No le interesó")]
         NoLeIntereso,
         [Description("Vacante detenida")]
-        VacanteDetenida
+        VacanteDetenida,
+        [Description("Candidato seleccionado")]
+        Seleccionado,
+        [Description("Candidato pre seleccionado")]
+        PreSeleccionado,
+        [Description("No cumple con el perfil (técnico)")]
+        NoCumpleConElPerfilTecnico,
+        [Description("No cumple con el perfil (habilidades)")]
+        NoCumpleConElPerfilHabilidades,
+        [Description("No cumple con el perfil")]
+        NoCumpleConElPerfil,
+        [Description("Por contactar")]
+        PorContactar,
+        [Description("Rechazado")]
+        Rechazado,
+        [Description("Rechazo oferta")]
+        RechazoOferta,
+
+
+
+
+
+
     }
 
     public enum BolsaTrabajo
