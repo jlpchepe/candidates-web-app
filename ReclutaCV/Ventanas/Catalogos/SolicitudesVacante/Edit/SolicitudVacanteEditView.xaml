@@ -14,57 +14,84 @@
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0" Style="{StaticResource DataInputStackPanel}">
+                <TextBlock>Folio Capital Humano</TextBlock>
+                <TextBox Text="{Binding Model.FolioCapitalHumano}" ></TextBox>
+          
+                <TextBlock>Fecha de solicitud</TextBlock>
+                <DatePicker SelectedDate="{Binding Model.FechaDeSolicitud}"></DatePicker>
+                <TextBlock>Motivo de la solicitud</TextBlock>
+                <controls:EnumComboBox SelectedValue="{Binding Model.Motivo}"></controls:EnumComboBox>
+                <TextBlock>Especifique</TextBlock>
+                <TextBox Text="{Binding Model.EspecifiqueMotivo}" ></TextBox>
+                
                 <TextBlock>Nombre del solicitante</TextBlock>
                 <TextBox Text="{Binding Model.NombreDelSolicitante}" ></TextBox>
             
-                <TextBlock>Fecha de solicitud</TextBlock>
-                <DatePicker SelectedDate="{Binding Model.FechaDeSolicitud}"></DatePicker>
-                <TextBlock>Puesto solicitado</TextBlock>
-                <controls:EnumComboBox SelectedValue="{Binding Model.PuestoSolicitado}"></controls:EnumComboBox>
-          
-            
-                <TextBlock>Nivel idioma inglés</TextBlock>
-                <TextBox Text="{Binding Model.NivelIdiomaIngles}" ></TextBox>
-
-                <TextBlock>Rango de edad</TextBlock>
-                <TextBox Text="{Binding Model.EdadRango}"></TextBox>
-            
-                <TextBlock>Proyecto</TextBlock>
-                <TextBox Text="{Binding Model.Proyecto}"></TextBox>
-            
-            
-                <TextBlock>Competencias o habilidades</TextBlock>
-                <TextBox Text="{Binding Model.CompetenciasOHabilidades}"></TextBox>
-            
-                <TextBlock>Instrumento de evaluación</TextBlock>
-                <controls:EnumComboBox SelectedValue="{Binding Model.InstrumentoDeEvaluacion}"></controls:EnumComboBox>
-            
-                <TextBlock>Observaciones</TextBlock>
-                <TextBox Text="{Binding Model.Observaciones}"></TextBox>
-
-
-            </StackPanel> 
-        
-        
-       
-            <StackPanel Grid.Column="1" Style="{StaticResource DataInputStackPanel}">
+                
+                <TextBlock>Puesto del solicitante</TextBlock>
+                <TextBox Text="{Binding Model.PuestoDelSolicitante}" ></TextBox>
                 <TextBlock>Área del solicitante</TextBlock>
                 <controls:EnumComboBox SelectedValue="{Binding Model.AreaDelSolicitante}"></controls:EnumComboBox>
-                <TextBlock>Fecha de ingreso</TextBlock>
-                <DatePicker SelectedDate="{Binding Model.FechaEstimadaDeIngreso}"></DatePicker>
-                <TextBlock>Cantidad de personal</TextBlock>
-                <TextBox Text="{Binding Model.CantidadDePersonal}"></TextBox>
-                <TextBlock>Estado civil</TextBlock>
-                <controls:EnumComboBox SelectedValue="{Binding Model.EstadoCivil}"></controls:EnumComboBox>
-                <TextBlock>Sexo</TextBlock>
-                <controls:EnumComboBox SelectedValue="{Binding Model.SexoDelCandidato}"></controls:EnumComboBox>
-                <TextBlock>Experiencia laboral</TextBlock>
-                <TextBox Text="{Binding Model.ExperienciaLaboral}"></TextBox>
-                <TextBlock>Certificaciones necesarias</TextBlock>
-                <TextBox Text="{Binding Model.CertificacionesNecesarias}"></TextBox>
-                <TextBlock>Sueldo</TextBlock>
-                <TextBox Text="{Binding Model.Sueldo}"></TextBox>
+                <TextBlock>Especifique</TextBlock>
+                <TextBox Text="{Binding Model.EspecifiqueAreaDelSolicitante}" ></TextBox>
+                <GroupBox Header="Capital Humano">
+                    <StackPanel>
+                        <TextBlock>Sueldo</TextBlock>
+                        <TextBox Text="{Binding Model.Sueldo}"></TextBox>
+                        <TextBlock>Tipo de contrato</TextBlock>
+                        <controls:EnumComboBox SelectedValue="{Binding Model.TipoDeContrato}"></controls:EnumComboBox>
+                        <TextBlock>Especifique</TextBlock>
+                        <TextBox Text="{Binding Model.EspecifiqueTipoDeContrato}" ></TextBox>
+                        <TextBlock>Estatus</TextBlock>
+                        <controls:EnumComboBox SelectedValue="{Binding Model.Estatus}"></controls:EnumComboBox>
+                    </StackPanel>
+                </GroupBox>
+                
+                
+                
+                
+
+               
+            
+                
+            
+            
+               
+                
+            
+       
+
             </StackPanel>
+
+            <GroupBox  Grid.Column="1" Header="Requerimientos del Puesto">
+                <StackPanel>
+                    <TextBlock>Puesto solicitado</TextBlock>
+                    <TextBox Text="{Binding Model.PuestoSolicitado}" ></TextBox>
+                    <TextBlock>Jefe inmediato</TextBlock>
+                    <TextBox Text="{Binding Model.NombreDelJefeInmediato}" ></TextBox>
+                    <TextBlock>Área, función y/o proyecto a asignar</TextBlock>
+                    <TextBox Text="{Binding Model.Proyecto}"></TextBox>
+                    <TextBlock>Nivel idioma inglés</TextBlock>
+                    <TextBox Text="{Binding Model.NivelIdiomaIngles}" ></TextBox>
+                    <TextBlock>Edad (rango)</TextBlock>
+                    <TextBox Text="{Binding Model.EdadRango}"></TextBox>
+                    <TextBlock>Estado civil</TextBlock>
+                    <TextBox Text="{Binding Model.EstadoCivil}" ></TextBox>
+                    <TextBlock>Fecha de ingreso</TextBlock>
+                    <DatePicker SelectedDate="{Binding Model.FechaEstimadaDeIngreso}"></DatePicker>
+                    <TextBlock>Experiencia laboral</TextBlock>
+                    <TextBox Text="{Binding Model.ExperienciaLaboral}"></TextBox>
+                    <TextBlock>Competencias o habilidades</TextBlock>
+                    <TextBox Text="{Binding Model.CompetenciasOHabilidades}"></TextBox>
+                    <TextBlock>Certificaciones necesarias</TextBlock>
+                    <TextBox Text="{Binding Model.CertificacionesNecesarias}"></TextBox>
+                    <TextBlock>Tipo de evaluación que se aplicará</TextBlock>
+                    <TextBox Text="{Binding Model.TipoDeEvaluacion}"></TextBox>
+                    <TextBlock>Observaciones y Comentarios</TextBlock>
+                    <TextBox Text="{Binding Model.Observaciones}"></TextBox>
+                </StackPanel>
+
+            </GroupBox>
         </Grid>
         <Border Style="{StaticResource EditButtonsBorder}">
             <StackPanel>
