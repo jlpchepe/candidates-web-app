@@ -419,6 +419,7 @@
         </TabControl>
         <Border Style="{StaticResource EditButtonsBorder}">
             <StackPanel>
+                <Button Command="{Binding GuardarYCerrarCommand}">Guardar y cerrar</Button>
                 <Button Command="{Binding GuardarCommand}">Guardar</Button>
                 <Button Command="{Binding CerrarVentanaCommand}">Cerrar</Button>
             </StackPanel>

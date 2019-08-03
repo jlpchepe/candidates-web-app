@@ -21,7 +21,12 @@ namespace ReclutaCV.Base.Edit
 
         public TModel Model { get; private set; }
         public ICommand GuardarCommand => new AsyncCommand(this.Guardar);
-        
+        public ICommand GuardarYCerrarCommand => 
+            new AsyncCommand(async () => {
+                await this.Guardar();
+                this.CerrarVentana();
+            });
+
         protected abstract Task Insert();
         protected abstract Task Update();
         protected abstract Task<TModel> CargarExistente(TId id);
