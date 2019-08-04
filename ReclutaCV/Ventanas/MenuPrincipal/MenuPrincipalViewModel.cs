@@ -1,10 +1,14 @@
-﻿using ReclutaCV.Candidatos.Edit;
+﻿using AppPersistence.Repositories;
+using AppPersistence.Repositories.Impl;
+using AppPersistence.Validators;
+using ReclutaCV.Candidatos.Edit;
 using ReclutaCV.Candidatos.List;
 using ReclutaCV.Utils.Commands;
 using ReclutaCV.Ventanas.Catalogos.SolicitudesVacante.Edit;
 using ReclutaCV.Ventanas.Catalogos.SolicitudesVacante.List;
 using ReclutaCV.Ventanas.Operativas.EtapasCandidato;
 using ReclutaCVData;
+using ReclutaCVData.Entidades;
 using ReclutaCVLogic.Servicios;
 using System;
 using System.Collections.Generic;
@@ -21,8 +25,16 @@ namespace ReclutaCV.Ventanas.MenuPrincipal
         public MenuPrincipalViewModel()
         {
             this.db = () => new Db();
-
             this.InitializeFirstDbContextFireForget();
+        }
+
+        private readonly Func<Db> db;
+        private CrudRepository<TEntity, TPrimaryKey> CreateRepository<TEntity, TPrimaryKey>() where TEntity : class
+        {
+            return new DbCrudRepository<TEntity, TPrimaryKey>(
+                new DbRepository(db),
+                new DbModelValidator()
+            );
         }
 
         private async void InitializeFirstDbContextFireForget()
@@ -49,11 +61,9 @@ namespace ReclutaCV.Ventanas.MenuPrincipal
             return windowFactory;
         }
 
-        private readonly Func<Db> db;
-
         public ICommand VerListadoCandidatos => new SimpleCommand(() =>
         {
-            var candidatoService = new CandidatoService(this.db);
+            var candidatoService = new CandidatoService(this.CreateRepository<Candidato, int>());
 
             var window = new CandidatoListViewModel(
                 candidatoService,
@@ -66,7 +76,7 @@ namespace ReclutaCV.Ventanas.MenuPrincipal
 
         public ICommand VerListadoDeSolicitudDeVacantes => new SimpleCommand(() =>
         {
-            var service = new SolicitudVacantesService(db);
+            var service = new SolicitudVacantesService(this.CreateRepository<SolicitudVacante, int>());
 
             var window = new SolicitudVacanteListViewModel(
                 service,

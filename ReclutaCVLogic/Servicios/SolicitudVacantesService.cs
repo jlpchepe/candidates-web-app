@@ -1,4 +1,6 @@
-﻿using ReclutaCVData;
+﻿using AppPersistence.Enums;
+using AppPersistence.Repositories;
+using ReclutaCVData;
 using ReclutaCVData.Entidades;
 using System;
 using System.Collections.Generic;
@@ -13,63 +15,33 @@ namespace ReclutaCVLogic.Servicios
     public class SolicitudVacantesService
     {
         public SolicitudVacantesService(
-            Func<Db> db
-        )
-        {
-            this.db = db;
-        }
+            CrudRepository<SolicitudVacante, int> repository
+        ) => this.repository = repository;
 
-        private Func<Db> db { get; }
+        private readonly CrudRepository<SolicitudVacante, int> repository;
 
         /// <summary>
         /// Obtiene todos las solicitudes existentes
         /// </summary>
-        public async Task<IReadOnlyCollection<SolicitudVacante>> FindAll()
-        {
-            using (var c = this.db())
-            {
-                return await c.SolicitudVacante.ToListAsync();
-            }
-        }
+        public async Task<IReadOnlyCollection<SolicitudVacante>> FindAll() =>
+            await repository.Find(
+                entity => entity,
+                entity => true,
+                entity => entity.FechaDeSolicitud,
+                OrderDirection.Descending
+            );
 
-        public async Task Insert(SolicitudVacante SolicitudVacanteAInsertar)
-        {
-            using (var c = this.db())
-            {
-                c.SolicitudVacante.Add(SolicitudVacanteAInsertar);
-                await c.SaveChangesAsync();
-            }
-        }
+        public Task Insert(SolicitudVacante solicitudVacanteAInsertar) =>
+            repository.Save(solicitudVacanteAInsertar);
 
-        public async Task Update(
+        public Task Update(
             SolicitudVacante SolicitudVacante
-        )
-        {
-            using (var c = this.db())
-            {
-                c.SolicitudVacante.AddOrUpdate(SolicitudVacante);
-                await c.SaveChangesAsync();
-            }
+        ) => repository.Save(SolicitudVacante);
 
-        }
+        public Task<SolicitudVacante> FindById(int id) =>
+            repository.FindById(id);
 
-        public Task<SolicitudVacante> FindById(int id)
-        {
-            using (var c = this.db())
-            {
-                return c.SolicitudVacante.FindAsync(id);
-
-            }
-        }
-
-        public async Task Delete(int id)
-        {
-            using (var c = this.db())
-            {
-                c.SolicitudVacante.Remove(c.SolicitudVacante.Find(id));
-                await c.SaveChangesAsync();
-            }
-        }
+        public Task Delete(int id) =>
+            repository.DeleteById(id);
     }
 }
-

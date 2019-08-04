@@ -210,3 +210,27 @@ FakesAssemblies/
 GeneratedArtifacts/
 _Pvt_Extensions/
 ModelManifest.xml
+
+## Por ahora también ignoramos las configuraciones de usuario
+*.csproj.user
+## También se ignoran los perfiles de despliegue
+*.pubxml
+*.pubxml.user
+
+# Node Files #
+/node_modules
+
+# VS Code files #
+.vscode/*
+.cache/
+dist/
+
+# Express wrapper files
+serve/dist
+serve/node_modules
+serve/package-lock.json
+
+## Only we are going to include the workspace settings for linter validation
+!.vscode/settings.json
+
+.env

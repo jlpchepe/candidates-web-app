@@ -1,4 +1,6 @@
-﻿using ReclutaCVData;
+﻿using AppPersistence.Enums;
+using AppPersistence.Repositories;
+using ReclutaCVData;
 using ReclutaCVData.Entidades;
 using System;
 using System.Collections.Generic;
@@ -13,66 +15,42 @@ namespace ReclutaCVLogic.Servicios
     public class CandidatoService
     {
         public CandidatoService(
-            Func<Db> db
-        )
-        {
-            this.db = db;
-        }
-        private readonly Func<Db> db;
+            CrudRepository<Candidato, int> repository
+        ) => this.repository = repository;
+
+        private readonly CrudRepository<Candidato, int> repository;
 
         /// <summary>
         /// Obtiene todos los candidatos existentes
         /// </summary>
         public async Task<IReadOnlyCollection<Candidato>> FindAll() => 
-            await this.db().Candidato
-                .OrderByDescending(c => c.FechaDeContacto)
-                .ToListAsync();
-
-        private Task<Candidato> FindByIdAttached(Db c, int id) => 
-            c.Candidato.FindAsync(id);
+            await repository.Find(
+                entity => entity,
+                entity => true,
+                entity => entity.FechaDeContacto,
+                OrderDirection.Descending
+            );
 
         /// <summary>
         /// Obtiene el candidato con el id especificado
         /// </summary>
-        public async Task<Candidato> FindById(int id)
-        {
-            using (var c = this.db())
-            {
-                return await FindByIdAttached(c, id);
-            }
-        }
+        public Task<Candidato> FindById(int id) => 
+            repository.FindById(id);
 
-        public async Task Update(
+        public Task Update(
             Candidato nuevaInformacionCandidato
-        )
-        {
-            using (var c = this.db())
-            {
-                c.Candidato.AddOrUpdate(nuevaInformacionCandidato);
-                nuevaInformacionCandidato.FechaDeActualizacion = DateTime.Now;
-                await c.SaveChangesAsync();
-            }
+        ) {
+            nuevaInformacionCandidato.FechaDeActualizacion = DateTime.Now;
+            return repository.Save(nuevaInformacionCandidato);
         }
 
-        public async Task Insert(Candidato candidatoAInsertar)
+        public Task Insert(Candidato candidatoAInsertar)
         {
-            using (var c = this.db())
-            {
-                c.Candidato.Add(candidatoAInsertar);
-                candidatoAInsertar.FechaDeActualizacion = DateTime.Now;
-                await c.SaveChangesAsync();
-            }
-
+            candidatoAInsertar.FechaDeActualizacion = DateTime.Now;
+            return repository.Save(candidatoAInsertar);
         }
 
-        public async Task Delete(int id)
-        {
-            using (var c = this.db())
-            {
-                var candidato = await this.FindByIdAttached(c, id);
-                c.Candidato.Remove(candidato);
-                await c.SaveChangesAsync();
-            }
-        }
+        public Task Delete(int id) => 
+            repository.DeleteById(id);
     }
 }

@@ -17,7 +17,6 @@ namespace ReclutaCVData
     {
 
         public Db()
-        //: base("Data Source=localhost;Initial Catalog=develop_reclutacv;Integrated Security=False;User Id=sa;Password=N0vut3k$C;")
         : base("Server=localhost;Port=5432;Database=develop_recluta_cv;User Id=postgres;Password=novutek;")
         {
         }

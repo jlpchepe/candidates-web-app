@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27428.2027
+VisualStudioVersion = 15.0.27130.2020
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReclutaCV", "ReclutaCV\ReclutaCV.csproj", "{398A6342-AFDC-491F-93ED-19FDA726FDB7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReclutaCVData", "ReclutaCVData\ReclutaCVData.csproj", "{89FD178D-A2A9-4327-B574-6621E77B2201}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReclutaCVLogic", "ReclutaCVLogic\ReclutaCVLogic.csproj", "{1C3489B8-EEBD-4722-8DD6-0EB7648A4F7F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReclutaCVApi", "ReclutaCVApi\ReclutaCVApi.csproj", "{DC163F99-F234-44EE-B205-62D8D646002E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{1C3489B8-EEBD-4722-8DD6-0EB7648A4F7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C3489B8-EEBD-4722-8DD6-0EB7648A4F7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C3489B8-EEBD-4722-8DD6-0EB7648A4F7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC163F99-F234-44EE-B205-62D8D646002E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC163F99-F234-44EE-B205-62D8D646002E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC163F99-F234-44EE-B205-62D8D646002E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC163F99-F234-44EE-B205-62D8D646002E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
