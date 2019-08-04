@@ -11,5 +11,5 @@ export interface UsuarioService {
      * Cambia el estatus del usuario
      */
     changeStatus: (id: number, active: boolean) => Promise<void>;
-    delete: (id: number, justification: string, password: string) => TPromiseLike<void>;
+    delete: (id: number) => TPromiseLike<void>;
 }

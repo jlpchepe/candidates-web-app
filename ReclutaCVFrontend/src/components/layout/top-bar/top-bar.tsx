@@ -3,14 +3,11 @@ import * as React from "react";
 import { withRouter, RouteComponentProps } from "react-router";
 import { Subscription } from "rxjs";
 
-// Servicios
-import { Notification, Configuration, Workshop } from "../../../communication/services";
-
 // Layouts
 import NavBar from "../nav-bar";
 
 // Assets
-import logo from "../../../assets/img/logo-nissan-color.png";
+import logo from "../../../assets/img/logo-topbar.png";
 
 // Helpers
 import { CredentialsHelper, AuthenticatedUsuarioInfo } from "../../../helpers/credentials-helper";
@@ -22,10 +19,6 @@ import NotificationDropdown from "./components/notification-dropdown";
 import { Modal } from "../../generic";;
 import { TopBarBrand } from "./components/top-bar-brand";
 import { WorkshopCapacityButton } from "./components/workshop-capacity-button";
-
-const workshopService = Workshop;
-const notificationService = Notification;
-const configurationService = Configuration;
 
 export interface DropdownType {
     catalogsDropdown: boolean;
@@ -64,13 +57,8 @@ class TopBar extends React.Component<RouteComponentProps, TopBarState> {
             isOpen: false
         },
         workshopCapacityDate: new Date(),
-        notifications: [],
         userName: "",
         userRole: "",
-        workshopCapacity: {
-            operators: [],
-            workShopCapacityFactor: 0
-        },
         logoBase64: undefined
     };
 
@@ -87,17 +75,10 @@ class TopBar extends React.Component<RouteComponentProps, TopBarState> {
     }
 
     private removeNotification(notificationId: number) {
-        this.setState(prevState => ({
-            notifications: prevState.notifications.filter(notification => notification.id != notificationId)
-        }));
     }
 
     private onCloseSession = () => {
         CredentialsHelper.deleteSessionToken();
-    };
-
-    private onClickMarkAsRead = (notificationId: number) => {
-        notificationService.markAsRead(notificationId).then(() => this.removeNotification(notificationId));
     };
 
     private onClickNotification = (id, workOrderId?) => {
@@ -113,17 +94,9 @@ class TopBar extends React.Component<RouteComponentProps, TopBarState> {
     };
 
     private getLogo = () => {
-        toPromise(configurationService.getSystemThemeConfiguration()).subscribe(response =>
-            this.setState({
-                logoBase64: response.companyLogoBase64 || logo
-            })
-        );
-    };
-
-    private onChangeWorkCapacityDate = (date: Date) => {
-        workshopService.getCapacity(date).then(data => {
-            this.setState({ workshopCapacity: data, workshopCapacityDate: date });
-        });
+        this.setState({
+            logoBase64: logo
+        })
     };
 
     private onToggleWorkorderModal = () => {
@@ -149,7 +122,7 @@ class TopBar extends React.Component<RouteComponentProps, TopBarState> {
     private onClickCatalogsDropdown = () => this.onClickActionButton("catalogsDropdown");
 
     render() {
-        const { activeWindow, logoBase64, notifications, userName, userRole, workshopCapacity } = this.state;
+        const { activeWindow, logoBase64, userName, userRole } = this.state;
         return (
             <div className="top-bar">
                 <div className="top-bar__container">

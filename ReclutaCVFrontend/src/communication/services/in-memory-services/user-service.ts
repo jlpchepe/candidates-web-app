@@ -1,21 +1,18 @@
 import { UsuarioService } from "../user-service";
-import { UsuarioInsertable, UsuarioUpdatable } from "../../dtos/user";
+import { UsuarioInsertable, UsuarioUpdatable, UsuarioConsultable } from "../../dtos/user";
 
-const sampleUsuario = {
+const sample : UsuarioConsultable & UsuarioInsertable = {
     id: 1,
-    name: "Luis",
-    firstLastName: "Rodríguez",
-    secondLastName: "López",
-    role: 1,
-    password: "",
-    active: true
+    nombre: "Luis",
+    contraseña: "",
+    activo: true
 };
 export const InMemoryUsuarioService: UsuarioService = {
     getPaginated: (pageNumberZeroBased: number, pageSize: number) => ({
-        items: [sampleUsuario],
+        items: [sample],
         totalPages: 1
     }),
-    getById: (id: number) => sampleUsuario,
+    getById: (id: number) => sample,
     insert: (model: UsuarioInsertable) => {
         console.log("Insertado");
     },

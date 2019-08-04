@@ -41,10 +41,8 @@ namespace ReclutaCVLogic.Servicios
             await repository.Save(usuario);
         }
 
-        public Task DeleteById(int id)
-        {
-            return Task.CompletedTask;
-        }
+        public Task DeleteById(int id) =>
+            repository.DeleteById(id);
 
         public async Task ChangeStatus(int id, bool active)
         {

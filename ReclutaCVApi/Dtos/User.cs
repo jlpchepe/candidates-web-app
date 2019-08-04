@@ -8,35 +8,35 @@ namespace ReclutaCVApi.Dtos
     public class UsuarioChangeStatusRequest
     {
         public int Id { get; set; }
-        public bool Active { get; set; }
+        public bool Activo { get; set; }
     }
 
     public class UsuarioInsertable
     {
-        public string Name { get; set; }
-        public string Password { get; set; }
-        public bool? Active { get; set; }
+        public string Nombre { get; set; }
+        public string Contraseña { get; set; }
+        public bool? Activo { get; set; }
     }
 
     public class UsuarioUpdatable 
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public bool? Active { get; set; }
+        public string Nombre { get; set; }
+        public bool? Activo { get; set; }
     }
 
     public class UsuarioListable {
 
-        public UsuarioListable (int id, string name, bool active)
+        public UsuarioListable (int id, string nombre, bool activo)
         {
             Id = id;
-            Name = name;
-            Active = active;
+            Nombre = nombre;
+            Activo = activo;
         }
         
         public int Id { get; set; }
-        public string Name { get; set; }
-        public bool Active { get; set; }
+        public string Nombre { get; set; }
+        public bool Activo { get; set; }
     }
 
     public class UsuarioConsultable : UsuarioListable

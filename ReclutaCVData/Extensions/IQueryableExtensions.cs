@@ -30,8 +30,10 @@ namespace AppPersistence.Extensions
             var pageSize = pageable.PageSize;
             var pageNumber = pageable.PageNumber;
 
+            var totalRecords = await query.CountAsync();
+
             var totalPages =
-                (int)Math.Ceiling(await query.CountAsync() / (decimal)pageSize);
+                (int)Math.Ceiling((decimal)totalRecords / (decimal)pageSize);
 
             var items =
                 await query

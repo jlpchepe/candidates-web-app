@@ -24,18 +24,13 @@ interface TextInputProps {
 export class LabeledTextInput extends React.Component<TextInputProps> {
 
     private handleChange = (value: string) => {
-        const sanitizedValue = this.sanitizeValue(value);
+        const sanitizedValue = value;
         this.props.onChange(sanitizedValue);
     }
 
-    /**
-     * Limpia el valor del input
-     */
-    private sanitizeValue = (value: string) => StringHelper.sanitizeTextInput(value);
-
     private handleOnBlur = (value: string ) => {
 
-        const valueFixed = this.sanitizeValue(value)
+        const valueFixed = value
             // Retiramos todos los espacios blancos que estén a la izquierda
             .trimLeft()
             .trimRight();
@@ -48,7 +43,7 @@ export class LabeledTextInput extends React.Component<TextInputProps> {
 
     render() {
         const fixedPlaceholder = this.props.placeholder || this.props.label;
-        const sanitizedValue = this.sanitizeValue(this.props.value || "");
+        const sanitizedValue = this.props.value || "";
 
         return (
             <LabeledInput

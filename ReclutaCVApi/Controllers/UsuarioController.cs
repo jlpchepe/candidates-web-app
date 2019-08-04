@@ -56,9 +56,9 @@ namespace ReclutaCVApi.Controllers
         {
             return service.Save(
                 null,
-                model.Name,
-                model.Password,
-                model.Active
+                model.Nombre,
+                model.Contraseña,
+                model.Activo
             );
         }
 
@@ -67,9 +67,9 @@ namespace ReclutaCVApi.Controllers
         {
             return service.Save(
                 model.Id,
-                model.Name,
+                model.Nombre,
                 null,
-                model.Active
+                model.Activo
             );
         }
 
@@ -79,7 +79,7 @@ namespace ReclutaCVApi.Controllers
         /// <param name="request">Petición para cambiar el estatus</param>
         [HttpPut("status")]
         public Task Put([FromBody] UsuarioChangeStatusRequest request) => 
-            service.ChangeStatus(request.Id, request.Active);
+            service.ChangeStatus(request.Id, request.Activo);
 
         [HttpDelete("{id}")]
         public async Task Delete(int id)

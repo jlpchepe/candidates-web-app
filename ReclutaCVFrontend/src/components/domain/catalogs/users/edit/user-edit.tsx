@@ -13,67 +13,41 @@ import {
     withModelLoading
 } from "../../../../hoc/with-model-loader";
 import { EditCatalog } from "../../../base/edit-catalog";
-import { RoleCombo } from "../combo/role-combo";
 import { ConstHelper } from "../../../../../helpers/const-helper";
-import { AdvisorCombo } from "../../advisors/combo/advisor-combo";
-import { UsuarioRole } from "../../../../../communication/enums/user-roles";
 
 
 const service = Usuario;
 
 type TModelEditable = UsuarioInsertable & UsuarioUpdatable & UsuarioConsultable;
-interface UsuarioEditState {
-    model: TModelEditable;
-}
 
 class UsuarioEditSimple extends React.Component<
-WithModelManagementProps<TModelEditable>,
-UsuarioEditState
-> {
-    constructor(props) {
-        super(props);
-        this.state = {
-            model: this.props.model
-        };
-    }
-
-    private refreshModelInState = (model: Partial<TModelEditable>) => {
-        this.setState(prevState => ({ 
-            model: { ...prevState.model, ...model }
-        }));
-    }
-        
-    private setName = (name: string) =>
-        this.refreshModelInState({ nombre });
-    private setPassword = (password: string) =>
-        this.refreshModelInState({ contraseña });
-    private setRole = (role: number) =>
-        this.refreshModelInState({ role });
-    private setActive = (active: boolean) =>
-        this.refreshModelInState({ activo });
-    private setAdvisorId = (advisorId: number) =>
-        this.refreshModelInState({ advisorId });
-
-    private handleOnSave = () => this.props.onSaveModel(this.state.model);
+WithModelManagementProps<TModelEditable>
+> {     
+    private setName = (nombre: string) =>
+        this.props.setModel({ nombre });
+    private setPassword = (contraseña: string) =>
+        this.props.setModel({ contraseña });
+    private setActive = (activo: boolean) =>
+        this.props.setModel({ activo });
 
     render() {
         return (
             <EditCatalog
                 title="Usuario"
                 readonly={this.props.readonly}
-                onSave={this.handleOnSave}
+                onSave={this.props.onSaveModel}
             >
                 <Row>
                     <LabeledTextInput
                         label="Nombre"
                         readonly={this.props.readonly}
                         required
-                        value={this.state.model.nombre}
+                        value={this.props.model.nombre}
                         onChange={this.setName}
                         maxlength={ConstHelper.nameMaxLength}
                     />
                     <LabeledStatusInput
-                        value={this.state.model.activo}
+                        value={this.props.model.activo}
                         onChange={this.setActive}
                         readonly={this.props.readonly}
                         required={true}
@@ -88,28 +62,10 @@ UsuarioEditState
                                 label="Contraseña"
                                 readonly={this.props.readonly}
                                 required
-                                value={this.state.model.contraseña}
+                                value={this.props.model.contraseña}
                                 onChange={this.setPassword}
                             /> :
                             null 
-                    }
-                    <RoleCombo
-                        value={this.state.model.role}
-                        required
-                        readonly={this.props.readonly}
-                        onValueChange={this.setRole}
-                    />
-                    {
-                        this.state.model.role == UsuarioRole.Advisor ?
-                            <AdvisorCombo
-                                label="Asesor"
-                                idSelected={this.state.model.advisorId}
-                                onIdSelectedChange={this.setAdvisorId}
-                                readonly={this.props.readonly}
-                                required
-                            >
-                            </AdvisorCombo> : 
-                            null
                     }
                 </Row>
             </EditCatalog>
@@ -121,9 +77,7 @@ const getNewUsuario: () => TModelEditable = () => ({
     id: undefined,
     nombre: undefined,
     contraseña: undefined,
-    role: undefined,
-    activo: true,
-    advisorId: undefined
+    activo: true
 });
 
 export const UsuarioEdit = withModelLoading<TModelEditable, WithModelManagementProps<TModelEditable>>(

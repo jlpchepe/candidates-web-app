@@ -8,9 +8,10 @@ import { CandidatoService } from "../candidato-service";
 
 export const RemoteCandidatoService: CandidatoService = CreateCrudRestApiService("candidato");
 
+const usuarioBaseEndpoint = "usuario";
 export const RemoteUsuarioService: UsuarioService = {
-    ...CreateCrudRestApiService<UsuarioListable, UsuarioConsultable, UsuarioInsertable, UsuarioUpdatable, void>("user"),
-    changeStatus: (id, active) => RestApiCommunication.put("user/status", { id, active }),
+    ...CreateCrudRestApiService<UsuarioListable, UsuarioConsultable, UsuarioInsertable, UsuarioUpdatable, void>(usuarioBaseEndpoint),
+    changeStatus: (id, active) => RestApiCommunication.put(usuarioBaseEndpoint + "/status", { id, active }),
 };
 
 export const RemoteAuthenticationService: AuthenticationService = {

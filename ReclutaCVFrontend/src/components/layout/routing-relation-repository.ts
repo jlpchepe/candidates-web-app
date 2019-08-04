@@ -1,7 +1,5 @@
 import * as React from "react";
-import { OperatorEdit } from "./../domain/catalogs/operator/edit/operator-edit";
 import { UsuarioEdit } from "./../domain/catalogs/users/edit/user-edit";
-import { OperatorList } from "./../domain/catalogs/operator/list/operator-list";
 import { UsuarioList } from "./../domain/catalogs/users/list/user-list";
 import { RouteComponentProps } from "react-router-dom";
 import { CandidatoList } from "../domain/catalogs/candidato/list/candidato-list";
@@ -29,31 +27,15 @@ export interface RoutingRelation {
  */
 export const RountingRelationRepository: RoutingRelation[] = [
     {
-        component: null,
-        label: "Catálogos",
-        path: null,
-        submenu: [
-            {
-                component: OperatorList,
-                path: "/operator",
-                label: "Operadores"
-            },,
-            {
-                component: UsuarioList,
-                path: "/user",
-                label: "Usuarios"
-            },
-            {
-                component: CandidatoList,
-                path: "/candidato",
-                label: "Candidatos"
-            },
-        ]
+        component: UsuarioList,
+        path: "/user",
+        label: "Usuarios"
     },
     {
-        component: OperatorEdit,
-        path: "/operator/:id/:readonly?"
-    }, 
+        component: CandidatoList,
+        path: "/candidato",
+        label: "Candidatos"
+    },
     {
         component: CandidatoEdit,
         path: "/candidato/:id/:readonly?"

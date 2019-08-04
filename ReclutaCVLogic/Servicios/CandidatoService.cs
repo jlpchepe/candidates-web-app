@@ -39,15 +39,20 @@ namespace ReclutaCVLogic.Servicios
             int pageNumber,
             int pageSize,
             string nombre
-        ) => await repository.Find(
+        )
+        {
+            var fixedNombre = nombre ?? "";
+
+            return await repository.Find(
                 entity => entity,
-                entity => 
-                    nombre == null ||
+                entity =>
+                    fixedNombre == "" ||
                     entity.Nombre.ToLower().Contains(nombre.ToLower())
                 ,
                 entity => entity.FechaDeContacto,
                 new Pageable(pageNumber, pageSize, OrderDirection.Descending)
             );
+        }
 
         /// <summary>
         /// Obtiene el candidato con el id especificado

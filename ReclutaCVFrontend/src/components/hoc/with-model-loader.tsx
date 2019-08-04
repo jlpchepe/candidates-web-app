@@ -70,7 +70,7 @@ function withModelManagementSimple<TModel, ComponentProps extends WithModelManag
 
         private handleSetModel = (model: Partial<TModel>) =>
             this.setState(prevState => ({ 
-                model: { ...model, ...prevState.model }
+                model: { ...prevState.model, ...model }
             }));
 
         render() {

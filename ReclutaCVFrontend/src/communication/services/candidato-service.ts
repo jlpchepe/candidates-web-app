@@ -7,5 +7,5 @@ export interface CandidatoService {
     getById: (id: number) => TPromiseLike<CandidatoConsultable>;
     insert: (model: CandidatoInsertable) => TPromiseLike<void>;
     update: (model: CandidatoUpdatable) => TPromiseLike<void>;
-    delete: (id: number, justification: string, password: string) => TPromiseLike<void>;
+    delete: (id: number) => TPromiseLike<void>;
 }

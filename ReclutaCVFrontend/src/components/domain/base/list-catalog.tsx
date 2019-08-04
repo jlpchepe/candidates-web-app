@@ -5,7 +5,6 @@ import { PageHeader } from "../common/page-header";
 import { Pager } from "../../generic/pager";
 import { ArrayHelper } from "../../../helpers/array-helper";
 import { Column } from "../common/column";
-import { ModalJustify } from "../operatives/modal-justify";
 
 interface ListCatalogColumn<TListable> {
     header: string | React.ReactNode;

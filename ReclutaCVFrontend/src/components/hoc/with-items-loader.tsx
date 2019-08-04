@@ -1,23 +1,19 @@
 import * as React from "react";
 import { RouteComponentProps, withRouter, RouterProps } from "react-router";
 import { readNumberQueryParam } from "../../helpers/navigation-helper";
-import { TPromiseLike, toPromise } from "../../helpers/observable-helper";
 import { PageResult } from "../../communication/dtos/page-result";
 import { Diff } from "../../helpers/type-helper";
 import { WithItemsComboLoaderProps } from "./with-items-combo-loader";
-import { ModalJustification as JustificationModal } from "../domain/operatives/modal-justify";
 import { TPromiseLike, toPromise } from "../../helpers/promise-helper";
 
 type TDefaultFilters = {};
 
 interface WithItemsLoaderState<TListable, TFilters> {
     items?: TListable[];
-    itemToDelete: TListable | null;
     pageNumber?: number;
     pageSize?: number;
     totalPages?: number;
-    filters: Partial<TFilters>,
-    modalJustificationOpened: boolean
+    filters: Partial<TFilters>
 }
 
 export interface WithItemsLoaderProps<TListable, TFilters = TDefaultFilters> extends RouterProps {
@@ -60,16 +56,14 @@ const defaultPageSize = 10;
 function withItemsLoadingSimple<TListable, TFilters, ComponentProps extends WithItemsLoaderProps<TListable, TFilters>>(
     Component: React.ComponentType<ComponentProps>,
     getItems: (pageNumberZeroBased: number, pageSize: number, filters?: Partial<TFilters>) => TPromiseLike<PageResult<TListable>>,
-    deleteItem?: (item: TListable, justification: string, password: string) => TPromiseLike<void>
+    deleteItem?: (item: TListable) => TPromiseLike<void>
 ) {
     return class WithItemsLoading extends React.Component<
     Diff<ComponentProps, WithItemsComboLoaderProps<TListable, TFilters>> & RouteComponentProps,
     WithItemsLoaderState<TListable, TFilters>
     > {
         state: WithItemsLoaderState<TListable, TFilters> = {
-            filters: {},
-            modalJustificationOpened: false,
-            itemToDelete: null
+            filters: {}
         }
 
         componentDidMount() {
@@ -137,36 +131,12 @@ function withItemsLoadingSimple<TListable, TFilters, ComponentProps extends With
          * Maneja el borrado de items 
          */
         private handleDeleteItem = deleteItem != null ?
-            (item: TListable) =>
-                this.setState({
-                    modalJustificationOpened: true,
-                    itemToDelete: item
+            (item : TListable) => toPromise(
+                    deleteItem(item)
+                ).then(() => {
+                    this.refreshItemsWithCurrentFilters(this.state.pageNumber);
                 }) :
             null;
-
-        onConfirmDelete = (
-            justification: string,
-            password: string
-        ) => {
-            const itemToDelete = this.state.itemToDelete;
-            if (itemToDelete == null) {
-                return;
-            }
-
-            this.setState({ itemToDelete: null },
-                () => {
-                    toPromise(
-                        deleteItem(itemToDelete, justification, password)
-                    ).subscribe(() => {
-                        this.setState({ modalJustificationOpened: false });
-                        this.refreshItemsWithCurrentFilters(this.state.pageNumber);
-                    });
-                }
-            );
-        }
-
-        onCancelDelete = () => this.setState({ modalJustificationOpened: false });
-        onToggleDeleteModal = () => this.setState({ modalJustificationOpened: false })
 
         render() {
             return (
@@ -185,13 +155,6 @@ function withItemsLoadingSimple<TListable, TFilters, ComponentProps extends With
                             setFilters={this.refreshItemsWithCurrentPageNumber}
                             filters={this.state.filters}
                         />
-                        <JustificationModal
-                            title="Justificar eliminación"
-                            isOpen={this.state.modalJustificationOpened}
-                            onConfirm={this.onConfirmDelete}
-                            onCancel={this.onCancelDelete}
-                            toggle={this.onToggleDeleteModal}
-                        />
                     </>
                     :
                     null
@@ -209,5 +172,5 @@ function withItemsLoadingSimple<TListable, TFilters, ComponentProps extends With
 export function withItemsLoading<TListable, TFilters = TDefaultFilters, ComponentProps extends WithItemsLoaderProps<TListable, TFilters> = WithItemsLoaderProps<TListable, TFilters>>(
     component: React.ComponentType<ComponentProps>,
     getItems: (pageNumberZeroBased: number, pageSize: number, filters?: Partial<TFilters>) => TPromiseLike<PageResult<TListable>>,
-    deleteItem?: (item: TListable, justification: string, password: string) => TPromiseLike<void>
+    deleteItem?: (item: TListable) => TPromiseLike<void>
 ) { return withRouter(withItemsLoadingSimple(component, getItems, deleteItem)); }

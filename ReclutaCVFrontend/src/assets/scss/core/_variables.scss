@@ -1,10 +1,11 @@
 // Colores
 $red:                 rgb(204, 0, 51) !default;
+$orange:                 rgb(255, 149, 21) !default;
 $black:               rgb(51, 51, 51) !default;
 $white:               rgb(255, 255, 255) !default;
 $blue:                rgb(55, 68, 147) !default;
 // Estados
-$primary:             $red !default;
+$primary:             $orange !default;
 $tertiary:            $blue !default;
 $hover:               rgba(0,0,0,0.1) !default;
 

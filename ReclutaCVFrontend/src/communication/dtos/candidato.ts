@@ -1,3 +1,5 @@
+import { VeredictoFinalCandidato } from "../enums/veredicto-final-candidato";
+
 export interface CandidatoListable extends CandidatoConsultable {
     
 }
@@ -15,11 +17,11 @@ export interface CandidatoConsultable
     nombre: string;
     correo: string;
     telefono: string;
-    fechaDeNacimiento: Date | string | null;
+    fechaDeNacimiento: Date | null;
     estadoCivil: string;
     lugarNacimiento: string;
     generalesComentarios: string;
-    fechaDeActualizacion: Date | string | null;
+    fechaDeActualizacion: Date | null;
 
     // Experiencia laboral
     compañia: string;
@@ -48,10 +50,10 @@ export interface CandidatoConsultable
     puestoClave: number | null;
     puestoNombre: string;
     proyectoNombre: string;
-    fechaDeRecepcionCurriculum: Date | string | null;
-    fechaDeContacto: Date | string | null;
-    fechaPreentrevistaTelefonica: Date | string | null;
-    fechaRecepcionSolicitudRegistro: Date | string | null;
+    fechaDeRecepcionCurriculum: Date | null;
+    fechaDeContacto: Date | null;
+    fechaPreentrevistaTelefonica: Date | null;
+    fechaRecepcionSolicitudRegistro: Date | null;
     quienLoContacto: string;
     bolsa: BolsaTrabajo;
     bolsaOtra: string;
@@ -67,7 +69,7 @@ export interface CandidatoConsultable
     examenPsicometricoObservaciones: string;
 
     // examen de programación
-    examenProgramacionFecha: Date | string | null;
+    examenProgramacionFecha: Date | null;
     examenProgramacionIpComputadora: string;
     examenProgramacionId: string;
     examenProgramacionUmlCalificacion: number | null;
@@ -91,7 +93,7 @@ export interface CandidatoConsultable
     examenProgramacionRango: string;
 
     // examen de analista
-    examenAnalistaFecha: Date | string | null;
+    examenAnalistaFecha: Date | null;
     examenAnalistaIpComputadora: string;
     // Teórico
     examenAnalistaTeoricoId: string;
@@ -106,7 +108,7 @@ export interface CandidatoConsultable
     examenAnalistaPracticoRango: string;
 
     // examen de ingeniero de pruebas
-    examenIngenieroPruebasFecha: Date | string | null;
+    examenIngenieroPruebasFecha: Date | null;
     examenIngenieroPruebasIpComputadora: string;
     // Teórico
     examenIngenieroPruebasTeoricoId: number | null;
@@ -123,7 +125,7 @@ export interface CandidatoConsultable
     examenIngenieroPruebasSqlCalificacion: number | null;
 
     // examen de administrador de proyectos
-    examenAdministradorProyectoFecha: Date | string | null;
+    examenAdministradorProyectoFecha: Date | null;
     examenAdministradorProyectoIpComputadora: string;
     examenAdministradorProyectoId: number | null;
     examenAdministradorProyectoAciertos: number | null;
@@ -131,33 +133,33 @@ export interface CandidatoConsultable
     examenAdministradorProyectoRango: string;
 
     // examen de soporte - BD
-    examenPracticoSoporteBdFecha: Date | string | null;
+    examenPracticoSoporteBdFecha: Date | null;
     examenPracticoSoporteBdAciertos: number | null;
     examenPracticoSoporteBdTotalReactivos: number | null;
     examenPracticoSoporteBdRango: string;
 
     // Etapa de entrevistas
-    entrevistaCapitalHumanoFecha: Date | string | null;
+    entrevistaCapitalHumanoFecha: Date | null;
     entrevistaCapitalHumanoComentarios: string;
-    entrevistaCoordinadorYEquipoTecnicoFecha: Date | string | null;
+    entrevistaCoordinadorYEquipoTecnicoFecha: Date | null;
     entrevistaCoordinadorYEquipoTecnicoComentarios: string;
-    entrevistaInglesFecha: Date | string | null;
+    entrevistaInglesFecha: Date | null;
     entrevistaInglesComentarios: string;
-    entrevistaGerenteAreaFecha: Date | string | null;
+    entrevistaGerenteAreaFecha: Date | null;
     entrevistaGerenteAreaComentarios: string;
     veredictoFinal: VeredictoFinalCandidato;
     veredictoFinalNivelIdentificado: string;
     veredictoFinalComentarios: string;
 
     // Propuesta económica
-    propuestaEconomicaFecha: Date | string | null;
+    propuestaEconomicaFecha: Date | null;
     propuestaEconomicaEstatus: PropuestaEconomicaEstatus;
     propuestaEconomicaSueldo: number | null;
     propuestaEconomicaComentarios: string;
 
     // Ingreso
-    ingresoFecha: Date | string | null;
+    ingresoFecha: Date | null;
     ingresoTipoContrato: string;
-    ingresoVencimientoContratoDeterminado: Date | string | null;
+    ingresoVencimientoContratoDeterminado: Date | null;
     ingresoObservaciones: string;
 }

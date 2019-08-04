@@ -27,7 +27,7 @@ class CandidatoListSimple extends React.Component<WithItemsLoaderProps<Candidato
                 totalPages={this.props.totalPages}
                 columns={[
                     {
-                        header: "Candidato",
+                        header: "Nombre",
                         contentSelector: item => item.nombre
                     }
                 ]}
@@ -43,4 +43,5 @@ class CandidatoListSimple extends React.Component<WithItemsLoaderProps<Candidato
 export const CandidatoList = withItemsLoading(
     CandidatoListSimple,
     service.getPaginated,
-    (item, justification, password) => service.delete(item.id, justification, password));
+    (item) => service.delete(item.id)
+);

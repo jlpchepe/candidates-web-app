@@ -10,7 +10,7 @@ import { Authentication } from "../../../../../communication/services";
 // Helpers
 import { CredentialsHelper } from "../../../../../helpers/credentials-helper";
 
-import logo from "../../../../../assets/img/logo-nissan-blanco.png";
+import logo from "../../../../../assets/img/logo-login.png";
 import { NotificationHelper } from "../../../../../helpers/notification-helper";
 
 interface LoginState {
@@ -56,7 +56,7 @@ export class Login extends React.Component<RouteComponentProps, LoginState> {
                 <div className="row">
                     <div className="login__container animated fadeInDown">
                         <div className="login__brand text-center">
-                            <img alt="logo" src={logo} height={30} />
+                            <img alt="logo" src={logo} height={90} />
                         </div>
                         <p className="login__title">Inicio de sesión</p>
                         <form onSubmit={this.onSubmitHandler}>
@@ -76,7 +76,6 @@ export class Login extends React.Component<RouteComponentProps, LoginState> {
                                 onChange={this.onChangePassword}
 
                             />
-                            {/* <Checkbox className="mb-3" checked={this.state.rememberSession} label="Mantenerme conectado" id="rememberSession" onChange={() => this.setState({ rememberSession: !this.state.rememberSession })} /> */}
                             <button type="submit" className="btn btn-primary btn-block">
                                 <div className="d-flex justify-content-between">
                                     <span className="btn__label">Iniciar sesión</span>
