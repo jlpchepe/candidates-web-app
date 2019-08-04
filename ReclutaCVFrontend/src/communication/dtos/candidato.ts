@@ -10,154 +10,154 @@ export interface CandidatoUpdatable extends CandidatoConsultable{
 
 export interface CandidatoConsultable
 {
-    Id: number | null;
+    id: number | null;
     //Datos generales
-    Nombre: string;
-    Correo: string;
-    Telefono: string;
-    FechaDeNacimiento: Date | string | null;
-    EstadoCivil: string;
-    LugarNacimiento: string;
-    GeneralesComentarios: string;
-    FechaDeActualizacion: Date | string | null;
+    nombre: string;
+    correo: string;
+    telefono: string;
+    fechaDeNacimiento: Date | string | null;
+    estadoCivil: string;
+    lugarNacimiento: string;
+    generalesComentarios: string;
+    fechaDeActualizacion: Date | string | null;
 
     // Experiencia laboral
-    Compañia: string;
-    AñosDeExperiencia: number | null;
-    SueldoActual: number | null;
-    MotivoDeSeparacion: string;
+    compañia: string;
+    añosDeExperiencia: number | null;
+    sueldoActual: number | null;
+    motivoDeSeparacion: string;
 
     // Educación
-    Carrera: string;
-    Institucion: string;
-    EstatusAcademico: EstatusAcademico;
-    Cursos: string;
-    Certificaciones: string;
-    CompetenciasOHabilidades: string;
-    TecnologiasQueDomina: string;
-    SoftwareQueDomina: string;
+    carrera: string;
+    institucion: string;
+    estatusAcademico: EstatusAcademico;
+    cursos: string;
+    certificaciones: string;
+    competenciasOHabilidades: string;
+    tecnologiasQueDomina: string;
+    softwareQueDomina: string;
 
     // Inglés
-    NivelDeIngles: string;
-    NivelDeInglesHablado: number | null;
-    NivelDeInglesEscrito: number | null;
-    NivelDeInglesLectura: number | null;
+    nivelDeIngles: string;
+    nivelDeInglesHablado: number | null;
+    nivelDeInglesEscrito: number | null;
+    nivelDeInglesLectura: number | null;
 
     // Proceso de reclutamiento
-    SolicitudPersonalFolio: number | null;
-    PuestoClave: number | null;
-    PuestoNombre: string;
-    ProyectoNombre: string;
-    FechaDeRecepcionCurriculum: Date | string | null;
-    FechaDeContacto: Date | string | null;
-    FechaPreentrevistaTelefonica: Date | string | null;
-    FechaRecepcionSolicitudRegistro: Date | string | null;
-    QuienLoContacto: string;
-    Bolsa: BolsaTrabajo;
-    BolsaOtra: string;
-    Rol: RolCandidato;
-    RolOtro: string;
-    ExpectativaEconomica: number | null;
-    Estatus: EstatusCandidato;
-    ReclutamientoComentarios: string;
+    solicitudPersonalFolio: number | null;
+    puestoClave: number | null;
+    puestoNombre: string;
+    proyectoNombre: string;
+    fechaDeRecepcionCurriculum: Date | string | null;
+    fechaDeContacto: Date | string | null;
+    fechaPreentrevistaTelefonica: Date | string | null;
+    fechaRecepcionSolicitudRegistro: Date | string | null;
+    quienLoContacto: string;
+    bolsa: BolsaTrabajo;
+    bolsaOtra: string;
+    rol: RolCandidato;
+    rolOtro: string;
+    expectativaEconomica: number | null;
+    estatus: EstatusCandidato;
+    reclutamientoComentarios: string;
 
-    // Examen psicometrico
-    ExamenPsicometricoNombre: string;
-    ExamenPsicometricoResultados: string;
-    ExamenPsicometricoObservaciones: string;
+    // examen psicometrico
+    examenPsicometricoNombre: string;
+    examenPsicometricoResultados: string;
+    examenPsicometricoObservaciones: string;
 
-    // Examen de programación
-    ExamenProgramacionFecha: Date | string | null;
-    ExamenProgramacionIpComputadora: string;
-    ExamenProgramacionId: string;
-    ExamenProgramacionUmlCalificacion: number | null;
-    ExamenProgramacionUmlTotalReactivos: number | null;
-    ExamenProgramacionAdooCalificacion: number | null;
-    ExamenProgramacionAdooTotalReactivos: number | null;
-    ExamenProgramacionPooCalificacion: number | null;
-    ExamenProgramacionPooTotalReactivos: number | null;
-    ExamenProgramacionLogicaCalificacion: number | null;
-    ExamenProgramacionLogicaTotalReactivos: number | null;
-    ExamenProgramacionWebCalificacion: number | null;
-    ExamenProgramacionWebTotalReactivos: number | null;
-    ExamenProgramacionJavascriptCalificacion: number | null;
-    ExamenProgramacionJavascriptTotalReactivos: number | null;
-    ExamenProgramacionScrumCalificacion: number | null;
-    ExamenProgramacionScrumTotalReactivos: number | null;
-    ExamenProgramacionTecnologiaCalificacion: number | null;
-    ExamenProgramacionTecnologiaTotalReactivos: number | null;
-    ExamenProgramacionAciertos: number | null;
-    ExamenProgramacionTotalReactivos: number | null;
-    ExamenProgramacionRango: string;
+    // examen de programación
+    examenProgramacionFecha: Date | string | null;
+    examenProgramacionIpComputadora: string;
+    examenProgramacionId: string;
+    examenProgramacionUmlCalificacion: number | null;
+    examenProgramacionUmlTotalReactivos: number | null;
+    examenProgramacionAdooCalificacion: number | null;
+    examenProgramacionAdooTotalReactivos: number | null;
+    examenProgramacionPooCalificacion: number | null;
+    examenProgramacionPooTotalReactivos: number | null;
+    examenProgramacionLogicaCalificacion: number | null;
+    examenProgramacionLogicaTotalReactivos: number | null;
+    examenProgramacionWebCalificacion: number | null;
+    examenProgramacionWebTotalReactivos: number | null;
+    examenProgramacionJavascriptCalificacion: number | null;
+    examenProgramacionJavascriptTotalReactivos: number | null;
+    examenProgramacionScrumCalificacion: number | null;
+    examenProgramacionScrumTotalReactivos: number | null;
+    examenProgramacionTecnologiaCalificacion: number | null;
+    examenProgramacionTecnologiaTotalReactivos: number | null;
+    examenProgramacionAciertos: number | null;
+    examenProgramacionTotalReactivos: number | null;
+    examenProgramacionRango: string;
 
-    // Examen de analista
-    ExamenAnalistaFecha: Date | string | null;
-    ExamenAnalistaIpComputadora: string;
+    // examen de analista
+    examenAnalistaFecha: Date | string | null;
+    examenAnalistaIpComputadora: string;
     // Teórico
-    ExamenAnalistaTeoricoId: string;
-    ExamenAnalistaTeoricoAciertos: number | null;
-    ExamenAnalistaTeoricoTotalReactivos: number | null;
-    ExamenAnalistaTeoricoRango: string;
+    examenAnalistaTeoricoId: string;
+    examenAnalistaTeoricoAciertos: number | null;
+    examenAnalistaTeoricoTotalReactivos: number | null;
+    examenAnalistaTeoricoRango: string;
     // Práctico
-    ExamenAnalistaPracticoId: string;
-    ExamenAnalistaPracticoNumeroCaso: number | null;
-    ExamenAnalistaPracticoAciertos: number | null;
-    ExamenAnalistaPracticoTotalReactivos: number | null;
-    ExamenAnalistaPracticoRango: string;
+    examenAnalistaPracticoId: string;
+    examenAnalistaPracticoNumeroCaso: number | null;
+    examenAnalistaPracticoAciertos: number | null;
+    examenAnalistaPracticoTotalReactivos: number | null;
+    examenAnalistaPracticoRango: string;
 
-    // Examen de ingeniero de pruebas
-    ExamenIngenieroPruebasFecha: Date | string | null;
-    ExamenIngenieroPruebasIpComputadora: string;
+    // examen de ingeniero de pruebas
+    examenIngenieroPruebasFecha: Date | string | null;
+    examenIngenieroPruebasIpComputadora: string;
     // Teórico
-    ExamenIngenieroPruebasTeoricoId: number | null;
-    ExamenIngenieroPruebasTeoricoAciertos: number | null;
-    ExamenIngenieroPruebasTeoricoTotalReactivos: number | null;
-    ExamenIngenieroPruebasTeoricoRango: string;
+    examenIngenieroPruebasTeoricoId: number | null;
+    examenIngenieroPruebasTeoricoAciertos: number | null;
+    examenIngenieroPruebasTeoricoTotalReactivos: number | null;
+    examenIngenieroPruebasTeoricoRango: string;
     // Práctico
-    ExamenIngenieroPruebasPracticoId: number | null;
-    ExamenIngenieroPruebasPracticoCalificacion: number | null;
-    ExamenIngenieroPruebasPracticoPuntos: number | null;
-    ExamenIngenieroPruebasPracticoRango: string;
+    examenIngenieroPruebasPracticoId: number | null;
+    examenIngenieroPruebasPracticoCalificacion: number | null;
+    examenIngenieroPruebasPracticoPuntos: number | null;
+    examenIngenieroPruebasPracticoRango: string;
     // SQL
-    ExamenIngenieroPruebasSqlTotalReactivos: number | null;
-    ExamenIngenieroPruebasSqlCalificacion: number | null;
+    examenIngenieroPruebasSqlTotalReactivos: number | null;
+    examenIngenieroPruebasSqlCalificacion: number | null;
 
-    // Examen de administrador de proyectos
-    ExamenAdministradorProyectoFecha: Date | string | null;
-    ExamenAdministradorProyectoIpComputadora: string;
-    ExamenAdministradorProyectoId: number | null;
-    ExamenAdministradorProyectoAciertos: number | null;
-    ExamenAdministradorProyectoTotalReactivos: number | null;
-    ExamenAdministradorProyectoRango: string;
+    // examen de administrador de proyectos
+    examenAdministradorProyectoFecha: Date | string | null;
+    examenAdministradorProyectoIpComputadora: string;
+    examenAdministradorProyectoId: number | null;
+    examenAdministradorProyectoAciertos: number | null;
+    examenAdministradorProyectoTotalReactivos: number | null;
+    examenAdministradorProyectoRango: string;
 
-    // Examen de soporte - BD
-    ExamenPracticoSoporteBdFecha: Date | string | null;
-    ExamenPracticoSoporteBdAciertos: number | null;
-    ExamenPracticoSoporteBdTotalReactivos: number | null;
-    ExamenPracticoSoporteBdRango: string;
+    // examen de soporte - BD
+    examenPracticoSoporteBdFecha: Date | string | null;
+    examenPracticoSoporteBdAciertos: number | null;
+    examenPracticoSoporteBdTotalReactivos: number | null;
+    examenPracticoSoporteBdRango: string;
 
     // Etapa de entrevistas
-    EntrevistaCapitalHumanoFecha: Date | string | null;
-    EntrevistaCapitalHumanoComentarios: string;
-    EntrevistaCoordinadorYEquipoTecnicoFecha: Date | string | null;
-    EntrevistaCoordinadorYEquipoTecnicoComentarios: string;
-    EntrevistaInglesFecha: Date | string | null;
-    EntrevistaInglesComentarios: string;
-    EntrevistaGerenteAreaFecha: Date | string | null;
-    EntrevistaGerenteAreaComentarios: string;
-    VeredictoFinal: VeredictoFinalCandidato;
-    VeredictoFinalNivelIdentificado: string;
-    VeredictoFinalComentarios: string;
+    entrevistaCapitalHumanoFecha: Date | string | null;
+    entrevistaCapitalHumanoComentarios: string;
+    entrevistaCoordinadorYEquipoTecnicoFecha: Date | string | null;
+    entrevistaCoordinadorYEquipoTecnicoComentarios: string;
+    entrevistaInglesFecha: Date | string | null;
+    entrevistaInglesComentarios: string;
+    entrevistaGerenteAreaFecha: Date | string | null;
+    entrevistaGerenteAreaComentarios: string;
+    veredictoFinal: VeredictoFinalCandidato;
+    veredictoFinalNivelIdentificado: string;
+    veredictoFinalComentarios: string;
 
     // Propuesta económica
-    PropuestaEconomicaFecha: Date | string | null;
-    PropuestaEconomicaEstatus: PropuestaEconomicaEstatus;
-    PropuestaEconomicaSueldo: number | null;
-    PropuestaEconomicaComentarios: string;
+    propuestaEconomicaFecha: Date | string | null;
+    propuestaEconomicaEstatus: PropuestaEconomicaEstatus;
+    propuestaEconomicaSueldo: number | null;
+    propuestaEconomicaComentarios: string;
 
     // Ingreso
-    IngresoFecha: Date | string | null;
-    IngresoTipoContrato: string;
-    IngresoVencimientoContratoDeterminado: Date | string | null;
-    IngresoObservaciones: string;
+    ingresoFecha: Date | string | null;
+    ingresoTipoContrato: string;
+    ingresoVencimientoContratoDeterminado: Date | string | null;
+    ingresoObservaciones: string;
 }

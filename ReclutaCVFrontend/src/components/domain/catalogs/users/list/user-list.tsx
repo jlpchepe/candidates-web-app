@@ -27,7 +27,7 @@ class UsuarioListSimple extends React.Component<WithItemsLoaderProps<UsuarioList
                 columns={[
                     {
                         header: "Nombre",
-                        contentSelector: item => item.name
+                        contentSelector: item => item.nombre
                     },
                     {
                         header: "Rol",
@@ -41,7 +41,7 @@ class UsuarioListSimple extends React.Component<WithItemsLoaderProps<UsuarioList
                     statusProp: "active",
                     onItemsChange: this.props.onItemsChange,
                     changeStatus: item => {
-                        const newStatus = !item.active;
+                        const newStatus = !item.activo;
 
                         return service.changeStatus(item.id, newStatus)
                             .then(() => newStatus);

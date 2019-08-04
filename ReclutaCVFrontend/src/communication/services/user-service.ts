@@ -1,4 +1,3 @@
-import { TPromiseLike } from "./../../helpers/observable-helper";
 import { UsuarioListable, UsuarioInsertable, UsuarioUpdatable, UsuarioConsultable } from "./../dtos/user";
 import { PageResult } from "./../dtos/page-result";
 import { TPromiseLike } from "../../helpers/promise-helper";

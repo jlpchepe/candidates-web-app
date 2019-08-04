@@ -28,12 +28,12 @@ class CandidatoListSimple extends React.Component<WithItemsLoaderProps<Candidato
                 columns={[
                     {
                         header: "Candidato",
-                        contentSelector: item => item.Nombre
+                        contentSelector: item => item.nombre
                     }
                 ]}
                 onNewItem={this.onNewItem}
-                onItemEdit={item => goToPath(this.props.history, "candidato/" + item.Id)}
-                onItemSeeDetails={item => goToPath(this.props.history, "candidato/" + item.Id + "/true")}
+                onItemEdit={item => goToPath(this.props.history, "candidato/" + item.id)}
+                onItemSeeDetails={item => goToPath(this.props.history, "candidato/" + item.id + "/true")}
                 onItemDelete={item => this.props.onDeleteItem(item)}
             />
         );
@@ -43,4 +43,4 @@ class CandidatoListSimple extends React.Component<WithItemsLoaderProps<Candidato
 export const CandidatoList = withItemsLoading(
     CandidatoListSimple,
     service.getPaginated,
-    (item, justification, password) => service.delete(item.Id, justification, password));
+    (item, justification, password) => service.delete(item.id, justification, password));

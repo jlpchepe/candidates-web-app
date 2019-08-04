@@ -44,13 +44,13 @@ UsuarioEditState
     }
         
     private setName = (name: string) =>
-        this.refreshModelInState({ name });
+        this.refreshModelInState({ nombre });
     private setPassword = (password: string) =>
-        this.refreshModelInState({ password });
+        this.refreshModelInState({ contraseña });
     private setRole = (role: number) =>
         this.refreshModelInState({ role });
     private setActive = (active: boolean) =>
-        this.refreshModelInState({ active });
+        this.refreshModelInState({ activo });
     private setAdvisorId = (advisorId: number) =>
         this.refreshModelInState({ advisorId });
 
@@ -68,12 +68,12 @@ UsuarioEditState
                         label="Nombre"
                         readonly={this.props.readonly}
                         required
-                        value={this.state.model.name}
+                        value={this.state.model.nombre}
                         onChange={this.setName}
                         maxlength={ConstHelper.nameMaxLength}
                     />
                     <LabeledStatusInput
-                        value={this.state.model.active}
+                        value={this.state.model.activo}
                         onChange={this.setActive}
                         readonly={this.props.readonly}
                         required={true}
@@ -88,7 +88,7 @@ UsuarioEditState
                                 label="Contraseña"
                                 readonly={this.props.readonly}
                                 required
-                                value={this.state.model.password}
+                                value={this.state.model.contraseña}
                                 onChange={this.setPassword}
                             /> :
                             null 
@@ -119,10 +119,10 @@ UsuarioEditState
 
 const getNewUsuario: () => TModelEditable = () => ({
     id: undefined,
-    name: undefined,
-    password: undefined,
+    nombre: undefined,
+    contraseña: undefined,
     role: undefined,
-    active: true,
+    activo: true,
     advisorId: undefined
 });
 
