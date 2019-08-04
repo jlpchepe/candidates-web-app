@@ -5,29 +5,29 @@ namespace ReclutaCVApi.Dtos
     /// <summary>
     /// Petición para cambiar el estatus de un usuario
     /// </summary>
-    public class UserChangeStatusRequest
+    public class UsuarioChangeStatusRequest
     {
         public int Id { get; set; }
         public bool Active { get; set; }
     }
 
-    public class UserInsertable
+    public class UsuarioInsertable
     {
         public string Name { get; set; }
         public string Password { get; set; }
         public bool? Active { get; set; }
     }
 
-    public class UserUpdatable 
+    public class UsuarioUpdatable 
     {
         public int Id { get; set; }
         public string Name { get; set; }
         public bool? Active { get; set; }
     }
 
-    public class UserListable {
+    public class UsuarioListable {
 
-        public UserListable (int id, string name, bool active)
+        public UsuarioListable (int id, string name, bool active)
         {
             Id = id;
             Name = name;
@@ -39,9 +39,9 @@ namespace ReclutaCVApi.Dtos
         public bool Active { get; set; }
     }
 
-    public class UserConsultable : UserListable
+    public class UsuarioConsultable : UsuarioListable
     {
-        public UserConsultable(int id, string name, bool active)
+        public UsuarioConsultable(int id, string name, bool active)
              : base(id, name, active)
         {
         }

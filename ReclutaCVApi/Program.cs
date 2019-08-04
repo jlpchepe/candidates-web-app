@@ -16,6 +16,7 @@ namespace ReclutaCVApi
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args).UseStartup<CoreBackendStartup>();
+            WebHost.CreateDefaultBuilder(args)
+            .UseStartup<CoreBackendStartup>();
     }
 }

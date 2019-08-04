@@ -34,9 +34,6 @@ namespace ReclutaCVApi
                     jsonOptions.SerializerSettings.DateTimeZoneHandling = DateTimeZoneHandling.Utc;
                 });
 
-            // SE AGREGAN LOS SERVICIOS DE SIGNAL R
-            services.AddSignalR();
-
             // SE AGREGA LA LÓGICA PARA REALIZAR AUTORIZACIÓN BASADA EN PERMISOS
             var noAuthenticatedUserByPassAuthorization = configuration.GetValue<bool>("NoAuthenticatedUserByPassAuthorization");
             services.AddPermissionBasedAuthorization(noAuthenticatedUserByPassAuthorization);

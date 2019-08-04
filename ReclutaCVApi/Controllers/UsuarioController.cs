@@ -12,9 +12,9 @@ namespace ReclutaCVApi.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class UserController
+    public class UsuarioController
     {
-        public UserController(UsuarioService service)
+        public UsuarioController(UsuarioService service)
         {
             this.service = service;
         }
@@ -22,14 +22,14 @@ namespace ReclutaCVApi.Controllers
         readonly UsuarioService service;
 
         [HttpGet]
-        public async Task<ActionResult<Page<UserListable>>> Get(
+        public async Task<ActionResult<Page<UsuarioListable>>> Get(
             [MinRequired(0)] int pageNumber,
             [MinRequired(1)] ushort pageSize
         )
         {
             return (await service.FindAll(pageNumber, pageSize))
                 .Select(user =>
-                    new UserListable
+                    new UsuarioListable
                     (
                         user.Id,
                         user.Nombre,
@@ -40,11 +40,11 @@ namespace ReclutaCVApi.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<UserConsultable>> Get(int id)
+        public async Task<ActionResult<UsuarioConsultable>> Get(int id)
         {
             var user = await service.FindById(id);
 
-            return new UserConsultable(
+            return new UsuarioConsultable(
                 user.Id,
                 user.Nombre,
                 user.Activo
@@ -52,7 +52,7 @@ namespace ReclutaCVApi.Controllers
         }
 
         [HttpPost]
-        public Task Post([FromBody] UserInsertable model)
+        public Task Post([FromBody] UsuarioInsertable model)
         {
             return service.Save(
                 null,
@@ -63,7 +63,7 @@ namespace ReclutaCVApi.Controllers
         }
 
         [HttpPut]
-        public Task Put([FromBody] UserUpdatable model)
+        public Task Put([FromBody] UsuarioUpdatable model)
         {
             return service.Save(
                 model.Id,
@@ -78,7 +78,7 @@ namespace ReclutaCVApi.Controllers
         /// </summary>
         /// <param name="request">Petición para cambiar el estatus</param>
         [HttpPut("status")]
-        public Task Put([FromBody] UserChangeStatusRequest request) => 
+        public Task Put([FromBody] UsuarioChangeStatusRequest request) => 
             service.ChangeStatus(request.Id, request.Active);
 
         [HttpDelete("{id}")]
