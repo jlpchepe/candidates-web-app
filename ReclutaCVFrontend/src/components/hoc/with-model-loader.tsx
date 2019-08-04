@@ -1,10 +1,10 @@
 import * as React from "react";
 import { RouteComponentProps, withRouter } from "react-router";
 import { readNumberPathParam, readBooleanRouteParam, goBack } from "../../helpers/navigation-helper";
-import { TObservableLike, toObservable } from "../../helpers/observable-helper";
 import { ServiceErrorsHandler } from "../../communication/errors/service-errors-handler";
 import { Diff } from "../../helpers/type-helper";
 import { WithItemsComboLoaderProps } from "./with-items-combo-loader";
+import { toPromise, TPromiseLike } from "../../helpers/promise-helper";
 
 interface WithModelManagementState<TModel> {
     model?: TModel;
@@ -17,7 +17,8 @@ export interface WithModelManagementProps<TModel> extends RouteComponentProps {
     model: TModel;
     isNewModel: boolean;
     readonly: boolean;
-    onSaveModel: (model: TModel) => TObservableLike<void>;
+    onSaveModel: () => TPromiseLike<void>;
+    setModel: (model: Partial<TModel>) => void;
 }
 
 /**
@@ -28,10 +29,10 @@ export interface WithModelManagementProps<TModel> extends RouteComponentProps {
  */
 function withModelManagementSimple<TModel, ComponentProps extends WithModelManagementProps<TModel>>(
     Component: React.ComponentType<ComponentProps>,
-    getNewModel: () => TObservableLike<TModel>,
-    findModelById: (id: number) => TObservableLike<TModel>,
-    onInsertModel: (model: TModel) => TObservableLike<void>,
-    onUpdateModel: (model: TModel) => TObservableLike<void>
+    getNewModel: () => TPromiseLike<TModel>,
+    findModelById: (id: number) => TPromiseLike<TModel>,
+    onInsertModel: (model: TModel) => TPromiseLike<void>,
+    onUpdateModel: (model: TModel) => TPromiseLike<void>
 ) {
     return class WithModelManagement extends React.Component<
     Diff<ComponentProps, WithItemsComboLoaderProps<TModel>> & RouteComponentProps, 
@@ -47,8 +48,8 @@ function withModelManagementSimple<TModel, ComponentProps extends WithModelManag
 
             const findModelWithIdOrNew = isNewModel ? getNewModel() : findModelById(id);
 
-            return toObservable(findModelWithIdOrNew)
-                .subscribe(modelWithIdOrNew => {
+            return toPromise(findModelWithIdOrNew)
+                .then(modelWithIdOrNew => {
                     this.setState({
                         model: modelWithIdOrNew,
                         isNewModel: isNewModel,
@@ -57,15 +58,20 @@ function withModelManagementSimple<TModel, ComponentProps extends WithModelManag
                 });
         }
 
-        private handleSaveModel = (model: TModel) => {
-            const savePromise: TObservableLike<number | void> =
+        private handleSaveModel = () => {
+            const savePromise: TPromiseLike<number | void> =
                 this.state.isNewModel ?
-                    onInsertModel(model) :
-                    onUpdateModel(model);
+                    onInsertModel(this.state.model) :
+                    onUpdateModel(this.state.model);
 
-            toObservable(savePromise)
-                .subscribe(() => goBack(this.props.history));
+            toPromise(savePromise)
+                .then(() => goBack(this.props.history));
         }
+
+        private handleSetModel = (model: Partial<TModel>) =>
+            this.setState(prevState => ({ 
+                model: { ...model, ...prevState.model }
+            }));
 
         render() {
             return (
@@ -76,6 +82,7 @@ function withModelManagementSimple<TModel, ComponentProps extends WithModelManag
                         isNewModel={this.state.isNewModel}
                         readonly={this.state.readonly}
                         onSaveModel={this.handleSaveModel}
+                        setModel={this.handleSetModel}
                     /> :
                     null
             );
@@ -92,8 +99,8 @@ function withModelManagementSimple<TModel, ComponentProps extends WithModelManag
  */
 export function withModelLoading<TModel, ComponentProps extends WithModelManagementProps<TModel>>(
     component: React.ComponentType<ComponentProps>,
-    getNewModel: () => TObservableLike<TModel>,
-    findModelById: (id: number) => TObservableLike<TModel>,
-    onInsertModel: (model: TModel) => TObservableLike<void>,
-    onUpdateModel: (model: TModel) => TObservableLike<void>
+    getNewModel: () => TPromiseLike<TModel>,
+    findModelById: (id: number) => TPromiseLike<TModel>,
+    onInsertModel: (model: TModel) => TPromiseLike<void>,
+    onUpdateModel: (model: TModel) => TPromiseLike<void>
 ) { return withRouter(withModelManagementSimple(component, getNewModel, findModelById, onInsertModel, onUpdateModel)); }

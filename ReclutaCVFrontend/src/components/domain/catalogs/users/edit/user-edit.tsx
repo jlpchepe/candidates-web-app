@@ -3,11 +3,11 @@ import * as React from "react";
 import { LabeledTextInput, PasswordInput, LabeledStatusInput } from "../../../../generic";
 import { Row } from "../../../common/row";
 import {
-    UserInsertable,
-    UserUpdatable,
-    UserConsultable
+    UsuarioInsertable,
+    UsuarioUpdatable,
+    UsuarioConsultable
 } from "../../../../../communication/dtos/user";
-import { User } from "../../../../../communication/services";
+import { Usuario } from "../../../../../communication/services";
 import {
     WithModelManagementProps,
     withModelLoading
@@ -16,19 +16,19 @@ import { EditCatalog } from "../../../base/edit-catalog";
 import { RoleCombo } from "../combo/role-combo";
 import { ConstHelper } from "../../../../../helpers/const-helper";
 import { AdvisorCombo } from "../../advisors/combo/advisor-combo";
-import { UserRole } from "../../../../../communication/enums/user-roles";
+import { UsuarioRole } from "../../../../../communication/enums/user-roles";
 
 
-const service = User;
+const service = Usuario;
 
-type TModelEditable = UserInsertable & UserUpdatable & UserConsultable;
-interface UserEditState {
+type TModelEditable = UsuarioInsertable & UsuarioUpdatable & UsuarioConsultable;
+interface UsuarioEditState {
     model: TModelEditable;
 }
 
-class UserEditSimple extends React.Component<
+class UsuarioEditSimple extends React.Component<
 WithModelManagementProps<TModelEditable>,
-UserEditState
+UsuarioEditState
 > {
     constructor(props) {
         super(props);
@@ -100,7 +100,7 @@ UserEditState
                         onValueChange={this.setRole}
                     />
                     {
-                        this.state.model.role == UserRole.Advisor ?
+                        this.state.model.role == UsuarioRole.Advisor ?
                             <AdvisorCombo
                                 label="Asesor"
                                 idSelected={this.state.model.advisorId}
@@ -117,7 +117,7 @@ UserEditState
     }
 }
 
-const getNewUser: () => TModelEditable = () => ({
+const getNewUsuario: () => TModelEditable = () => ({
     id: undefined,
     name: undefined,
     password: undefined,
@@ -126,9 +126,9 @@ const getNewUser: () => TModelEditable = () => ({
     advisorId: undefined
 });
 
-export const UserEdit = withModelLoading<TModelEditable, WithModelManagementProps<TModelEditable>>(
-    UserEditSimple,
-    getNewUser,
+export const UsuarioEdit = withModelLoading<TModelEditable, WithModelManagementProps<TModelEditable>>(
+    UsuarioEditSimple,
+    getNewUsuario,
     service.getById,
     service.insert,
     service.update

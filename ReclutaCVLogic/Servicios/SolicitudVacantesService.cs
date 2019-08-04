@@ -1,4 +1,5 @@
-﻿using AppPersistence.Enums;
+﻿using AppPersistence.Dtos;
+using AppPersistence.Enums;
 using AppPersistence.Repositories;
 using ReclutaCVData;
 using ReclutaCVData.Entidades;
@@ -29,6 +30,20 @@ namespace ReclutaCVLogic.Servicios
                 entity => true,
                 entity => entity.FechaDeSolicitud,
                 OrderDirection.Descending
+            );
+
+        /// <summary>
+        /// Obtiene todos las solicitudes existentes
+        /// </summary>
+        public async Task<Page<SolicitudVacante>> FindAll(
+            int pageNumber,
+            int pageSize
+        ) =>
+            await repository.Find(
+                entity => entity,
+                entity => true,
+                entity => entity.FechaDeSolicitud,
+                new Pageable(pageNumber, pageSize, OrderDirection.Descending)
             );
 
         public Task Insert(SolicitudVacante solicitudVacanteAInsertar) =>

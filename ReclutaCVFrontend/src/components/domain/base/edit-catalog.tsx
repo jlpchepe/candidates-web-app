@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { TObservableLike } from "../../../helpers/observable-helper";
+import { TPromiseLike } from "../../../helpers/observable-helper";
 import { drawIfTrue } from "../../../helpers/react-helper";
 import { Button, Container } from "../../generic";
 import { PageHeader } from "../common/page-header";
@@ -15,7 +15,7 @@ interface EditCatalogProps {
     /**
      * Función a ejecutar cuando el usuario indique guardar
      */
-    onSave: () => TObservableLike<void>;
+    onSave: () => TPromiseLike<void>;
 }
 
 /**

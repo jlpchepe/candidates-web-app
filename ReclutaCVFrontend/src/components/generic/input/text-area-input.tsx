@@ -44,7 +44,7 @@ export class LabeledTextAreaInput extends React.Component<LabeledTextAreaInputPr
         this.setState({ userChangedValue: true });
     };
 
-    private readonly handleUserLostFocus = () => {
+    private readonly handleUsuarioLostFocus = () => {
         const valueFixed = this.props.value && StringHelper.sanitizeTextInput(this.props.value)
             // Retiramos todos los espacios blancos que estén a la izquierda
             .trimLeft()
@@ -80,7 +80,7 @@ export class LabeledTextAreaInput extends React.Component<LabeledTextAreaInputPr
                     invalid={isInvalid}
                     value={fixedValue}
                     onChange={this.handleChange}
-                    onBlur={this.handleUserLostFocus}
+                    onBlur={this.handleUsuarioLostFocus}
                     required={markAsRequired}
                     disabled={this.props.readonly}
                 />

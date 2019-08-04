@@ -1,7 +1,7 @@
 import * as React from "react";
 import { RouteComponentProps, withRouter, RouterProps } from "react-router";
 import { readNumberQueryParam } from "../../helpers/navigation-helper";
-import { TObservableLike, toObservable } from "../../helpers/observable-helper";
+import { TPromiseLike, toPromise } from "../../helpers/observable-helper";
 import { PageResult } from "../../communication/dtos/page-result";
 import { Diff } from "../../helpers/type-helper";
 import { WithItemsComboLoaderProps } from "./with-items-combo-loader";
@@ -42,7 +42,7 @@ export interface WithItemsLoaderProps<TListable, TFilters = TDefaultFilters> ext
     /**
      * Función que establece los filtros de la consulta
      */
-    setFilters: (newFilters: TFilters) => TObservableLike<void>;
+    setFilters: (newFilters: TFilters) => TPromiseLike<void>;
     /**
      * Filtros actuales del listado
      */
@@ -60,7 +60,7 @@ const defaultPageSize = 10;
 function withItemsLoadingSimple<TListable, TFilters, ComponentProps extends WithItemsLoaderProps<TListable, TFilters>>(
     Component: React.ComponentType<ComponentProps>,
     getItems: (pageNumberZeroBased: number, pageSize: number, filters?: Partial<TFilters>) => TPromiseLike<PageResult<TListable>>,
-    deleteItem?: (item: TListable, justification: string, password: string) => TObservableLike<void>
+    deleteItem?: (item: TListable, justification: string, password: string) => TPromiseLike<void>
 ) {
     return class WithItemsLoading extends React.Component<
     Diff<ComponentProps, WithItemsComboLoaderProps<TListable, TFilters>> & RouteComponentProps,
@@ -155,7 +155,7 @@ function withItemsLoadingSimple<TListable, TFilters, ComponentProps extends With
 
             this.setState({ itemToDelete: null },
                 () => {
-                    toObservable(
+                    toPromise(
                         deleteItem(itemToDelete, justification, password)
                     ).subscribe(() => {
                         this.setState({ modalJustificationOpened: false });
@@ -209,5 +209,5 @@ function withItemsLoadingSimple<TListable, TFilters, ComponentProps extends With
 export function withItemsLoading<TListable, TFilters = TDefaultFilters, ComponentProps extends WithItemsLoaderProps<TListable, TFilters> = WithItemsLoaderProps<TListable, TFilters>>(
     component: React.ComponentType<ComponentProps>,
     getItems: (pageNumberZeroBased: number, pageSize: number, filters?: Partial<TFilters>) => TPromiseLike<PageResult<TListable>>,
-    deleteItem?: (item: TListable, justification: string, password: string) => TObservableLike<void>
+    deleteItem?: (item: TListable, justification: string, password: string) => TPromiseLike<void>
 ) { return withRouter(withItemsLoadingSimple(component, getItems, deleteItem)); }

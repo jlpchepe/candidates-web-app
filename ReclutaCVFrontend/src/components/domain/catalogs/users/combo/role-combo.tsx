@@ -1,6 +1,6 @@
 
 
-import { UserRole, UserRoleDescriptions } from "../../../../../communication/enums/user-roles";
+import { UsuarioRole, UsuarioRoleDescriptions } from "../../../../../communication/enums/user-roles";
 import { createEnumLabeledCombo } from "../../../base/enum-combo";
 
 
@@ -10,6 +10,6 @@ import { createEnumLabeledCombo } from "../../../base/enum-combo";
  */
 export const RoleCombo = createEnumLabeledCombo(
     "Rol",
-    UserRole,
-    (value: UserRole) => UserRoleDescriptions.get(value)
+    UsuarioRole,
+    (value: UsuarioRole) => UsuarioRoleDescriptions.get(value)
 );

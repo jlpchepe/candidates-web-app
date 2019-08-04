@@ -45,7 +45,7 @@ export class PasswordInput extends React.Component<PasswordInputProps, PasswordI
         });
     }
 
-    private readonly handleUserLostFocus = () => {
+    private readonly handleUsuarioLostFocus = () => {
         this.props.onBlur && this.props.onBlur(this.props.value);
 
         this.setState({ userLostFocus: true });
@@ -78,7 +78,7 @@ export class PasswordInput extends React.Component<PasswordInputProps, PasswordI
                     onChange={this.handleChange}
                     required={this.props.required && !this.props.readonly}
                     readOnly={this.props.readonly}
-                    onBlur={this.handleUserLostFocus}
+                    onBlur={this.handleUsuarioLostFocus}
                 ></BootstrapInput>
                 <FormFeedback>Dato requerido</FormFeedback>
             </Labeled>

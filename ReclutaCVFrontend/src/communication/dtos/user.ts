@@ -1,28 +1,23 @@
-import { UserRole } from "../enums/user-roles";
+import { UsuarioRole } from "../enums/user-roles";
 
 
-export interface UserListable {
+export interface UsuarioListable {
     id: number;
     name: string;
-    role: UserRole;
     active: boolean;
 }
 
-export interface UserConsultable extends UserUpdatable {
+export interface UsuarioConsultable extends UsuarioUpdatable {
 }
 
-export interface UserUpdatable {
+export interface UsuarioUpdatable {
     id: number;
     name: string;
-    role: UserRole;
     active: boolean;
-    advisorId: number;
 }
 
-export interface UserInsertable {
+export interface UsuarioInsertable {
     name: string;
-    role: UserRole;
     active: boolean;
-    advisorId: number;
     password?: string;
 }

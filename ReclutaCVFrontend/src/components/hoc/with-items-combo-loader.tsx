@@ -1,7 +1,7 @@
 import * as React from "react";
 import { RouteComponentProps, withRouter, RouterProps } from "react-router";
 import { readNumberQueryParam } from "../../helpers/navigation-helper";
-import { TObservableLike, toObservable } from "../../helpers/observable-helper";
+import { TPromiseLike, toPromise } from "../../helpers/observable-helper";
 import { PageResult } from "../../communication/dtos/page-result";
 import { Diff } from "../../helpers/type-helper";
 import { string } from "prop-types";
@@ -23,11 +23,11 @@ export interface WithItemsComboLoaderProps<TListable, TFilters = TDefaultFilters
     /**
      * Refresca los elementos del listado
      */
-    refreshItems: () => TObservableLike<void>;
+    refreshItems: () => TPromiseLike<void>;
     /**
      * Función que establece los filtros de la consulta
      */
-    setFilters: (newFilters: TFilters) => TObservableLike<void>;
+    setFilters: (newFilters: TFilters) => TPromiseLike<void>;
     /**
      * Filtros actuales del listado
      */
@@ -41,7 +41,7 @@ export interface WithItemsComboLoaderProps<TListable, TFilters = TDefaultFilters
  */
 function withItemsComboLoadingSimple<TListable, TFilters, ComponentProps extends WithItemsComboLoaderProps<TListable, TFilters>>(
     Component: React.ComponentType<ComponentProps>,
-    getItems: (filters?: Partial<TFilters>) => TObservableLike<TListable[]>
+    getItems: (filters?: Partial<TFilters>) => TPromiseLike<TListable[]>
 ) {
 
     return class WithItemsComboLoading extends React.Component<
@@ -81,7 +81,7 @@ function withItemsComboLoadingSimple<TListable, TFilters, ComponentProps extends
         private refreshItems = (
             filters: Partial<TFilters>
         ) => {
-            toObservable(
+            toPromise(
                 getItems(filters)
             ).subscribe(items => {
                 if(this.componentIsMounted){
@@ -121,5 +121,5 @@ function withItemsComboLoadingSimple<TListable, TFilters, ComponentProps extends
  */
 export function withItemsComboLoading<TListable, ComponentProps extends WithItemsComboLoaderProps<TListable, TFilters>, TFilters = TDefaultFilters>(
     component: React.ComponentType<ComponentProps>,
-    getItems: (filters?: Partial<TFilters>) => TObservableLike<TListable[]>
+    getItems: (filters?: Partial<TFilters>) => TPromiseLike<TListable[]>
 ) { return withItemsComboLoadingSimple(component, getItems); }

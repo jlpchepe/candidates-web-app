@@ -63,7 +63,7 @@ export class LabeledDateInput extends React.Component<LabeledDateInputProps, Lab
         });
     };
 
-    private readonly handleUserLostFocus = () => 
+    private readonly handleUsuarioLostFocus = () => 
         this.setState({ userLostFocus: true });
 
     private fixedDateBeforeRenderBasedOnUtc(date: Date | null){
@@ -112,7 +112,7 @@ export class LabeledDateInput extends React.Component<LabeledDateInputProps, Lab
                     disabled={this.props.readonly}
                     minDate={fixedDates.minDate}
                     maxDate={fixedDates.maxDate}
-                    onBlur={this.handleUserLostFocus}
+                    onBlur={this.handleUsuarioLostFocus}
                     showTimeSelect={this.props.captureTime}
                 />
                 <FormFeedback 

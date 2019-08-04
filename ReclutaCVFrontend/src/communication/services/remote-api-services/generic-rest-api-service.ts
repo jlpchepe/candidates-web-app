@@ -18,9 +18,9 @@ export interface CrudRestApiService<
 > {
     getPaginated: (pageNumber: number, pageSize: number) => Promise<PageResult<TListable>>,
     getById: (id: number) => Promise<TConsultable>,
-    getAll: () => Promise<TSelectableResponse[]>,
     insert: (model: TInsertableRequest) => Promise<TInsertableResponse>,
     update: (model: TUpdatableRequest) => Promise<TUpdatableResponse>
+    delete: (id: number) => Promise<void>;
 }
 
 export function CreateCrudRestApiService<TListable, TConsultable = TListable, TInsertable = TConsultable, TUpdatable = TConsultable, TSelectable = TConsultable>
@@ -30,11 +30,11 @@ export function CreateCrudRestApiService<TListable, TConsultable = TListable, TI
             RestApiCommunication.get(baseEndpoint, { pageNumber: pageNumberZeroBased, pageSize }),
         getById: (id) =>
             RestApiCommunication.get(baseEndpoint + "/" + id),
-        getAll: () =>
-            RestApiCommunication.get(baseEndpoint + "/all"),
         insert: (workstation) =>
             RestApiCommunication.post(baseEndpoint, workstation),
         update: (workstation) =>
-            RestApiCommunication.put(baseEndpoint, workstation)
+            RestApiCommunication.put(baseEndpoint, workstation),
+        delete: (id) => 
+            RestApiCommunication.delete(baseEndpoint + "/" + id)
     };
 }

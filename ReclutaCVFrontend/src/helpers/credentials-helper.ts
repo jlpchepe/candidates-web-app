@@ -6,7 +6,7 @@ import { Subscription, Subject } from "rxjs";
 /**
  * Información del usuario autenticado en el sistema
  */
-export interface AuthenticatedUserInfo {
+export interface AuthenticatedUsuarioInfo {
     userName: string;
     userRole: string;
 }
@@ -83,18 +83,18 @@ export class CredentialsHelper {
      * Lee el token y lo decodifica para obtener el usuario y rol.
      * Si el token no está en las cookies, regresa null
      */
-    public static getRoleAndUserFromTokenInCookie() {
+    public static getRoleAndUsuarioFromTokenInCookie() {
         const decodedToken = jwt.decode(CredentialsHelper.getAuthBearerToken());
 
         if(decodedToken == null){
             return null;
         }
 
-        const authenticatedUserInfo: AuthenticatedUserInfo = { 
+        const authenticatedUsuarioInfo: AuthenticatedUsuarioInfo = { 
             userRole: decodedToken.role, 
             userName: decodedToken.unique_name 
         };
             
-        return authenticatedUserInfo;
+        return authenticatedUsuarioInfo;
     }
 }

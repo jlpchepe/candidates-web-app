@@ -171,7 +171,7 @@ export class LabeledCombo<TListable> extends React.Component<LabeledComboProps<T
         );
     };
 
-    private readonly handleUserLostFocus = () => {
+    private readonly handleUsuarioLostFocus = () => {
         this.setState({
             userLostFocus: true,
             opened: null
@@ -239,7 +239,7 @@ export class LabeledCombo<TListable> extends React.Component<LabeledComboProps<T
                         type="text"
                         onClick={this.showSuggestions}
                         onFocus={this.showSuggestions}
-                        onBlur={this.handleUserLostFocus}
+                        onBlur={this.handleUsuarioLostFocus}
                         className="form-control"
                         placeholder={defaultSelectOption}
                         readOnly={this.props.readonly}

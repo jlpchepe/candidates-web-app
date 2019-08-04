@@ -48,7 +48,7 @@ export class LabeledInput extends React.Component<LabeledInputProps, LabeledInpu
         });
     }
 
-    private readonly handleUserLostFocus = () => {
+    private readonly handleUsuarioLostFocus = () => {
         this.props.onBlur && this.props.onBlur(this.props.value);
 
         this.setState({ userLostFocus: true });
@@ -81,7 +81,7 @@ export class LabeledInput extends React.Component<LabeledInputProps, LabeledInpu
                     required={markAsRequired}
                     readOnly={this.props.readonly}
                     disabled={this.props.readonly}
-                    onBlur={this.handleUserLostFocus}
+                    onBlur={this.handleUsuarioLostFocus}
                     maxLength={this.props.maxLength}
                 ></BootstrapInput>
                 <FormFeedback>Dato requerido</FormFeedback>

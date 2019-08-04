@@ -3,7 +3,7 @@ import { withRouter, RouteComponentProps } from "react-router";
 import { goToPath } from "../../helpers/navigation-helper";
 import { CredentialsHelper } from "../../helpers/credentials-helper";
 import { Subscription } from "rxjs";
-import { isUserDisabled } from "../../communication/events/system-event";
+import { isUsuarioDisabled } from "../../communication/events/system-event";
 import { NotificationHelper } from "../../helpers/notification-helper";
 import { WorkOrder, SystemEvents } from "../../communication/services";
 
@@ -15,21 +15,21 @@ import { WorkOrder, SystemEvents } from "../../communication/services";
 class SessionWatcherSimple extends React.Component<RouteComponentProps> {
     private onLogoutSubscription : Subscription;
     private onLoginSubscription : Subscription;
-    private onUserDisabledSubscription : Subscription;
+    private onUsuarioDisabledSubscription : Subscription;
 
-    tryUnsubscribeDisableUserEvent = () => {
-        if(this.onUserDisabledSubscription != null){
-            this.onUserDisabledSubscription.unsubscribe();
+    tryUnsubscribeDisableUsuarioEvent = () => {
+        if(this.onUsuarioDisabledSubscription != null){
+            this.onUsuarioDisabledSubscription.unsubscribe();
         }
     }
 
-    subscribeDisableUserEvent = () => {
-        this.tryUnsubscribeDisableUserEvent();
+    subscribeDisableUsuarioEvent = () => {
+        this.tryUnsubscribeDisableUsuarioEvent();
 
-        this.onUserDisabledSubscription = SystemEvents
+        this.onUsuarioDisabledSubscription = SystemEvents
             .observe()
             .subscribe(systemEvent => {
-                if(isUserDisabled(systemEvent)){
+                if(isUsuarioDisabled(systemEvent)){
                     NotificationHelper.notifyWarning("Usuario deshabilitado", "Su usuario fue deshabilitado");
 
                     // Ante la deshabilitación de usuario, sacamos al usuario del sistema
@@ -40,25 +40,25 @@ class SessionWatcherSimple extends React.Component<RouteComponentProps> {
 
     componentDidMount() {
         if(CredentialsHelper.isAuthenticated()){
-            this.subscribeDisableUserEvent();
+            this.subscribeDisableUsuarioEvent();
         }
 
         this.onLogoutSubscription = CredentialsHelper.onLogout(() => {
             SystemEvents.dropConnection();
             WorkOrder.dropConnection();
-            this.tryUnsubscribeDisableUserEvent();
+            this.tryUnsubscribeDisableUsuarioEvent();
             goToPath(this.props.history, "");
         });
         
         this.onLoginSubscription = CredentialsHelper.onLogin(() => {
-            this.subscribeDisableUserEvent();
+            this.subscribeDisableUsuarioEvent();
         });
     }
 
     componentWillUnmount() {
         this.onLogoutSubscription.unsubscribe();
         this.onLoginSubscription.unsubscribe();
-        this.tryUnsubscribeDisableUserEvent();
+        this.tryUnsubscribeDisableUsuarioEvent();
     }
 
     render(){

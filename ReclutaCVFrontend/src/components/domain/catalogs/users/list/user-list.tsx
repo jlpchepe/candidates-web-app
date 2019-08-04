@@ -1,17 +1,17 @@
 import * as React from "react";
-import { User } from "../../../../../communication/services";
+import { Usuario } from "../../../../../communication/services";
 import { goToPath } from "../../../../../helpers/navigation-helper";
 import { ListCatalog } from "../../../base/list-catalog";
 import { WithItemsLoaderProps, withItemsLoading } from "../../../../hoc/with-items-loader";
-import { UserListable } from "../../../../../communication/dtos/user";
-import { UserRoleDescriptions } from "../../../../../communication/enums/user-roles";
+import { UsuarioListable } from "../../../../../communication/dtos/user";
+import { UsuarioRoleDescriptions } from "../../../../../communication/enums/user-roles";
 
-const service = User;
+const service = Usuario;
 
 /**
  * Muestra el listado
  */
-class UserListSimple extends React.Component<WithItemsLoaderProps<UserListable>> {
+class UsuarioListSimple extends React.Component<WithItemsLoaderProps<UsuarioListable>> {
 
     private readonly onNewItem = () => goToPath(this.props.history, "user/new");
 
@@ -31,7 +31,7 @@ class UserListSimple extends React.Component<WithItemsLoaderProps<UserListable>>
                     },
                     {
                         header: "Rol",
-                        contentSelector: item => UserRoleDescriptions.get(item.role)
+                        contentSelector: item => UsuarioRoleDescriptions.get(item.role)
                     }
                 ]}
                 onNewItem={this.onNewItem}
@@ -53,5 +53,5 @@ class UserListSimple extends React.Component<WithItemsLoaderProps<UserListable>>
     }
 }
 
-export const UserList = withItemsLoading(UserListSimple, service.getPaginated,
+export const UsuarioList = withItemsLoading(UsuarioListSimple, service.getPaginated,
     (item, justification, password) => service.delete(item.id, justification, password));

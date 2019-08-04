@@ -1,12 +1,12 @@
 import * as React from "react";
-import { TObservableLike, toObservable } from "../../../helpers/observable-helper";
+import { TPromiseLike, toPromise } from "../../../helpers/observable-helper";
 import { LabeledCombo } from "./combo";
 
 /**
  * Propiedades del combo
  */
 interface LabeledAsyncComboProps<TListable> {
-    getItems: () => TObservableLike<TListable[]>;
+    getItems: () => TPromiseLike<TListable[]>;
     label: string;
     valueSelected?: number | null;
     valueSelector: (item: TListable) => number;
@@ -33,7 +33,7 @@ export class LabeledAsyncCombo<TListable> extends React.Component<LabeledAsyncCo
     }
 
     componentDidMount(){
-        toObservable(this.props.getItems())
+        toPromise(this.props.getItems())
             .subscribe(items => this.setState({
                 items: items
             }));

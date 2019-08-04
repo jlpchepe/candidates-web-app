@@ -18,5 +18,6 @@
     // Relative reference on imports
     "typescript.preferences.importModuleSpecifier": "relative",
     // Double quotes instead of single
-    "typescript.preferences.quoteStyle": "double"
+    "typescript.preferences.quoteStyle": "double",
+    "typescript.tsdk": "node_modules\\typescript\\lib"
 }

@@ -127,7 +127,7 @@ export class AsyncComboWithButton<TSelectable> extends React.Component<AsyncComb
         );
     };
 
-    private readonly handleUserLostFocus = () => {
+    private readonly handleUsuarioLostFocus = () => {
         this.setState({
             userLostFocus: true,
             opened: null
@@ -204,7 +204,7 @@ export class AsyncComboWithButton<TSelectable> extends React.Component<AsyncComb
                         type="text"
                         onClick={this.showSuggestions}
                         onFocus={this.showSuggestions}
-                        onBlur={this.handleUserLostFocus}
+                        onBlur={this.handleUsuarioLostFocus}
                         className="form-control"
                         placeholder={"--Seleccione--"}
                         disabled={this.props.readonly}

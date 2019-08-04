@@ -80,10 +80,11 @@
     <Compile Include="Reportes\ReporteDeSeguimientoACandidatos\ReporteDeSeguimientoACandidatos.cs" />
     <Compile Include="Reportes\ReporteDeSeguimientoACandidatos\ReporteDeSeguimientoACandidatoService.cs" />
     <Compile Include="Reportes\ReporteDeSeguimientoACandidatos\VacantesActivas.cs" />
+    <Compile Include="Servicios\AuthService.cs" />
     <Compile Include="Servicios\CandidatoService.cs" />
     <Compile Include="Servicios\EtapasCandidatoService.cs" />
     <Compile Include="Servicios\SolicitudVacantesService.cs" />
-    <Compile Include="Servicios\UserService.cs" />
+    <Compile Include="Servicios\UsuarioService.cs" />
     <Compile Include="Utils\Extensions\EnumExtensions.cs" />
     <Compile Include="Utils\Helpers\AttributeHelper.cs" />
     <Compile Include="Utils\Helpers\EnumHelper.cs" />

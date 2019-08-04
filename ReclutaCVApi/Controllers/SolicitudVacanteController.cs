@@ -5,6 +5,9 @@ using ReclutaCVApi.Attributes;
 using ReclutaCVApi.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ReclutaCVLogic.Servicios;
+using ReclutaCVApi.Dtos;
+using AppPersistence.Dtos;
+using AppPersistence.Extensions;
 
 namespace ReclutaCVApi.Controllers
 {
@@ -12,18 +15,14 @@ namespace ReclutaCVApi.Controllers
     [ApiController]
     public class SolicitudVacanteController
     {
-        public SolicitudVacanteController(SolicitudVacantesService service, UserPasswordValidator userPasswordValidator)
+        public SolicitudVacanteController(
+            SolicitudVacantesService service
+        )
         {
             this.service = service;
-            this.userPasswordValidator = userPasswordValidator;
         }
 
         private readonly SolicitudVacantesService service;
-        private readonly UserPasswordValidator userPasswordValidator;
-
-        [HttpGet("all")]
-        public async Task<ActionResult<IReadOnlyList<SolicitudVacanteSelectable>>> Get() =>
-            new ActionResult<IReadOnlyList<SolicitudVacanteSelectable>>(await service.FindAll());
 
         [HttpGet]
         public async Task<ActionResult<Page<SolicitudVacanteListable>>> Get(
@@ -32,17 +31,8 @@ namespace ReclutaCVApi.Controllers
         )
         {
             return (await service.FindAll(pageNumber, pageSize))
-                .Select(SolicitudVacante =>
-                    new SolicitudVacanteListable(
-                        SolicitudVacante.Id,
-                        SolicitudVacante.Name,
-                        SolicitudVacante.Code,
-                        SolicitudVacante.EmployeeType,
-                        SolicitudVacante.MechanicLevel,
-                        SolicitudVacante.EstimatedMinutes,
-                        SolicitudVacante.Active
-                    )
-                );
+                // TODO
+                .Select(entity => new SolicitudVacanteListable());
         }
 
         [HttpGet("{id}")]
@@ -51,56 +41,27 @@ namespace ReclutaCVApi.Controllers
             var p = await service.FindById(id);
 
             return new SolicitudVacanteConsultable(
-                p.Id,
-                p.Name,
-                p.Code,
-                p.EmployeeType,
-                p.MechanicLevel,
-                p.EstimatedMinutes,
-                p.Active
             );
         }
 
         [HttpPost]
         public Task Post([FromBody] SolicitudVacanteInsertable model)
         {
-            return service.Save(
-                model.Name,
-                model.Code,
-                model.EmployeeType,
-                model.MechanicLevel,
-                model.EstimatedMinutes,
-                model.Active
-            );
+            //TODO
+            return Task.CompletedTask;
         }
 
         [HttpPut]
         public Task Put([FromBody] SolicitudVacanteUpdatable model)
         {
-            return service.Save(
-                model.Name,
-                model.Code,
-                model.EmployeeType,
-                model.MechanicLevel,
-                model.EstimatedMinutes,
-                model.Active,
-                model.Id
-            );
+            //TODO
+            return Task.CompletedTask;
         }
 
-        /// <summary>
-        /// Cambia el estatus de la actividad indicada
-        /// </summary>
-        /// <param name="request">Petición para cambiar el estatus</param>
-        [HttpPut("status")]
-        public Task Put([FromBody] SolicitudVacanteChangeStatusRequest request) =>
-            service.ChangeStatus(request.Id, request.Active);
-
         [HttpDelete("{id}")]
-        public async Task Delete(int id, string justification, string password)
+        public async Task Delete(int id)
         {
-            await userPasswordValidator.ValidateUserPasswordOrThrow(password);
-            await service.DeleteById(id, justification);
+            await service.Delete(id);
         }
     }
 }

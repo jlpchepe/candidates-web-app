@@ -4,5 +4,5 @@ export interface AuthenticationService {
      * @param username 
      * @param password 
      */
-    authenticateUser(username: string, password: string) : Promise<string>;
+    authenticateUsuario(username: string, password: string) : Promise<string>;
 }

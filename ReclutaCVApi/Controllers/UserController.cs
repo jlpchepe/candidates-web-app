@@ -14,13 +14,13 @@ namespace ReclutaCVApi.Controllers
     [ApiController]
     public class UserController
     {
-        public UserController(UserService service, UserPasswordValidator userPasswordValidator)
+        public UserController(UsuarioService service, UserPasswordValidator userPasswordValidator)
         {
             this.service = service;
             this.userPasswordValidator = userPasswordValidator;
         }
 
-        readonly UserService service;
+        readonly UsuarioService service;
         private readonly UserPasswordValidator userPasswordValidator;
 
         [HttpGet]

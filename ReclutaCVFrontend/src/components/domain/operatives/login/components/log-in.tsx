@@ -26,7 +26,7 @@ export class Login extends React.Component<RouteComponentProps, LoginState> {
         rememberSession: false
     }
 
-    onChangeUser = e => {
+    onChangeUsuario = e => {
         const { value } = e.target;
         this.setState({ user: value });
     }
@@ -37,7 +37,7 @@ export class Login extends React.Component<RouteComponentProps, LoginState> {
 
     onSubmitHandler = (e) => {
         e.preventDefault();
-        Authentication.authenticateUser(this.state.user, this.state.password)
+        Authentication.authenticateUsuario(this.state.user, this.state.password)
             .then(token => {
                 CredentialsHelper.setSessionToken(token);
                 this.props.history.push("/service-board");
@@ -66,7 +66,7 @@ export class Login extends React.Component<RouteComponentProps, LoginState> {
                                 aria-describedby="Nombre de usuario"
                                 placeholder="Usuario"
                                 value={this.state.user}
-                                onChange={this.onChangeUser}
+                                onChange={this.onChangeUsuario}
                             />
                             <PasswordInput
                                 className="form-control mb-3 text-center"

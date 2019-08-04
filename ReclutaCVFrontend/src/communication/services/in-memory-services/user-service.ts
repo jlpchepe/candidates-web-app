@@ -1,7 +1,7 @@
-import { UserService } from "../user-service";
-import { UserInsertable, UserUpdatable } from "../../dtos/user";
+import { UsuarioService } from "../user-service";
+import { UsuarioInsertable, UsuarioUpdatable } from "../../dtos/user";
 
-const sampleUser = {
+const sampleUsuario = {
     id: 1,
     name: "Luis",
     firstLastName: "Rodríguez",
@@ -10,20 +10,23 @@ const sampleUser = {
     password: "",
     active: true
 };
-export const InMemoryUserService: UserService = {
+export const InMemoryUsuarioService: UsuarioService = {
     getPaginated: (pageNumberZeroBased: number, pageSize: number) => ({
-        items: [sampleUser],
+        items: [sampleUsuario],
         totalPages: 1
     }),
-    getById: (id: number) => sampleUser,
-    insert: (model: UserInsertable) => {
+    getById: (id: number) => sampleUsuario,
+    insert: (model: UsuarioInsertable) => {
         console.log("Insertado");
     },
-    update: (model: UserUpdatable) => {
+    update: (model: UsuarioUpdatable) => {
         console.log("Actualizado");
     },
     changeStatus: (id: number, active: boolean) => {
         console.log("Estatus modificado");
         return Promise.resolve();
+    },
+    delete: (id) => {
+        console.log("Eliminado");
     }
 };

@@ -163,5 +163,248 @@ namespace ReclutaCVApi.Dtos
         public string IngresoTipoContrato { get; set; }
         public DateTime? IngresoVencimientoContratoDeterminado { get; set; }
         public string IngresoObservaciones { get; set; }
+
+        public CandidatoConsultable() { }
+
+        public CandidatoConsultable(
+            int? id,
+            string nombre,
+            string correo,
+            string telefono,
+            DateTime? fechaDeNacimiento,
+            string estadoCivil,
+            string lugarNacimiento,
+            string generalesComentarios,
+            DateTime? fechaDeActualizacion,
+            string compañia,
+            decimal? añosDeExperiencia,
+            decimal? sueldoActual,
+            string motivoDeSeparacion,
+            string carrera,
+            string institucion,
+            EstatusAcademico estatusAcademico,
+            string cursos,
+            string certificaciones,
+            string competenciasOHabilidades,
+            string tecnologiasQueDomina,
+            string softwareQueDomina,
+            string nivelDeIngles,
+            decimal? nivelDeInglesHablado,
+            decimal? nivelDeInglesEscrito,
+            decimal? nivelDeInglesLectura,
+            int? solicitudPersonalFolio,
+            int? puestoClave,
+            string puestoNombre,
+            string proyectoNombre,
+            DateTime? fechaDeRecepcionCurriculum,
+            DateTime? fechaDeContacto,
+            DateTime? fechaPreentrevistaTelefonica,
+            DateTime? fechaRecepcionSolicitudRegistro,
+            string quienLoContacto,
+            BolsaTrabajo bolsa,
+            string bolsaOtra,
+            RolCandidato rol,
+            string rolOtro,
+            decimal? expectativaEconomica,
+            EstatusCandidato estatus,
+            string reclutamientoComentarios,
+            string examenPsicometricoNombre,
+            string examenPsicometricoResultados,
+            string examenPsicometricoObservaciones,
+            DateTime? examenProgramacionFecha,
+            string examenProgramacionIpComputadora,
+            string examenProgramacionId,
+            int? examenProgramacionUmlCalificacion,
+            int? examenProgramacionUmlTotalReactivos,
+            int? examenProgramacionAdooCalificacion,
+            int? examenProgramacionAdooTotalReactivos,
+            int? examenProgramacionPooCalificacion,
+            int? examenProgramacionPooTotalReactivos,
+            int? examenProgramacionLogicaCalificacion,
+            int? examenProgramacionLogicaTotalReactivos,
+            int? examenProgramacionWebCalificacion,
+            int? examenProgramacionWebTotalReactivos,
+            int? examenProgramacionJavascriptCalificacion,
+            int? examenProgramacionJavascriptTotalReactivos,
+            int? examenProgramacionScrumCalificacion,
+            int? examenProgramacionScrumTotalReactivos,
+            int? examenProgramacionTecnologiaCalificacion,
+            int? examenProgramacionTecnologiaTotalReactivos,
+            int? examenProgramacionAciertos,
+            int? examenProgramacionTotalReactivos,
+            string examenProgramacionRango,
+            DateTime? examenAnalistaFecha,
+            string examenAnalistaIpComputadora,
+            string examenAnalistaTeoricoId,
+            int? examenAnalistaTeoricoAciertos,
+            int? examenAnalistaTeoricoTotalReactivos,
+            string examenAnalistaTeoricoRango,
+            string examenAnalistaPracticoId,
+            int? examenAnalistaPracticoNumeroCaso,
+            int? examenAnalistaPracticoAciertos,
+            int? examenAnalistaPracticoTotalReactivos,
+            string examenAnalistaPracticoRango,
+            DateTime? examenIngenieroPruebasFecha,
+            string examenIngenieroPruebasIpComputadora,
+            int? examenIngenieroPruebasTeoricoId,
+            int? examenIngenieroPruebasTeoricoAciertos,
+            int? examenIngenieroPruebasTeoricoTotalReactivos,
+            string examenIngenieroPruebasTeoricoRango,
+            int? examenIngenieroPruebasPracticoId,
+            decimal? examenIngenieroPruebasPracticoCalificacion,
+            int? examenIngenieroPruebasPracticoPuntos,
+            string examenIngenieroPruebasPracticoRango,
+            int? examenIngenieroPruebasSqlTotalReactivos,
+            decimal? examenIngenieroPruebasSqlCalificacion,
+            DateTime? examenAdministradorProyectoFecha,
+            string examenAdministradorProyectoIpComputadora,
+            int? examenAdministradorProyectoId,
+            int? examenAdministradorProyectoAciertos,
+            int? examenAdministradorProyectoTotalReactivos,
+            string examenAdministradorProyectoRango,
+            DateTime? examenPracticoSoporteBdFecha,
+            int? examenPracticoSoporteBdAciertos,
+            int? examenPracticoSoporteBdTotalReactivos,
+            string examenPracticoSoporteBdRango,
+            DateTime? entrevistaCapitalHumanoFecha,
+            string entrevistaCapitalHumanoComentarios,
+            DateTime? entrevistaCoordinadorYEquipoTecnicoFecha,
+            string entrevistaCoordinadorYEquipoTecnicoComentarios,
+            DateTime? entrevistaInglesFecha,
+            string entrevistaInglesComentarios,
+            DateTime? entrevistaGerenteAreaFecha,
+            string entrevistaGerenteAreaComentarios,
+            VeredictoFinalCandidato veredictoFinal,
+            string veredictoFinalNivelIdentificado,
+            string veredictoFinalComentarios,
+            DateTime? propuestaEconomicaFecha,
+            PropuestaEconomicaEstatus propuestaEconomicaEstatus,
+            decimal? propuestaEconomicaSueldo,
+            string propuestaEconomicaComentarios,
+            DateTime? ingresoFecha,
+            string ingresoTipoContrato,
+            DateTime? ingresoVencimientoContratoDeterminado,
+            string ingresoObservaciones
+        )
+        {
+            Id = id;
+            Nombre = nombre;
+            Correo = correo;
+            Telefono = telefono;
+            FechaDeNacimiento = fechaDeNacimiento;
+            EstadoCivil = estadoCivil;
+            LugarNacimiento = lugarNacimiento;
+            GeneralesComentarios = generalesComentarios;
+            FechaDeActualizacion = fechaDeActualizacion;
+            Compañia = compañia;
+            AñosDeExperiencia = añosDeExperiencia;
+            SueldoActual = sueldoActual;
+            MotivoDeSeparacion = motivoDeSeparacion;
+            Carrera = carrera;
+            Institucion = institucion;
+            EstatusAcademico = estatusAcademico;
+            Cursos = cursos;
+            Certificaciones = certificaciones;
+            CompetenciasOHabilidades = competenciasOHabilidades;
+            TecnologiasQueDomina = tecnologiasQueDomina;
+            SoftwareQueDomina = softwareQueDomina;
+            NivelDeIngles = nivelDeIngles;
+            NivelDeInglesHablado = nivelDeInglesHablado;
+            NivelDeInglesEscrito = nivelDeInglesEscrito;
+            NivelDeInglesLectura = nivelDeInglesLectura;
+            SolicitudPersonalFolio = solicitudPersonalFolio;
+            PuestoClave = puestoClave;
+            PuestoNombre = puestoNombre;
+            ProyectoNombre = proyectoNombre;
+            FechaDeRecepcionCurriculum = fechaDeRecepcionCurriculum;
+            FechaDeContacto = fechaDeContacto;
+            FechaPreentrevistaTelefonica = fechaPreentrevistaTelefonica;
+            FechaRecepcionSolicitudRegistro = fechaRecepcionSolicitudRegistro;
+            QuienLoContacto = quienLoContacto;
+            Bolsa = bolsa;
+            BolsaOtra = bolsaOtra;
+            Rol = rol;
+            RolOtro = rolOtro;
+            ExpectativaEconomica = expectativaEconomica;
+            Estatus = estatus;
+            ReclutamientoComentarios = reclutamientoComentarios;
+            ExamenPsicometricoNombre = examenPsicometricoNombre;
+            ExamenPsicometricoResultados = examenPsicometricoResultados;
+            ExamenPsicometricoObservaciones = examenPsicometricoObservaciones;
+            ExamenProgramacionFecha = examenProgramacionFecha;
+            ExamenProgramacionIpComputadora = examenProgramacionIpComputadora;
+            ExamenProgramacionId = examenProgramacionId;
+            ExamenProgramacionUmlCalificacion = examenProgramacionUmlCalificacion;
+            ExamenProgramacionUmlTotalReactivos = examenProgramacionUmlTotalReactivos;
+            ExamenProgramacionAdooCalificacion = examenProgramacionAdooCalificacion;
+            ExamenProgramacionAdooTotalReactivos = examenProgramacionAdooTotalReactivos;
+            ExamenProgramacionPooCalificacion = examenProgramacionPooCalificacion;
+            ExamenProgramacionPooTotalReactivos = examenProgramacionPooTotalReactivos;
+            ExamenProgramacionLogicaCalificacion = examenProgramacionLogicaCalificacion;
+            ExamenProgramacionLogicaTotalReactivos = examenProgramacionLogicaTotalReactivos;
+            ExamenProgramacionWebCalificacion = examenProgramacionWebCalificacion;
+            ExamenProgramacionWebTotalReactivos = examenProgramacionWebTotalReactivos;
+            ExamenProgramacionJavascriptCalificacion = examenProgramacionJavascriptCalificacion;
+            ExamenProgramacionJavascriptTotalReactivos = examenProgramacionJavascriptTotalReactivos;
+            ExamenProgramacionScrumCalificacion = examenProgramacionScrumCalificacion;
+            ExamenProgramacionScrumTotalReactivos = examenProgramacionScrumTotalReactivos;
+            ExamenProgramacionTecnologiaCalificacion = examenProgramacionTecnologiaCalificacion;
+            ExamenProgramacionTecnologiaTotalReactivos = examenProgramacionTecnologiaTotalReactivos;
+            ExamenProgramacionAciertos = examenProgramacionAciertos;
+            ExamenProgramacionTotalReactivos = examenProgramacionTotalReactivos;
+            ExamenProgramacionRango = examenProgramacionRango;
+            ExamenAnalistaFecha = examenAnalistaFecha;
+            ExamenAnalistaIpComputadora = examenAnalistaIpComputadora;
+            ExamenAnalistaTeoricoId = examenAnalistaTeoricoId;
+            ExamenAnalistaTeoricoAciertos = examenAnalistaTeoricoAciertos;
+            ExamenAnalistaTeoricoTotalReactivos = examenAnalistaTeoricoTotalReactivos;
+            ExamenAnalistaTeoricoRango = examenAnalistaTeoricoRango;
+            ExamenAnalistaPracticoId = examenAnalistaPracticoId;
+            ExamenAnalistaPracticoNumeroCaso = examenAnalistaPracticoNumeroCaso;
+            ExamenAnalistaPracticoAciertos = examenAnalistaPracticoAciertos;
+            ExamenAnalistaPracticoTotalReactivos = examenAnalistaPracticoTotalReactivos;
+            ExamenAnalistaPracticoRango = examenAnalistaPracticoRango;
+            ExamenIngenieroPruebasFecha = examenIngenieroPruebasFecha;
+            ExamenIngenieroPruebasIpComputadora = examenIngenieroPruebasIpComputadora;
+            ExamenIngenieroPruebasTeoricoId = examenIngenieroPruebasTeoricoId;
+            ExamenIngenieroPruebasTeoricoAciertos = examenIngenieroPruebasTeoricoAciertos;
+            ExamenIngenieroPruebasTeoricoTotalReactivos = examenIngenieroPruebasTeoricoTotalReactivos;
+            ExamenIngenieroPruebasTeoricoRango = examenIngenieroPruebasTeoricoRango;
+            ExamenIngenieroPruebasPracticoId = examenIngenieroPruebasPracticoId;
+            ExamenIngenieroPruebasPracticoCalificacion = examenIngenieroPruebasPracticoCalificacion;
+            ExamenIngenieroPruebasPracticoPuntos = examenIngenieroPruebasPracticoPuntos;
+            ExamenIngenieroPruebasPracticoRango = examenIngenieroPruebasPracticoRango;
+            ExamenIngenieroPruebasSqlTotalReactivos = examenIngenieroPruebasSqlTotalReactivos;
+            ExamenIngenieroPruebasSqlCalificacion = examenIngenieroPruebasSqlCalificacion;
+            ExamenAdministradorProyectoFecha = examenAdministradorProyectoFecha;
+            ExamenAdministradorProyectoIpComputadora = examenAdministradorProyectoIpComputadora;
+            ExamenAdministradorProyectoId = examenAdministradorProyectoId;
+            ExamenAdministradorProyectoAciertos = examenAdministradorProyectoAciertos;
+            ExamenAdministradorProyectoTotalReactivos = examenAdministradorProyectoTotalReactivos;
+            ExamenAdministradorProyectoRango = examenAdministradorProyectoRango;
+            ExamenPracticoSoporteBdFecha = examenPracticoSoporteBdFecha;
+            ExamenPracticoSoporteBdAciertos = examenPracticoSoporteBdAciertos;
+            ExamenPracticoSoporteBdTotalReactivos = examenPracticoSoporteBdTotalReactivos;
+            ExamenPracticoSoporteBdRango = examenPracticoSoporteBdRango;
+            EntrevistaCapitalHumanoFecha = entrevistaCapitalHumanoFecha;
+            EntrevistaCapitalHumanoComentarios = entrevistaCapitalHumanoComentarios;
+            EntrevistaCoordinadorYEquipoTecnicoFecha = entrevistaCoordinadorYEquipoTecnicoFecha;
+            EntrevistaCoordinadorYEquipoTecnicoComentarios = entrevistaCoordinadorYEquipoTecnicoComentarios;
+            EntrevistaInglesFecha = entrevistaInglesFecha;
+            EntrevistaInglesComentarios = entrevistaInglesComentarios;
+            EntrevistaGerenteAreaFecha = entrevistaGerenteAreaFecha;
+            EntrevistaGerenteAreaComentarios = entrevistaGerenteAreaComentarios;
+            VeredictoFinal = veredictoFinal;
+            VeredictoFinalNivelIdentificado = veredictoFinalNivelIdentificado;
+            VeredictoFinalComentarios = veredictoFinalComentarios;
+            PropuestaEconomicaFecha = propuestaEconomicaFecha;
+            PropuestaEconomicaEstatus = propuestaEconomicaEstatus;
+            PropuestaEconomicaSueldo = propuestaEconomicaSueldo;
+            PropuestaEconomicaComentarios = propuestaEconomicaComentarios;
+            IngresoFecha = ingresoFecha;
+            IngresoTipoContrato = ingresoTipoContrato;
+            IngresoVencimientoContratoDeterminado = ingresoVencimientoContratoDeterminado;
+            IngresoObservaciones = ingresoObservaciones;
+        }
     }
 }

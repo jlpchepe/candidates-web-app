@@ -1,7 +1,7 @@
 import React from "react";
 import { Dropdown, DropdownItem, DropdownMenu, DropdownToggle, Icon } from "../../../generic";
 
-interface UserMenuProps {
+interface UsuarioMenuProps {
     activeWindow: string;
     onCloseSession: () => void;
     onClickActionButton: () => void;
@@ -9,7 +9,7 @@ interface UserMenuProps {
     userRole: string;
 }
 
-export const UserMenuDropdown: React.FC<UserMenuProps> = props => (
+export const UsuarioMenuDropdown: React.FC<UsuarioMenuProps> = props => (
     <Dropdown>
         <DropdownToggle
             icon={
