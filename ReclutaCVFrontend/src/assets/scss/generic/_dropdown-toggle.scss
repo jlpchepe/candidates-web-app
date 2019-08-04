@@ -1,0 +1,9 @@
+.dropdown__toggle {
+    margin: 0;
+    padding: 0;
+    background-color: $background;
+    border: 0;
+    &:focus {
+        outline: none;
+    }
+}

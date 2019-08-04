@@ -1,0 +1,25 @@
+.side-bar__nav {
+    width: 300px;
+    margin: 0;
+    padding: 0;
+    background: $shadow-5;
+    border-radius: 3px;
+    list-style: none;
+    user-select: none;
+}
+
+.side-bar__nav-item {
+    padding: 1rem;
+    &:hover {
+        color: $shadow-50;
+        cursor: pointer;
+    }
+}
+
+.side-bar__nav-item--active {
+    color: $primary;
+    &:hover {
+        color: $primary;
+        cursor: pointer;
+    }
+}

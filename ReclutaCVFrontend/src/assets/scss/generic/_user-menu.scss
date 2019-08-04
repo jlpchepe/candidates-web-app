@@ -1,0 +1,93 @@
+.user-menu {
+    height: inherit;
+    padding-left: 1rem;
+    display: flex;
+    align-items: center;
+    user-select: none;
+}
+
+.user-menu__image {
+    width: 60px;
+    height: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    & img {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+    }
+}
+
+.user-menu__info {
+    display: flex;
+    margin: 0 1rem;
+    flex-direction: column;
+    justify-content: center;
+    font-weight: 600;
+    text-align: left;
+    & p {
+        margin: 0;
+    }
+    & p:first-child {
+        font-size: 1.5rem;
+        text-transform: capitalize;
+    }
+    & p:last-child {
+        color: $primary;
+        text-transform: uppercase;
+    }
+}
+
+.user-menu__toggle {
+    height: inherit;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    &:hover {
+        background-color: $hover;
+    }
+    & .user-menu__icon:hover {
+        background: transparent;
+    }
+}
+
+.user-menu__icon {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.875rem;
+    color: $font-color;
+    line-height: 1;
+    cursor: pointer;
+    &:hover {
+        background-color: $hover;
+    }
+}
+
+.user-menu__icon-container {
+    position: relative;
+}
+
+.user-menu__icon--dot {
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: -50%;
+    margin-right: -50%;
+    background: red;
+    border-radius: 50%;
+}
+
+.user-menu__date {
+    margin: 0 1rem;
+}
+
+.user-menu__time {
+    margin: 0 1rem;
+    font-size: 2rem;
+}

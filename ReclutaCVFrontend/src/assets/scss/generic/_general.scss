@@ -1,0 +1,6 @@
+.hoverable {
+    &:hover {
+        color: $primary;
+        cursor: pointer;
+    }
+}

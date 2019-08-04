@@ -1,0 +1,52 @@
+// Colores
+$red:                 rgb(204, 0, 51) !default;
+$black:               rgb(51, 51, 51) !default;
+$white:               rgb(255, 255, 255) !default;
+$blue:                rgb(55, 68, 147) !default;
+// Estados
+$primary:             $red !default;
+$tertiary:            $blue !default;
+$hover:               rgba(0,0,0,0.1) !default;
+
+// Input focus
+//border
+$input-focus-border-color: lighten($black, 25%) !default;
+//Efecto sombra o "glow"
+$input-focus-box-shadow:  0 0 0 .2rem rgba(51, 51, 51, .25) !default;
+
+
+$font-color:            $black !default;
+$font-color-active:     $red !default;
+$font-color-hover:      $red !default;
+$font-color-invert:   rgba(0,0,0,0.3) !default;
+
+$background:            $white !default;
+$background-active:     $red !default;
+$background-hover:      $hover !default;
+$background-invert:     $red !default;
+
+$shadow-5:             rgba(0,0,0,0.05) !default;
+$shadow-10:            rgba(0,0,0,0.10) !default;
+$shadow-25:            rgba(0,0,0,0.25) !default;
+$shadow-50:            rgba(0,0,0,0.50) !default;
+$shadow-75:            rgba(0,0,0,0.75) !default;
+
+$shadow-top:             0 -10px 10px -10px !default;
+$shadow-right:           10px 0 10px -10px !default;
+$shadow-bottom:          0 10px 10px -10px !default;
+$shadow-left:            -10px 0 10px -10px !default;
+
+$radius:                 3px !default;
+
+$border-color:           #DEDEDE;
+
+$theme-colors: () !default;
+
+$theme-colors: map-merge(
+  (
+    "tertiary":   $blue
+  ),
+  $theme-colors
+);
+
+$animation-duration: 0.2s;

@@ -1,0 +1,13 @@
+.button {
+    & > :nth-child(2) {
+        margin-left: 10px;
+    }
+}
+
+.btn__label {
+    font-weight: 900;
+}
+
+.btn__icon--right {
+    line-height: 1;
+}

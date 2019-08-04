@@ -1,0 +1,8 @@
+.dropdown__item {
+    padding: 0.5rem 2rem;
+    text-align: center;
+    &:hover {
+        color: $primary;
+        cursor: pointer;
+    }
+}

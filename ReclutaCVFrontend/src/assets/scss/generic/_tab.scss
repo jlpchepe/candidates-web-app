@@ -1,0 +1,26 @@
+.tab {
+    padding: 0;
+    display: flex;
+    list-style-type: none;
+    border-bottom: 1px solid $shadow-25;
+    cursor: pointer;
+    user-select: none;
+}
+
+.tab__item {
+    padding: 0.875rem 1rem;
+    color: #929292;
+}
+
+.tab__item--active {
+    color: $white;
+    background: #787F84;
+}
+
+.tab__item--active:hover {
+    color: $white !important;
+}
+
+.tab__item:hover {
+    color: $black;
+}

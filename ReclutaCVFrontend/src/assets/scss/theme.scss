@@ -1,0 +1,41 @@
+@import url("https://fonts.googleapis.com/css?family=Muli:400,600&display=swap");
+
+@import "./core/variables";
+
+// Es importante que bootstrap se agregue después del las variables para que se lean correctamente.
+@import "~bootstrap/scss/bootstrap";
+
+// CORE
+@import "./core/dropdown-menu";
+@import "./core/modal";
+@import "./core/table";
+
+// DOAMIN
+@import "./domain/login";
+@import "./domain/service-board";
+@import "./domain/work-order";
+
+// GENERICS
+@import "./generic/base";
+@import "./generic/general";
+@import "./generic/button";
+@import "./generic/checkbox";
+@import "./generic/circular-button";
+@import "./generic/combo";
+@import "./generic/date-picker";
+@import "./generic/dropdown-item";
+@import "./generic/dropdown-menu";
+@import "./generic/dropdown-toggle";
+@import "./generic/dropdown";
+@import "./generic/nav-bar";
+@import "./generic/notification-center";
+@import "./generic/page-header";
+@import "./generic/side-bar";
+@import "./generic/tab";
+@import "./generic/title";
+@import "./generic/top-bar";
+@import "./generic/user-menu";
+
+// FONT_AWESOME
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "./font-awesome/animated";

@@ -1,0 +1,48 @@
+.top-bar {
+    width: 100%;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    color: $font-color;
+    background: $background;
+    user-select: none;
+}
+
+.top-bar__container {
+    display: flex;
+}
+
+.top-bar__toggle {
+    width: 60px;
+    height: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    color: $font-color-active;
+    cursor: pointer;
+    &:hover {
+        background: $hover;
+    }
+}
+
+.top-bar__brand {
+    padding: 0 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    &:hover {
+        background: $hover;
+    }
+    & img {
+        max-width: 200px;
+        max-height: 60px;
+    }
+}
+
+.top-bar--collapse {
+    height: inherit;
+    margin-left: auto;
+    display: flex;
+}

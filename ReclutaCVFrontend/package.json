@@ -1,0 +1,64 @@
+{
+    "name": "app-frontend-user-mao0002",
+    "repository": {
+        "type": "git",
+        "url": "http://10.10.1.145/groups/MAO0002"
+    },
+    "version": "1.0.0",
+    "description": "Frontend para la adminitración de la plataforma IOT de Novutek",
+    "main": "src/index.html",
+    "scripts": {
+        "clean-code": "npx eslint */**/*.{ts,tsx} --fix",
+        "start": "parcel src/index.html --open --log-level 4",
+        "build": "rimraf serve/dist/* & parcel build src/index.html --out-dir serve/dist & robocopy serve serve/dist express-serve.js run-frontend.bat package.json & cd serve/dist & npm install",
+        "build-and-run": "npm run build & node serve/dist/express-serve.js"
+    },
+    "keywords": [
+        "IoT",
+        "Novutek",
+        "MQTT",
+        "Admin"
+    ],
+    "author": "Novutek",
+    "license": "ISC",
+    "devDependencies": {
+        "@types/classnames": "^2.2.9",
+        "@types/enzyme": "^3.10.3",
+        "@types/jest": "^24.0.15",
+        "@types/react-datepicker": "^2.8.1",
+        "@types/react": "^16.8.23",
+        "@types/react-dom": "^16.8.5",
+        "@types/react-router-dom": "^4.3.4",
+        "@types/reactstrap": "^8.0.1",
+        "@typescript-eslint/eslint-plugin": "^1.13.0",
+        "@typescript-eslint/parser": "^1.13.0",
+        "babel-jest": "^24.8.0",
+        "dotenv": "^8.0.0",
+        "enzyme": "^3.10.0",
+        "enzyme-adapter-react-16": "^1.14.0",
+        "enzyme-to-json": "^3.3.5",
+        "eslint": "^5.16.0",
+        "jest": "^24.8.0",
+        "node-sass": "^4.12.0",
+        "parcel-bundler": "1.12.3",
+        "rimraf": "^2.6.3",
+        "ts-jest": "^24.0.2",
+        "typescript": "^3.5.3"
+    },
+    "dependencies": {
+        "@aspnet/signalr": "^1.1.4",
+        "@fortawesome/fontawesome-free": "^5.9.0",
+        "animate.css": "^3.7.2",
+        "axios": "^0.19.0",
+        "bootstrap": "^4.3.1",
+        "classnames": "^2.2.6",
+        "date-fns": "^2.0.0-beta.2",
+        "jsonwebtoken": "^8.5.1",
+        "react": "^16.8.6",
+        "react-datepicker": "^2.8.0",
+        "react-dom": "^16.8.6",
+        "react-router-dom": "^5.0.1",
+        "reactstrap": "^8.0.1",
+        "rxjs": "^6.5.2"
+    }
+}

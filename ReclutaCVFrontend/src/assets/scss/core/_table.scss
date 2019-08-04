@@ -1,0 +1,19 @@
+.table thead th,
+.table thead td {
+    font-weight: 600;
+    color: #424749;
+    background: #DEDEDE;
+    border-bottom: 2px solid rgba(0,0,0,0.2);
+}
+
+.table td {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f1f1f1;
+}
+.table-striped tbody tr:nth-of-type(even) {
+    background-color: $white;
+}
