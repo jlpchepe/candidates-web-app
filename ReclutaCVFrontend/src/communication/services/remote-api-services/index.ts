@@ -6,7 +6,7 @@ import { UsuarioInsertable, UsuarioUpdatable, UsuarioConsultable, UsuarioListabl
 import { CandidatoService } from "../candidato-service";
 
 
-export const RemoteCandidatoService: CandidatoService = CreateCrudRestApiService("candidato")
+export const RemoteCandidatoService: CandidatoService = CreateCrudRestApiService("candidato");
 
 export const RemoteUsuarioService: UsuarioService = {
     ...CreateCrudRestApiService<UsuarioListable, UsuarioConsultable, UsuarioInsertable, UsuarioUpdatable, void>("user"),

@@ -292,6 +292,7 @@ namespace ReclutaCVData.Entidades
         public DateTime? IngresoVencimientoContratoDeterminado { get; set; }
         public string IngresoObservaciones { get; set; }
 
+        public Candidato() { }
         public Candidato(
             int? id, 
             string nombre, 

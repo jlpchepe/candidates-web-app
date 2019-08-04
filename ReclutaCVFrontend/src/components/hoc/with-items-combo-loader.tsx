@@ -68,9 +68,9 @@ function withItemsComboLoadingSimple<TListable, TFilters, ComponentProps extends
         
         private refreshItemsWithNewFilters = (filters: Partial<TFilters>) => 
             this.setState(prevState => ({
-                    filters: { ...prevState.filters, ...filters }
-                }), 
-                () => this.refreshItemsWithCurrentState()
+                filters: { ...prevState.filters, ...filters }
+            }), 
+            () => this.refreshItemsWithCurrentState()
             );
 
         /**

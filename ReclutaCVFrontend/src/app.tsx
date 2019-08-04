@@ -16,7 +16,7 @@ import { SessionWatcher } from "./components/layout/session-watcher";
 // Estilos
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "animate.css/animate.css";
-import "./assets/scss/nissan-services.scss";
+import "./assets/scss/theme.scss";
 // Para el selector de fechas
 import "react-datepicker/dist/react-datepicker.css";
 
