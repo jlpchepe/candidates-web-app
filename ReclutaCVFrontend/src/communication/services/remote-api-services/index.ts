@@ -5,8 +5,13 @@ import { UsuarioService } from "../user-service";
 import { UsuarioInsertable, UsuarioUpdatable, UsuarioConsultable, UsuarioListable } from "../../dtos/user";
 import { CandidatoService } from "../candidato-service";
 
-
-export const RemoteCandidatoService: CandidatoService = CreateCrudRestApiService("candidato");
+const candidatoBaseEndpoint = "candidato";
+const RemoteCandidatoPreService: CandidatoService = CreateCrudRestApiService(candidatoBaseEndpoint);
+export const RemoteCandidatoService: CandidatoService = {
+    ...RemoteCandidatoPreService,
+    getPaginated: (pageNumberZeroBased: number, pageSize: number, nombre: string) =>
+            RestApiCommunication.get(candidatoBaseEndpoint, { pageNumber: pageNumberZeroBased, pageSize, nombre }),
+};
 
 const usuarioBaseEndpoint = "usuario";
 export const RemoteUsuarioService: UsuarioService = {

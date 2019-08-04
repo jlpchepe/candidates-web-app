@@ -10,7 +10,8 @@ import { OperatorCombo } from "../../operator/combo/operator-combo";
 import { Candidato } from "../../../../../communication/services";
 import { Column } from "../../../common/column";
 import { addDays } from "date-fns/esm";
-import { VeredictoFinalCandidatoCombo } from "../combos/candidato-combos";
+import { VeredictoFinalCandidatoCombo, EstatusAcademicoCombo, RolCandidatoCombo, BolsaTrabajoCombo, EstatusCandidatoCombo } from "../combos/candidato-combos";
+import { BolsaTrabajo, RolCandidato } from "../../../../../communication/enums/candidato";
 
 const service = Candidato;
 
@@ -49,7 +50,7 @@ class CandidatoEditSimple extends React.Component<WithModelManagementProps<TMode
                     </Row>
                     <Row>                    
                         <LabeledTextInput label="Comentarios generales" value={this.props.model.generalesComentarios} onChange={value => this.props.setModel({ generalesComentarios: value })} readonly={this.props.readonly}/>
-                        <LabeledDateInput label="Fecha de actualización" value={this.props.model.fechaDeActualizacion} onChange={value => this.props.setModel({ fechaDeActualizacion: value })} readonly={this.props.readonly}/>
+                        <LabeledDateInput label="Fecha de actualización" value={this.props.model.fechaDeActualizacion} onChange={value => this.props.setModel({ fechaDeActualizacion: value })} readonly={true}/>
                     </Row>
                 </Seccion>
 
@@ -65,7 +66,7 @@ class CandidatoEditSimple extends React.Component<WithModelManagementProps<TMode
                     <Row>
                         <LabeledTextInput label="Carrera" value={this.props.model.carrera} onChange={value => this.props.setModel({ carrera: value })} readonly={this.props.readonly}/>
                         <LabeledTextInput label="Institución" value={this.props.model.institucion} onChange={value => this.props.setModel({ institucion: value })} readonly={this.props.readonly}/>
-                        {/* estatusAcademico: EstatusAcademico; */}
+                        <EstatusAcademicoCombo label="Estatus académico" value={this.props.model.estatusAcademico} onChange={value => this.props.setModel({ estatusAcademico: value })} readonly={this.props.readonly} />
                     </Row>
                     <Row>
                         <LabeledTextInput label="Cursos" value={this.props.model.cursos} onChange={value => this.props.setModel({ cursos: value })} readonly={this.props.readonly}/>
@@ -102,14 +103,22 @@ class CandidatoEditSimple extends React.Component<WithModelManagementProps<TMode
                         <LabeledDateInput label="Fecha de recepcion de solicitud de registro" value={this.props.model.fechaRecepcionSolicitudRegistro} onChange={value => this.props.setModel({ fechaRecepcionSolicitudRegistro: value })} readonly={this.props.readonly}/>
                     </Row>
                     <Row>
-                        {/* bolsa: BolsaTrabajo; */}
-                        <LabeledTextInput label="Otra bolsa" value={this.props.model.bolsaOtra} onChange={value => this.props.setModel({ bolsaOtra: value })} readonly={this.props.readonly}/>
-                        {/* rol: RolCandidato; */}
-                        <LabeledTextInput label="Otro rol" value={this.props.model.rolOtro} onChange={value => this.props.setModel({ rolOtro: value })} readonly={this.props.readonly}/>
+                        <BolsaTrabajoCombo label="Bolsa de trabajo" value={this.props.model.bolsa} onChange={value => this.props.setModel({ bolsa: value })} readonly={this.props.readonly} />
+                        {
+                            this.props.model.bolsa == BolsaTrabajo.OtraBolsa ?
+                                <LabeledTextInput label="Otra bolsa" value={this.props.model.bolsaOtra} onChange={value => this.props.setModel({ bolsaOtra: value })} readonly={this.props.readonly}/> :
+                                null
+                        }
+                        <RolCandidatoCombo label="Rol" value={this.props.model.rol} onChange={value => this.props.setModel({ rol: value })} readonly={this.props.readonly} />
+                        {
+                            this.props.model.rol == RolCandidato.Otro ?
+                                <LabeledTextInput label="Otro rol" value={this.props.model.rolOtro} onChange={value => this.props.setModel({ rolOtro: value })} readonly={this.props.readonly}/> :
+                                null
+                        }
                     </Row>
                     <Row>
                         <LabeledNumberInput label="Expectativa económica" value={this.props.model.expectativaEconomica} onChange={value => this.props.setModel({ expectativaEconomica: value })} readonly={this.props.readonly}/>
-                        {/* estatus: EstatusCandidato; */}
+                        <EstatusCandidatoCombo label="Estatus de candidato" value={this.props.model.estatus} onChange={value => this.props.setModel({ estatus: value })} readonly={this.props.readonly} />
                         <LabeledTextInput label="Comentarios de reclutamiento" value={this.props.model.reclutamientoComentarios} onChange={value => this.props.setModel({ reclutamientoComentarios: value })} readonly={this.props.readonly}/>
                     </Row>            
                 </Seccion>         
@@ -237,7 +246,7 @@ class CandidatoEditSimple extends React.Component<WithModelManagementProps<TMode
                 </Seccion>
                 <Seccion title="Veredicto final">
                     <Row>
-                        <VeredictoFinalCandidatoCombo label="Estatus" value={this.props.model.veredictoFinal} onChange={value => this.props.setModel({ veredictoFinal: value })} readonly={this.props.readonly} required/>
+                        <VeredictoFinalCandidatoCombo label="Estatus" value={this.props.model.veredictoFinal} onChange={value => this.props.setModel({ veredictoFinal: value })} readonly={this.props.readonly} />
                         <LabeledTextInput label="Nivel identificado" value={this.props.model.veredictoFinalNivelIdentificado} onChange={value => this.props.setModel({ veredictoFinalNivelIdentificado: value })} readonly={this.props.readonly}/>
                         <LabeledTextInput label="Comentarios" value={this.props.model.veredictoFinalComentarios} onChange={value => this.props.setModel({ veredictoFinalComentarios: value })} readonly={this.props.readonly}/>
                     </Row>

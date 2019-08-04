@@ -46,7 +46,7 @@ export interface WithItemsLoaderProps<TListable, TFilters = TDefaultFilters> ext
 }
 
 const defaultPageNumber = 0;
-const defaultPageSize = 10;
+const defaultPageSize = 15;
 
 /**
  * 

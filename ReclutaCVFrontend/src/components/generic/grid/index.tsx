@@ -34,7 +34,6 @@ interface GridProps<TListable> {
      */
     removeMargin?: boolean;
     className?: string;
-    small?: boolean;
 }
 
 /**
@@ -54,7 +53,7 @@ export class Grid<TListable> extends React.Component<GridProps<TListable>> {
             <Table 
                 striped 
                 className={classnames(this.props.className, { "m-0" : this.props.removeMargin})}
-                size={this.props.small ? "sm" : undefined}
+                size={"sm"}
             >
                 <thead>
                     <tr>

@@ -9,5 +9,5 @@ interface TitleProps {
  * Una cabecera grande
  */
 export const Title: React.FC<TitleProps> = props => (
-    <h2 className={classnames("title", props.className)}>{props.title}</h2>
+    <h3 className={classnames("title", props.className)}>{props.title}</h3>
 );
