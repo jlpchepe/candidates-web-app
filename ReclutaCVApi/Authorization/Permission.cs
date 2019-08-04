@@ -10,6 +10,6 @@ namespace ReclutaCVApi.Authorization
     /// </summary>
     public enum Permission
     {
-        CanGetWorkstation
+        PuedeObtenerListaCandidatos
     }
 }

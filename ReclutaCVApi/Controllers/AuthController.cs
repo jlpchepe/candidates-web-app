@@ -1,17 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
-using System.Text;
 using System.Threading.Tasks;
 using ReclutaCVApi.Dtos;
-using AppPersistence.Extensions;
-using AppPersistence.Services;
-using AppPersistence.Enums;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using ReclutaCVLogic.Servicios;
 
 namespace ReclutaCVApi.Controllers
 {
@@ -52,9 +46,7 @@ namespace ReclutaCVApi.Controllers
                     // Se especifica el ID del usuario
                     new Claim(ClaimTypes.NameIdentifier, userOrNullIfInvalidCredentials.Id.ToString()),
                     // Se especifica el nombre del usuario
-                    new Claim(ClaimTypes.Name, userOrNullIfInvalidCredentials.Name),
-                    // Se especifica el rol del usuario, esto es importante para la autorización
-                    new Claim(ClaimTypes.Role, userOrNullIfInvalidCredentials.Role.GetDescription())
+                    new Claim(ClaimTypes.Name, userOrNullIfInvalidCredentials.Nombre)
                 });
 
             var tokenDescriptor = new SecurityTokenDescriptor

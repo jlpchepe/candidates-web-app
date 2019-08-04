@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using AppPersistence.Extensions;
 using AppPersistence.Enums;
 using Microsoft.AspNetCore.Authorization;
+using ReclutaCVLogic.Utils.Extensions;
 
 namespace ReclutaCVApi.Authorization
 {
@@ -21,13 +22,12 @@ namespace ReclutaCVApi.Authorization
             var allPermissions = 
                 new HashSet<Permission>(EnumExtensions.GetValues<Permission>());
 
-            var allRoles =
-                EnumExtensions.GetValues<UserRole>();
+            var allUsers = new int[] { };
 
-            // TODO: POR AHORA, TODOS LOS ROLES TENDRÁN TODOS LOS PERMISOS
-            permissionsPerRole = 
-                allRoles.ToDictionary(
-                    role => role, 
+            // TODO: POR AHORA, TODOS LOS USUARIOS TENDRÁN TODOS LOS PERMISOS
+            permissionsPerUser = 
+                allUsers.ToDictionary(
+                    userId => userId, 
                     _ => allPermissions
                 );
 
@@ -37,7 +37,7 @@ namespace ReclutaCVApi.Authorization
         /// <summary>
         /// Diccionario que contiene los permisos a los que tiene acceso cada rol
         /// </summary>
-        private readonly Dictionary<UserRole, HashSet<Permission>> permissionsPerRole;
+        private readonly Dictionary<int, HashSet<Permission>> permissionsPerUser;
 
         private readonly bool noAuthenticatedUserByPassAuthorization;
 
@@ -46,18 +46,22 @@ namespace ReclutaCVApi.Authorization
             Permission permission
         )
         {
-            var authenticatedUserRole =
-                AuthenticationHelper.GetAuthenticatedUserRole(user);
+            var authenticatedUserId =
+                AuthenticationHelper.GetAuthenticatedUserId(user);
 
-            if (authenticatedUserRole == null)
+            if (authenticatedUserId == null)
             {
                 // TODO: quitar esto cuando se llegue a una versión más avanzada del aplicativo
                 return noAuthenticatedUserByPassAuthorization;
             }
 
 
-            // Revisamos que el rol tenga el permiso indicado
-            return permissionsPerRole[authenticatedUserRole.Value].Contains(permission);
+            // TODO: Terminar de implementar permisos
+            return true ||
+                (
+                    permissionsPerUser.ContainsKey(authenticatedUserId.Value) &&
+                    permissionsPerUser[authenticatedUserId.Value].Contains(permission)
+                );
         }
 
         protected override Task HandleRequirementAsync(

@@ -14,27 +14,6 @@ namespace ReclutaCVApi.Authorization
     public class AuthenticationHelper
     {
         /// <summary>
-        /// Obtiene el rol que tiene el usuario indicado
-        /// Regresa null si no hay usaurio autenticado
-        /// </summary>
-        /// <param name="user"></param>
-        /// <returns></returns>
-        public static UserRole? GetAuthenticatedUserRole(
-            ClaimsPrincipal user
-        )
-        {
-            var userRoleClaimValue = 
-                user.Claims
-                .FirstOrDefault(x => x.Type == ClaimTypes.Role)
-                ?.Value;
-
-            var userRole = 
-                EnumExtensions.GetEnumValue<UserRole>(userRoleClaimValue);
-
-            return userRole;
-        }
-        
-        /// <summary>
         /// Obtiene el ID del usuario indicado
         /// Regresa null si no hay usuario autenticado
         /// </summary>

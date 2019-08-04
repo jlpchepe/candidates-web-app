@@ -1,9 +1,5 @@
-﻿using System.Collections.Generic;
-using ReclutaCVApi.Dtos;
+﻿using ReclutaCVApi.Dtos;
 using ReclutaCVApi.Extensions;
-using ReclutaCVApi.WebSockets;
-using AppPersistence.Handlers;
-using AppPersistence.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -67,18 +63,8 @@ namespace ReclutaCVApi
             // SE ACTIVA LA AUTENTICACIÓN
             app.UseAuthentication();
 
-            // SE ACTIVA SIGNAL R PARA EL FLUJO DE EJECUCIÓN DE PETICIONES
-            app.UseSignalR();
-
             // SE CONFIGURA EL MANEJADOR DE EXCEPCIONES DE LA APLICACIÓN
             app.ConfigureExceptionHandler();
-
-            // SE SUSCRIBEN LOS SERVICIOS INTERESADOS AL AGREGADOR DE EVENTOS DE LA APLICACIÓN
-            app.Use(async (context, next) =>
-            {
-                StartupConfigurationExtensions.SubscribeServicesToEventAggregator(context.RequestServices);
-                await next.Invoke();
-            });
 
             // SE ACTIVA EL USO DE LOS MÉTODOS DE CONTROLADORES COMO ENDPOINTS DE LA API
             app.UseMvc();

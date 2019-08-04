@@ -15,9 +15,10 @@ namespace ReclutaCVData
     [DbConfigurationType(typeof(DbConfig))]
     public class Db : DbContext
     {
+        public Db(string connectionString) : base(connectionString){ }
 
         public Db()
-        : base("Server=localhost;Port=5432;Database=develop_recluta_cv;User Id=postgres;Password=novutek;")
+        : this("Server=localhost;Port=5432;Database=develop_recluta_cv;User Id=postgres;Password=novutek;")
         {
         }
 

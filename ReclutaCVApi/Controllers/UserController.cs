@@ -14,14 +14,12 @@ namespace ReclutaCVApi.Controllers
     [ApiController]
     public class UserController
     {
-        public UserController(UsuarioService service, UserPasswordValidator userPasswordValidator)
+        public UserController(UsuarioService service)
         {
             this.service = service;
-            this.userPasswordValidator = userPasswordValidator;
         }
 
         readonly UsuarioService service;
-        private readonly UserPasswordValidator userPasswordValidator;
 
         [HttpGet]
         public async Task<ActionResult<Page<UserListable>>> Get(
@@ -84,9 +82,8 @@ namespace ReclutaCVApi.Controllers
             service.ChangeStatus(request.Id, request.Active);
 
         [HttpDelete("{id}")]
-        public async Task Delete(int id, string justification, string password)
+        public async Task Delete(int id)
         {
-            await userPasswordValidator.ValidateUserPasswordOrThrow(password);
             await service.DeleteById(id);
         }
     }
