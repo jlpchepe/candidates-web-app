@@ -33,7 +33,7 @@ namespace ReclutaCVApi.Dtos
         // Educación
         public string Carrera { get; set; }
         public string Institucion { get; set; }
-        public EstatusAcademico EstatusAcademico { get; set; } = EstatusAcademico.NoEspecificado;
+        public EstatusAcademico? EstatusAcademico { get; set; }
         public string Cursos { get; set; }
         public string Certificaciones { get; set; }
         public string CompetenciasOHabilidades { get; set; }
@@ -56,12 +56,12 @@ namespace ReclutaCVApi.Dtos
         public DateTime? FechaPreentrevistaTelefonica { get; set; }
         public DateTime? FechaRecepcionSolicitudRegistro { get; set; }
         public string QuienLoContacto { get; set; }
-        public BolsaTrabajo Bolsa { get; set; } = BolsaTrabajo.NoEspecificada;
+        public BolsaTrabajo? Bolsa { get; set; }
         public string BolsaOtra { get; set; }
-        public RolCandidato Rol { get; set; } = RolCandidato.IngenieroDeSoftware;
+        public RolCandidato? Rol { get; set; }
         public string RolOtro { get; set; }
         public decimal? ExpectativaEconomica { get; set; }
-        public EstatusCandidato Estatus { get; set; } = EstatusCandidato.NoEspecificado;
+        public EstatusCandidato? Estatus { get; set; }
         public string ReclutamientoComentarios { get; set; }
 
         // Examen psicometrico
@@ -148,13 +148,13 @@ namespace ReclutaCVApi.Dtos
         public string EntrevistaInglesComentarios { get; set; }
         public DateTime? EntrevistaGerenteAreaFecha { get; set; }
         public string EntrevistaGerenteAreaComentarios { get; set; }
-        public VeredictoFinalCandidato VeredictoFinal { get; set; } = VeredictoFinalCandidato.EnEspera;
+        public VeredictoFinalCandidato? VeredictoFinal { get; set; }
         public string VeredictoFinalNivelIdentificado { get; set; }
         public string VeredictoFinalComentarios { get; set; }
 
         // Propuesta económica
         public DateTime? PropuestaEconomicaFecha { get; set; }
-        public PropuestaEconomicaEstatus PropuestaEconomicaEstatus { get; set; } = PropuestaEconomicaEstatus.SinPropuesta;
+        public PropuestaEconomicaEstatus? PropuestaEconomicaEstatus { get; set; }
         public decimal? PropuestaEconomicaSueldo { get; set; }
         public string PropuestaEconomicaComentarios { get; set; }
 
@@ -182,7 +182,7 @@ namespace ReclutaCVApi.Dtos
             string motivoDeSeparacion,
             string carrera,
             string institucion,
-            EstatusAcademico estatusAcademico,
+            EstatusAcademico? estatusAcademico,
             string cursos,
             string certificaciones,
             string competenciasOHabilidades,
@@ -201,12 +201,12 @@ namespace ReclutaCVApi.Dtos
             DateTime? fechaPreentrevistaTelefonica,
             DateTime? fechaRecepcionSolicitudRegistro,
             string quienLoContacto,
-            BolsaTrabajo bolsa,
+            BolsaTrabajo? bolsa,
             string bolsaOtra,
-            RolCandidato rol,
+            RolCandidato? rol,
             string rolOtro,
             decimal? expectativaEconomica,
-            EstatusCandidato estatus,
+            EstatusCandidato? estatus,
             string reclutamientoComentarios,
             string examenPsicometricoNombre,
             string examenPsicometricoResultados,
@@ -274,11 +274,11 @@ namespace ReclutaCVApi.Dtos
             string entrevistaInglesComentarios,
             DateTime? entrevistaGerenteAreaFecha,
             string entrevistaGerenteAreaComentarios,
-            VeredictoFinalCandidato veredictoFinal,
+            VeredictoFinalCandidato? veredictoFinal,
             string veredictoFinalNivelIdentificado,
             string veredictoFinalComentarios,
             DateTime? propuestaEconomicaFecha,
-            PropuestaEconomicaEstatus propuestaEconomicaEstatus,
+            PropuestaEconomicaEstatus? propuestaEconomicaEstatus,
             decimal? propuestaEconomicaSueldo,
             string propuestaEconomicaComentarios,
             DateTime? ingresoFecha,

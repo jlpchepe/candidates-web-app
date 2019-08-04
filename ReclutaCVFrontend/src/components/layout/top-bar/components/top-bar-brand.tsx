@@ -9,6 +9,6 @@ interface TopBarBrandProps {
 
 export const TopBarBrand: React.FC<TopBarBrandProps> = props => (
     <div className="top-bar__brand">
-        <img src={props.logoBase64} onClick={() => goToPath(props.history, "service-board")} />
+        <img src={props.logoBase64} onClick={() => goToPath(props.history, "candidato")} />
     </div>
 );

@@ -72,7 +72,7 @@ export class LabeledDateInput extends React.Component<LabeledDateInputProps, Lab
     }
 
     render() {
-        const fixedPlaceholder = this.props.placeholder || this.props.label;
+        const fixedPlaceholder = this.props.placeholder || "";
 
         const fixedDates = {
             value: this.fixedDateBeforeRenderBasedOnUtc(this.props.value),

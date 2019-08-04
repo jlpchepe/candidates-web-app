@@ -42,12 +42,11 @@ export class LabeledTextInput extends React.Component<TextInputProps> {
     }
 
     render() {
-        const fixedPlaceholder = this.props.placeholder || this.props.label;
         const sanitizedValue = this.props.value || "";
 
         return (
             <LabeledInput
-                placeholder={fixedPlaceholder}
+                placeholder={this.props.placeholder}
                 label={this.props.label}
                 value={sanitizedValue}
                 onChange={this.handleChange}

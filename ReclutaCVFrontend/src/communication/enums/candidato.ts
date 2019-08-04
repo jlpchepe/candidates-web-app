@@ -9,3 +9,13 @@ export const VeredictoFinalCandidatoDescriptions = new Map<VeredictoFinalCandida
     [VeredictoFinalCandidato.Aceptado, "Aceptado"],
     [VeredictoFinalCandidato.Rechazado, "Rechazado"]
 ]);
+
+export enum PropuestaEconomicaEstatus{
+    Aceptada,
+    Rechazada
+}
+
+export const PropuestaEconomicaEstatusDescriptions = new Map([
+    [PropuestaEconomicaEstatus.Aceptada, "Aceptada"],
+    [PropuestaEconomicaEstatus.Rechazada, "Rechazada"]
+]);

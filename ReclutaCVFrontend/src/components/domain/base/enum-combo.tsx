@@ -7,8 +7,9 @@ import { LabeledCombo } from "../../generic";
  * Propiedades del combo
  */
 export interface EnumComboProps<TEnum> {
+    label: string;
     value: TEnum;
-    onValueChange: (item: TEnum) => void;
+    onChange: (item: TEnum) => void;
     readonly?: boolean;
     required?: boolean;
 }
@@ -22,7 +23,6 @@ interface EnumSelectable<TEnum> {
  * Un combo para seleccionar elementos de enum
  */
 export function createEnumLabeledCombo<TEnum extends number>(
-    label: string,
     enumType: any,
     valueToDescription: (value: TEnum) => string
 ) : React.FC<EnumComboProps<TEnum>> {
@@ -34,8 +34,8 @@ export function createEnumLabeledCombo<TEnum extends number>(
     return (props: EnumComboProps<TEnum>) => (
         <LabeledCombo
             items={items}
-            label={label}
-            onValueAsNumberChange={props.onValueChange}
+            label={props.label}
+            onValueAsNumberChange={props.onChange}
             valueSelected={props.value}
             valueSelector={x => x.value}
             descriptionSelector={x => x.description}

@@ -71,7 +71,6 @@ export class LabeledNumberInput extends React.Component<LabeledNumberInputProps,
     }
 
     render() {
-        const fixedPlaceholder = this.props.placeholder || this.props.label;
         const maxLength = this.props.integer ?
             NumberHelper.integerMaxCharacters :
             NumberHelper.numberMaxCharacters;
@@ -80,7 +79,7 @@ export class LabeledNumberInput extends React.Component<LabeledNumberInputProps,
             <LabeledInput
                 label={this.props.label}
                 value={this.state.sanitizedValue}
-                placeholder={fixedPlaceholder}
+                placeholder={this.props.placeholder}
                 onChange={this.handleChange}
                 required={this.props.required}
                 onBlur={this.handleOnBlur}

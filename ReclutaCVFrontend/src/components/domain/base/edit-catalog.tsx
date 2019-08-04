@@ -26,14 +26,15 @@ export class EditCatalog extends React.Component<EditCatalogProps> {
         const drawSaveButton: boolean =
             this.props.readonly !== true && this.props.onSave != null;
 
+        const saveButton = drawSaveButton ? 
+            <Button color="primary" label="Guardar" onClick={this.props.onSave} /> :
+            null;
+
         return (
             <Container fluid={this.props.fluid} container={!this.props.fluid}>
-                <PageHeader title={this.props.title} />
+                <PageHeader title={this.props.title} extraButtons={saveButton}/>
                 {this.props.children}
-                {drawIfTrue(
-                    drawSaveButton,
-                    <Button color="primary" label="Guardar" onClick={this.props.onSave} />
-                )}
+                {saveButton}
             </Container>
         );
     }

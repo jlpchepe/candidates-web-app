@@ -55,7 +55,7 @@ export class LabeledInput extends React.Component<LabeledInputProps, LabeledInpu
     }
 
     render() {
-        const fixedPlaceholder = this.props.placeholder || this.props.label;
+        const fixedPlaceholder = this.props.placeholder || "";
         const fixedValue = NullHelper.valueOrDefault(this.props.value, "");
 
         const isInvalid = (

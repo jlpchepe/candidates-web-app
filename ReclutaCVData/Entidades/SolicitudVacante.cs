@@ -75,7 +75,7 @@ namespace ReclutaCVData.Entidades
         public EstatusSolicitud Estatus { get; set; } = EstatusSolicitud.NoAutorizada;
         public RolCandidato PuestoSolicitado { get; set; } = RolCandidato.IngenieroDeSoftware;
         public string EspecifiquePuestoSolicitado { get; set; }
-        public NivelCandidato PuestoSolicitadoNivel { get; set; } = NivelCandidato.NoEspecificado;
+        public NivelCandidato? PuestoSolicitadoNivel { get; set; }
         public string NombreDelJefeInmediato { get; set; }
         public string Proyecto { get; set; }
         public decimal? NivelIdiomaIngles { get; set; }
