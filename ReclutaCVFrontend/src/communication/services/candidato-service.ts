@@ -5,7 +5,7 @@ import { CandidatoConsultable, CandidatoInsertable, CandidatoUpdatable } from ".
 export interface CandidatoService {
     getPaginated: (pageNumberZeroBased: number, pageSize: number, nombre: string) => TPromiseLike<PageResult<CandidatoConsultable>>;
     getById: (id: number) => TPromiseLike<CandidatoConsultable>;
-    insert: (model: CandidatoInsertable) => TPromiseLike<void>;
+    insert: (model: CandidatoInsertable) => TPromiseLike<number>;
     update: (model: CandidatoUpdatable) => TPromiseLike<void>;
     delete: (id: number) => TPromiseLike<void>;
 }

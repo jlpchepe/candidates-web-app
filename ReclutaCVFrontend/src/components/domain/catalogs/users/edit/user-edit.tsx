@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { LabeledTextInput, PasswordInput, LabeledStatusInput } from "../../../../generic";
+import { LabeledTextInput, PasswordInput, LabeledStatusInput, Checkbox } from "../../../../generic";
 import { Row } from "../../../common/row";
 import {
     UsuarioInsertable,
@@ -20,15 +20,33 @@ const service = Usuario;
 
 type TModelEditable = UsuarioInsertable & UsuarioUpdatable & UsuarioConsultable;
 
+interface UserEditState {
+    modifyPassword: boolean;
+}
+
 class UsuarioEditSimple extends React.Component<
-WithModelManagementProps<TModelEditable>
-> {     
+WithModelManagementProps<TModelEditable>,
+UserEditState
+> {
+    state: UserEditState = {
+        modifyPassword: false
+    }
+
     private setName = (nombre: string) =>
         this.props.setModel({ nombre });
     private setPassword = (contraseña: string) =>
         this.props.setModel({ contraseña });
     private setActive = (activo: boolean) =>
         this.props.setModel({ activo });
+
+    private handleModifyPasswordChanged = (modifyPassword: boolean) => {
+        this.setState({ modifyPassword });
+
+        if(!modifyPassword){
+            this.setPassword(null);
+        }
+    }
+
 
     render() {
         return (
@@ -56,7 +74,18 @@ WithModelManagementProps<TModelEditable>
                 </Row>
                 <Row>
                     {
-                        this.props.isNewModel ?  
+                        !this.props.isNewModel ?
+                            <Checkbox
+                                id="modify"
+                                label="Modificar contraseña"
+                                checked={this.state.modifyPassword}
+                                onChange={this.handleModifyPasswordChanged}
+                            >
+                            </Checkbox> : 
+                            null
+                    }
+                    {
+                        this.props.isNewModel || this.state.modifyPassword ?  
                             //usuario nuevo
                             <PasswordInput
                                 label="Contraseña"

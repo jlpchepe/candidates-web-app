@@ -7,6 +7,8 @@ import { RountingRelationRepository, RoutingRelation } from "./routing-relation-
 
 // Genéricos
 import { Route } from "../generic";
+import { CredentialsHelper } from "../../helpers/credentials-helper";
+import { Redirect } from "react-router";
 
 const getRoutesWithPath = (routes : RoutingRelation[]) => {
     return routes.map((routingRelation, routingRelationIndex) => {
@@ -26,9 +28,12 @@ const getRoutesWithPath = (routes : RoutingRelation[]) => {
 /**
  * Esta plantilla se utiliza para los catálogos
  */
-export const Catalogs = props => (
-    <>
-        <TopBar />
-        {getRoutesWithPath(RountingRelationRepository)}
-    </>
+export const Catalogs = props => 
+(
+    CredentialsHelper.isAuthenticated() ?
+        <>
+            <TopBar />
+            {getRoutesWithPath(RountingRelationRepository)}
+        </> :
+        <Redirect to="/" />
 );

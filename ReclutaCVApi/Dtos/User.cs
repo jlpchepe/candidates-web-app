@@ -23,6 +23,10 @@ namespace ReclutaCVApi.Dtos
         public int Id { get; set; }
         public string Nombre { get; set; }
         public bool? Activo { get; set; }
+        /// <summary>
+        /// Si diferente de null, se modificará la contraseña
+        /// </summary>
+        public string Contraseña { get; set; }
     }
 
     public class UsuarioListable {

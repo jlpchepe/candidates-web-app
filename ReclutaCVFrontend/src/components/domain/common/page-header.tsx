@@ -29,6 +29,5 @@ export const PageHeader: React.FC<PageHeaderProps> = props => (
                 </Row>
             </Container>
         </div>
-        <hr />
     </>
 );

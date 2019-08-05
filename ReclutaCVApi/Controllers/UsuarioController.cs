@@ -52,7 +52,7 @@ namespace ReclutaCVApi.Controllers
         }
 
         [HttpPost]
-        public Task Post([FromBody] UsuarioInsertable model)
+        public Task<int> Post([FromBody] UsuarioInsertable model)
         {
             return service.Save(
                 null,
@@ -68,7 +68,7 @@ namespace ReclutaCVApi.Controllers
             return service.Save(
                 model.Id,
                 model.Nombre,
-                null,
+                model.Contraseña,
                 model.Activo
             );
         }

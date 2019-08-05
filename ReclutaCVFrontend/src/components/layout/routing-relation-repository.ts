@@ -33,7 +33,7 @@ export const RountingRelationRepository: RoutingRelation[] = [
     },
     {
         component: UsuarioList,
-        path: "/user",
+        path: "/usuario",
         label: "Usuarios"
     },
     {

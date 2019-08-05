@@ -67,10 +67,17 @@ namespace ReclutaCVLogic.Servicios
             return repository.Save(nuevaInformacionCandidato);
         }
 
-        public Task Insert(Candidato candidatoAInsertar)
+        /// <summary>
+        /// Regresa la llave primaria del registro
+        /// </summary>
+        /// <param name="candidatoAInsertar"></param>
+        /// <returns></returns>
+        public async Task<int> Insert(Candidato candidatoAInsertar)
         {
             candidatoAInsertar.FechaDeActualizacion = DateTime.Now;
-            return repository.Save(candidatoAInsertar);
+            await repository.Save(candidatoAInsertar);
+
+            return candidatoAInsertar.Id;
         }
 
         public Task Delete(int id) => 

@@ -5,7 +5,7 @@ import { TPromiseLike } from "../../helpers/promise-helper";
 export interface UsuarioService {
     getPaginated: (pageNumberZeroBased: number, pageSize: number) => TPromiseLike<PageResult<UsuarioListable>>;
     getById: (id: number) => TPromiseLike<UsuarioConsultable>;
-    insert: (model: UsuarioInsertable) => TPromiseLike<void>;
+    insert: (model: UsuarioInsertable) => TPromiseLike<number>;
     update: (model: UsuarioUpdatable) => TPromiseLike<void>;
     /**
      * Cambia el estatus del usuario

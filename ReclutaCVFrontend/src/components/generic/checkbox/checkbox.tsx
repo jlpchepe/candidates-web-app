@@ -6,7 +6,7 @@ interface CheckboxProps {
     checked: boolean;
     id: string;
     label: string;
-    onChange: () => void;
+    onChange: (value: boolean) => void;
     readonly?: boolean;
 }
 
@@ -15,7 +15,7 @@ export const Checkbox: React.FC<CheckboxProps> = props => (
         <input
             checked={props.checked}
             id={props.id}
-            onChange={props.onChange}
+            onChange={() => props.onChange(!props.checked)}
             type="checkbox"
             readOnly={props.readonly}
             disabled={props.readonly}

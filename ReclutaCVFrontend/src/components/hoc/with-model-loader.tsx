@@ -5,11 +5,15 @@ import { ServiceErrorsHandler } from "../../communication/errors/service-errors-
 import { Diff } from "../../helpers/type-helper";
 import { WithItemsComboLoaderProps } from "./with-items-combo-loader";
 import { toPromise, TPromiseLike } from "../../helpers/promise-helper";
+import { NotificationHelper } from "../../helpers/notification-helper";
+
+interface ModelWithId {
+    id: number;
+}
 
 interface WithModelManagementState<TModel> {
     model?: TModel;
     isNewModel?: boolean;
-    noEditable?: boolean;
     readonly?: boolean;
 }
 
@@ -27,11 +31,11 @@ export interface WithModelManagementProps<TModel> extends RouteComponentProps {
  * @param getNewModel Método para obtener un nuevo modelo
  * @param findModelById Método para obtener un modelo a partir de su ID
  */
-function withModelManagementSimple<TModel, ComponentProps extends WithModelManagementProps<TModel>>(
+function withModelManagementSimple<TModel extends ModelWithId, ComponentProps extends WithModelManagementProps<TModel>>(
     Component: React.ComponentType<ComponentProps>,
     getNewModel: () => TPromiseLike<TModel>,
     findModelById: (id: number) => TPromiseLike<TModel>,
-    onInsertModel: (model: TModel) => TPromiseLike<void>,
+    onInsertModel: (model: TModel) => TPromiseLike<number>,
     onUpdateModel: (model: TModel) => TPromiseLike<void>
 ) {
     return class WithModelManagement extends React.Component<
@@ -65,7 +69,14 @@ function withModelManagementSimple<TModel, ComponentProps extends WithModelManag
                     onUpdateModel(this.state.model);
 
             toPromise(savePromise)
-                .then(() => goBack(this.props.history));
+                .then(id => {
+                    this.setState(prevState => ({
+                        model: { ...prevState.model, id: id || prevState.model.id },
+                        isNewModel: false
+                    }));
+                    
+                    NotificationHelper.notifySuccess("Éxito", "El registro se guardó");
+                });
         }
 
         private handleSetModel = (model: Partial<TModel>) =>
@@ -97,10 +108,10 @@ function withModelManagementSimple<TModel, ComponentProps extends WithModelManag
  * @param findModelById Método para obtener un modelo a partir de su ID
  * @param onSaveModel Determina lo que ocurre ante al momento en el que usuario da en guardar
  */
-export function withModelLoading<TModel, ComponentProps extends WithModelManagementProps<TModel>>(
+export function withModelLoading<TModel extends ModelWithId, ComponentProps extends WithModelManagementProps<TModel>>(
     component: React.ComponentType<ComponentProps>,
     getNewModel: () => TPromiseLike<TModel>,
     findModelById: (id: number) => TPromiseLike<TModel>,
-    onInsertModel: (model: TModel) => TPromiseLike<void>,
+    onInsertModel: (model: TModel) => TPromiseLike<number>,
     onUpdateModel: (model: TModel) => TPromiseLike<void>
 ) { return withRouter(withModelManagementSimple(component, getNewModel, findModelById, onInsertModel, onUpdateModel)); }

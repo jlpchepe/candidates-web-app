@@ -22,7 +22,15 @@ namespace ReclutaCVLogic.Servicios
 
         private readonly CrudRepository<Usuario, int?> repository;
 
-        public async Task Save(
+        /// <summary>
+        /// Regresa el Id del usuario insertado
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="nombre"></param>
+        /// <param name="contraseña"></param>
+        /// <param name="activo"></param>
+        /// <returns></returns>
+        public async Task<int> Save(
             int? id,
             string nombre,
             string contraseña,
@@ -39,6 +47,8 @@ namespace ReclutaCVLogic.Servicios
             usuario.Activo = activo ?? throw new ValidationErrorException(nameof(Usuario.Activo), ValidationErrorType.Required);
 
             await repository.Save(usuario);
+
+            return usuario.Id;
         }
 
         public Task DeleteById(int id) =>

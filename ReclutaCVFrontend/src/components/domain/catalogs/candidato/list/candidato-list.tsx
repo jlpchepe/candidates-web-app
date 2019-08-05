@@ -46,8 +46,6 @@ class CandidatoListSimple extends React.Component<WithItemsLoaderProps<Candidato
                     { header: "Nombre", contentSelector: item => item.nombre },
                     { header: "Correo", contentSelector: item => item.correo },
                     { header: "Teléfono", contentSelector: item => item.telefono },
-                    { header: "Carrera", contentSelector: item => item.carrera },
-                    { header: "Institución", contentSelector: item => item.institucion },
                     { header: "Estatus académico", contentSelector: item => EstatusAcademicoDescriptions.get(item.estatusAcademico) },
                     { header: "Estatus del candidato", contentSelector: item => EstatusCandidatoDescriptions.get(item.estatus) },
                     { header: "Fecha de actualización", contentSelector: item => DateHelper.formatShortDateLocal(item.fechaDeActualizacion) },

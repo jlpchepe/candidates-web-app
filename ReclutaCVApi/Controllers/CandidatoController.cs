@@ -43,7 +43,7 @@ namespace ReclutaCVApi.Controllers
         }
 
         [HttpPost]
-        public Task Post([FromBody] CandidatoInsertable model)
+        public Task<int> Post([FromBody] CandidatoInsertable model)
         {
             return service.Insert(
                 ToCandidato(null, model)

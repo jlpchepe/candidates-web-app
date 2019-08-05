@@ -58,7 +58,7 @@ export class Login extends React.Component<RouteComponentProps, LoginState> {
                         <div className="login__brand text-center">
                             <img alt="logo" src={logo} height={90} />
                         </div>
-                        <p className="login__title">Inicio de sesión</p>
+                        <p className="login__title">Gestión de candidatos</p>
                         <form onSubmit={this.onSubmitHandler}>
                             <input
                                 type="text"
@@ -85,9 +85,6 @@ export class Login extends React.Component<RouteComponentProps, LoginState> {
                                 </div>
                             </button>
                         </form>
-                        <div className="d-flex justify-content-center mt-3">
-                            <button className="btn btn-link text-white">Recuperar contraseña</button>
-                        </div>
                     </div>
                 </div>
             </div >

@@ -24,7 +24,7 @@ export interface CrudRestApiService<
 }
 
 export function CreateCrudRestApiService<TListable, TConsultable = TListable, TInsertable = TConsultable, TUpdatable = TConsultable, TSelectable = TConsultable>
-(baseEndpoint: string) : CrudRestApiService<TListable, TConsultable, TSelectable, TInsertable, TUpdatable> {
+(baseEndpoint: string) : CrudRestApiService<TListable, TConsultable, TSelectable, TInsertable, TUpdatable, number> {
     return {
         getPaginated: (pageNumberZeroBased: number, pageSize: number) =>
             RestApiCommunication.get(baseEndpoint, { pageNumber: pageNumberZeroBased, pageSize }),

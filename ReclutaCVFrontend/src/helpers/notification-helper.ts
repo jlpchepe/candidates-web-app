@@ -1,5 +1,5 @@
 import { Observable, Subject } from "rxjs";
-import { Notification, createErrorNotification, createWarningNotification } from "../components/generic/notification-center/notification";
+import { Notification, createErrorNotification, createWarningNotification, createSuccessNotification } from "../components/generic/notification-center/notification";
 
 const notificationObservable = new Subject<Notification>();
 
@@ -24,6 +24,12 @@ class NotificationHelperImpl {
      */
     notifyWarning = (heading: string, message: string) =>
         this.notify(createWarningNotification(heading, message));
+
+    /**
+     * Realiza una notificación de exito
+     */
+    notifySuccess = (heading: string, message: string) =>
+        this.notify(createSuccessNotification(heading, message));
 
     /**
      * Se suscribe a las notificaciones tipo pop-up que ocurren desde el momento de la suscripción

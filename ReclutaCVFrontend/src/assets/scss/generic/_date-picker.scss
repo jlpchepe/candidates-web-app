@@ -2,3 +2,8 @@
     // Se sobrescribe el display predeterminado del selector de fecha para que pueda mostrarse con etiqueta
     display: grid !important;
 }
+
+.react-datepicker {
+    // Se sobrescribe para reparar bug en selector de tiempo cuando aparece hasta abajo de la pantalla
+    display: flex !important;
+}
