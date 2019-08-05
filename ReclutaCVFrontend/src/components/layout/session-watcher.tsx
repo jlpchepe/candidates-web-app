@@ -5,22 +5,25 @@ import { CredentialsHelper } from "../../helpers/credentials-helper";
 import { Subscription } from "rxjs";
 import { NotificationHelper } from "../../helpers/notification-helper";
 
-
+interface SessionWatcherProps extends RouteComponentProps {
+    onAuthenticatedChanged: (userIsAuthenticated: boolean) => void;
+}
 
 /**
  * Componente encargado de llevar seguimiento del logout del sistema
  */
-class SessionWatcherSimple extends React.Component<RouteComponentProps> {
+class SessionWatcherSimple extends React.Component<SessionWatcherProps> {
     private onLogoutSubscription : Subscription;
     private onLoginSubscription : Subscription;
 
     componentDidMount() {
         this.onLogoutSubscription = CredentialsHelper.onLogout(() => {
-            goToPath(this.props.history, "");
+            this.props.onAuthenticatedChanged(false);
+            goToPath(this.props.history, "/");
         });
         
         this.onLoginSubscription = CredentialsHelper.onLogin(() => {
-            
+            this.props.onAuthenticatedChanged(true);            
         });
     }
 

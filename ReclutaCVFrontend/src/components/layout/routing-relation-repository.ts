@@ -13,7 +13,6 @@ export type TRouteComponent = React.ComponentType<RouteComponentProps<any>> | Re
 export interface RoutingRelation {
     component: TRouteComponent;
     label?: string;
-    submenu?: RoutingRelation[];
     /**
      * Ruta que se comparará contra la del navegador para determinar si el componente se muestra
      */

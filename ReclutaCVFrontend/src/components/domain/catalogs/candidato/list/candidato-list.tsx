@@ -25,6 +25,7 @@ class CandidatoListSimple extends React.Component<WithItemsLoaderProps<Candidato
             <ListCatalog
                 title="Candidatos"
                 containerFluid
+                overflow
                 filters={
                     <Column size={6}>
                         <LabeledTextInput

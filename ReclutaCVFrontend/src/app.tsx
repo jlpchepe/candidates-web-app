@@ -1,10 +1,10 @@
 // Dependencias Globales
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
 // Layouts
-import { Catalogs } from "./components/layout/catalogs";
+import { getCatalogRoutes, RedirectToLogin } from "./components/layout/catalogs";
 
 // Domain
 import { Login } from "./components/domain/operatives/login";
@@ -19,18 +19,52 @@ import "animate.css/animate.css";
 import "./assets/scss/theme.scss";
 // Para el selector de fechas
 import "react-datepicker/dist/react-datepicker.css";
+import { CredentialsHelper } from "./helpers/credentials-helper";
 
-class App extends React.Component {
+const RedirectMainScreen : React.FC = () =>
+    <Redirect to="/candidato" />;
+
+interface AppState {
+    userIsAuthenticated: boolean;
+}
+
+class App extends React.Component<{}, AppState>  {
+    state: AppState = {
+        userIsAuthenticated: CredentialsHelper.isAuthenticated()
+    }
+
+    handleAuthenticatedChanged = (userIsAuthenticated: boolean) => {
+        this.setState({
+            userIsAuthenticated
+        });
+    }
 
     render() {
         return (
             <>
                 <NotificationCenter />
                 <BrowserRouter>
-                    <SessionWatcher></SessionWatcher>
+                    <SessionWatcher onAuthenticatedChanged={this.handleAuthenticatedChanged}></SessionWatcher>
                     <Switch>
-                        <Route exact path="/" render={props => <Login {...props} />} />
-                        <Catalogs />
+                        {getCatalogRoutes(this.state.userIsAuthenticated)} 
+                        <Route 
+                            exact 
+                            path="/login" 
+                            render={props => 
+                                this.state.userIsAuthenticated ? 
+                                    <RedirectMainScreen/> : 
+                                    <Login {...props} /> 
+                            } 
+                        />
+                        <Route
+                            exact
+                            path="*" 
+                            render={props => (
+                                this.state.userIsAuthenticated ?
+                                    <RedirectMainScreen/> :
+                                    <RedirectToLogin/>
+                            )}
+                        />
                     </Switch>
                 </BrowserRouter>
             </>

@@ -21,7 +21,7 @@ export interface WithModelManagementProps<TModel> extends RouteComponentProps {
     model: TModel;
     isNewModel: boolean;
     readonly: boolean;
-    onSaveModel: () => TPromiseLike<void>;
+    onSaveModel: (goBackAfterSave: boolean) => TPromiseLike<void>;
     setModel: (model: Partial<TModel>) => void;
 }
 
@@ -62,7 +62,7 @@ function withModelManagementSimple<TModel extends ModelWithId, ComponentProps ex
                 });
         }
 
-        private handleSaveModel = () => {
+        private handleSaveModel = (goBackAfterSave: boolean) => {
             const savePromise: TPromiseLike<number | void> =
                 this.state.isNewModel ?
                     onInsertModel(this.state.model) :
@@ -70,12 +70,16 @@ function withModelManagementSimple<TModel extends ModelWithId, ComponentProps ex
 
             toPromise(savePromise)
                 .then(id => {
-                    this.setState(prevState => ({
-                        model: { ...prevState.model, id: id || prevState.model.id },
-                        isNewModel: false
-                    }));
-                    
                     NotificationHelper.notifySuccess("Éxito", "El registro se guardó");
+
+                    if(goBackAfterSave){
+                        goBack(this.props.history);
+                    } else {
+                        this.setState(prevState => ({
+                            model: { ...prevState.model, id: id || prevState.model.id },
+                            isNewModel: false
+                        }));                        
+                    }
                 });
         }
 

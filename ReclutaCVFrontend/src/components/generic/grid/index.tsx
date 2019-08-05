@@ -34,6 +34,7 @@ interface GridProps<TListable> {
      */
     removeMargin?: boolean;
     className?: string;
+    overflow?: boolean;
 }
 
 /**
@@ -49,7 +50,7 @@ export class Grid<TListable> extends React.Component<GridProps<TListable>> {
      * Renderiza una cuadrícula
      */
     render() {
-        return (
+        const table = (
             <Table 
                 striped 
                 className={classnames(this.props.className, { "m-0" : this.props.removeMargin})}
@@ -88,6 +89,14 @@ export class Grid<TListable> extends React.Component<GridProps<TListable>> {
                     ))}
                 </tbody>
             </Table>
+        );
+
+        return (
+            this.props.overflow ? 
+                <div style={{ overflowX: "auto" }}>
+                    {table}
+                </div> :
+                table            
         );
     }
 }

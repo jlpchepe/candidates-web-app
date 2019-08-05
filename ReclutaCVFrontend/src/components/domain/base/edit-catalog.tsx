@@ -15,7 +15,7 @@ interface EditCatalogProps {
     /**
      * Función a ejecutar cuando el usuario indique guardar
      */
-    onSave: () => TPromiseLike<void>;
+    onSave: (goBackAfterSave: boolean) => TPromiseLike<void>;
 }
 
 /**
@@ -26,15 +26,18 @@ export class EditCatalog extends React.Component<EditCatalogProps> {
         const drawSaveButton: boolean =
             this.props.readonly !== true && this.props.onSave != null;
 
-        const saveButton = drawSaveButton ? 
-            <Button color="primary" label="Guardar" onClick={this.props.onSave} /> :
+        const saveButtons = drawSaveButton ? 
+            <>
+                <Button color="primary" label="Guardar" onClick={() => this.props.onSave(false)} /> 
+                <Button color="primary" label="Guardar y regresar" onClick={() => this.props.onSave(true)} /> 
+            </> :
             null;
 
         return (
             <Container fluid={this.props.fluid} container={!this.props.fluid}>
-                <PageHeader title={this.props.title} extraButtons={saveButton}/>
+                <PageHeader title={this.props.title} extraButtons={saveButtons}/>
                 {this.props.children}
-                {saveButton}
+                {saveButtons}
             </Container>
         );
     }

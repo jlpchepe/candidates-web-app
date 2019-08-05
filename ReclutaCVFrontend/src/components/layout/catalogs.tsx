@@ -6,34 +6,28 @@ import { TopBar } from "./top-bar";
 import { RountingRelationRepository, RoutingRelation } from "./routing-relation-repository";
 
 // Genéricos
-import { Route } from "../generic";
 import { CredentialsHelper } from "../../helpers/credentials-helper";
-import { Redirect } from "react-router";
+import { Redirect, Route } from "react-router";
 
-const getRoutesWithPath = (routes : RoutingRelation[]) => {
-    return routes.map((routingRelation, routingRelationIndex) => {
-        if (routingRelation.submenu) {
-            return getRoutesWithPath(routingRelation.submenu);
-        }
+export const RedirectToLogin : React.FC = () =>
+    <Redirect to="/login" />;
+
+export const getCatalogRoutes = (userIsAuthenticated: boolean) => {
+    return RountingRelationRepository.map((routingRelation, routingRelationIndex) => {
         return (
             <Route
                 key={routingRelationIndex}
+                exact
                 path={routingRelation.path}
-                component={props => <routingRelation.component {...props} />}
+                render={props => userIsAuthenticated ? 
+                    (
+                        <>
+                            <TopBar />
+                            <routingRelation.component {...props} />
+                        </>
+                    ) : <RedirectToLogin />
+                }
             />
         );
     });
 };
-
-/**
- * Esta plantilla se utiliza para los catálogos
- */
-export const Catalogs = props => 
-(
-    CredentialsHelper.isAuthenticated() ?
-        <>
-            <TopBar />
-            {getRoutesWithPath(RountingRelationRepository)}
-        </> :
-        <Redirect to="/" />
-);

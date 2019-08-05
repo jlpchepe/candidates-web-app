@@ -94,6 +94,8 @@ interface ListCatalogProps<TListable> {
      */
     extraButtons?: JSX.Element;
 
+    overflow? : boolean;
+
     containerFluid?: boolean;
 }
 
@@ -237,7 +239,7 @@ class ListCatalogSimple<TListable> extends React.Component<ListCatalogProps<TLis
                     }
                 />
                 {this.props.filters}
-                <Grid items={this.props.items} columns={columnsToShow} removeMargin />
+                <Grid items={this.props.items} overflow={this.props.overflow} columns={columnsToShow} removeMargin />
                 <Pager
                     totalDisplayed={5}
                     rightAlign
