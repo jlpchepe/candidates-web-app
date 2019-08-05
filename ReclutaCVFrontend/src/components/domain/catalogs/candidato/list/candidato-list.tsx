@@ -51,11 +51,10 @@ class CandidatoListSimple extends React.Component<WithItemsLoaderProps<Candidato
                     { header: "Fecha de actualización", contentSelector: item => DateHelper.formatShortDateLocal(item.fechaDeActualizacion) },
                     { header: "Proyecto", contentSelector: item => item.proyectoNombre },
                     { header: "Folio de solicitud", contentSelector: item => item.solicitudPersonalFolio },
-                    { header: "Experiencia laboral", contentSelector: item => item.añosDeExperiencia },
+                    { header: "Exp.", contentSelector: item => item.añosDeExperiencia },
                     { header: "Recepción de CV", contentSelector: item => DateHelper.formatShortDateLocal(item.fechaDeRecepcionCurriculum) },
                     { header: "Fecha de contacto", contentSelector: item => DateHelper.formatShortDateLocal(item.fechaDeContacto) },
                     { header: "Fecha preentrevista", contentSelector: item => DateHelper.formatShortDateLocal(item.fechaPreentrevistaTelefonica) },
-                    { header: "Bolsa", contentSelector: item => BolsaTrabajoDescriptions.get(item.bolsa) },
                     { header: "Rol", contentSelector: item => RolCandidatoDescriptions.get(item.rol) },
                 ]}
                 onNewItem={this.onNewItem}
