@@ -58,9 +58,8 @@ export class Grid<TListable> extends React.Component<GridProps<TListable>> {
                 <thead>
                     <tr>
                         {this.props.columns.map((column, columnIndex) => (
-                            <th key={columnIndex}>
-                                {typeof column.header === "string" ?
-                                    <span style={{ whiteSpace: "nowrap" }}>{column.header}</span> :
+                            <th key={columnIndex} style={{ textAlign: "center" }}>
+                                {
                                     column.header
                                 }
                             </th>

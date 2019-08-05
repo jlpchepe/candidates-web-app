@@ -24,6 +24,7 @@ interface ContainerProps {
     width?: number | string;
     flex?: boolean;
     alignBottom?: boolean;
+    marginLeft?: string;
 }
 
 /**
@@ -42,7 +43,7 @@ export const Container: React.FC<ContainerProps> = props => (
             borderColor: props.border && props.border.color,
             borderStyle: props.border && props.border.style,
             marginTop: props.alignBottom && "auto",
-            marginLeft: props.alignRight && "auto",
+            marginLeft: props.marginLeft || (props.alignRight && "auto"),
             paddingRight: props.paddingRight,
             width: props.width,
             display: props.flex && "flex"

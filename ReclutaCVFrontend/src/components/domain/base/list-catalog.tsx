@@ -93,6 +93,8 @@ interface ListCatalogProps<TListable> {
      * Botones adicionales que se mostrarán en el listado
      */
     extraButtons?: JSX.Element;
+
+    containerFluid?: boolean;
 }
 
 /**
@@ -213,7 +215,10 @@ class ListCatalogSimple<TListable> extends React.Component<ListCatalogProps<TLis
         const fixedTotalPages = this.props.totalPages > 0 ? this.props.totalPages : 1;
 
         return (
-            <Container container>
+            <Container 
+                fluid={this.props.containerFluid}
+                container={!this.props.containerFluid}
+            >
                 <PageHeader
                     title={this.props.title}
                     extraButtons={

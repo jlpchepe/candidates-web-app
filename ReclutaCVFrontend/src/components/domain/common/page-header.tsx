@@ -22,7 +22,7 @@ export const PageHeader: React.FC<PageHeaderProps> = props => (
         <div className="page-header">
             <ReturnButton />
             <Title className="m-0" title={props.title} />
-            <Container alignRight>
+            <Container marginLeft="35px">
                 <Row>
                     {props.extraButtons}
                     <Column className="pl-1" />

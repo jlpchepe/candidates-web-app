@@ -40,7 +40,7 @@ export class Login extends React.Component<RouteComponentProps, LoginState> {
         Authentication.authenticateUsuario(this.state.user, this.state.password)
             .then(token => {
                 CredentialsHelper.setSessionToken(token);
-                this.props.history.push("/service-board");
+                this.props.history.push("/candidato");
             })
             .catch(_ =>
                 NotificationHelper.notifyError(

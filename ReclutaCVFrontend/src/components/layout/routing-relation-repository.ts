@@ -27,14 +27,14 @@ export interface RoutingRelation {
  */
 export const RountingRelationRepository: RoutingRelation[] = [
     {
-        component: UsuarioList,
-        path: "/user",
-        label: "Usuarios"
-    },
-    {
         component: CandidatoList,
         path: "/candidato",
         label: "Candidatos"
+    },
+    {
+        component: UsuarioList,
+        path: "/user",
+        label: "Usuarios"
     },
     {
         component: CandidatoEdit,

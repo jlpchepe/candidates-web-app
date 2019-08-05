@@ -8,6 +8,7 @@ import { DateHelper } from "../../../../../helpers/date-helper";
 import { Row } from "../../../common/row";
 import { LabeledTextInput } from "../../../../generic";
 import { Column } from "../../../common/column";
+import { EstatusCandidatoDescriptions, EstatusAcademicoDescriptions, BolsaTrabajoDescriptions, RolCandidatoDescriptions } from "../../../../../communication/enums/candidato";
 
 const service = Candidato;
 interface CandidatoListFilters {
@@ -23,6 +24,7 @@ class CandidatoListSimple extends React.Component<WithItemsLoaderProps<Candidato
         return (
             <ListCatalog
                 title="Candidatos"
+                containerFluid
                 filters={
                     <Column size={6}>
                         <LabeledTextInput
@@ -39,14 +41,24 @@ class CandidatoListSimple extends React.Component<WithItemsLoaderProps<Candidato
                 pageSize={this.props.pageSize}
                 totalPages={this.props.totalPages}
                 columns={[
-                    {
-                        header: "Nombre",
-                        contentSelector: item => item.nombre
-                    },
-                    {
-                        header: "Fecha de contacto",
-                        contentSelector: item => DateHelper.formatShortDateLocal(item.fechaDeContacto)
-                    }
+                    { header: "Clave puesto", contentSelector: item => item.puestoClave },
+                    { header: "Puesto", contentSelector: item => item.puestoNombre },
+                    { header: "Nombre", contentSelector: item => item.nombre },
+                    { header: "Correo", contentSelector: item => item.correo },
+                    { header: "Teléfono", contentSelector: item => item.telefono },
+                    { header: "Carrera", contentSelector: item => item.carrera },
+                    { header: "Institución", contentSelector: item => item.institucion },
+                    { header: "Estatus académico", contentSelector: item => EstatusAcademicoDescriptions.get(item.estatusAcademico) },
+                    { header: "Estatus del candidato", contentSelector: item => EstatusCandidatoDescriptions.get(item.estatus) },
+                    { header: "Fecha de actualización", contentSelector: item => DateHelper.formatShortDateLocal(item.fechaDeActualizacion) },
+                    { header: "Proyecto", contentSelector: item => item.proyectoNombre },
+                    { header: "Folio de solicitud", contentSelector: item => item.solicitudPersonalFolio },
+                    { header: "Experiencia laboral", contentSelector: item => item.añosDeExperiencia },
+                    { header: "Recepción de CV", contentSelector: item => DateHelper.formatShortDateLocal(item.fechaDeRecepcionCurriculum) },
+                    { header: "Fecha de contacto", contentSelector: item => DateHelper.formatShortDateLocal(item.fechaDeContacto) },
+                    { header: "Fecha preentrevista", contentSelector: item => DateHelper.formatShortDateLocal(item.fechaPreentrevistaTelefonica) },
+                    { header: "Bolsa", contentSelector: item => BolsaTrabajoDescriptions.get(item.bolsa) },
+                    { header: "Rol", contentSelector: item => RolCandidatoDescriptions.get(item.rol) },
                 ]}
                 onNewItem={this.onNewItem}
                 onItemEdit={item => goToPath(this.props.history, "candidato/" + item.id)}

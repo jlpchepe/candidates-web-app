@@ -29,6 +29,10 @@ export enum EstatusAcademico{
     Técnico
 }
 
+export const EstatusAcademicoDescriptions = {
+    get: (estatusAcademico: EstatusAcademico) => estatusAcademico != null ? EstatusAcademico[estatusAcademico] : null
+}
+
 export enum BolsaTrabajo{
     ReferenciaInterna,
     ReferenciaExterna,
