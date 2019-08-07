@@ -6,10 +6,16 @@ import { withItemsLoading, WithItemsLoaderProps } from "../../../../hoc/with-ite
 import { SolicitudVacanteListable } from "../../../../../communication/dtos/solicitud-vacante";
 import { LabeledTextInput, LabeledNumberInput } from "../../../../generic";
 import { Column } from "../../../common/column";
+import { DateHelper } from "../../../../../helpers/date-helper";
+import { AreaDelSolicitanteDescriptions } from "../../../../../communication/enums/solicitud-vacante-enums";
+import { RolCandidatoDescriptions, RolCandidato } from "../../../../../communication/enums/candidato";
+import { Row } from "../../../common/row";
+import { RolCandidatoCombo } from "../../candidato/combos/candidato-combos";
 
 const service = SolicitudVacante;
 interface SolicitudVacanteListFilters {
-    folio: number | null;
+    busqueda: string | null;
+    puestoSolicitado: RolCandidato | null;
 }
 /**
  * Muestra el listado
@@ -22,15 +28,24 @@ class SolicitudVacanteListSimple extends React.Component<WithItemsLoaderProps<So
             <ListCatalog
                 title="Solicitudes de vacantes"
                 containerFluid
-                overflow
                 filters={
-                    <Column size={6}>
-                        <LabeledNumberInput
-                            label="Filtro folio"
-                            value={this.props.filters.folio}
-                            onChange={folio => this.props.setFilters({ folio: folio })}
-                        />
-                    </Column>
+                    <Row>
+                        <Column>
+                            <LabeledTextInput
+                                label="Búsqueda"
+                                value={this.props.filters.busqueda}
+                                onChange={busqueda => this.props.setFilters({ busqueda })}
+                            />
+                        </Column>
+                        <Column>
+                            <RolCandidatoCombo
+                                label="Vacante"
+                                value={this.props.filters.puestoSolicitado}
+                                onChange={puestoSolicitado => this.props.setFilters({ puestoSolicitado })}
+                            >
+                            </RolCandidatoCombo>
+                        </Column>
+                    </Row>                    
                 }
                 items={this.props.items}
                 pageNumber={this.props.pageNumber}
@@ -38,7 +53,20 @@ class SolicitudVacanteListSimple extends React.Component<WithItemsLoaderProps<So
                 pageSize={this.props.pageSize}
                 totalPages={this.props.totalPages}
                 columns={[
-                    { header: "Folio", contentSelector: item => item.folioCapitalHumano }
+                    { header: "Folio", contentSelector: item => item.folioCapitalHumano },
+                    { header: "Solicitante", contentSelector: item => item.nombreDelSolicitante },
+                    { header: "Área", contentSelector: item => AreaDelSolicitanteDescriptions.get(item.areaDelSolicitante) },
+                    { header: "Fecha" , contentSelector: item => DateHelper.formatShortDateLocal(item.fechaDeSolicitud) },
+                    { header: "Vacante", contentSelector: item => RolCandidatoDescriptions.get(item.puestoSolicitado) },
+                    { header: "Inglés", contentSelector: item => item.nivelIdiomaIngles },
+                    { header: "Estado civil", contentSelector: item => item.estadoCivil },
+                    { header: "Edad", contentSelector: item => item.edadRango },
+                    { header: "Proyecto", contentSelector: item => item.proyecto },
+                    { header: "Ingreso" , contentSelector: item => DateHelper.formatShortDateLocal(item.fechaEstimadaDeIngreso) },
+                    { header: "Experiencia", contentSelector: item => item.experienciaLaboral },
+                    { header: "Competencias" , contentSelector: item => item.competenciasOHabilidades },
+                    { header: "Evaluación", contentSelector: item => item.tipoDeEvaluacion },
+                    { header: "Sueldo", contentSelector: item => item.sueldo }
                 ]}
                 onNewItem={this.onNewItem}
                 onItemEdit={item => goToPath(this.props.history, "solicitud-vacante/" + item.id)}
@@ -52,6 +80,6 @@ class SolicitudVacanteListSimple extends React.Component<WithItemsLoaderProps<So
 export const SolicitudVacanteList = withItemsLoading(
     SolicitudVacanteListSimple,
     (pageNumber: number, pageSize: number, filters: SolicitudVacanteListFilters) => 
-        service.getPaginated(pageNumber, pageSize, filters.folio),
+        service.getPaginated(pageNumber, pageSize, filters.busqueda, filters.puestoSolicitado),
     (item) => service.delete(item.id),
 );

@@ -28,10 +28,12 @@ namespace ReclutaCVApi.Controllers
         [HttpGet]
         public async Task<ActionResult<Page<SolicitudVacanteConsultable>>> Get(
             [MinRequired(0)] int pageNumber,
-            [MinRequired(1)] ushort pageSize
+            [MinRequired(1)] ushort pageSize,
+            string busqueda,
+            RolCandidato? puestoSolicitado
         )
         {
-            return (await service.FindAll(pageNumber, pageSize))
+            return (await service.FindAll(pageNumber, pageSize, busqueda, puestoSolicitado))
                 .Select(ToConsultable);
         }
 

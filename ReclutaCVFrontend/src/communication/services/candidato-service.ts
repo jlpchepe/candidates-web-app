@@ -8,4 +8,5 @@ export interface CandidatoService {
     insert: (model: CandidatoInsertable) => TPromiseLike<number>;
     update: (model: CandidatoUpdatable) => TPromiseLike<void>;
     delete: (id: number) => TPromiseLike<void>;
+    generateXlsReport: (busqueda?: string) => TPromiseLike<string>;
 }

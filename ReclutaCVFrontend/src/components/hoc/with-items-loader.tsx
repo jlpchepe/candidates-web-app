@@ -38,7 +38,7 @@ export interface WithItemsLoaderProps<TListable, TFilters = TDefaultFilters> ext
     /**
      * Función que establece los filtros de la consulta
      */
-    setFilters: (newFilters: TFilters) => TPromiseLike<void>;
+    setFilters: (newFilters: Partial<TFilters>) => TPromiseLike<void>;
     /**
      * Filtros actuales del listado
      */
@@ -87,9 +87,9 @@ function withItemsLoadingSimple<TListable, TFilters, ComponentProps extends With
                 () => this.refreshItemsWithCurrentState()
             );
 
-        private refreshItemsWithCurrentPageNumber = (filters: TFilters) =>
-            this.setState(
-                { filters },
+        private refreshItemsWithCurrentPageNumber = (filters: Partial<TFilters>) =>
+            this.setState(prevState => 
+                ({ filters: { ...prevState.filters, ...filters } }),
                 () => this.refreshItemsWithCurrentState()
             );
 

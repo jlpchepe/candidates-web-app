@@ -6,9 +6,10 @@ import { withItemsLoading, WithItemsLoaderProps } from "../../../../hoc/with-ite
 import { CandidatoListable } from "../../../../../communication/dtos/candidato";
 import { DateHelper } from "../../../../../helpers/date-helper";
 import { Row } from "../../../common/row";
-import { LabeledTextInput } from "../../../../generic";
+import { LabeledTextInput, Button } from "../../../../generic";
 import { Column } from "../../../common/column";
 import { EstatusCandidatoDescriptions, EstatusAcademicoDescriptions, BolsaTrabajoDescriptions, RolCandidatoDescriptions } from "../../../../../communication/enums/candidato";
+import { toPromise } from "../../../../../helpers/promise-helper";
 
 const service = Candidato;
 interface CandidatoListFilters {
@@ -20,16 +21,25 @@ interface CandidatoListFilters {
 class CandidatoListSimple extends React.Component<WithItemsLoaderProps<CandidatoListable, CandidatoListFilters>> {
     private readonly onNewItem = () => goToPath(this.props.history, "candidato/new");
 
+    private handleGenerateReport = () => {
+        toPromise(service.generateXlsReport(this.props.filters.nombre))
+            //TODO
+            .then(() => { });
+    }
+
     render() {
         return (
             <ListCatalog
                 title="Candidatos"
                 containerFluid
                 overflow
+                extraButtons={
+                    <Button label="Reporte" color="secondary" onClick={this.handleGenerateReport}></Button>
+                }
                 filters={
                     <Column size={6}>
                         <LabeledTextInput
-                            label="Filtro nombre"
+                            label="Búsqueda"
                             value={this.props.filters.nombre}
                             onChange={nombre => this.props.setFilters({ nombre })}
                         >
@@ -44,7 +54,7 @@ class CandidatoListSimple extends React.Component<WithItemsLoaderProps<Candidato
                 columns={[
                     { header: "Clave puesto", contentSelector: item => item.puestoClave },
                     { header: "Puesto", contentSelector: item => item.puestoNombre },
-                    { header: "Nombre", contentSelector: item => item.nombre },
+                    { header: "Nombre", contentSelector: item => item.nombre, contentAlign: "left" },
                     { header: "Correo", contentSelector: item => item.correo },
                     { header: "Teléfono", contentSelector: item => item.telefono },
                     { header: "Estatus académico", contentSelector: item => EstatusAcademicoDescriptions.get(item.estatusAcademico) },

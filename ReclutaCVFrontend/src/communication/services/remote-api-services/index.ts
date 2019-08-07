@@ -5,13 +5,16 @@ import { UsuarioService } from "../user-service";
 import { UsuarioInsertable, UsuarioUpdatable, UsuarioConsultable, UsuarioListable } from "../../dtos/user";
 import { CandidatoService } from "../candidato-service";
 import { SolicitudVacanteService } from "../solicitud-vacante-service";
+import { RolCandidato } from "../../enums/candidato";
 
 const candidatoBaseEndpoint = "candidato";
-const RemoteCandidatoPreService: CandidatoService = CreateCrudRestApiService(candidatoBaseEndpoint);
+const RemoteCandidatoPreService: Partial<CandidatoService> = CreateCrudRestApiService(candidatoBaseEndpoint);
 export const RemoteCandidatoService: CandidatoService = {
     ...RemoteCandidatoPreService,
     getPaginated: (pageNumberZeroBased: number, pageSize: number, nombre: string) =>
         RestApiCommunication.get(candidatoBaseEndpoint, { pageNumber: pageNumberZeroBased, pageSize, nombre }),
+    generateXlsReport: (busqueda?: string) => 
+        RestApiCommunication.get(candidatoBaseEndpoint + "/report", { busqueda })
 };
 
 const usuarioBaseEndpoint = "usuario";
@@ -25,10 +28,10 @@ export const RemoteAuthenticationService: AuthenticationService = {
         RestApiCommunication.post("auth", { username, password }, true)
 };
 
-const solicitudVacanteBaseEndpoint = "solicitud-vacante";
-export const RemoteSolicitudVacantePreService: SolicitudVacanteService = CreateCrudRestApiService(solicitudVacanteBaseEndpoint)
+const solicitudVacanteBaseEndpoint = "solicitudVacante";
+export const RemoteSolicitudVacantePreService: SolicitudVacanteService = CreateCrudRestApiService(solicitudVacanteBaseEndpoint);
 export const RemoteSolicitudVacanteService: SolicitudVacanteService = {
     ...RemoteSolicitudVacantePreService,
-    getPaginated: (pageNumberZeroBased: number, pageSize: number, folio: number) =>
-        RestApiCommunication.get(solicitudVacanteBaseEndpoint, { pageNumber: pageNumberZeroBased, pageSize, folio })
+    getPaginated: (pageNumberZeroBased: number, pageSize: number, busqueda?: string, puestoSolicitado?: RolCandidato) =>
+        RestApiCommunication.get(solicitudVacanteBaseEndpoint, { pageNumber: pageNumberZeroBased, pageSize, busqueda, puestoSolicitado })
 };

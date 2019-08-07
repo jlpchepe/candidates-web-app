@@ -27,7 +27,7 @@ export class EditCatalog extends React.Component<EditCatalogProps> {
 
         const saveButtons = drawSaveButton ? 
             <>
-                <Button color="primary" label="Guardar" onClick={() => this.props.onSave(false)} /> 
+                <Button color="primary" className="mr-1" label="Guardar" onClick={() => this.props.onSave(false)} />
                 <Button color="primary" label="Guardar y regresar" onClick={() => this.props.onSave(true)} /> 
             </> :
             null;

@@ -35,16 +35,10 @@ class SolicitudVacanteEditSimple extends React.Component<WithModelManagementProp
         currentTab: SolicitudVacanteEditTab.Generales
     }
 
-    private setTab = (tab: SolicitudVacanteEditTab) => {
+    private handleTabChanged = (tab: SolicitudVacanteEditTab) => {
         if (this.state.currentTab !== tab) {
-            this.setState({
-                currentTab: tab
-            });
+            this.setState({ currentTab: tab });
         }
-    }
-
-    handleTabChanged = (tab: SolicitudVacanteEditTab) => {
-        this.setState({ currentTab: tab });
     }
 
     render() {
@@ -56,8 +50,8 @@ class SolicitudVacanteEditSimple extends React.Component<WithModelManagementProp
             >
                 <TabContent activeTab={this.state.currentTab}>
                     <Nav tabs style={{ marginBottom: "8px" }}>
-                        <TabLink title="Generales" tab={SolicitudVacanteEditTab.Generales} onTabChanged={this.handleTabChanged}></TabLink>
-                        <TabLink title="Requerimientos del puesto" tab={SolicitudVacanteEditTab.RequerimientosDelPuesto} onTabChanged={this.handleTabChanged}></TabLink>
+                        <TabLink title="Generales" tab={SolicitudVacanteEditTab.Generales} currentTab={this.state.currentTab} onTabChanged={this.handleTabChanged}></TabLink>
+                        <TabLink title="Requerimientos del puesto" tab={SolicitudVacanteEditTab.RequerimientosDelPuesto} currentTab={this.state.currentTab} onTabChanged={this.handleTabChanged}></TabLink>
                     </Nav>
                     <TabElemento tab={SolicitudVacanteEditTab.Generales}>
                         <Seccion title="Generales">

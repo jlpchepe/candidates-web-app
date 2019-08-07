@@ -9,6 +9,7 @@ import { Column } from "../common/column";
 interface ListCatalogColumn<TListable> {
     header: string | React.ReactNode;
     contentSelector: (item: TListable, itemIndex: number) => string | number | JSX.Element;
+    contentAlign?: "center" | "left";
 }
 
 /**
@@ -232,8 +233,7 @@ class ListCatalogSimple<TListable> extends React.Component<ListCatalogProps<TLis
                                 </Column>
                             }
                             {
-                                this.props.extraButtons &&
-                                <Column className="px-1">{this.props.extraButtons}</Column>
+                                this.props.extraButtons
                             }
                         </>
                     }

@@ -14,6 +14,10 @@ interface GridColumn<TListable> {
      * Selector del contenido que tendrá la columna en función del elemento que se dibuje sobre ella
      */
     contentSelector: (item: TListable, itemIndex: number) => string | number | JSX.Element;
+    /**
+     * Alineación del contenido
+     */
+    contentAlign?: "center" | "left";
 }
 
 interface GridProps<TListable> {
@@ -79,7 +83,7 @@ export class Grid<TListable> extends React.Component<GridProps<TListable>> {
                             className={this.props.draggable && !this.props.readonly ? "draggable droppable" : null}>
                             {this.props.columns.map((column, columnIndex) => (
                                 <td
-                                    style={{ verticalAlign: "middle" }}
+                                    style={{ verticalAlign: "middle", textAlign: column.contentAlign || "center" }}
                                     key={itemIndex + "-" + columnIndex}
                                 >
                                     {column.contentSelector(item, itemIndex)}
