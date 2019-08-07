@@ -1,7 +1,22 @@
 
 
 import { createEnumLabeledCombo } from "../../../base/enum-combo";
-import { VeredictoFinalCandidato, VeredictoFinalCandidatoDescriptions, PropuestaEconomicaEstatusDescriptions, PropuestaEconomicaEstatus, EstatusAcademico, BolsaTrabajo, BolsaTrabajoDescriptions, RolCandidatoDescriptions, RolCandidato, EstatusCandidatoDescriptions, EstatusCandidato, EstatusAcademicoDescriptions } from "../../../../../communication/enums/candidato";
+import { 
+    VeredictoFinalCandidato, 
+    VeredictoFinalCandidatoDescriptions, 
+    PropuestaEconomicaEstatusDescriptions, 
+    PropuestaEconomicaEstatus, 
+    EstatusAcademico, 
+    BolsaTrabajo, 
+    BolsaTrabajoDescriptions, 
+    RolCandidato, 
+    RolCandidatoDescriptions, 
+    EstatusCandidatoDescriptions, 
+    EstatusCandidato, 
+    EstatusAcademicoDescriptions, 
+    NivelCandidato, 
+    NivelCandidatoDescriptions
+} from "../../../../../communication/enums/candidato";
 
 /**
  * Un combo para seleccionar elementos en la aplicación
@@ -32,4 +47,7 @@ export const EstatusCandidatoCombo = createEnumLabeledCombo(
     EstatusCandidato,
     (value: EstatusCandidato) => EstatusCandidatoDescriptions.get(value)
 );
-
+export const NivelCandidatoCombo = createEnumLabeledCombo(
+    NivelCandidato,
+    (value: NivelCandidato) => NivelCandidatoDescriptions.get(value)
+);

@@ -1,7 +1,6 @@
 import * as React from "react";
 
-import { TPromiseLike } from "../../../helpers/observable-helper";
-import { drawIfTrue } from "../../../helpers/react-helper";
+import { TPromiseLike } from "../../../helpers/promise-helper";
 import { Button, Container } from "../../generic";
 import { PageHeader } from "../common/page-header";
 

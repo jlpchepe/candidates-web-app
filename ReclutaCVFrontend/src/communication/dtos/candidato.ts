@@ -1,4 +1,4 @@
-import { VeredictoFinalCandidato } from "../enums/veredicto-final-candidato";
+import { EstatusAcademico, BolsaTrabajo, RolCandidato, EstatusCandidato, VeredictoFinalCandidato, PropuestaEconomicaEstatus } from "../enums/candidato";
 
 export interface CandidatoListable extends CandidatoConsultable {
     

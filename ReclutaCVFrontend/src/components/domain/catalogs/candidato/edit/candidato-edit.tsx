@@ -14,6 +14,8 @@ import { VeredictoFinalCandidatoCombo, EstatusAcademicoCombo, RolCandidatoCombo,
 import { BolsaTrabajo, RolCandidato } from "../../../../../communication/enums/candidato";
 import { TabContent, TabPane, Nav, NavItem, NavLink } from "reactstrap";
 import classnames from "classnames";
+import { Seccion } from "../../../common/section";
+import { TabElemento } from "../../../common/tab-element";
 
 const service = Candidato;
 
@@ -29,19 +31,6 @@ enum CandidatoEditTab{
     EtapaDeEntrevistas,
     ProcesoDeContratacion
 }
-
-const TabElemento: React.FC<{tab: CandidatoEditTab}> = (props) => (
-    <TabPane tabId={props.tab}>
-        {props.children}
-    </TabPane>
-)
-
-const Seccion: React.FC<{title: string}> = (props) => (
-    <>
-        <h4>{props.title}</h4>
-        {props.children}
-    </>    
-);
 
 class CandidatoEditSimple extends React.Component<WithModelManagementProps<TModelEditable>, CandidatoEditState> {
     state: CandidatoEditState = {
@@ -65,6 +54,10 @@ class CandidatoEditSimple extends React.Component<WithModelManagementProps<TMode
         </NavItem>
     );
 
+    handleTabChanged = (tab: CandidatoEditTab) => {
+        this.setState({ currentTab: tab });
+    }
+
     render() {
         return (
             <EditCatalog 
@@ -79,7 +72,7 @@ class CandidatoEditSimple extends React.Component<WithModelManagementProps<TMode
                         <this.TabLink title="Etapa de entrevistas" tab={CandidatoEditTab.EtapaDeEntrevistas}></this.TabLink>
                         <this.TabLink title="Proceso de contratación" tab={CandidatoEditTab.ProcesoDeContratacion}></this.TabLink>
                     </Nav>
-                    <TabElemento tab={CandidatoEditTab.Generales}>
+                    <TabElemento tab={CandidatoEditTab.Generales} >
                         <Seccion title="Generales">
                             <Row>
                                 <LabeledTextInput label="Nombre" value={this.props.model.nombre} onChange={value => this.props.setModel({ nombre: value })} readonly={this.props.readonly}/>
@@ -165,7 +158,7 @@ class CandidatoEditSimple extends React.Component<WithModelManagementProps<TMode
                                 <LabeledTextInput label="Comentarios de reclutamiento" value={this.props.model.reclutamientoComentarios} onChange={value => this.props.setModel({ reclutamientoComentarios: value })} readonly={this.props.readonly}/>
                             </Row>            
                         </Seccion>         
-                        </TabElemento>
+                    </TabElemento>
                     <TabElemento tab={CandidatoEditTab.AplicacionDeExamenes}>
                         
                         <Seccion title="Examen psicométrico"> 

@@ -16,18 +16,18 @@
             <StackPanel Grid.Column="0" Style="{StaticResource DataInputStackPanel}">
                 <TextBlock>Folio Capital Humano</TextBlock>
                 <TextBox Text="{Binding Model.FolioCapitalHumano}" ></TextBox>
-          
+
                 <TextBlock>Fecha de solicitud</TextBlock>
                 <DatePicker SelectedDate="{Binding Model.FechaDeSolicitud}"></DatePicker>
                 <TextBlock>Motivo de la solicitud</TextBlock>
                 <controls:EnumComboBox SelectedValue="{Binding Model.Motivo}"></controls:EnumComboBox>
                 <TextBlock>Especifique</TextBlock>
                 <TextBox Text="{Binding Model.EspecifiqueMotivo}" ></TextBox>
-                
+
                 <TextBlock>Nombre del solicitante</TextBlock>
                 <TextBox Text="{Binding Model.NombreDelSolicitante}" ></TextBox>
-            
-                
+
+
                 <TextBlock>Puesto del solicitante</TextBlock>
                 <TextBox Text="{Binding Model.PuestoDelSolicitante}" ></TextBox>
                 <TextBlock>Área del solicitante</TextBlock>
@@ -46,20 +46,6 @@
                         <controls:EnumComboBox SelectedValue="{Binding Model.Estatus}"></controls:EnumComboBox>
                     </StackPanel>
                 </GroupBox>
-                
-                
-                
-                
-
-               
-            
-                
-            
-            
-               
-                
-            
-       
 
             </StackPanel>
 

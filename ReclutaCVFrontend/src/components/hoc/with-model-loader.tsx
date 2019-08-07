@@ -1,7 +1,6 @@
 import * as React from "react";
 import { RouteComponentProps, withRouter } from "react-router";
 import { readNumberPathParam, readBooleanRouteParam, goBack } from "../../helpers/navigation-helper";
-import { ServiceErrorsHandler } from "../../communication/errors/service-errors-handler";
 import { Diff } from "../../helpers/type-helper";
 import { WithItemsComboLoaderProps } from "./with-items-combo-loader";
 import { toPromise, TPromiseLike } from "../../helpers/promise-helper";

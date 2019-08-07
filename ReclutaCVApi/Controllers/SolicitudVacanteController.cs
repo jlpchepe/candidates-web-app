@@ -45,11 +45,9 @@ namespace ReclutaCVApi.Controllers
         }
 
         [HttpPost]
-        public Task Post([FromBody] SolicitudVacanteInsertable model)
-        {
-            //TODO
-            return Task.CompletedTask;
-        }
+        public Task<int> Post([FromBody] SolicitudVacanteInsertable model) =>
+            service.Insert();
+
 
         [HttpPut]
         public Task Put([FromBody] SolicitudVacanteUpdatable model)

@@ -3,7 +3,8 @@ import { UsuarioService } from "./user-service";
 import { Config, ApiServiceMode } from "./../../config";
 import { CandidatoService } from "./candidato-service";
 import { InMemoryUsuarioService, InMemoryAuthenticationService, InMemoryCandidatoService } from "./in-memory-services";
-import { RemoteUsuarioService, RemoteAuthenticationService, RemoteCandidatoService } from "./remote-api-services";
+import { RemoteUsuarioService, RemoteAuthenticationService, RemoteCandidatoService, RemoteSolicitudVacanteService } from "./remote-api-services";
+import { SolicitudVacanteService } from "./solicitud-vacante-service";
 
 /**
  * Los servicios contenidos en este archivo son los que utilizarán los componentes del proyecto para comunicarse con servicios de REST API
@@ -28,3 +29,4 @@ const RemoteOrInMemoryBasedOnConfig = <TService>(inMemoryService: TService, remo
 export const Usuario: UsuarioService = RemoteOrInMemoryBasedOnConfig(InMemoryUsuarioService, RemoteUsuarioService);
 export const Authentication: AuthenticationService = RemoteOrInMemoryBasedOnConfig(InMemoryAuthenticationService, RemoteAuthenticationService);
 export const Candidato: CandidatoService = RemoteOrInMemoryBasedOnConfig(InMemoryCandidatoService, RemoteCandidatoService);
+export const SolicitudVacante: SolicitudVacanteService = RemoteOrInMemoryBasedOnConfig(null, RemoteSolicitudVacanteService);

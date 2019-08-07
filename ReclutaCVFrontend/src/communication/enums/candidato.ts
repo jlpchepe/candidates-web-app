@@ -31,7 +31,7 @@ export enum EstatusAcademico{
 
 export const EstatusAcademicoDescriptions = {
     get: (estatusAcademico: EstatusAcademico) => estatusAcademico != null ? EstatusAcademico[estatusAcademico] : null
-}
+};
 
 export enum BolsaTrabajo{
     ReferenciaInterna,
@@ -123,4 +123,18 @@ export const EstatusCandidatoDescriptions = new Map([
     [EstatusCandidato.PorContactar, "Por contactar"],
     [EstatusCandidato.Rechazado, "Rechazado"],
     [EstatusCandidato.RechazoOferta, "Rechazó la oferta"],
+]);
+
+export enum NivelCandidato {
+    Principiante,
+    Junior,
+    Intermedio,
+    Senior
+}
+
+export const NivelCandidatoDescriptions = new Map([
+    [NivelCandidato.Principiante, "Principiante"],
+    [NivelCandidato.Junior, "Junior"],
+    [NivelCandidato.Intermedio, "Intermedio"],
+    [NivelCandidato.Senior, "Senior"]
 ]);

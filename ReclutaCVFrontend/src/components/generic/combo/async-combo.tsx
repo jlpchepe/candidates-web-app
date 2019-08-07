@@ -1,5 +1,5 @@
 import * as React from "react";
-import { TPromiseLike, toPromise } from "../../../helpers/observable-helper";
+import { TPromiseLike, toPromise } from "../../../helpers/promise-helper";
 import { LabeledCombo } from "./combo";
 
 /**
@@ -34,7 +34,7 @@ export class LabeledAsyncCombo<TListable> extends React.Component<LabeledAsyncCo
 
     componentDidMount(){
         toPromise(this.props.getItems())
-            .subscribe(items => this.setState({
+            .then(items => this.setState({
                 items: items
             }));
     }

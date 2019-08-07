@@ -46,8 +46,11 @@ namespace ReclutaCVLogic.Servicios
                 new Pageable(pageNumber, pageSize, OrderDirection.Descending)
             );
 
-        public Task Insert(SolicitudVacante solicitudVacanteAInsertar) =>
-            repository.Save(solicitudVacanteAInsertar);
+        public async Task<int> Insert(SolicitudVacante solicitudVacanteAInsertar) {
+            await repository.Save(solicitudVacanteAInsertar);
+
+            return solicitudVacanteAInsertar.Id;
+        }
 
         public Task Update(
             SolicitudVacante SolicitudVacante

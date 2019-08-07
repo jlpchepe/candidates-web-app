@@ -131,7 +131,8 @@ function withItemsLoadingSimple<TListable, TFilters, ComponentProps extends With
          * Maneja el borrado de items 
          */
         private handleDeleteItem = deleteItem != null ?
-            (item : TListable) => toPromise(
+            (item : TListable) => 
+                toPromise(
                     deleteItem(item)
                 ).then(() => {
                     this.refreshItemsWithCurrentFilters(this.state.pageNumber);

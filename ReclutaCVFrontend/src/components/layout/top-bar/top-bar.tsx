@@ -11,14 +11,10 @@ import logo from "../../../assets/img/logo-topbar.png";
 
 // Helpers
 import { CredentialsHelper, AuthenticatedUsuarioInfo } from "../../../helpers/credentials-helper";
-import { toPromise } from "../../../helpers/observable-helper";
 
 // Components
 import { UsuarioMenuDropdown } from "./components";
-import NotificationDropdown from "./components/notification-dropdown";
-import { Modal } from "../../generic";;
 import { TopBarBrand } from "./components/top-bar-brand";
-import { WorkshopCapacityButton } from "./components/workshop-capacity-button";
 
 export interface DropdownType {
     catalogsDropdown: boolean;

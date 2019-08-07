@@ -4,13 +4,14 @@ import { RestApiCommunication } from "./rest-api-communication-service";
 import { UsuarioService } from "../user-service";
 import { UsuarioInsertable, UsuarioUpdatable, UsuarioConsultable, UsuarioListable } from "../../dtos/user";
 import { CandidatoService } from "../candidato-service";
+import { SolicitudVacanteService } from "../solicitud-vacante-service";
 
 const candidatoBaseEndpoint = "candidato";
 const RemoteCandidatoPreService: CandidatoService = CreateCrudRestApiService(candidatoBaseEndpoint);
 export const RemoteCandidatoService: CandidatoService = {
     ...RemoteCandidatoPreService,
     getPaginated: (pageNumberZeroBased: number, pageSize: number, nombre: string) =>
-            RestApiCommunication.get(candidatoBaseEndpoint, { pageNumber: pageNumberZeroBased, pageSize, nombre }),
+        RestApiCommunication.get(candidatoBaseEndpoint, { pageNumber: pageNumberZeroBased, pageSize, nombre }),
 };
 
 const usuarioBaseEndpoint = "usuario";
@@ -22,4 +23,12 @@ export const RemoteUsuarioService: UsuarioService = {
 export const RemoteAuthenticationService: AuthenticationService = {
     authenticateUsuario: (username: string, password: string) =>
         RestApiCommunication.post("auth", { username, password }, true)
+};
+
+const solicitudVacanteBaseEndpoint = "solicitud-vacante";
+export const RemoteSolicitudVacantePreService: SolicitudVacanteService = CreateCrudRestApiService(solicitudVacanteBaseEndpoint)
+export const RemoteSolicitudVacanteService: SolicitudVacanteService = {
+    ...RemoteSolicitudVacantePreService,
+    getPaginated: (pageNumberZeroBased: number, pageSize: number, folio: number) =>
+        RestApiCommunication.get(solicitudVacanteBaseEndpoint, { pageNumber: pageNumberZeroBased, pageSize, folio })
 };

@@ -4,6 +4,8 @@ import { UsuarioList } from "./../domain/catalogs/users/list/user-list";
 import { RouteComponentProps } from "react-router-dom";
 import { CandidatoList } from "../domain/catalogs/candidato/list/candidato-list";
 import { CandidatoEdit } from "../domain/catalogs/candidato/edit/candidato-edit";
+import { SolicitudVacanteList } from "../domain/catalogs/solicitud-vacante/list/solicitud-vacante-list";
+import { SolicitudVacanteEdit } from "../domain/catalogs/solicitud-vacante/edit/solicitud-vacante-edit";
 
 export type TRouteComponent = React.ComponentType<RouteComponentProps<any>> | React.ComponentType<any>;
 
@@ -31,6 +33,11 @@ export const RountingRelationRepository: RoutingRelation[] = [
         label: "Candidatos"
     },
     {
+        component: SolicitudVacanteList,
+        path: "/solicitud-vacante",
+        label: "Solicitudes de vacantes"
+    },
+    {
         component: UsuarioList,
         path: "/usuario",
         label: "Usuarios"
@@ -38,6 +45,10 @@ export const RountingRelationRepository: RoutingRelation[] = [
     {
         component: CandidatoEdit,
         path: "/candidato/:id/:readonly?"
+    },
+    {
+        component: SolicitudVacanteEdit,
+        path: "/solicitud-vacante/:id/:readonly?"
     },
     {
         component: UsuarioEdit,

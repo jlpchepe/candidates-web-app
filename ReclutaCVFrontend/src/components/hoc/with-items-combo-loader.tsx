@@ -1,7 +1,7 @@
 import * as React from "react";
 import { RouteComponentProps, withRouter, RouterProps } from "react-router";
 import { readNumberQueryParam } from "../../helpers/navigation-helper";
-import { TPromiseLike, toPromise } from "../../helpers/observable-helper";
+import { TPromiseLike, toPromise } from "../../helpers/promise-helper";
 import { PageResult } from "../../communication/dtos/page-result";
 import { Diff } from "../../helpers/type-helper";
 import { string } from "prop-types";
