@@ -8,6 +8,7 @@ using ReclutaCVLogic.Servicios;
 using ReclutaCVApi.Dtos;
 using AppPersistence.Dtos;
 using AppPersistence.Extensions;
+using ReclutaCVData.Entidades;
 
 namespace ReclutaCVApi.Controllers
 {
@@ -25,41 +26,95 @@ namespace ReclutaCVApi.Controllers
         private readonly SolicitudVacantesService service;
 
         [HttpGet]
-        public async Task<ActionResult<Page<SolicitudVacanteListable>>> Get(
+        public async Task<ActionResult<Page<SolicitudVacanteConsultable>>> Get(
             [MinRequired(0)] int pageNumber,
             [MinRequired(1)] ushort pageSize
         )
         {
             return (await service.FindAll(pageNumber, pageSize))
-                // TODO
-                .Select(entity => new SolicitudVacanteListable());
+                .Select(ToConsultable);
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<SolicitudVacanteConsultable>> Get(int id)
-        {
-            var p = await service.FindById(id);
-
-            return new SolicitudVacanteConsultable(
-            );
-        }
+        public async Task<ActionResult<SolicitudVacanteConsultable>> Get(int id) =>
+            ToConsultable(await service.FindById(id));
 
         [HttpPost]
         public Task<int> Post([FromBody] SolicitudVacanteInsertable model) =>
-            service.Insert();
-
+            service.Insert(ToSolicitudVacante(null, model));
 
         [HttpPut]
-        public Task Put([FromBody] SolicitudVacanteUpdatable model)
-        {
-            //TODO
-            return Task.CompletedTask;
-        }
+        public Task Put([FromBody] SolicitudVacanteUpdatable model) =>
+            service.Update(ToSolicitudVacante(model.Id, model));
 
         [HttpDelete("{id}")]
-        public async Task Delete(int id)
-        {
-            await service.Delete(id);
-        }
+        public Task Delete(int id) => 
+            service.Delete(id);
+
+        private SolicitudVacanteConsultable ToConsultable(
+            SolicitudVacante model
+        ) => new SolicitudVacanteConsultable(
+            model.Id,
+            model.FolioCapitalHumano,
+            model.FechaDeSolicitud,
+            model.Motivo,
+            model.EspecifiqueMotivo,
+            model.NombreDelSolicitante,
+            model.PuestoDelSolicitante,
+            model.AreaDelSolicitante,
+            model.EspecifiqueAreaDelSolicitante,
+            model.Sueldo,
+            model.TipoDeContrato,
+            model.EspecifiqueTipoDeContrato,
+            model.Estatus,
+            model.PuestoSolicitado,
+            model.EspecifiquePuestoSolicitado,
+            model.PuestoSolicitadoNivel,
+            model.NombreDelJefeInmediato,
+            model.Proyecto,
+            model.NivelIdiomaIngles,
+            model.EdadRango,
+            model.EstadoCivil,
+            model.FechaEstimadaDeIngreso,
+            model.ExperienciaLaboral,
+            model.CompetenciasOHabilidades,
+            model.CertificacionesNecesarias,
+            model.TipoDeEvaluacion,
+            model.Observaciones
+        );
+
+        private SolicitudVacante ToSolicitudVacante(
+            int? id,
+            SolicitudVacanteConsultable model
+        ) =>
+            new SolicitudVacante(
+                id,
+                model.FolioCapitalHumano,
+                model.FechaDeSolicitud,
+                model.Motivo,
+                model.EspecifiqueMotivo,
+                model.NombreDelSolicitante,
+                model.PuestoDelSolicitante,
+                model.AreaDelSolicitante,
+                model.EspecifiqueAreaDelSolicitante,
+                model.Sueldo,
+                model.TipoDeContrato,
+                model.EspecifiqueTipoDeContrato,
+                model.Estatus,
+                model.PuestoSolicitado,
+                model.EspecifiquePuestoSolicitado,
+                model.PuestoSolicitadoNivel,
+                model.NombreDelJefeInmediato,
+                model.Proyecto,
+                model.NivelIdiomaIngles,
+                model.EdadRango,
+                model.EstadoCivil,
+                model.FechaEstimadaDeIngreso,
+                model.ExperienciaLaboral,
+                model.CompetenciasOHabilidades,
+                model.CertificacionesNecesarias,
+                model.TipoDeEvaluacion,
+                model.Observaciones
+            );
     }
 }
