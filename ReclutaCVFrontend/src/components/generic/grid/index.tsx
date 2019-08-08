@@ -39,6 +39,10 @@ interface GridProps<TListable> {
     removeMargin?: boolean;
     className?: string;
     overflow?: boolean;
+    /**
+     * Acción a ejecutar cuando se de doble clic
+     */
+    onItemDoubleClick?: (item: TListable) => void;
 }
 
 /**
@@ -74,13 +78,14 @@ export class Grid<TListable> extends React.Component<GridProps<TListable>> {
                 <tbody>
                     {this.props.items.map((item, itemIndex) => (
                         <tr 
-                            
                             key={itemIndex} 
                             draggable={this.props.draggable && !this.props.readonly} 
                             onDragStart={(e)=>this.props.onDragStart(e, item)} 
                             onDragOver={(e)=>this.onDragOver(e)}
                             onDrop={(e)=>this.props.onDrop(e, item)} 
-                            className={this.props.draggable && !this.props.readonly ? "draggable droppable" : null}>
+                            className={this.props.draggable && !this.props.readonly ? "draggable droppable" : null}
+                            onDoubleClick={() => this.props.onItemDoubleClick(item)}
+                        >
                             {this.props.columns.map((column, columnIndex) => (
                                 <td
                                     style={{ verticalAlign: "middle", textAlign: column.contentAlign || "center" }}

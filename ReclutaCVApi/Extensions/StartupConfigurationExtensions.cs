@@ -48,6 +48,9 @@ namespace ReclutaCVApi.Extensions
                 //PERMITIMOS CUALQUIER CABECERA EN LA PETICIÓN
                 builder.AllowAnyHeader();
 
+                //SE PERMITE VER EL HEADER CONTENT-DISPOSITION
+                builder.WithExposedHeaders("Content-Disposition");
+
                 // CREDENTIALS MUST BE ENABLED FOR USING SIGNALR, EVEN WHEN AUTHENTICATION IS NOT USED.
                 builder.AllowCredentials();
             });

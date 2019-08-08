@@ -3,6 +3,8 @@
  */
 export type ApplicationAvailableIcon =
     | "arrow-left"
+    | "arrow-up"
+    | "arrow-down"
     | "ban"
     | "bars"
     | "bell"

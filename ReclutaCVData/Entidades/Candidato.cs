@@ -276,6 +276,8 @@ namespace ReclutaCVData.Entidades
         public string IngresoTipoContrato { get; set; }
         public DateTime? IngresoVencimientoContratoDeterminado { get; set; }
         public string IngresoObservaciones { get; set; }
+        public byte[] Curriculum { get; set; }
+        public string CurriculumFileName { get; set; }
 
         public Candidato() { }
         public Candidato(
@@ -396,7 +398,9 @@ namespace ReclutaCVData.Entidades
             DateTime? ingresoFecha,
             string ingresoTipoContrato,
             DateTime? ingresoVencimientoContratoDeterminado,
-            string ingresoObservaciones
+            string ingresoObservaciones,
+            byte[] curriculum,
+            string curriculumFileName
         )
         {
             if(id != null)
@@ -520,6 +524,8 @@ namespace ReclutaCVData.Entidades
             IngresoTipoContrato = ingresoTipoContrato;
             IngresoVencimientoContratoDeterminado = ingresoVencimientoContratoDeterminado;
             IngresoObservaciones = ingresoObservaciones;
+            Curriculum = curriculum;
+            CurriculumFileName = curriculumFileName;
         }
 
         [InverseProperty(nameof(ReclutaCVData.Entidades.PrimeraLlamadaCandidato.Candidato))]

@@ -32,6 +32,17 @@ interface ChangeStatusProps<TListable> {
     onItemsChange: (items: TListable[]) => void;
 }
 
+interface ListCatalogButton<TListable> {
+    icon: ApplicationAvailableIcon;
+    color: ApplicationAvailableColor;
+    onClick: (item: TListable) => void;
+    isDisabled?: (item: TListable) => boolean;
+    /**
+     * Mensaje que se mostrará en el tooltip
+     */
+    tooltip: string;
+}
+
 interface ListCatalogProps<TListable> {
     title: string;
     /**
@@ -62,6 +73,10 @@ interface ListCatalogProps<TListable> {
 	 * Columnas que se mostrarán en la tabla
 	 */
     columns: ListCatalogColumn<TListable>[];
+    /**
+     * Botones adicionales que se dibujaran en el candidato
+     */
+    itemsExtraButtons: ListCatalogButton<TListable>[];
     /**
 	 * Función que se ejecutará cada vez que los elementos se terminen de cargar
 	 */
@@ -120,7 +135,9 @@ class ListCatalogSimple<TListable> extends React.Component<ListCatalogProps<TLis
         itemIndex: number
     ): JSX.Element => {
         return selectorFunctionOrNull != null ? (
-            <div className="mx-1">
+            <div className="mx-1"
+                key={`${itemIndex}${tooltipIdPrefix}`}
+            >
                 <CircularButton
                     isOutlined
                     icon={icon}
@@ -176,16 +193,21 @@ class ListCatalogSimple<TListable> extends React.Component<ListCatalogProps<TLis
             header: <Icon icon="bolt" />,
             contentSelector: (item, itemIndex) => (
                 <Container flex>
+                    {
+                        this.props.itemsExtraButtons && 
+                        this.props.itemsExtraButtons.map(button => 
+                            this.convertFunctionToCircularButton(
+                                button.isDisabled != null && button.isDisabled(item) ? null : button.onClick,
+                                item,
+                                button.icon,
+                                button.color,
+                                button.tooltip,
+                                "btn_esp" + button.tooltip.replace(" ", ""),
+                                itemIndex
+                            )
+                        )
+                    }
                     {/* {this.convertFunctionToCircularButton(
-                        this.props.onItemSeeDetails,
-                        item,
-                        "eye",
-                        "tertiary",
-                        "Ver detalles",
-                        "btn_seeDetails",
-                        itemIndex
-                    )} */}
-                    {this.convertFunctionToCircularButton(
                         this.props.onItemEdit,
                         item,
                         "edit",
@@ -193,7 +215,7 @@ class ListCatalogSimple<TListable> extends React.Component<ListCatalogProps<TLis
                         "Editar",
                         "btn_edit",
                         itemIndex
-                    )}
+                    )} */}
                     {this.generateChangeStatusButton(item, itemIndex)}
                     {this.convertFunctionToCircularButton(
                         this.props.onItemDelete,
@@ -239,7 +261,13 @@ class ListCatalogSimple<TListable> extends React.Component<ListCatalogProps<TLis
                     }
                 />
                 {this.props.filters}
-                <Grid items={this.props.items} overflow={this.props.overflow} columns={columnsToShow} removeMargin />
+                <Grid 
+                    items={this.props.items} 
+                    overflow={this.props.overflow} 
+                    columns={columnsToShow} 
+                    onItemDoubleClick={this.props.onItemEdit}
+                    removeMargin 
+                />
                 <Pager
                     totalDisplayed={5}
                     rightAlign

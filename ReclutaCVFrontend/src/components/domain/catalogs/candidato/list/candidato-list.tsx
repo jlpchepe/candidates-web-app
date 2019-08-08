@@ -10,6 +10,7 @@ import { LabeledTextInput, Button } from "../../../../generic";
 import { Column } from "../../../common/column";
 import { EstatusCandidatoDescriptions, EstatusAcademicoDescriptions, BolsaTrabajoDescriptions, RolCandidatoDescriptions } from "../../../../../communication/enums/candidato";
 import { toPromise } from "../../../../../helpers/promise-helper";
+import { NotificationHelper } from "../../../../../helpers/notification-helper";
 
 const service = Candidato;
 interface CandidatoListFilters {
@@ -25,8 +26,27 @@ class CandidatoListSimple extends React.Component<WithItemsLoaderProps<Candidato
         toPromise(service.downloadXlsReport(this.props.filters.nombre));
     }
 
+    private handleUploadFile = (event: React.SyntheticEvent) => {
+        const fileToUpload : File = event.target["files"][0];
+        const fileNameToUpload = fileToUpload.name;
+        
+        toPromise(
+            service.uploadCurriculum(
+                this.candidatoIdToUploadCurriculum, 
+                fileToUpload
+            ))
+            .then(() => {
+                NotificationHelper.notifySuccess("Currículum subido", "CV de actualizado subido exitosamente");
+                this.props.refreshItems();
+            })
+        ;
+    }
+
+    private candidatoIdToUploadCurriculum: number;
+
     render() {
         return (
+            <>
             <ListCatalog
                 title="Candidatos"
                 containerFluid
@@ -66,11 +86,37 @@ class CandidatoListSimple extends React.Component<WithItemsLoaderProps<Candidato
                     { header: "Fecha preentrevista", contentSelector: item => DateHelper.formatShortDateLocal(item.fechaPreentrevistaTelefonica) },
                     { header: "Rol", contentSelector: item => RolCandidatoDescriptions.get(item.rol) },
                 ]}
+                itemsExtraButtons={[
+                    {
+                        color: "success",
+                        icon: "arrow-down",
+                        onClick: (item) => service.downloadCurriculum(item.id),
+                        tooltip: "Descargar CV",
+                        isDisabled: (item) => item.curriculumFileName == null
+                    },
+                    {
+                        color: "primary",
+                        icon: "arrow-up",
+                        onClick: (item) => {
+                            this.candidatoIdToUploadCurriculum = item.id;
+                            document.getElementById("fileSelector").click();
+                        },
+                        tooltip: "Subir CV"
+                    }
+                ]}
                 onNewItem={this.onNewItem}
                 onItemEdit={item => goToPath(this.props.history, "candidato/" + item.id)}
                 onItemSeeDetails={item => goToPath(this.props.history, "candidato/" + item.id + "/true")}
                 onItemDelete={item => this.props.onDeleteItem(item)}
             />
+            <input 
+                id="fileSelector" 
+                type="file" 
+                onChange={this.handleUploadFile} 
+                style={{display: "none"}}
+                accept={".pdf,.doc,.docx,.xls,.xlsx"}                
+            />
+            </>
         );
     }
 }

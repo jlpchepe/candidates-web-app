@@ -156,6 +156,10 @@
     <Compile Include="Migrations\201908040913002_ModCandidatoCamposNullables.Designer.cs">
       <DependentUpon>201908040913002_ModCandidatoCamposNullables.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201908080532409_ModCurriculumAgregado.cs" />
+    <Compile Include="Migrations\201908080532409_ModCurriculumAgregado.Designer.cs">
+      <DependentUpon>201908080532409_ModCurriculumAgregado.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Proyecto.cs" />
@@ -226,6 +230,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201908040913002_ModCandidatoCamposNullables.resx">
       <DependentUpon>201908040913002_ModCandidatoCamposNullables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908080532409_ModCurriculumAgregado.resx">
+      <DependentUpon>201908080532409_ModCurriculumAgregado.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
