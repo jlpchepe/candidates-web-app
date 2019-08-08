@@ -22,9 +22,7 @@ class CandidatoListSimple extends React.Component<WithItemsLoaderProps<Candidato
     private readonly onNewItem = () => goToPath(this.props.history, "candidato/new");
 
     private handleGenerateReport = () => {
-        toPromise(service.generateXlsReport(this.props.filters.nombre))
-            //TODO
-            .then(() => { });
+        toPromise(service.downloadXlsReport(this.props.filters.nombre));
     }
 
     render() {

@@ -9,4 +9,5 @@ export interface SolicitudVacanteService {
     insert: (model: SolicitudVacanteInsertable) => TPromiseLike<number>;
     update: (model: SolicitudVacanteUpdatable) => TPromiseLike<void>;
     delete: (id: number) => TPromiseLike<void>;
+    downloadXlsReport: (busqueda?: string, puestoSolicitado?: RolCandidato) => TPromiseLike<void>;
 }

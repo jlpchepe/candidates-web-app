@@ -4,13 +4,14 @@ import { goToPath } from "../../../../../helpers/navigation-helper";
 import { ListCatalog } from "../../../base/list-catalog";
 import { withItemsLoading, WithItemsLoaderProps } from "../../../../hoc/with-items-loader";
 import { SolicitudVacanteListable } from "../../../../../communication/dtos/solicitud-vacante";
-import { LabeledTextInput, LabeledNumberInput } from "../../../../generic";
+import { LabeledTextInput, LabeledNumberInput, Button } from "../../../../generic";
 import { Column } from "../../../common/column";
 import { DateHelper } from "../../../../../helpers/date-helper";
 import { AreaDelSolicitanteDescriptions } from "../../../../../communication/enums/solicitud-vacante-enums";
 import { RolCandidatoDescriptions, RolCandidato } from "../../../../../communication/enums/candidato";
 import { Row } from "../../../common/row";
 import { RolCandidatoCombo } from "../../candidato/combos/candidato-combos";
+import { toPromise } from "../../../../../helpers/promise-helper";
 
 const service = SolicitudVacante;
 interface SolicitudVacanteListFilters {
@@ -23,11 +24,18 @@ interface SolicitudVacanteListFilters {
 class SolicitudVacanteListSimple extends React.Component<WithItemsLoaderProps<SolicitudVacanteListable, SolicitudVacanteListFilters>> {
     private readonly onNewItem = () => goToPath(this.props.history, "solicitud-vacante/new");
 
+    private handleGenerateReport = () => {
+        toPromise(service.downloadXlsReport(this.props.filters.busqueda, this.props.filters.puestoSolicitado));
+    }
+
     render() {
         return (
             <ListCatalog
                 title="Solicitudes de vacantes"
                 containerFluid
+                extraButtons={    
+                    <Button label="Reporte" color="secondary" onClick={this.handleGenerateReport}></Button>
+                }
                 filters={
                     <Row>
                         <Column>

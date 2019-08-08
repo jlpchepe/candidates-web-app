@@ -8,12 +8,11 @@ import { SolicitudVacanteService } from "../solicitud-vacante-service";
 import { RolCandidato } from "../../enums/candidato";
 
 const candidatoBaseEndpoint = "candidato";
-const RemoteCandidatoPreService: Partial<CandidatoService> = CreateCrudRestApiService(candidatoBaseEndpoint);
 export const RemoteCandidatoService: CandidatoService = {
-    ...RemoteCandidatoPreService,
+    ...CreateCrudRestApiService(candidatoBaseEndpoint),
     getPaginated: (pageNumberZeroBased: number, pageSize: number, nombre: string) =>
         RestApiCommunication.get(candidatoBaseEndpoint, { pageNumber: pageNumberZeroBased, pageSize, nombre }),
-    generateXlsReport: (busqueda?: string) => 
+    downloadXlsReport: (busqueda?: string) => 
         RestApiCommunication.get(candidatoBaseEndpoint + "/report", { busqueda })
 };
 
@@ -29,9 +28,10 @@ export const RemoteAuthenticationService: AuthenticationService = {
 };
 
 const solicitudVacanteBaseEndpoint = "solicitudVacante";
-export const RemoteSolicitudVacantePreService: SolicitudVacanteService = CreateCrudRestApiService(solicitudVacanteBaseEndpoint);
 export const RemoteSolicitudVacanteService: SolicitudVacanteService = {
-    ...RemoteSolicitudVacantePreService,
+    ...CreateCrudRestApiService(solicitudVacanteBaseEndpoint),
     getPaginated: (pageNumberZeroBased: number, pageSize: number, busqueda?: string, puestoSolicitado?: RolCandidato) =>
-        RestApiCommunication.get(solicitudVacanteBaseEndpoint, { pageNumber: pageNumberZeroBased, pageSize, busqueda, puestoSolicitado })
+        RestApiCommunication.get(solicitudVacanteBaseEndpoint, { pageNumber: pageNumberZeroBased, pageSize, busqueda, puestoSolicitado }),
+    downloadXlsReport: (busqueda?: string, puestoSolicitado?: RolCandidato) => 
+        RestApiCommunication.get(candidatoBaseEndpoint + "/report", { busqueda, puestoSolicitado })
 };
