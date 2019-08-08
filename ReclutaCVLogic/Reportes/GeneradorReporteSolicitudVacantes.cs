@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace ReclutaCVLogic.Reportes
 {
-    public interface GeneradorReporteCandidatos
+    public interface GeneradorReporteSolicitudVacantes
     {
-        Task<Reporte> GenerarReporteCandidatos(IReadOnlyList<FilaReporteCandidato> candidatos);
+        Task<Reporte> GenerarReporteSolicitudVacantes(IReadOnlyList<FilaReporteSolicitudVacante> solicitudes);
     }
 }

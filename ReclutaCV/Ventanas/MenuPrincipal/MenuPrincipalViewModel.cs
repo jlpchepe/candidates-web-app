@@ -9,6 +9,7 @@ using ReclutaCV.Ventanas.Catalogos.SolicitudesVacante.List;
 using ReclutaCV.Ventanas.Operativas.EtapasCandidato;
 using ReclutaCVData;
 using ReclutaCVData.Entidades;
+using ReclutaCVLogic.Reportes;
 using ReclutaCVLogic.Servicios;
 using System;
 using System.Collections.Generic;
@@ -61,9 +62,14 @@ namespace ReclutaCV.Ventanas.MenuPrincipal
             return windowFactory;
         }
 
+        private readonly GeneradorReporteRdlc generadorReporteRdlc = new GeneradorReporteRdlc();
+
         public ICommand VerListadoCandidatos => new SimpleCommand(() =>
         {
-            var candidatoService = new CandidatoService(this.CreateRepository<Candidato, int>());
+            var candidatoService = new CandidatoService(
+                this.CreateRepository<Candidato, int>(), 
+                generadorReporteRdlc
+            );
 
             var window = new CandidatoListViewModel(
                 candidatoService,
@@ -76,7 +82,11 @@ namespace ReclutaCV.Ventanas.MenuPrincipal
 
         public ICommand VerListadoDeSolicitudDeVacantes => new SimpleCommand(() =>
         {
-            var service = new SolicitudVacantesService(this.CreateRepository<SolicitudVacante, int>());
+            var service = new SolicitudVacantesService(
+                this.CreateRepository<SolicitudVacante, int>(),
+                generadorReporteRdlc
+
+            );
 
             var window = new SolicitudVacanteListViewModel(
                 service,

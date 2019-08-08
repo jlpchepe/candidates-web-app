@@ -12,6 +12,7 @@ using System.Linq.Expressions;
 using ReclutaCVLogic.Dtos;
 using Microsoft.AspNetCore.Http;
 using System.IO;
+using ReclutaCVApi.Helpers;
 
 namespace ReclutaCVApi.Controllers
 {
@@ -35,7 +36,13 @@ namespace ReclutaCVApi.Controllers
            [FromQuery] string nombre
         )
         {
-            return (await service.FindAll(GetToConsultableExpression(false), pageNumber, pageSize, nombre));
+            return (await service.FindAll(
+                GetToConsultableExpression(false),
+                entity => entity.FechaDeContacto,
+                pageNumber, 
+                pageSize, 
+                nombre
+            ));
         }
 
         [HttpGet("{id}")]
@@ -70,15 +77,23 @@ namespace ReclutaCVApi.Controllers
         {
             var curriculum = await service.GetCurriculum(id);
 
-            var content = new MemoryStream(curriculum.Curriculum);
-            var contentType = "application/octet-stream";
-            var file = new FileContentResult(curriculum.Curriculum, contentType)
-            {
-                FileDownloadName = curriculum.CurriculumFileName,
-            };
+            return FileContentResultHelper.CreateFileContentResult(
+                curriculum.Curriculum, 
+                curriculum.CurriculumFileName
+            );
+        }
 
+        [HttpGet("report")]
+        public async Task<FileContentResult> GetReporte(
+            [FromQuery] string busqueda
+        )
+        {
+            var reporte = await service.GetReporteCandidatos(busqueda);
 
-            return file;
+            return FileContentResultHelper.CreateFileContentResult(
+                reporte.Contenido,
+                reporte.NombreConExtension
+            );
         }
 
         [HttpPost]
@@ -100,7 +115,8 @@ namespace ReclutaCVApi.Controllers
         [HttpDelete("{id}")]
         public Task Delete(int id) => service.Delete(id);
 
-        private Expression<Func<Candidato, CandidatoConsultable>> GetToConsultableExpression(bool includeCurriculumFile) {
+        private Expression<Func<Candidato, CandidatoConsultable>> GetToConsultableExpression(bool includeCurriculumFile)
+        {
             return model =>
             new CandidatoConsultable
             {

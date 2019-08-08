@@ -9,6 +9,7 @@ using ReclutaCVApi.Dtos;
 using AppPersistence.Dtos;
 using AppPersistence.Extensions;
 using ReclutaCVData.Entidades;
+using ReclutaCVApi.Helpers;
 
 namespace ReclutaCVApi.Controllers
 {
@@ -52,6 +53,23 @@ namespace ReclutaCVApi.Controllers
         [HttpDelete("{id}")]
         public Task Delete(int id) => 
             service.Delete(id);
+
+        [HttpGet("report")]
+        public async Task<FileContentResult> GetReporte(
+            string busqueda,
+            RolCandidato? puestoSolicitado
+        )
+        {
+            var reporte = await service.GetReporteSolicitudes(
+                busqueda, 
+                puestoSolicitado
+            );
+
+            return FileContentResultHelper.CreateFileContentResult(
+                reporte.Contenido,
+                reporte.NombreConExtension
+            );
+        }
 
         private SolicitudVacanteConsultable ToConsultable(
             SolicitudVacante model

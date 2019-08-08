@@ -207,7 +207,7 @@ class ListCatalogSimple<TListable> extends React.Component<ListCatalogProps<TLis
                             )
                         )
                     }
-                    {/* {this.convertFunctionToCircularButton(
+                    {this.convertFunctionToCircularButton(
                         this.props.onItemEdit,
                         item,
                         "edit",
@@ -215,7 +215,7 @@ class ListCatalogSimple<TListable> extends React.Component<ListCatalogProps<TLis
                         "Editar",
                         "btn_edit",
                         itemIndex
-                    )} */}
+                    )}
                     {this.generateChangeStatusButton(item, itemIndex)}
                     {this.convertFunctionToCircularButton(
                         this.props.onItemDelete,
@@ -230,11 +230,11 @@ class ListCatalogSimple<TListable> extends React.Component<ListCatalogProps<TLis
             )
         };
 
-        return crudButtons;
+        return [crudButtons];
     }
 
     render() {
-        const columnsToShow = this.props.columns.concat(this.generateCrudButtons());
+        const columnsToShow = this.generateCrudButtons().concat(this.props.columns);
 
         // Si el número de páginas es cero, se establece en uno
         const fixedTotalPages = this.props.totalPages > 0 ? this.props.totalPages : 1;

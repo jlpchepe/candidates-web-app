@@ -23,6 +23,7 @@ using Newtonsoft.Json;
 using ReclutaCVLogic.Utils.Extensions;
 using ReclutaCVData;
 using ReclutaCVLogic.Servicios;
+using ReclutaCVLogic.Reportes;
 
 namespace ReclutaCVApi.Extensions
 {
@@ -158,6 +159,10 @@ namespace ReclutaCVApi.Extensions
 
             // PARA QUE A LOS SERVICIOS SE LES PUEDA INYECTAR INFORMACIÓN SOBRE LA SESIÓN ACTUAL, SE HABILITA ESTE ACCESOR
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            // SE AGREGAN LOS SERVICIOS GENERADORES DE REPORTES
+            services.AddSingleton<GeneradorReporteSolicitudVacantes, GeneradorReporteRdlc>();
+            services.AddSingleton<GeneradorReporteCandidatos, GeneradorReporteRdlc>();
         }
 
         /// <summary>
