@@ -1,5 +1,4 @@
 import { CreateCrudRestApiService } from "./generic-rest-api-service";
-import { saveAs } from "file-saver";
 import { AuthenticationService } from "../authentication-service";
 import { RestApiCommunication } from "./rest-api-communication-service";
 import { UsuarioService } from "../user-service";
@@ -14,7 +13,7 @@ export const RemoteCandidatoService: CandidatoService = {
     getPaginated: (pageNumberZeroBased: number, pageSize: number, nombre: string) =>
         RestApiCommunication.get(candidatoBaseEndpoint, { pageNumber: pageNumberZeroBased, pageSize, nombre }),
     downloadXlsReport: (busqueda?: string) => 
-        RestApiCommunication.get(candidatoBaseEndpoint + "/report", { busqueda }),
+        RestApiCommunication.getAndDownloadFile(candidatoBaseEndpoint + "/report", { busqueda }),
     uploadCurriculum: (candidatoId: number, file: File) => {
         const formData = new FormData();
         formData.append("file", file);
@@ -22,10 +21,7 @@ export const RemoteCandidatoService: CandidatoService = {
         return RestApiCommunication.put(candidatoBaseEndpoint + "/curriculum/" + candidatoId, formData, false);
     },
     downloadCurriculum: (candidatoId: number) =>
-        RestApiCommunication.get(candidatoBaseEndpoint + "/curriculum/" + candidatoId, {}, true)
-            .then((response: {file: Blob, fileName: string}) => {
-                saveAs(response.file, response.fileName);
-            })
+        RestApiCommunication.getAndDownloadFile(candidatoBaseEndpoint + "/curriculum/" + candidatoId, {});
 };
 
 const usuarioBaseEndpoint = "usuario";
@@ -45,5 +41,5 @@ export const RemoteSolicitudVacanteService: SolicitudVacanteService = {
     getPaginated: (pageNumberZeroBased: number, pageSize: number, busqueda?: string, puestoSolicitado?: RolCandidato) =>
         RestApiCommunication.get(solicitudVacanteBaseEndpoint, { pageNumber: pageNumberZeroBased, pageSize, busqueda, puestoSolicitado }),
     downloadXlsReport: (busqueda?: string, puestoSolicitado?: RolCandidato) => 
-        RestApiCommunication.get(candidatoBaseEndpoint + "/report", { busqueda, puestoSolicitado })
+        RestApiCommunication.getAndDownloadFile(solicitudVacanteBaseEndpoint + "/report", { busqueda, puestoSolicitado })
 };

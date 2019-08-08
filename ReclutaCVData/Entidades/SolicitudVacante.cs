@@ -40,9 +40,9 @@ namespace ReclutaCVData.Entidades
         
     public enum TipoDeContrato
     {
-        [Description("Proyecto especifico")]
+        [Description("Proyecto específico")]
         ProyectoEspecifico,
-        [Description("Periodo especifico")]
+        [Description("Periodo específico")]
         PeriodoEspecifico,
         [Description("Tiempo indefinido")]
         TiempoIndefinido,
@@ -52,6 +52,7 @@ namespace ReclutaCVData.Entidades
     public enum EstatusSolicitud
     {
         Autorizada,
+        [Description("No autorizada")]
         NoAutorizada,
         Cancelada,
         Detenida,

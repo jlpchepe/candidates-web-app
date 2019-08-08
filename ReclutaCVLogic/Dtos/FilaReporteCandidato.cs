@@ -1,4 +1,6 @@
 ﻿using ReclutaCVData.Entidades;
+using ReclutaCVLogic.Utils.Extensions;
+using ReclutaCVLogic.Utils.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,7 +34,8 @@ namespace ReclutaCVLogic.Dtos
         // Educación
         public string Carrera { get; set; }
         public string Institucion { get; set; }
-        public EstatusAcademico? EstatusAcademico { get; set; }
+        public EstatusAcademico? EstatusAcademico { private get; set; }
+        public string EstatusAcademicoNombre => EstatusAcademico?.GetDescription();
         public string Cursos { get; set; }
         public string Certificaciones { get; set; }
         public string CompetenciasOHabilidades { get; set; }
@@ -55,12 +58,15 @@ namespace ReclutaCVLogic.Dtos
         public DateTime? FechaPreentrevistaTelefonica { get; set; }
         public DateTime? FechaRecepcionSolicitudRegistro { get; set; }
         public string QuienLoContacto { get; set; }
-        public BolsaTrabajo? Bolsa { get; set; }
-        public string BolsaOtra { get; set; }
-        public RolCandidato? Rol { get; set; }
-        public string RolOtro { get; set; }
+        public BolsaTrabajo? Bolsa { private get; set; }
+        public string BolsaOtra { private get; set; }
+        public string BolsaNombre => Bolsa == BolsaTrabajo.OtraBolsa ? BolsaOtra : Bolsa?.GetDescription();
+        public RolCandidato? Rol { private get; set; }
+        public string RolOtro { private get; set; }
+        public string RolNombre => Rol == RolCandidato.Otro ? RolOtro : Rol?.GetDescription();
         public decimal? ExpectativaEconomica { get; set; }
         public EstatusCandidato? Estatus { get; set; }
+        public string EstatusNombre => Estatus?.GetDescription();
         public string ReclutamientoComentarios { get; set; }
 
         // Examen psicometrico
@@ -147,13 +153,15 @@ namespace ReclutaCVLogic.Dtos
         public string EntrevistaInglesComentarios { get; set; }
         public DateTime? EntrevistaGerenteAreaFecha { get; set; }
         public string EntrevistaGerenteAreaComentarios { get; set; }
-        public VeredictoFinalCandidato? VeredictoFinal { get; set; }
+        public VeredictoFinalCandidato? VeredictoFinal { private get; set; }
+        public string VeredictoFinalNombre => VeredictoFinal?.GetDescription();
         public string VeredictoFinalNivelIdentificado { get; set; }
         public string VeredictoFinalComentarios { get; set; }
 
         // Propuesta económica
         public DateTime? PropuestaEconomicaFecha { get; set; }
-        public PropuestaEconomicaEstatus? PropuestaEconomicaEstatus { get; set; }
+        public PropuestaEconomicaEstatus? PropuestaEconomicaEstatus { private get; set; }
+        public string PropuestaEconomicaEstatusNombre => PropuestaEconomicaEstatus?.GetDescription();
         public decimal? PropuestaEconomicaSueldo { get; set; }
         public string PropuestaEconomicaComentarios { get; set; }
 

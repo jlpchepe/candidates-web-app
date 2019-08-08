@@ -120,6 +120,8 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Properties\DataSources\ReclutaCVLogic.Dtos.FilaReporteCandidato.datasource" />
+    <None Include="Properties\DataSources\ReclutaCVLogic.Dtos.FilaReporteSolicitudVacante.datasource" />
     <None Include="Properties\DataSources\ReclutaCVLogic.Reportes.ReporteDeSeguimientoACandidatos.CandidatoPorFuente.datasource" />
     <None Include="Properties\DataSources\ReclutaCVLogic.Reportes.ReporteDeSeguimientoACandidatos.EtapasCandidato.datasource" />
     <None Include="Properties\DataSources\ReclutaCVLogic.Reportes.ReporteDeSeguimientoACandidatos.MotivoDeDesinteresEnIniciarElProceso.datasource" />

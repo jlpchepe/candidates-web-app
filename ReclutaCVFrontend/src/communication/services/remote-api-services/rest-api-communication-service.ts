@@ -1,5 +1,6 @@
 import { Config } from "../../../config";
 import Axios, { AxiosPromise, AxiosRequestConfig } from "axios";
+import { saveAs } from "file-saver";
 import { JsonHelper } from "../../../helpers/json-helper";
 import { ServiceErrorsHandler } from "../../errors/service-errors-handler";
 import { NotificationHelper } from "../../../helpers/notification-helper";
@@ -113,11 +114,28 @@ class RemoteApiCommunicationService {
         );
     }
 
-    get<TResult, TParams extends UrlParams = UrlParams>(
+    getAndDownloadFile: <TResult, TParams extends UrlParams = UrlParams>(
+        relativeUrl: string,
+        params?: TParams
+    ) => Promise<void> = (relativeUrl, params) => {
+        return this.getPrivate(relativeUrl, params, true)
+            .then((response: {file: Blob, fileName: string}) => {
+                saveAs(response.file, response.fileName);
+            });
+    }
+
+    get = <TResult, TParams extends UrlParams = UrlParams>(
+        relativeUrl: string,
+        params?: TParams
+    ) => {
+        return this.getPrivate(relativeUrl, params);
+    }    
+
+    private getPrivate = <TResult, TParams extends UrlParams = UrlParams>(
         relativeUrl: string,
         params?: TParams,
         isFileResponse?: boolean
-    ) : Promise<TResult> {
+    ) => {
         return this.processAxiosPromise(
             Axios.get(
                 this.getAbsoluteUrl(relativeUrl),
