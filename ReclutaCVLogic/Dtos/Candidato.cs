@@ -3,11 +3,15 @@ using System;
 
 namespace ReclutaCVLogic.Dtos
 {
+    public class CandidatoCurriculumConsultable {
+        public byte[] Curriculum { get; set; }
+        public string CurriculumFileName { get; set; }
+    }
+
     public class CandidatoCurriculumToSave
     {
         public int CandidatoId { get; set; }
-        public byte[] Curriculum { get; set; }
-        public string CurriculumFileName { get; set; }
+        
     }
 
     public class CandidatoInsertable : CandidatoConsultable

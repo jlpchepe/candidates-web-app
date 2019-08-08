@@ -10,12 +10,14 @@ using AppPersistence.Extensions;
 using System;
 using System.Linq.Expressions;
 using ReclutaCVLogic.Dtos;
+using Microsoft.AspNetCore.Http;
+using System.IO;
 
 namespace ReclutaCVApi.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class CandidatoController
+    public class CandidatoController : ControllerBase
     {
         public CandidatoController(
             CandidatoService service
@@ -41,14 +43,42 @@ namespace ReclutaCVApi.Controllers
             int id
         ) => service.FindById(id, GetToConsultableExpression(true));
     
-        [HttpPut("curriculum")]
-        public Task Put([FromBody] CandidatoCurriculumToSave model)
+        [HttpPut("curriculum/{id}")]
+        public async Task Put(
+            int id,
+            [FromForm] IFormFile file
+        )
         {
-            return service.SaveCurriculum(
-                model.CandidatoId,
-                model.Curriculum,
-                model.CurriculumFileName
+            byte[] curriculum;
+            using (var memoryStream = new MemoryStream())
+            {
+                await file.CopyToAsync(memoryStream);
+                curriculum = memoryStream.ToArray();
+            }
+
+            await service.SaveCurriculum(
+                id,
+                curriculum,
+                file.FileName
             );
+        }
+
+        [HttpGet("curriculum/{id}")]
+        public async Task<FileContentResult> GetCurriculum(
+            int id
+        )
+        {
+            var curriculum = await service.GetCurriculum(id);
+
+            var content = new MemoryStream(curriculum.Curriculum);
+            var contentType = "application/octet-stream";
+            var file = new FileContentResult(curriculum.Curriculum, contentType)
+            {
+                FileDownloadName = curriculum.CurriculumFileName,
+            };
+
+
+            return file;
         }
 
         [HttpPost]

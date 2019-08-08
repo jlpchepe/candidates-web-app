@@ -24,17 +24,38 @@ class RemoteApiCommunicationService {
      * @param params 
      */
     private getAxiosRequestConfig(
-        params?: any
+        params?: any,
+        isFileResponse?: boolean
     ) : AxiosRequestConfig {
         const bearerToken = CredentialsHelper.getAuthBearerToken();
+
+        const authorizationHeader = bearerToken ? { Authorization: "Bearer " + bearerToken } : {};
 
         return {
             params,
             transformResponse: JsonHelper.parseAndRevive,
-            headers: bearerToken ? 
-                { Authorization: "Bearer " + bearerToken } : 
-                undefined
+            responseType: isFileResponse ? "blob" : undefined,
+            headers:  
+            { 
+                ...authorizationHeader,
+            } 
         };
+    }
+
+    private getFileNameFromContentDispositionHeader(
+        contentDispositionHeader: string
+    ) : string {
+
+        var filename = "";
+        if (contentDispositionHeader && contentDispositionHeader.indexOf('attachment') !== -1) {
+            var filenameRegex = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/;
+            var matches = filenameRegex.exec(contentDispositionHeader);
+            if (matches != null && matches[1]) { 
+                filename = matches[1].replace(/['"]/g, '');
+            }
+        }
+
+        return filename;
     }
 
     /**
@@ -45,10 +66,19 @@ class RemoteApiCommunicationService {
      */
     private processAxiosPromise<TResult>(
         axiosPromise: AxiosPromise<TResult>,
-        disableNotifyOnError?: boolean
+        disableNotifyOnError?: boolean,
+        isFile?: boolean
     ) : Promise<TResult> {
         return axiosPromise
-            .then(response => response.data)
+            .then(response => {
+                return isFile ?  
+                    {
+                        fileName: this.getFileNameFromContentDispositionHeader(response.headers["content-disposition"]),
+                        file: response.data,
+                        ...response.data
+                    } : 
+                    response.data;
+            })
             .catch(axiosError =>  { 
                 if(axiosError.response == null){
                     NotificationHelper.notifyError(
@@ -82,16 +112,19 @@ class RemoteApiCommunicationService {
             )
         );
     }
-    
+
     get<TResult, TParams extends UrlParams = UrlParams>(
         relativeUrl: string,
-        params?: TParams
+        params?: TParams,
+        isFileResponse?: boolean
     ) : Promise<TResult> {
         return this.processAxiosPromise(
             Axios.get(
                 this.getAbsoluteUrl(relativeUrl),
-                this.getAxiosRequestConfig(params)
-            )
+                this.getAxiosRequestConfig(params, isFileResponse)
+            ),
+            undefined,
+            isFileResponse
         );
     }
 

@@ -70,6 +70,18 @@ namespace ReclutaCVLogic.Servicios
             await Update(candidato);
         }
 
+        public async Task<CandidatoCurriculumConsultable> GetCurriculum(int id)
+        {
+            return await FindById(
+                id,
+                entity => new CandidatoCurriculumConsultable
+                {
+                    Curriculum = entity.Curriculum,
+                    CurriculumFileName = entity.CurriculumFileName
+                }
+            );
+        }
+
         /// <summary>
         /// Obtiene el candidato con el id especificado
         /// </summary>

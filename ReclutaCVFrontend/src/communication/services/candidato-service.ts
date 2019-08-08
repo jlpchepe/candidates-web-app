@@ -9,4 +9,6 @@ export interface CandidatoService {
     update: (model: CandidatoUpdatable) => TPromiseLike<void>;
     delete: (id: number) => TPromiseLike<void>;
     generateXlsReport: (busqueda?: string) => TPromiseLike<string>;
+    downloadCurriculum: (candidatoId: number) => TPromiseLike<void>;
+    uploadCurriculum: (candidatoId: number, file: File) => TPromiseLike<void>;
 }

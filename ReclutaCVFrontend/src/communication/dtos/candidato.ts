@@ -162,4 +162,6 @@ export interface CandidatoConsultable
     ingresoTipoContrato: string;
     ingresoVencimientoContratoDeterminado: Date | null;
     ingresoObservaciones: string;
+
+    curriculumFileName: string;
 }
