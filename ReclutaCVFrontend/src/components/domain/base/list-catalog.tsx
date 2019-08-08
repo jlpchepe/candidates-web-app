@@ -176,7 +176,7 @@ class ListCatalogSimple<TListable> extends React.Component<ListCatalogProps<TLis
             header: <Icon icon="bolt" />,
             contentSelector: (item, itemIndex) => (
                 <Container flex>
-                    {this.convertFunctionToCircularButton(
+                    {/* {this.convertFunctionToCircularButton(
                         this.props.onItemSeeDetails,
                         item,
                         "eye",
@@ -184,7 +184,7 @@ class ListCatalogSimple<TListable> extends React.Component<ListCatalogProps<TLis
                         "Ver detalles",
                         "btn_seeDetails",
                         itemIndex
-                    )}
+                    )} */}
                     {this.convertFunctionToCircularButton(
                         this.props.onItemEdit,
                         item,

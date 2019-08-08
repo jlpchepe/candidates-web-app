@@ -16,6 +16,8 @@ import { TabElemento } from "../../../common/tab-element";
 import { TabLink } from "../../../common/tab-link";
 import { MotivoSolicitudCombo, EstatusSolicitudCombo, TipoDeContratoCombo, AreaDelSolicitanteCombo } from "../combos/solicitud-vacante-combos";
 import { RolCandidatoCombo, NivelCandidatoCombo } from "../../candidato/combos/candidato-combos";
+import { MotivoSolicitud, AreaDelSolicitante, TipoDeContrato } from "../../../../../communication/enums/solicitud-vacante-enums";
+import { RolCandidato } from "../../../../../communication/enums/candidato";
 
 const service = SolicitudVacante;
 
@@ -59,20 +61,47 @@ class SolicitudVacanteEditSimple extends React.Component<WithModelManagementProp
                                 <LabeledNumberInput label="Folio de capital humano" value={this.props.model.folioCapitalHumano} onChange={folioCapitalHumano => this.props.setModel({ folioCapitalHumano })} readonly={this.props.readonly}/>
                                 <LabeledDateInput label="Fecha de solicitud" value={this.props.model.fechaDeSolicitud} onChange={fechaDeSolicitud => this.props.setModel({ fechaDeSolicitud })} readonly={this.props.readonly}/>
                                 <MotivoSolicitudCombo label="Motivo" value={this.props.model.motivo} onChange={motivo => this.props.setModel({ motivo })} readonly={this.props.readonly} />
-                                <LabeledTextInput label="Especifique motivo" value={this.props.model.especifiqueMotivo} onChange={especifiqueMotivo => this.props.setModel({ especifiqueMotivo })} readonly={this.props.readonly}/>                
+                                {
+                                    this.props.model.motivo == MotivoSolicitud.Otro ?
+                                        <LabeledTextInput 
+                                            label="Especifique motivo" 
+                                            value={this.props.model.especifiqueMotivo} 
+                                            onChange={especifiqueMotivo => this.props.setModel({ especifiqueMotivo })} 
+                                            readonly={this.props.readonly}
+                                        /> :
+                                        null
+                                }                
                             </Row>
                             <Row>
                                 <LabeledTextInput label="Nombre del solicitante" value={this.props.model.nombreDelSolicitante} onChange={nombreDelSolicitante => this.props.setModel({ nombreDelSolicitante })} readonly={this.props.readonly}/>
                                 <LabeledTextInput label="Puesto del solicitante" value={this.props.model.puestoDelSolicitante} onChange={puestoDelSolicitante => this.props.setModel({ puestoDelSolicitante })} readonly={this.props.readonly}/>
                                 <AreaDelSolicitanteCombo label="Area del solicitante" value={this.props.model.areaDelSolicitante} onChange={areaDelSolicitante => this.props.setModel({ areaDelSolicitante })} readonly={this.props.readonly} />
-                                <LabeledTextInput label="Especifique el área del solicitante" value={this.props.model.especifiqueAreaDelSolicitante} onChange={especifiqueAreaDelSolicitante => this.props.setModel({ especifiqueAreaDelSolicitante })} readonly={this.props.readonly}/>
+                                {
+                                    this.props.model.areaDelSolicitante == AreaDelSolicitante.Otro ?
+                                        <LabeledTextInput 
+                                            label="Especifique el área del solicitante" 
+                                            value={this.props.model.especifiqueAreaDelSolicitante} 
+                                            onChange={especifiqueAreaDelSolicitante => this.props.setModel({ especifiqueAreaDelSolicitante })} 
+                                            readonly={this.props.readonly}
+                                        /> :
+                                        null
+                                }                
                             </Row>
                         </Seccion>
                         <Seccion title="Capital humano">
                             <Row>
                                 <LabeledNumberInput label="Sueldo" value={this.props.model.sueldo} onChange={sueldo => this.props.setModel({ sueldo })} readonly={this.props.readonly}/>
                                 <TipoDeContratoCombo label="Tipo de contrato" value={this.props.model.tipoDeContrato} onChange={tipoDeContrato => this.props.setModel({ tipoDeContrato })} readonly={this.props.readonly} />
-                                <LabeledTextInput label="Especifique tipo de contrato" value={this.props.model.especifiqueTipoDeContrato} onChange={especifiqueTipoDeContrato => this.props.setModel({ especifiqueTipoDeContrato })} readonly={this.props.readonly}/>
+                                {
+                                    this.props.model.tipoDeContrato == TipoDeContrato.Otro ?
+                                        <LabeledTextInput 
+                                            label="Especifique tipo de contrato" 
+                                            value={this.props.model.especifiqueTipoDeContrato} 
+                                            onChange={especifiqueTipoDeContrato => this.props.setModel({ especifiqueTipoDeContrato })} 
+                                            readonly={this.props.readonly}
+                                        /> :
+                                        null
+                                }                
                                 <EstatusSolicitudCombo label="Estatus de solicitud" value={this.props.model.estatus} onChange={estatus => this.props.setModel({ estatus })} readonly={this.props.readonly} />
                             </Row>
                         </Seccion>
@@ -81,7 +110,16 @@ class SolicitudVacanteEditSimple extends React.Component<WithModelManagementProp
                         <Seccion title="Requerimientos del puesto">
                             <Row>
                                 <RolCandidatoCombo label="Puesto solicitado" value={this.props.model.puestoSolicitado} onChange={puestoSolicitado => this.props.setModel({ puestoSolicitado })} readonly={this.props.readonly} />
-                                <LabeledTextInput label="Especifique puesto solicitado" value={this.props.model.especifiquePuestoSolicitado} onChange={especifiquePuestoSolicitado => this.props.setModel({ especifiquePuestoSolicitado })} readonly={this.props.readonly}/>
+                                {
+                                    this.props.model.puestoSolicitado == RolCandidato.Otro ?
+                                        <LabeledTextInput 
+                                            label="Especifique puesto solicitado" 
+                                            value={this.props.model.especifiquePuestoSolicitado} 
+                                            onChange={especifiquePuestoSolicitado => this.props.setModel({ especifiquePuestoSolicitado })} 
+                                            readonly={this.props.readonly}
+                                        /> :
+                                        null
+                                }
                                 <NivelCandidatoCombo label="Nivel de puesto solicitado" value={this.props.model.puestoSolicitadoNivel} onChange={puestoSolicitadoNivel => this.props.setModel({ puestoSolicitadoNivel })} readonly={this.props.readonly} />
                                 <LabeledTextInput label="Nombre del jefe inmediato" value={this.props.model.nombreDelJefeInmediato} onChange={nombreDelJefeInmediato => this.props.setModel({ nombreDelJefeInmediato })} readonly={this.props.readonly}/>
                             </Row>
