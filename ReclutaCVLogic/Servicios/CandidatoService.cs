@@ -3,11 +3,13 @@ using AppPersistence.Enums;
 using AppPersistence.Repositories;
 using ReclutaCVData;
 using ReclutaCVData.Entidades;
+using ReclutaCVLogic.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -35,7 +37,8 @@ namespace ReclutaCVLogic.Servicios
         /// <summary>
         /// Obtiene todos los candidatos existentes
         /// </summary>
-        public async Task<Page<Candidato>> FindAll(
+        public async Task<Page<CandidatoConsultable>> FindAll(
+            Expression<Func<Candidato, CandidatoConsultable>> selector,
             int pageNumber,
             int pageSize,
             string nombre
@@ -44,7 +47,7 @@ namespace ReclutaCVLogic.Servicios
             var fixedNombre = nombre ?? "";
 
             return await repository.Find(
-                entity => entity,
+                selector,
                 entity =>
                     fixedNombre == "" ||
                     entity.Nombre.ToLower().Contains(nombre.ToLower())
@@ -54,11 +57,31 @@ namespace ReclutaCVLogic.Servicios
             );
         }
 
+        public async Task SaveCurriculum(
+            int candidatoId, 
+            byte[] curriculum, 
+            string curriculumFileName
+        )
+        {
+            var candidato = await FindById(candidatoId, entity => entity);
+            candidato.Curriculum = curriculum;
+            candidato.CurriculumFileName = curriculumFileName;
+
+            await Update(candidato);
+        }
+
         /// <summary>
         /// Obtiene el candidato con el id especificado
         /// </summary>
-        public Task<Candidato> FindById(int id) => 
-            repository.FindById(id);
+        public Task<TResult> FindById<TResult>(
+            int id,
+            Expression<Func<Candidato, TResult>> selector
+        ) => 
+            repository.FindFirstOrDefault(
+                selector,
+                entity => entity.Id == id,
+                entity => true
+            );
 
         public Task Update(
             Candidato nuevaInformacionCandidato

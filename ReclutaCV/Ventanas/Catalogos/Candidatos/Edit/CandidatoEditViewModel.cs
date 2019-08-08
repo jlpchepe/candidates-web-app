@@ -63,7 +63,7 @@ namespace ReclutaCV.Candidatos.Edit
             candidatoService.Update(this.Model);
 
         protected override Task<Candidato> CargarExistente(int id) => 
-            this.candidatoService.FindById(id);
+            this.candidatoService.FindById(id, entity => entity);
 
         protected override Task<Candidato> CargarNuevo() =>
             Task.FromResult(new Candidato());

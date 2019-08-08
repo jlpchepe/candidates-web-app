@@ -69,6 +69,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dtos\AnalisisCandidatoConsultable.cs" />
+    <Compile Include="Dtos\Candidato.cs" />
     <Compile Include="Dtos\EntrevistaCandidatoConsultable.cs" />
     <Compile Include="Dtos\EtapasCandidatoConsultable.cs" />
     <Compile Include="Dtos\EvaluacionCurriculumCandidatoConsultable.cs" />

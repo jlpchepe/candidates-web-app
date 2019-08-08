@@ -1,8 +1,15 @@
 ﻿using ReclutaCVData.Entidades;
 using System;
 
-namespace ReclutaCVApi.Dtos
+namespace ReclutaCVLogic.Dtos
 {
+    public class CandidatoCurriculumToSave
+    {
+        public int CandidatoId { get; set; }
+        public byte[] Curriculum { get; set; }
+        public string CurriculumFileName { get; set; }
+    }
+
     public class CandidatoInsertable : CandidatoConsultable
     {
     }
@@ -163,6 +170,8 @@ namespace ReclutaCVApi.Dtos
         public string IngresoTipoContrato { get; set; }
         public DateTime? IngresoVencimientoContratoDeterminado { get; set; }
         public string IngresoObservaciones { get; set; }
+        public byte[] Curriculum { get; set; }
+        public string CurriculumFileName { get; set; }
 
         public CandidatoConsultable() { }
 
@@ -284,7 +293,9 @@ namespace ReclutaCVApi.Dtos
             DateTime? ingresoFecha,
             string ingresoTipoContrato,
             DateTime? ingresoVencimientoContratoDeterminado,
-            string ingresoObservaciones
+            string ingresoObservaciones,
+            byte[] curriculum,
+            string curriculumFileName
         )
         {
             Id = id;
