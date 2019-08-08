@@ -27,7 +27,7 @@ export const RemoteCandidatoService: CandidatoService = {
 const usuarioBaseEndpoint = "usuario";
 export const RemoteUsuarioService: UsuarioService = {
     ...CreateCrudRestApiService<UsuarioListable, UsuarioConsultable, UsuarioInsertable, UsuarioUpdatable, void>(usuarioBaseEndpoint),
-    changeStatus: (id, active) => RestApiCommunication.put(usuarioBaseEndpoint + "/status", { id, active }),
+    changeStatus: (id, activo) => RestApiCommunication.put(usuarioBaseEndpoint + "/status", { id, active: activo }),
 };
 
 export const RemoteAuthenticationService: AuthenticationService = {

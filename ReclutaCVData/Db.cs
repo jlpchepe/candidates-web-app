@@ -15,7 +15,9 @@ namespace ReclutaCVData
     [DbConfigurationType(typeof(DbConfig))]
     public class Db : DbContext
     {
-        public Db(string connectionString) : base(connectionString){ }
+        public Db(string connectionString) : base(connectionString){
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<Db, ReclutaCVData.Migrations.Configuration>(true));
+        }
 
         public Db()
         : this("Server=localhost;Port=5432;Database=develop_recluta_cv;User Id=postgres;Password=novutek;")
@@ -32,11 +34,6 @@ namespace ReclutaCVData
         public DbSet<ContratacionCandidato> ContratacionCandidato { get; set; }
         public DbSet<SolicitudVacante> SolicitudVacante { get; set; }
         public DbSet<Usuario> Usuario { get; set; }
-
-        public static void InitMigrations()
-        {
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<Db, ReclutaCVData.Migrations.Configuration>(true));
-        }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
